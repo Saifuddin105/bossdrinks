@@ -453,12 +453,16 @@ if (modal_bg != null && modal_btn != null) {
         modal_bg.classList.add("bg-active")
     })
 }
+if (modal_close_btn != null) {
+    modal_close_btn.addEventListener("click", function () {
+        modal_bg.classList.remove("bg-active")
+    })
+}
+if (modal_tnc_wholsale != null) {
 
-modal_close_btn.addEventListener("click", function () {
-    modal_bg.classList.remove("bg-active")
-})
-modal_tnc_wholsale.addEventListener("click", function () {
-    console.log("asdasdad")
-    modal_bg.classList.add("bg-active")
-})
+    modal_tnc_wholsale.addEventListener("click", function () {
+        console.log("asdasdad")
+        modal_bg.classList.add("bg-active")
+    })
+}
 // }
