@@ -474,6 +474,43 @@ if (modal_btn_2 != null) {
         modal_bg.classList.add("bg-active")
     })
 }
-
+if (modal_bg != null) {
+    modal_bg.addEventListener("click", function () {
+        modal_bg.classList.remove("bg-active")
+    })
+}
 
 // }
+
+const agreeBtn = document.getElementById("i_agree_btn")
+const agree_checkbox = document.getElementById("i_agree_checkbox")
+const wholesaleCheckbox = document.getElementById("checkbox_wholesale")
+const intRegCheckbox = document.getElementById("int_reg_checkbox")
+document.querySelector('.modal_tnc')?.addEventListener('click', (e) => { e.stopPropagation() })
+
+
+
+if (agreeBtn != null) {
+
+
+
+    agreeBtn.addEventListener("click", e => {
+        modal_bg.classList.remove("bg-active")
+        agree_checkbox.checked = true
+
+
+    })
+
+    agreeBtn.addEventListener("click", e => {
+        wholesaleCheckbox.checked = true
+    })
+
+    agreeBtn.addEventListener("click", e => {
+        intRegCheckbox.checked = true
+    })
+
+}
+
+
+
+
