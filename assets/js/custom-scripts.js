@@ -63,23 +63,23 @@ function handleTouchMove(evt) {
 
 
 
-$('#myFirstCarousel').on('slide.bs.carousel', function (e) {
-    const navbar = document.getElementById('navbar')
-    switch (e.to) {
-        case 0:
-            navbar.style.background = '#7FFFD4'
-            break;
-        case 1:
-            navbar.style.background = '#58CCED'
-            break
-        case 2:
-            navbar.style.background = '#F5ACBA'
-            break
-        case 3:
-            navbar.style.background = '#FFA07A'
-            break
-    }
-})
+// $('#myFirstCarousel').on('slide.bs.carousel', function (e) {
+//     const navbar = document.getElementById('navbar')
+//     switch (e.to) {
+//         case 0:
+//             navbar.style.background = '#7FFFD4'
+//             break;
+//         case 1:
+//             navbar.style.background = '#58CCED'
+//             break
+//         case 2:
+//             navbar.style.background = '#F5ACBA'
+//             break
+//         case 3:
+//             navbar.style.background = '#FFA07A'
+//             break
+//     }
+// })
 
 // ******************************************************
 
