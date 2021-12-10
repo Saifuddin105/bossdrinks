@@ -167,7 +167,7 @@
 
 						</ul>
 					@if(Auth::guard('admin')->user()->IsSuper())
-					<p class="version-name"> {{ __('Version') }}: 2.1</p>
+					{{-- <p class="version-name"> {{ __('Version') }}: 2.1</p> --}}
 					@endif
 					</nav>
 					<!-- Main Content Area Start -->
