@@ -8,7 +8,7 @@
     	<meta name="author" content="GeniusOcean">
     	<meta name="csrf-token" content="{{ csrf_token() }}">
 		<!-- Title -->
-		<title>{{$gs->title}}</title>
+		<title>bossdrinks</title>
 		<!-- favicon -->
 		<link rel="icon"  type="image/x-icon" href="{{asset('assets/images/'.$gs->favicon)}}"/>
 		<!-- Bootstrap -->
@@ -55,7 +55,7 @@
 					<div class="container-fluid">
 						<div class="d-flex justify-content-between">
 							<a class="admin-logo" href="{{ route('front.index') }}" target="_blank">
-								<img src="{{asset('assets/images/'.$gs->logo)}}" alt="">
+								<img src="{{asset('img/Energy Boss - 280x78px.png')}}" alt="">
 							</a>
 							<div class="menu-toggle-button">
 								<a class="nav-link" href="javascript:;" id="sidebarCollapse">
