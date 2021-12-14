@@ -1,24 +1,31 @@
-<li>
-        <a href="#order" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i class="fas fa-hand-holding-usd"></i>{{ __('Orders') }}</a>
-        <ul class="collapse list-unstyled" id="order" data-parent="#accordion" >
-               <li>
-                <a href="{{route('admin-order-index')}}"> {{ __('All Orders') }}</a>
-            </li>
-            <li>
-                <a href="{{route('admin-order-pending')}}"> {{ __('Pending Orders') }}</a>
-            </li>
-            <li>
-                <a href="{{route('admin-order-processing')}}"> {{ __('Processing Orders') }}</a>
-            </li>
-            <li>
-                <a href="{{route('admin-order-completed')}}"> {{ __('Completed Orders') }}</a>
-            </li>
-            <li>
-                <a href="{{route('admin-order-declined')}}"> {{ __('Declined Orders') }}</a>
-            </li>
+<?php
+$isDev = isset($_GET['dev']) ? true : false;
+?>
 
-        </ul>
-    </li>
+
+<li>
+    <a href="#order" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i
+            class="fas fa-hand-holding-usd"></i>{{ __('Orders') }}</a>
+    <ul class="collapse list-unstyled" id="order" data-parent="#accordion">
+        <li>
+            <a href="{{ route('admin-order-index') }}"> {{ __('All Orders') }}</a>
+        </li>
+        <li>
+            <a href="{{ route('admin-order-pending') }}"> {{ __('Pending Orders') }}</a>
+        </li>
+        <li>
+            <a href="{{ route('admin-order-processing') }}"> {{ __('Processing Orders') }}</a>
+        </li>
+        <li>
+            <a href="{{ route('admin-order-completed') }}"> {{ __('Completed Orders') }}</a>
+        </li>
+        <li>
+            <a href="{{ route('admin-order-declined') }}"> {{ __('Declined Orders') }}</a>
+        </li>
+
+    </ul>
+</li>
+@if ($isDev)
     <li>
         <a href="#menu2" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="icofont-cart"></i>{{ __('Products') }}
@@ -38,7 +45,8 @@
             </li>
         </ul>
     </li>
-
+@endif
+@if ($isDev)
     <li>
         <a href="#affiliateprod" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="icofont-cart"></i>{{ __('Affiliate Products') }}
@@ -52,7 +60,8 @@
             </li>
         </ul>
     </li>
-
+@endif
+@if ($isDev)
     <li>
         <a href="#menu3" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="icofont-user"></i>{{ __('Customers') }}
@@ -69,7 +78,8 @@
             </li>
         </ul>
     </li>
-
+@endif
+@if ($isDev)
     <li>
         <a href="#vendor" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="icofont-ui-user-group"></i>{{ __('Vendors') }}
@@ -90,10 +100,11 @@
 
         </ul>
     </li>
-
+@endif
+@if ($isDev)
     <li>
         <a href="#vendor1" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-                <i class="icofont-verification-check"></i>{{ __('Vendor Verifications') }}
+            <i class="icofont-verification-check"></i>{{ __('Vendor Verifications') }}
         </a>
         <ul class="collapse list-unstyled" id="vendor1" data-parent="#accordion">
             <li>
@@ -104,38 +115,46 @@
             </li>
         </ul>
     </li>
-
+@endif
+@if ($isDev)
 
     <li>
-        <a href="{{ route('admin-subscription-index') }}" class=" wave-effect"><i class="fas fa-dollar-sign"></i>{{ __('Vendor Subscription Plans') }}</a>
+        <a href="{{ route('admin-subscription-index') }}" class=" wave-effect"><i
+                class="fas fa-dollar-sign"></i>{{ __('Vendor Subscription Plans') }}</a>
     </li>
-
+@endif
+@if ($isDev)
     <li>
-        <a href="#menu5" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i class="fas fa-sitemap"></i>{{ __('Manage Categories') }}</a>
+        <a href="#menu5" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i
+                class="fas fa-sitemap"></i>{{ __('Manage Categories') }}</a>
         <ul class="collapse list-unstyled
-        @if(request()->is('admin/attribute/*/manage') && request()->input('type')=='category')
+        @if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'category')
           show
         @elseif(request()->is('admin/attribute/*/manage') && request()->input('type')=='subcategory')
           show
         @elseif(request()->is('admin/attribute/*/manage') && request()->input('type')=='childcategory')
           show
-        @endif" id="menu5" data-parent="#accordion" >
-                <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='category') active @endif">
-                    <a href="{{ route('admin-cat-index') }}"><span>{{ __('Main Category') }}</span></a>
-                </li>
-                <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='subcategory') active @endif">
-                    <a href="{{ route('admin-subcat-index') }}"><span>{{ __('Sub Category') }}</span></a>
-                </li>
-                <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='childcategory') active @endif">
-                    <a href="{{ route('admin-childcat-index') }}"><span>{{ __('Child Category') }}</span></a>
-                </li>
+        @endif"
+            id="menu5" data-parent="#accordion">
+            <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'category') active @endif">
+                <a href="{{ route('admin-cat-index') }}"><span>{{ __('Main Category') }}</span></a>
+            </li>
+            <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'subcategory') active @endif">
+                <a href="{{ route('admin-subcat-index') }}"><span>{{ __('Sub Category') }}</span></a>
+            </li>
+            <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'childcategory') active @endif">
+                <a href="{{ route('admin-childcat-index') }}"><span>{{ __('Child Category') }}</span></a>
+            </li>
         </ul>
     </li>
-
+@endif
+@if ($isDev)
     <li>
-        <a href="{{ route('admin-prod-import') }}"><i class="fas fa-upload"></i>{{ __('Bulk Product Upload') }}</a>
+        <a href="{{ route('admin-prod-import') }}"><i
+                class="fas fa-upload"></i>{{ __('Bulk Product Upload') }}</a>
     </li>
-
+@endif
+@if ($isDev)
     <li>
         <a href="#menu4" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="icofont-speech-comments"></i>{{ __('Product Discussion') }}
@@ -152,10 +171,14 @@
             </li>
         </ul>
     </li>
-
+@endif
+@if ($isDev)
     <li>
-        <a href="{{ route('admin-coupon-index') }}" class=" wave-effect"><i class="fas fa-percentage"></i>{{ __('Set Coupons') }}</a>
+        <a href="{{ route('admin-coupon-index') }}" class=" wave-effect"><i
+                class="fas fa-percentage"></i>{{ __('Set Coupons') }}</a>
     </li>
+@endif
+@if ($isDev)
     <li>
         <a href="#blog" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-fw fa-newspaper"></i>{{ __('Blog') }}
@@ -169,7 +192,8 @@
             </li>
         </ul>
     </li>
-
+@endif
+@if ($isDev)
     <li>
         <a href="#msg" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-fw fa-newspaper"></i>{{ __('Messages') }}
@@ -183,7 +207,8 @@
             </li>
         </ul>
     </li>
-
+@endif
+@if ($isDev)
     <li>
         <a href="#general" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-cogs"></i>{{ __('General Settings') }}
@@ -208,13 +233,13 @@
                 <a href="{{ route('admin-pick-index') }}"><span>{{ __('Pickup Locations') }}</span></a>
             </li>
             <li>
-            <a href="{{ route('admin-gs-contents') }}"><span>{{ __('Website Contents') }}</span></a>
+                <a href="{{ route('admin-gs-contents') }}"><span>{{ __('Website Contents') }}</span></a>
             </li>
             <li>
                 <a href="{{ route('admin-gs-footer') }}"><span>{{ __('Footer') }}</span></a>
             </li>
             <li>
-                <a href="{{ route('admin-gs-affilate') }}"><span>{{__('Affiliate Information')}}</span></a>
+                <a href="{{ route('admin-gs-affilate') }}"><span>{{ __('Affiliate Information') }}</span></a>
             </li>
 
             <li>
@@ -233,7 +258,8 @@
 
         </ul>
     </li>
-
+@endif
+@if ($isDev)
     <li>
         <a href="#homepage" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-edit"></i>{{ __('Home Page Settings') }}
@@ -275,7 +301,8 @@
             </li>
         </ul>
     </li>
-
+@endif
+@if ($isDev)
     <li>
         <a href="#menu" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-code"></i>{{ __('Menu Page Settings') }}
@@ -292,84 +319,109 @@
             </li>
         </ul>
     </li>
+@endif
+@if ($isDev)
     <li>
         <a href="#emails" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-at"></i>{{ __('Email Settings') }}
         </a>
         <ul class="collapse list-unstyled" id="emails" data-parent="#accordion">
-            <li><a href="{{route('admin-mail-index')}}"><span>{{ __('Email Template') }}</span></a></li>
-            <li><a href="{{route('admin-mail-config')}}"><span>{{ __('Email Configurations') }}</span></a></li>
-            <li><a href="{{route('admin-group-show')}}"><span>{{ __('Group Email') }}</span></a></li>
+            <li><a href="{{ route('admin-mail-index') }}"><span>{{ __('Email Template') }}</span></a></li>
+            <li><a href="{{ route('admin-mail-config') }}"><span>{{ __('Email Configurations') }}</span></a>
+            </li>
+            <li><a href="{{ route('admin-group-show') }}"><span>{{ __('Group Email') }}</span></a></li>
         </ul>
     </li>
+@endif
+@if ($isDev)
     <li>
         <a href="#payments" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-code"></i>{{ __('Payment Settings') }}
         </a>
         <ul class="collapse list-unstyled" id="payments" data-parent="#accordion">
-            <li><a href="{{route('admin-gs-payments')}}"><span>{{__('Payment Information')}}</span></a></li>
-            <li><a href="{{route('admin-payment-index')}}"><span>{{ __('Payment Gateways') }}</span></a></li>
-            <li><a href="{{route('admin-currency-index')}}"><span>{{ __('Currencies') }}</span></a></li>
+            <li><a href="{{ route('admin-gs-payments') }}"><span>{{ __('Payment Information') }}</span></a></li>
+            <li><a href="{{ route('admin-payment-index') }}"><span>{{ __('Payment Gateways') }}</span></a></li>
+            <li><a href="{{ route('admin-currency-index') }}"><span>{{ __('Currencies') }}</span></a></li>
         </ul>
     </li>
+@endif
+@if ($isDev)
     <li>
         <a href="#socials" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-paper-plane"></i>{{ __('Social Settings') }}
         </a>
         <ul class="collapse list-unstyled" id="socials" data-parent="#accordion">
-                <li><a href="{{route('admin-social-index')}}"><span>{{ __('Social Links') }}</span></a></li>
-                <li><a href="{{route('admin-social-facebook')}}"><span>{{ __('Facebook Login') }}</span></a></li>
-                <li><a href="{{route('admin-social-google')}}"><span>{{ __('Google Login') }}</span></a></li>
+            <li><a href="{{ route('admin-social-index') }}"><span>{{ __('Social Links') }}</span></a></li>
+            <li><a href="{{ route('admin-social-facebook') }}"><span>{{ __('Facebook Login') }}</span></a></li>
+            <li><a href="{{ route('admin-social-google') }}"><span>{{ __('Google Login') }}</span></a></li>
         </ul>
     </li>
+@endif
+@if ($isDev)
     <li>
         <a href="#langs" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-language"></i>{{ __('Language Settings') }}
         </a>
         <ul class="collapse list-unstyled" id="langs" data-parent="#accordion">
-                <li><a href="{{route('admin-lang-index')}}"><span>{{ __('Website Language') }}</span></a></li>
-                <li><a href="{{route('admin-tlang-index')}}"><span>{{ __('Admin Panel Language') }}</span></a></li>
+            <li><a href="{{ route('admin-lang-index') }}"><span>{{ __('Website Language') }}</span></a></li>
+            <li><a href="{{ route('admin-tlang-index') }}"><span>{{ __('Admin Panel Language') }}</span></a>
+            </li>
 
         </ul>
     </li>
+@endif
+@if ($isDev)
     <li>
         <a href="#seoTools" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-wrench"></i>{{ __('SEO Tools') }}
         </a>
         <ul class="collapse list-unstyled" id="seoTools" data-parent="#accordion">
             <li>
-                <a href="{{ route('admin-prod-popular',30) }}"><span>{{ __('Popular Products') }}</span></a>
+                <a href="{{ route('admin-prod-popular', 30) }}"><span>{{ __('Popular Products') }}</span></a>
             </li>
             <li>
                 <a href="{{ route('admin-seotool-analytics') }}"><span>{{ __('Google Analytics') }}</span></a>
-            </li
-            >
+            </li>
             <li>
-                <a href="{{ route('admin-seotool-keywords') }}"><span>{{ __('Website Meta Keywords') }}</span></a>
+                <a
+                    href="{{ route('admin-seotool-keywords') }}"><span>{{ __('Website Meta Keywords') }}</span></a>
             </li>
         </ul>
     </li>
+@endif
+@if ($isDev)
     <li>
-        <a href="{{ route('admin-staff-index') }}" class=" wave-effect"><i class="fas fa-user-secret"></i>{{ __('Manage Staffs') }}</a>
+        <a href="{{ route('admin-staff-index') }}" class=" wave-effect"><i
+                class="fas fa-user-secret"></i>{{ __('Manage Staffs') }}</a>
     </li>
-
+@endif
+@if ($isDev)
     <li>
-        <a href="{{ route('admin-subs-index') }}" class=" wave-effect"><i class="fas fa-users-cog mr-2"></i>{{ __('Subscribers') }}</a>
+        <a href="{{ route('admin-subs-index') }}" class=" wave-effect"><i
+                class="fas fa-users-cog mr-2"></i>{{ __('Subscribers') }}</a>
     </li>
+@endif
+@if ($isDev)
+    <li>
+        <a href="{{ route('admin-role-index') }}" class=" wave-effect"><i
+                class="fas fa-user-tag"></i>{{ __('Manage Roles') }}</a>
+    </li>
+@endif
+@if ($isDev)
+    <li>
+        <a href="{{ route('admin-cache-clear') }}" class=" wave-effect"><i
+                class="fas fa-sync"></i>{{ __('Clear Cache') }}</a>
+    </li>
+@endif
+@if ($isDev)
+    <li>
+        <a href="#sactive" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
+            <i class="fas fa-cog"></i>{{ __('System Activation') }}
+        </a>
+        <ul class="collapse list-unstyled" id="sactive" data-parent="#accordion">
 
-        <li>
-            <a href="{{ route('admin-role-index') }}" class=" wave-effect"><i class="fas fa-user-tag"></i>{{ __('Manage Roles') }}</a>
-        </li>
-        <li>
-            <a href="{{ route('admin-cache-clear') }}" class=" wave-effect"><i class="fas fa-sync"></i>{{ __('Clear Cache') }}</a>
-        </li>
-        <li>
-            <a href="#sactive" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-                <i class="fas fa-cog"></i>{{ __('System Activation') }}
-            </a>
-            <ul class="collapse list-unstyled" id="sactive" data-parent="#accordion">
-
-                <li><a href="{{route('admin-activation-form')}}"> {{ __('Activation') }}</a></li>
-                <li><a href="{{route('admin-generate-backup')}}"> {{ __('Generate Backup') }}</a></li>
-            </ul>
-        </li>
+            <li><a href="{{ route('admin-activation-form') }}"> {{ __('Activation') }}</a></li>
+            <li><a href="{{ route('admin-generate-backup') }}"> {{ __('Generate Backup') }}</a></li>
+        </ul>
+    </li>
+@endif
