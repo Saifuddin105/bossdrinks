@@ -80,21 +80,31 @@
 
       </div>
 
-      <div class="footer_bottom">
-        <p>©️ BOSS DRINKS LTD. 2017 - 2021.All rights reserved.ENERGY BOSS and the ENERGY BOSS logo are
-          registered
-          trademarks of
-          BOSS DRINKS.BOSS DRINKS LTD. Registered Office: 3-5, Ripple Road, Barking,Essex, IG11 7ND.ENERGY
-          BOSS
-          Limited a Company
-          incorporated in England and Wales under company number: 13264607. VAT Number: GB326621906
-          BOSSDRINKS.COM Online website is owned and provided by BOSS DRINKS Limited -Any reproduction of the
-          contents is strictly
-          forbidden.</p>
-        <p>Develeped By TATAMAX LIMITED</p>
-        <!-- <h3>Maintained By</h3>
+ <div class="footer_bottom">
+            <p id="footer_p1">©️ BOSS DRINKS LTD. 2017 - 2021.All rights reserved.</p>
+            <span id="footer_span1">ENERGY BOSS and the ENERGY BOSS logo are
+                registered
+                trademarks of
+                BOSS DRINKS LTD.
+                <span>.
+                    <p id="footer_p2">BOSS DRINKS LTD.
+                        Registered Office:<a id="footer_a"> 3 Ripple Road, Barking,Essex, IG11 7ND.ENERGY</a></p>
+                    <span id="footer_span2">BOSS Drinks
+                        Limited a Company
+                        incorporated in England and Wales under company number: <a id="footer_a2">13264607</a>. VAT
+                        Number: GB326621906</span>
+                    <p><a id="footer_a3" href="https://www.bossdrinks.com/">BOSSDRINKS.COM<a /> Online website is
+                            owned
+                            and provided
+                            by BOSS DRINKS
+                            Limited -Any reproduction of
+                            the
+                            contents is strictly
+                            forbidden.</p>
+                    <p id="footer_p3">Developed By TATAMAX LIMITED</p>
+                    <!-- <h3>Maintained By</h3>
             <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
-      </div>
+        </div>
 
 
 
@@ -304,21 +314,33 @@
 
 
       </div>
-      <div class="footer_bottom_mobile">
-        <p>©️ BOSS DRINKS LTD. 2017 - 2021.All rights reserved.ENERGY BOSS and the ENERGY BOSS logo are
-          registered
-          trademarks of
-          BOSS DRINKS.BOSS DRINKS LTD. Registered Office: 3-5, Ripple Road, Barking,Essex, IG11 7ND.ENERGY
-          BOSS
-          Limited a Company
-          incorporated in England and Wales under company number: 13264607. VAT Number: GB326621906
-          BOSSDRINKS.COM Online website is owned and provided by BOSS DRINKS Limited -Any reproduction of the
-          contents is strictly
-          forbidden.</p>
-        <p>Develeped By TATAMAX LIMITED</p>
-        <!-- <h3>Maintained By</h3>
+  <div class="footer_bottom_mobile">
+            <p id="footer_p1">©️ BOSS DRINKS LTD. 2017 - 2021.All rights reserved.</p>
+            <span id="footer_span1">ENERGY BOSS and the ENERGY BOSS logo are
+                registered
+                trademarks of
+                BOSS DRINKS LTD.
+                <span>.
+                    <p id="footer_p2">BOSS DRINKS LTD.
+                        Registered Office:<a id="footer_a"> 3 Ripple Road, Barking,Essex, IG11 7ND.ENERGY</a></p>
+                    <span id="footer_span2">BOSS Drinks
+                        Limited a Company
+                        incorporated in England and Wales under company number: <a id="footer_a2">13264607</a>. VAT
+                        Number: GB326621906</span>
+                    <p id="footer_p4"><a id="footer_a3" href="https://www.bossdrinks.com/">BOSSDRINKS.COM<a /> Online
+                            website is
+                            owned
+                            and provided
+                            by BOSS DRINKS
+                            Limited -Any reproduction of
+                            the
+                            contents is strictly
+                            forbidden.</p>
+                    <p id="footer_p3">Developed By TATAMAX LIMITED</p>
+                    <!-- <h3>Maintained By</h3>
             <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
-      </div>
+        </div>
+
 
       <div class="payment_method">
         <ul class="Footer__PaymentList HorizontalList">
