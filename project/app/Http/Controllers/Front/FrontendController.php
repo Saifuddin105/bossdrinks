@@ -25,50 +25,50 @@ class FrontendController extends Controller
     public function __construct()
     {
 
-        // $this->auth_guests();
-        // if (isset($_SERVER['HTTP_REFERER'])) {
-        //     $referral = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
-        //     if ($referral != $_SERVER['SERVER_NAME']) {
+        //$this->auth_guests();
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            $referral = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
+            if ($referral != $_SERVER['SERVER_NAME']) {
 
-        //         $brwsr = Counter::where('type', 'browser')->where('referral', $this->getOS());
-        //         if ($brwsr->count() > 0) {
-        //             $brwsr = $brwsr->first();
-        //             $tbrwsr['total_count'] = $brwsr->total_count + 1;
-        //             $brwsr->update($tbrwsr);
-        //         } else {
-        //             $newbrws = new Counter();
-        //             $newbrws['referral'] = $this->getOS();
-        //             $newbrws['type'] = "browser";
-        //             $newbrws['total_count'] = 1;
-        //             $newbrws->save();
-        //         }
+                $brwsr = Counter::where('type', 'browser')->where('referral', $this->getOS());
+                if ($brwsr->count() > 0) {
+                    $brwsr = $brwsr->first();
+                    $tbrwsr['total_count'] = $brwsr->total_count + 1;
+                    $brwsr->update($tbrwsr);
+                } else {
+                    $newbrws = new Counter();
+                    $newbrws['referral'] = $this->getOS();
+                    $newbrws['type'] = "browser";
+                    $newbrws['total_count'] = 1;
+                    $newbrws->save();
+                }
 
-        //         $count = Counter::where('referral', $referral);
-        //         if ($count->count() > 0) {
-        //             $counts = $count->first();
-        //             $tcount['total_count'] = $counts->total_count + 1;
-        //             $counts->update($tcount);
-        //         } else {
-        //             $newcount = new Counter();
-        //             $newcount['referral'] = $referral;
-        //             $newcount['total_count'] = 1;
-        //             $newcount->save();
-        //         }
-        //     }
-        // } else {
-        //     $brwsr = Counter::where('type', 'browser')->where('referral', $this->getOS());
-        //     if ($brwsr->count() > 0) {
-        //         $brwsr = $brwsr->first();
-        //         $tbrwsr['total_count'] = $brwsr->total_count + 1;
-        //         $brwsr->update($tbrwsr);
-        //     } else {
-        //         $newbrws = new Counter();
-        //         $newbrws['referral'] = $this->getOS();
-        //         $newbrws['type'] = "browser";
-        //         $newbrws['total_count'] = 1;
-        //         $newbrws->save();
-        //     }
-        // }
+                $count = Counter::where('referral', $referral);
+                if ($count->count() > 0) {
+                    $counts = $count->first();
+                    $tcount['total_count'] = $counts->total_count + 1;
+                    $counts->update($tcount);
+                } else {
+                    $newcount = new Counter();
+                    $newcount['referral'] = $referral;
+                    $newcount['total_count'] = 1;
+                    $newcount->save();
+                }
+            }
+        } else {
+            $brwsr = Counter::where('type', 'browser')->where('referral', $this->getOS());
+            if ($brwsr->count() > 0) {
+                $brwsr = $brwsr->first();
+                $tbrwsr['total_count'] = $brwsr->total_count + 1;
+                $brwsr->update($tbrwsr);
+            } else {
+                $newbrws = new Counter();
+                $newbrws['referral'] = $this->getOS();
+                $newbrws['type'] = "browser";
+                $newbrws['total_count'] = 1;
+                $newbrws->save();
+            }
+        }
     }
 
     function getOS()
@@ -119,34 +119,37 @@ class FrontendController extends Controller
     public function index(Request $request)
     {
 
-        // $this->code_image();
-        // if (!empty($request->reff)) {
-        //     $affilate_user = User::where('affilate_code', '=', $request->reff)->first();
-        //     if (!empty($affilate_user)) {
-        //         $gs = Generalsetting::findOrFail(1);
-        //         if ($gs->is_affilate == 1) {
-        //             Session::put('affilate', $affilate_user->id);
-        //             return redirect()->route('front.index');
-        //         }
-        //     }
-        // }
-        // $selectable = ['id', 'user_id', 'name', 'slug', 'features', 'colors', 'thumbnail', 'price', 'previous_price', 'attributes', 'size', 'size_price', 'discount_date'];
-        // $sliders = DB::table('sliders')->get();
-        // $top_small_banners = DB::table('banners')->where('type', '=', 'TopSmall')->get();
-        // $ps = DB::table('pagesettings')->find(1);
-        // $feature_products =  Product::with('user')->where('featured', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(8)->get()->reject(function ($item) {
+        $path = base_path('.env');
 
-        //     if ($item->user_id != 0) {
-        //         if ($item->user->is_vendor != 2) {
-        //             return true;
-        //         }
-        //     }
-        //     return false;
-        // });
+        $this->code_image();
+        if (!empty($request->reff)) {
+            $affilate_user = User::where('affilate_code', '=', $request->reff)->first();
+            if (!empty($affilate_user)) {
+                $gs = Generalsetting::findOrFail(1);
+                if ($gs->is_affilate == 1) {
+                    Session::put('affilate', $affilate_user->id);
+                    return redirect()->route('front.index');
+                }
+            }
+        }
+        $selectable = ['id', 'user_id', 'name', 'slug', 'features', 'colors', 'thumbnail', 'price', 'previous_price', 'attributes', 'size', 'size_price', 'discount_date'];
+        $sliders = DB::table('sliders')->get();
+        $top_small_banners = DB::table('banners')->where('type', '=', 'TopSmall')->get();
+        $ps = DB::table('pagesettings')->find(1);
+        $feature_products =  Product::with('user')->where('featured', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(8)->get()->reject(function ($item) {
 
-        //return view('front.index', compact('ps', 'sliders', 'top_small_banners', 'feature_products'));
-
-        return view('frontend.pages.home');
+            if ($item->user_id != 0) {
+                if ($item->user->is_vendor != 2) {
+                    return true;
+                }
+            }
+            return false;
+        });
+        if ($_SERVER['REQUEST_URI'] === '/')
+            return view('front.index', compact('ps', 'sliders', 'top_small_banners', 'feature_products'));
+        else
+            return view('frontend.pages.home', compact('ps', 'sliders', 'top_small_banners', 'feature_products'));
+        // return view('frontend.pages.home');
     }
 
     public function term()
@@ -379,7 +382,9 @@ class FrontendController extends Controller
     // -------------------------------- FAQ SECTION ----------------------------------------
     public function faq()
     {
+
         $this->code_image();
+
         if (DB::table('generalsettings')->find(1)->is_faq == 0) {
             return redirect()->back();
         }
