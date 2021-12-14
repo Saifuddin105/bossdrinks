@@ -63,23 +63,29 @@ function handleTouchMove(evt) {
 
 
 
-// $('#myFirstCarousel').on('slide.bs.carousel', function (e) {
-//     const navbar = document.getElementById('navbar')
-//     switch (e.to) {
-//         case 0:
-//             navbar.style.background = '#7FFFD4'
-//             break;
-//         case 1:
-//             navbar.style.background = '#58CCED'
-//             break
-//         case 2:
-//             navbar.style.background = '#F5ACBA'
-//             break
-//         case 3:
-//             navbar.style.background = '#FFA07A'
-//             break
-//     }
-// })
+$('#myFirstCarousel').on('slide.bs.carousel', function (e) {
+    const navbar = document.getElementById('navbar')
+    const shop_text = document.querySelector(".shop-text")
+    switch (e.to) {
+        case 0:
+            navbar.style.background = '#20B2AA'
+            shop_text.style.color = '#F9F9F3'
+
+            break;
+        case 1:
+            navbar.style.background = '#F6E3BA'
+            shop_text.style.color = 'crimson'
+            break
+        case 2:
+            navbar.style.background = '#BDBCD3'
+            shop_text.style.color = '#1261A0'
+            break
+        case 3:
+            navbar.style.background = '#F5ACBA'
+            shop_text.style.color = '#0a0'
+            break
+    }
+})
 
 // ******************************************************
 
@@ -510,6 +516,18 @@ if (agreeBtn != null) {
     })
 
 }
+
+
+const stock_nowbtn = document.querySelector('.stocknow_btn')
+if (stock_nowbtn != null) {
+    stock_nowbtn.addEventListener("click", e => {
+        e.preventDefault()
+
+        cart_sidebar.style.right = "0px";
+    })
+}
+
+
 
 
 
