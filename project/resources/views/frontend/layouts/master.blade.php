@@ -45,6 +45,7 @@
 
 
   <script src="{{asset('assets/front/resources/js/custom-scripts.js')}}"></script>
+  <script src="{{asset('assets/front/resources/js/checkout.js')}}"></script>
 
   @stack('script')
 

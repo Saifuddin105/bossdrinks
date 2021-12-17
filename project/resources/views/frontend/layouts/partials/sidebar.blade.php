@@ -10,31 +10,31 @@
       <i id="cross_btn" class="fas fa-times"></i>
     </div>
     <div class="Sidebar_menu">
-      <div class="menu_items"><img src="/img/home.png" alt="" style="height: 25px; margin-top: 30px"><a href="index.html" class="menu_item_text">HOME</a></div>
+      <div class="menu_items"><img src="/img/home.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('/frontend-2')}}" class="menu_item_text">HOME</a></div>
     </div>
     <div class="Sidebar_menu">
       <div class="menu_items"><img src="/img/customer.png" alt="" style="height: 25px; margin-top: 30px"><a href="user_account.html" class="menu_item_text">My Account</a></div>
     </div>
 
     <div class="Sidebar_menu">
-      <div class="menu_items"><img src="/img/shopping-bag (1).png" alt="" style="height: 25px; margin-top: 30px"><a href="shop.html" class="menu_item_text">SHOP</a></div>
+      <div class="menu_items"><img src="/img/shopping-bag (1).png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('user/shop')}}" class="menu_item_text">SHOP</a></div>
     </div>
     <div class="Sidebar_menu">
-      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="energydrinks.html" class="menu_item_text">ENERGY
+      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('user/energy-drinks')}}" class="menu_item_text">ENERGY
           DRINKS</a>
       </div>
     </div>
     <div class="Sidebar_menu">
-      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="sport.html" class="menu_item_text">SPORT
+      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('user/sport-drinks')}}" class="menu_item_text">SPORT
           DRINKS</a>
       </div>
     </div>
     <div class="Sidebar_menu">
-      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="appetiser.html" class="menu_item_text">APPETISER</a>
+      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('user/appe-tiser')}}" class="menu_item_text">APPETISER</a>
       </div>
     </div>
     <div class="Sidebar_menu">
-      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="bcca.html" class="menu_item_text">BCAA
+      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('user/bcca-drinks')}}" class="menu_item_text">BCAA
           DRINKS</a>
       </div>
     </div>
