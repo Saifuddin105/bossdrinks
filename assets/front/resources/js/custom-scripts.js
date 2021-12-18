@@ -181,6 +181,8 @@ const newsletterButton = document.querySelector(".newsletter_email")
 const subscribeBtn = document.getElementById("newsletter_bttn")
 const upperWrapper = document.querySelector(".upper-wrapper")
 
+const form = document.querySelector('#newslet')
+
 if (newsletterButton != null) {
 
     newsletterButton.addEventListener("click", e => {
@@ -190,11 +192,38 @@ if (newsletterButton != null) {
     })
 }
 
+// newsletter subcribe ajx OLD PROJECT CODE NOT CHANGED
+form.onsubmit = function (e) {
+    e.preventDefault()
+    const fdata = new FormData(e.target)
+    $.ajax({
+        method: "POST",
+        url: '/subscriber/store',
+        data: fdata,
+        dataType: 'JSON',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function (data) {
+            if (data == 'You Have Subscribed Successfully.') {
+                form.style.display = 'none'
+                const nsucces = document.querySelector('#news-success')
+                nsucces.style.display = 'block'
+                nsucces.innerHTML = data
+            }
+            console.log('data', data)
+        }
+
+    });
+    console.log('e', e)
+}
+
 function diplay_wide(event) {
     if (event.target.value != '') {
         newsletterButton.style.width = "220px"
         subscribeBtn.addEventListener("click", e => {
-            alert("Subscription added")
+
+            // alert("Subscription added")
 
         })
 

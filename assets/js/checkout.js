@@ -41,13 +41,13 @@ function addToCart(id, type, unitprice) {
 }
 
 const CalculetedPrice1 = document.querySelector(".button-30_price")
-CalculetedPrice1.innerHTML = "&#163; 7.46"
+CalculetedPrice1?.innerHTML = "&#163; 7.46"
 
 function getSelectedVAlue(event) {
     const selectedText = Number(event.target.options[event.target.selectedIndex].textContent)
     console.log(selectedText)
 
-    CalculetedPrice1.innerHTML = "&#163;" + selectedText * 7.46
+    CalculetedPrice1?.innerHTML = "&#163;" + selectedText * 7.46
 }
 
 
@@ -63,19 +63,19 @@ Smallbox1.addEventListener("change", (event) => {
     console.log("asdads")
     console.log(event.target.checked)
     if (event.target.checked = true) {
-        CalculetedPrice2.innerHTML = "&#163;" + 2 * 8.49
+        CalculetedPrice2?.innerHTML = "&#163;" + 2 * 8.49
     }
     else {
-        CalculetedPrice2.innerHTML = "&#163;" + 8.49
+        CalculetedPrice2?.innerHTML = "&#163;" + 8.49
     }
 })
 
 Smallbox2.addEventListener("change", (event) => {
     if (event.target.checked = true) {
-        CalculetedPrice2.innerHTML = "&#163;" + 3 * 8.49
+        CalculetedPrice2?.innerHTML = "&#163;" + 3 * 8.49
     }
     else {
-        CalculetedPrice2.innerHTML = "&#163;" + 8.49
+        CalculetedPrice2?.innerHTML = "&#163;" + 8.49
     }
 })
 
@@ -95,7 +95,7 @@ function getSmallSelectedValue(event) {
 
     const selectedText2 = Number(event.target.options[event.target.selectedIndex].textContent)
 
-    CalculetedPrice2.innerHTML = "&#163;" + selectedText2 * 8.49
+    CalculetedPrice2?.innerHTML = "&#163;" + selectedText2 * 8.49
 
 
 }
