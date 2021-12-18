@@ -156,7 +156,7 @@ ul {
 }
 
 .slide-3 {
-    background: #BDBCD3;
+    background: #F2BFA9;
     width: 100%;
     height: 780px;
 }
@@ -952,8 +952,6 @@ ul li:nth-child(5) a:hover .fab {
 }
 
 .productdisplaysection {
-    padding-right: 100px;
-    padding-right: 100px;
     display: flex;
     flex-direction: row;
     /* justify-content: center;
@@ -1686,7 +1684,7 @@ a:link {
 
 .footer_img_icon {
     text-align: center;
-    margin-left: 350px;
+    margin-left: 500px;
 
 }
 
@@ -1721,7 +1719,7 @@ a:link {
 .footer_bottom {
     padding-top: 35px;
     text-align: center;
-    /* background: #f8f8f8; */
+    background: #f8f8f8;
 
 }
 
@@ -1906,7 +1904,7 @@ a:link {
         padding: 5px;
         margin-bottom: 50px;
         margin-right: 330px;
-        filter: drop-shadow(3px 4px 10px black);
+        filter: drop-shadow(3px 4px 6px black);
     }
 }
 
@@ -1919,7 +1917,6 @@ a:link {
 /* for mobile responsive********************************************************************************************88 */
 
 @media only screen and (max-width: 576px) {
-
 
     .buisness_customer_reg {
         margin-top: 2px !important;
@@ -2508,23 +2505,6 @@ a:link {
         height: 95px !important;
     }
 
-    .productdisplay_imgbox {
-        width: 312px !important;
-    }
-
-    .productidsplay_contentbox h4 {
-        font-size: 19px !important;
-    }
-
-    .productdisplay_imgbox img {
-        height: 250px !important;
-        filter: drop-shadow(1px 1px 4px black) !important;
-    }
-
-    .Appetizer1, .baccadrink1, .energydrink1 {
-        width: 320px !important;
-    }
-
     .appetiser_display {
         display: flex;
         flex-direction: column !important;
@@ -2532,19 +2512,6 @@ a:link {
         align-items: center;
         gap: 0px !important;
     }
-
-    .energydrinks_display {
-        display: flex;
-        flex-direction: column !important;
-        align-items: center;
-
-    }
-
-    .energydrink1 {
-        margin-bottom: 0px !important
-    }
-
-
 
     .product_details_complete {
         display: flex;
@@ -3064,8 +3031,6 @@ a:link {
         flex-direction: column !important;
         height: 1450px !important;
         align-items: center !important;
-        padding-left: 0px !important;
-        padding-right: 0px !important;
     }
 
     .card {
@@ -4442,38 +4407,6 @@ px
     margin-top: 25px;
 }
 
-.sportdrinks_display {
-    display: flex;
-    flex-direction: row;
-    /* justify-content: space-around; */
-    gap: 70px;
-    justify-content: center;
-    margin-top: 25px;
-
-}
-
-.energydrinks_display {
-    display: flex;
-    flex-direction: row;
-
-    gap: 70px;
-    justify-content: center;
-    margin-top: 25px;
-
-
-}
-
-.baccadrinks_display {
-    display: flex;
-    flex-direction: row;
-
-    gap: 70px;
-    justify-content: center;
-    margin-top: 25px;
-
-
-}
-
 /* stock_register_section"************************************************************ */
 
 .account_info {
@@ -4591,8 +4524,6 @@ px
     color: white;
     border-radius: 3px;
     border: none;
-    text-align: center;
-    padding: 3px;
 }
 
 #next_button_SR:hover {
@@ -5934,22 +5865,6 @@ tr:nth-child(even) {
 
 }
 
-.energydrink1 {
-    background: #FFFFFF;
-    width: 392px;
-    margin-top: 35px;
-    margin-bottom: 35px;
-
-}
-
-.baccadrink1 {
-    background: #FFFFFF;
-    width: 392px;
-    margin-top: 35px;
-    margin-bottom: 35px;
-
-}
-
 .productdisplay_imgbox {
     text-align: center;
     padding: 35px;
@@ -5974,7 +5889,6 @@ tr:nth-child(even) {
 
 .productdisplay_imgbox img {
     height: 300px;
-    filter: drop-shadow(1px 1px 6px black);
 }
 
 .productdisplay_imgbox2 img {
@@ -6024,65 +5938,7 @@ tr:nth-child(even) {
     max-width: 90vw;
     margin-left: auto;
     margin-right: auto;
-    font-size: 22px;
-    font-family: 'Cairo', sans-serif;
-    font-weight: 700;
-    color: black;
-    text-align: center;
-    margin-top: 35px;
-    margin-bottom: 35px;
-
-}
-
-#can_image:hover {
-    transform: scale(1.15);
-}
-
-#stock_item_img {
-    height: 300px;
-}
-
-.stock_product {
-    background: #FFFFFF;
-    width: 392px;
-    margin-top: 35px;
-    margin-bottom: 35px;
-    margin-left: 100px;
-
-
-}
-
-.stock_product_details {
-    margin-top: 150px;
-    margin-left: 40px;
-}
-
-.stock_product_info {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-
-.pallets_details input {
-    border: none;
-    filter: drop-shadow(1px 1px 3px black);
-    width: 100px;
-    height: 35px;
-    margin-left: 5px;
-    margin-right: 5px
-}
-
-.stocknow_btn {
-    border: 2px solid #000000;
-    box-sizing: border-box;
-    box-shadow: 4px 4px 0px #000000;
-    border-radius: 25px;
-    padding: 7px 10px;
-    width: 40%;
-    max-width: 90vw;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 18px;
+    font-size: 30px;
     font-family: 'Cairo', sans-serif;
     font-weight: 700;
     color: black;
@@ -6091,46 +5947,10 @@ tr:nth-child(even) {
     margin-bottom: 35px;
 }
 
-.pallets_details {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.pallets_details span {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.stock_number {
-    font-size: 22px;
-    color: crimson;
-    font-weight: 800;
-}
-
-.itemshow_stock {
-    display: flex;
-    flex-direction: row;
-}
-
-#stock_title {
-    font-size: 22px;
-    font-weight: 500;
-}
-
-.stock_product_imgbox {
-    text-align: center;
-    padding: 35px;
-    background: #D3EACD;
-    width: 384px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 4px;
 
 
-}
-
-.stock_productidsplay_contentbox {
+.cart-items{
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    gap: 15px;
 }

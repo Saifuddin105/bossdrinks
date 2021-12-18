@@ -14,182 +14,182 @@ use Session;
 class CartController extends Controller
 {
 
-    public function cart()
-    {
-        $this->code_image();
-        if (!Session::has('cart')) {
-            return view('front.cart');
-        }
-        if (Session::has('already')) {
-            Session::forget('already');
-        }
-        if (Session::has('coupon')) {
-            Session::forget('coupon');
-        }
-        if (Session::has('coupon_total')) {
-            Session::forget('coupon_total');
-        }
-        if (Session::has('coupon_total1')) {
-            Session::forget('coupon_total1');
-        }
-        if (Session::has('coupon_percentage')) {
-            Session::forget('coupon_percentage');
-        }
-        $gs = Generalsetting::findOrFail(1);
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
-        $products = $cart->items;
-        $totalPrice = $cart->totalPrice;
-        $mainTotal = $totalPrice;
-        $tx = $gs->tax;
-        if($tx != 0)
-        {
-            $tax = ($totalPrice / 100) * $tx;
-            $mainTotal = $totalPrice + $tax;
-        }
+//     public function cart()
+//     {
+//         $this->code_image();
+//         if (!Session::has('cart')) {
+//             return view('front.cart');
+//         }
+//         if (Session::has('already')) {
+//             Session::forget('already');
+//         }
+//         if (Session::has('coupon')) {
+//             Session::forget('coupon');
+//         }
+//         if (Session::has('coupon_total')) {
+//             Session::forget('coupon_total');
+//         }
+//         if (Session::has('coupon_total1')) {
+//             Session::forget('coupon_total1');
+//         }
+//         if (Session::has('coupon_percentage')) {
+//             Session::forget('coupon_percentage');
+//         }
+//         $gs = Generalsetting::findOrFail(1);
+//         $oldCart = Session::get('cart');
+//         $cart = new Cart($oldCart);
+//         $products = $cart->items;
+//         $totalPrice = $cart->totalPrice;
+//         $mainTotal = $totalPrice;
+//         $tx = $gs->tax;
+//         if($tx != 0)
+//         {
+//             $tax = ($totalPrice / 100) * $tx;
+//             $mainTotal = $totalPrice + $tax;
+//         }
 
-        return view('front.cart', compact('products','totalPrice','mainTotal','tx')); 
-    }
+//         return view('front.cart', compact('products','totalPrice','mainTotal','tx')); 
+//     }
 
-    public function cartview()
-    {
-        return view('load.cart'); 
-    }
+//     public function cartview()
+//     {
+//         return view('load.cart'); 
+//     }
 
-   public function addtocart($id)
-    {
-        $prod = Product::where('id','=',$id)->first(['id','user_id','slug','name','photo','size','size_qty','size_price','color','price','stock','type','file','link','license','license_qty','measure','whole_sell_qty','whole_sell_discount','attributes']);
+//    public function addtocart($id)
+//     {
+//         $prod = Product::where('id','=',$id)->first(['id','user_id','slug','name','photo','size','size_qty','size_price','color','price','stock','type','file','link','license','license_qty','measure','whole_sell_qty','whole_sell_discount','attributes']);
 
-        // Set Attrubutes
+//         // Set Attrubutes
 
-        if (Session::has('language')) 
-        {
-            $data = \DB::table('languages')->find(Session::get('language'));
-            $data_results = file_get_contents(public_path().'/assets/languages/'.$data->file);
-            $lang = json_decode($data_results);
-        }
-        else
-        {
-            $data = \DB::table('languages')->where('is_default','=',1)->first();
-            $data_results = file_get_contents(public_path().'/assets/languages/'.$data->file);
-            $lang = json_decode($data_results);
-        }  
+//         if (Session::has('language')) 
+//         {
+//             $data = \DB::table('languages')->find(Session::get('language'));
+//             $data_results = file_get_contents(public_path().'/assets/languages/'.$data->file);
+//             $lang = json_decode($data_results);
+//         }
+//         else
+//         {
+//             $data = \DB::table('languages')->where('is_default','=',1)->first();
+//             $data_results = file_get_contents(public_path().'/assets/languages/'.$data->file);
+//             $lang = json_decode($data_results);
+//         }  
 
-        $keys = '';
-        $values = '';
-        if(!empty($prod->license_qty))
-        {
-        $lcheck = 1;
-            foreach($prod->license_qty as $ttl => $dtl)
-            {
-                if($dtl < 1)
-                {
-                    $lcheck = 0;
-                }
-                else
-                {
-                    $lcheck = 1;
-                    break;
-                }                    
-            }
-                if($lcheck == 0)
-                {
-                    return redirect()->route('front.cart')->with('unsuccess',$lang->out_stock);              
-                }
-        }
+//         $keys = '';
+//         $values = '';
+//         if(!empty($prod->license_qty))
+//         {
+//         $lcheck = 1;
+//             foreach($prod->license_qty as $ttl => $dtl)
+//             {
+//                 if($dtl < 1)
+//                 {
+//                     $lcheck = 0;
+//                 }
+//                 else
+//                 {
+//                     $lcheck = 1;
+//                     break;
+//                 }                    
+//             }
+//                 if($lcheck == 0)
+//                 {
+//                     return redirect()->route('front.cart')->with('unsuccess',$lang->out_stock);              
+//                 }
+//         }
 
-        // Set Size
+//         // Set Size
 
-        $size = '';
-        if(!empty($prod->size))
-        { 
-        $size = trim($prod->size[0]);
-        }  
-        $size = str_replace(' ','-',$size);
+//         $size = '';
+//         if(!empty($prod->size))
+//         { 
+//         $size = trim($prod->size[0]);
+//         }  
+//         $size = str_replace(' ','-',$size);
 
-        // Set Color
+//         // Set Color
 
-        $color = '';
-        if(!empty($prod->color))
-        { 
-        $color = $prod->color[0];
-        $color = str_replace('#','',$color);
-        }  
+//         $color = '';
+//         if(!empty($prod->color))
+//         { 
+//         $color = $prod->color[0];
+//         $color = str_replace('#','',$color);
+//         }  
 
-        if($prod->user_id != 0){
-        $gs = Generalsetting::findOrFail(1);
-        $prc = $prod->price + $gs->fixed_commission + ($prod->price/100) * $gs->percentage_commission ;
-        $prod->price = round($prc,2);
-        }
+//         if($prod->user_id != 0){
+//         $gs = Generalsetting::findOrFail(1);
+//         $prc = $prod->price + $gs->fixed_commission + ($prod->price/100) * $gs->percentage_commission ;
+//         $prod->price = round($prc,2);
+//         }
 
-        // Set Attribute
+//         // Set Attribute
 
-            if (!empty($prod->attributes))
-            {
-                $attrArr = json_decode($prod->attributes, true);
+//             if (!empty($prod->attributes))
+//             {
+//                 $attrArr = json_decode($prod->attributes, true);
 
-                $count = count($attrArr);
-                $i = 0;
-                $j = 0; 
-                      if (!empty($attrArr))
-                      {
-                          foreach ($attrArr as $attrKey => $attrVal)
-                          {
+//                 $count = count($attrArr);
+//                 $i = 0;
+//                 $j = 0; 
+//                       if (!empty($attrArr))
+//                       {
+//                           foreach ($attrArr as $attrKey => $attrVal)
+//                           {
 
-                            if (is_array($attrVal) && array_key_exists("details_status",$attrVal) && $attrVal['details_status'] == 1) {
-                                if($j == $count - 1){
-                                    $keys .= $attrKey;
-                                }else{
-                                    $keys .= $attrKey.',';
-                                }
-                                $j++;
+//                             if (is_array($attrVal) && array_key_exists("details_status",$attrVal) && $attrVal['details_status'] == 1) {
+//                                 if($j == $count - 1){
+//                                     $keys .= $attrKey;
+//                                 }else{
+//                                     $keys .= $attrKey.',';
+//                                 }
+//                                 $j++;
 
-                                foreach($attrVal['values'] as $optionKey => $optionVal)
-                                {
+//                                 foreach($attrVal['values'] as $optionKey => $optionVal)
+//                                 {
                                     
-                                    $values .= $optionVal . ',';
+//                                     $values .= $optionVal . ',';
 
-                                    $prod->price += $attrVal['prices'][$optionKey];
-                                    break;
+//                                     $prod->price += $attrVal['prices'][$optionKey];
+//                                     break;
                                     
-                                }
-                            }
-                          }
-                      }
-                }
-                $keys = rtrim($keys, ',');
-                $values = rtrim($values, ',');
+//                                 }
+//                             }
+//                           }
+//                       }
+//                 }
+//                 $keys = rtrim($keys, ',');
+//                 $values = rtrim($values, ',');
 
 
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
+//         $oldCart = Session::has('cart') ? Session::get('cart') : null;
+//         $cart = new Cart($oldCart);
 
-        $cart->add($prod, $prod->id, $size ,$color, $keys, $values);
-        if($cart->items[$id.$size.$color.str_replace(str_split(' ,'),'',$values)]['dp'] == 1)
-        {
-            return redirect()->route('front.cart')->with('unsuccess',$lang->already_cart);
-        }
-        if($cart->items[$id.$size.$color.str_replace(str_split(' ,'),'',$values)]['stock'] < 0)
-        {
-            return redirect()->route('front.cart')->with('unsuccess',$lang->out_stock);
-        }
+//         $cart->add($prod, $prod->id, $size ,$color, $keys, $values);
+//         if($cart->items[$id.$size.$color.str_replace(str_split(' ,'),'',$values)]['dp'] == 1)
+//         {
+//             return redirect()->route('front.cart')->with('unsuccess',$lang->already_cart);
+//         }
+//         if($cart->items[$id.$size.$color.str_replace(str_split(' ,'),'',$values)]['stock'] < 0)
+//         {
+//             return redirect()->route('front.cart')->with('unsuccess',$lang->out_stock);
+//         }
         
-        if($cart->items[$id.$size.$color.str_replace(str_split(' ,'),'',$values)]['size_qty'])
-        {
-            if($cart->items[$id.$size.$color.str_replace(str_split(' ,'),'',$values)]['qty'] > $cart->items[$id.$size.$color.str_replace(str_split(' ,'),'',$values)]['size_qty'])
-            {
-                return redirect()->route('front.cart')->with('unsuccess',$lang->out_stock);
-            }           
-        }
+//         if($cart->items[$id.$size.$color.str_replace(str_split(' ,'),'',$values)]['size_qty'])
+//         {
+//             if($cart->items[$id.$size.$color.str_replace(str_split(' ,'),'',$values)]['qty'] > $cart->items[$id.$size.$color.str_replace(str_split(' ,'),'',$values)]['size_qty'])
+//             {
+//                 return redirect()->route('front.cart')->with('unsuccess',$lang->out_stock);
+//             }           
+//         }
 
-        $cart->totalPrice = 0;
-        foreach($cart->items as $data)
-        $cart->totalPrice += $data['price'];
-        Session::put('cart',$cart);
-         return redirect()->route('front.cart');
-    }  
+//         $cart->totalPrice = 0;
+//         foreach($cart->items as $data)
+//         $cart->totalPrice += $data['price'];
+//         Session::put('cart',$cart);
+//          return redirect()->route('front.cart');
+//     }  
 
-   public function addcart($id)
+//    public function addcart($id)
     {
         $prod = Product::where('id','=',$id)->first(['id','user_id','slug','name','photo','size','size_qty','size_price','color','price','stock','type','file','link','license','license_qty','measure','whole_sell_qty','whole_sell_discount','attributes']);
 
@@ -1090,5 +1090,20 @@ class CartController extends Controller
         session(['captcha_string' => $word]);
         imagepng($image, $actual_path."assets/images/capcha_code.png");
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
