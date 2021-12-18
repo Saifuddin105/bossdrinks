@@ -15,8 +15,6 @@ const First_cart_button = document.getElementById("FirstBOX_btn")
 
 function addToCart(id, type, unitprice) {
     cart_sidebar.style.right = "0px";
-    console.log('çlicked on cart', id, type, unitprice)
-    // check if addtocartdb already exists in localstorage
     let energybossdb = localStorage.getItem('energybossdb')
     if (!energybossdb) {
         localStorage.setItem('energybossdb', JSON.stringify({}))

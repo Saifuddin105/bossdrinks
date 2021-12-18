@@ -205,104 +205,101 @@ function diplay_wide(event) {
 
 // addtocart counter
 
-var initial = 0;
-var initial_2 = 0;
+// var initial = 0;
+// var initial_2 = 0;
 
 
-const ROOT = document.getElementById("ROOT")
-const ROOT_2 = document.getElementById("ROOT_2")
-if (ROOT != null & ROOT_2 != null) {
-    ROOT.innerText = initial;
-    ROOT_2.innerText = initial_2
-}
+// const ROOT = document.getElementById("ROOT")
+// const ROOT_2 = document.getElementById("ROOT_2")
+// if (ROOT != null & ROOT_2 != null) {
+//     ROOT.innerText = initial;
+//     ROOT_2.innerText = initial_2
+// }
 
-if (ROOT != null & ROOT_2 != null) {
+// if (ROOT != null & ROOT_2 != null) {
 
-    function decrement() {
-        initial = initial - 1;
-        initial_2 = initial_2 - 7.49
+//     function decrement() {
+//         initial = initial - 1;
+//         initial_2 = initial_2 - 7.49
 
-        ROOT.innerText = initial
-        ROOT_2.innerText = parseFloat(initial_2).toFixed(2)
-
-
-
-    }
-    function increament() {
-        initial = initial + 1;
-        initial_2 = initial_2 + 7.49
-
-        ROOT.innerText = initial
-        ROOT_2.innerText = parseFloat(initial_2).toFixed(2)
+//         ROOT.innerText = initial
+//         ROOT_2.innerText = parseFloat(initial_2).toFixed(2)
 
 
 
+//     }
+//     function increament() {
+//         initial = initial + 1;
+//         initial_2 = initial_2 + 7.49
 
-    }
-}
-// Box two
+//         ROOT.innerText = initial
+//         ROOT_2.innerText = parseFloat(initial_2).toFixed(2)
 
-var initial_two = 0;
-var initial_2_two = 0;
+//     }
+// }
+// // Box two
 
-const ROOT_two = document.getElementById("ROOT_two")
-const ROOT_2_two = document.getElementById("ROOT_2_two")
-if (ROOT_two != null & ROOT_2_two != null) {
-    ROOT_two.innerText = initial_two;
-    ROOT_2_two.innerText = initial_2_two;
-}
+// var initial_two = 0;
+// var initial_2_two = 0;
 
-function decrement_two() {
-    initial_two = initial_two - 1;
-    initial_2_two = initial_2_two - 7.49
+// const ROOT_two = document.getElementById("ROOT_two")
+// const ROOT_2_two = document.getElementById("ROOT_2_two")
+// if (ROOT_two != null & ROOT_2_two != null) {
+//     ROOT_two.innerText = initial_two;
+//     ROOT_2_two.innerText = initial_2_two;
+// }
 
-    ROOT_two.innerText = initial_two
-    ROOT_2_two.innerText = parseFloat(initial_2_two).toFixed(2)
+// function decrement_two() {
+//     initial_two = initial_two - 1;
+//     initial_2_two = initial_2_two - 7.49
 
-
-
-}
-function increment_two() {
-    initial_two = initial_two + 1;
-    initial_2_two = initial_2_two + 7.49
-
-    ROOT_two.innerText = initial_two
-    ROOT_2_two.innerText = parseFloat(initial_2_two).toFixed(2)
+//     ROOT_two.innerText = initial_two
+//     ROOT_2_two.innerText = parseFloat(initial_2_two).toFixed(2)
 
 
 
-}
-//box three
-var initial_three = 0;
-var initial_2_three = 0;
-const ROOT_three = document.getElementById("ROOT_three")
-const ROOT_2_three = document.getElementById("ROOT_2_three")
-if (ROOT_three != null & ROOT_2_three != null) {
-    ROOT_three.innerText = initial_three;
-    ROOT_2_three.innerText = initial_2_three;
-}
+// }
+// function increment_two() {
+//     initial_two = initial_two + 1;
+//     initial_2_two = initial_2_two + 7.49
 
-
-function decrement_three() {
-    initial_three = initial_three - 1;
-    initial_2_three = initial_2_three - 7.49
-
-    ROOT_three.innerText = initial_three
-    ROOT_2_three.innerText = parseFloat(initial_2_three).toFixed(2)
+//     ROOT_two.innerText = initial_two
+//     ROOT_2_two.innerText = parseFloat(initial_2_two).toFixed(2)
 
 
 
-}
-function increment_three() {
-    initial_three = initial_three + 1;
-    initial_2_three = initial_2_three + 7.49
+// }
+// //box three
+// var initial_three = 0;
+// var initial_2_three = 0;
+// const ROOT_three = document.getElementById("ROOT_three")
+// const ROOT_2_three = document.getElementById("ROOT_2_three")
+// if (ROOT_three != null & ROOT_2_three != null) {
+//     ROOT_three.innerText = initial_three;
+//     ROOT_2_three.innerText = initial_2_three;
+// }
 
-    ROOT_three.innerText = initial_three
-    ROOT_2_three.innerText = parseFloat(initial_2_three).toFixed(2)
+
+// function decrement_three() {
+//     initial_three = initial_three - 1;
+//     initial_2_three = initial_2_three - 7.49
+
+//     ROOT_three.innerText = initial_three
+//     ROOT_2_three.innerText = parseFloat(initial_2_three).toFixed(2)
 
 
 
-}
+// }
+// function increment_three() {
+//     initial_three = initial_three + 1;
+//     initial_2_three = initial_2_three + 7.49
+
+//     ROOT_three.innerText = initial_three
+//     ROOT_2_three.innerText = parseFloat(initial_2_three).toFixed(2)
+
+
+
+// }
 
 
 
@@ -510,6 +507,9 @@ if (agreeBtn != null) {
     })
 
 }
+
+
+
 
 
 

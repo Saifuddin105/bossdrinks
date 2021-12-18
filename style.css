@@ -5946,3 +5946,11 @@ tr:nth-child(even) {
     margin-top: 35px;
     margin-bottom: 35px;
 }
+
+
+
+.cart-items{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

@@ -9,7 +9,7 @@
 
 
 
-  
+
 
 
     <div class="addtocart_sidebar">
@@ -24,97 +24,98 @@
             </div>
 
         </div>
-        <div class="FirstBOX">
-            <div class="FirstBOX_content">
-                <div class="FirstBOX_img">
-                    <img src="/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png" alt="">
+        <div class="cart-items" id="cart-items">
 
-                </div>
+            {{-- <div class="FirstBOX">
+                <div class="FirstBOX_content">
+                    <div class="FirstBOX_img">
+                        <img src="/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png" alt="">
 
-
-                <div class="count_plus_text">
-                    <div class="count_text">
-                        <p>Energy Boss Subscription</p>
-                        <h4>Delivered every 30 days</h4>
                     </div>
+                    <div class="count_plus_text">
+                        <div class="count_text">
+                            <p>Energy Boss Subscription</p>
+                            <h4>Delivered every 30 days</h4>
+                        </div>
 
-                    <div class="counterBOX">
+                        <div class="counterBOX">
 
-                        <button onclick="decrement()">-</button>
-                        <h4 id="ROOT"></h4>
-                        <button onclick="increament()">+</button>
-                        <div class="amount">
-                            <h4 style="font-size: 17px; margin-top: auto;">&euro;</h4>
-                            <h4 id="ROOT_2"></h4>
-                            <button>&#10006;</button>
+                            <button onclick="decrement()">-</button>
+                            <h4 id="ROOT"></h4>
+                            <button onclick="increament()">+</button>
+                            <div class="amount">
+                                <h4 style="font-size: 17px; margin-top: auto;">&euro;</h4>
+                                <h4 id="ROOT_2"></h4>
+                                <button>&#10006;</button>
 
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-        </div>
+            <div class="SecondBOX">
+                <div class="FirstBOX_content">
+                    <div class="FirstBOX_img">
+                        <img src="/img/Energy Boss - IT (19-10-2021) - RED BG.png" alt="">
 
-        <div class="SecondBOX">
-            <div class="FirstBOX_content">
-                <div class="FirstBOX_img">
-                    <img src="/img/Energy Boss - IT (19-10-2021) - RED BG.png" alt="">
-
-                </div>
-
-
-                <div class="count_plus_text">
-                    <div class="count_text">
-                        <p>Energy Boss</p>
-                        <h4>Delivered every 30 days</h4>
                     </div>
 
-                    <div class="counterBOX_two">
 
-                        <button onclick="decrement_two()">-</button>
-                        <h4 id="ROOT_two"></h4>
-                        <button onclick="increment_two()">+</button>
-                        <div class="amount">
-                            <h4 style="font-size: 17px; margin-top: auto;">&euro;</h4>
-                            <h4 id="ROOT_2_two"></h4>
-                            <button>&#10006;</button>
+                    <div class="count_plus_text">
+                        <div class="count_text">
+                            <p>Energy Boss</p>
+                            <h4>Delivered every 30 days</h4>
+                        </div>
 
+                        <div class="counterBOX_two">
+
+                            <button onclick="decrement_two()">-</button>
+                            <h4 id="ROOT_two"></h4>
+                            <button onclick="increment_two()">+</button>
+                            <div class="amount">
+                                <h4 style="font-size: 17px; margin-top: auto;">&euro;</h4>
+                                <h4 id="ROOT_2_two"></h4>
+                                <button>&#10006;</button>
+
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-        </div>
+            <div class="ThirdBOX">
+                <div class="FirstBOX_content">
+                    <div class="FirstBOX_img">
+                        <img src="/img/Energy Boss - IT (19-10-2021) - RED BG.png" alt="">
 
-        <div class="ThirdBOX">
-            <div class="FirstBOX_content">
-                <div class="FirstBOX_img">
-                    <img src="/img/Energy Boss - IT (19-10-2021) - RED BG.png" alt="">
-
-                </div>
-
-
-                <div class="count_plus_text">
-                    <div class="count_text">
-                        <p>Energy Boss Bulk</p>
-                        <h4>Delivered every 30 days</h4>
                     </div>
 
-                    <div class="counterBOX_three">
 
-                        <button onclick="decrement_three()">-</button>
-                        <h4 id="ROOT_three"></h4>
-                        <button onclick="increment_three()">+</button>
-                        <div class="amount">
-                            <h4 style="font-size: 17px; margin-top: auto;">&euro;</h4>
-                            <h4 id="ROOT_2_three"></h4>
-                            <button>&#10006;</button>
+                    <div class="count_plus_text">
+                        <div class="count_text">
+                            <p>Energy Boss Bulk</p>
+                            <h4>Delivered every 30 days</h4>
+                        </div>
 
+                        <div class="counterBOX_three">
+
+                            <button onclick="decrement_three()">-</button>
+                            <h4 id="ROOT_three"></h4>
+                            <button onclick="increment_three()">+</button>
+                            <div class="amount">
+                                <h4 style="font-size: 17px; margin-top: auto;">&euro;</h4>
+                                <h4 id="ROOT_2_three"></h4>
+                                <button>&#10006;</button>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div> --}}
         </div>
         <!-- </div> -->
 
@@ -156,7 +157,7 @@
                 <h3 id="drinktitle " style="">ENERGY BOSS
                     ORIGINAL</h3>
                 <!-- <p style="font-size: 19px;
-    font-weight: 700;">&euro;30.36</p> -->
+                                                                                                                                                                                                font-weight: 700;">&euro;30.36</p> -->
             </div>
 
             <!-- accordion1 starts -->
@@ -201,9 +202,8 @@
                                     aria-controls="collapsetwo" class="collapsed">NUTRATIONAL INFORMATION</a>
                             </h4>
                         </div>
-                        <div id="collapsetwo" class="panel-collapse collapse" role="tabpanel"
-                            aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;"
-                            data-parent="#accordion">
+                        <div id="collapsetwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne"
+                            aria-expanded="false" style="height: 0px;" data-parent="#accordion">
                             <div class="panel-body">
                                 <ul class="nutritional_INFO ">
                                     <li class="row"><span class="left col-7">Serving Size:</span><span
@@ -253,8 +253,19 @@
             <!-- accordion 2 ends -->
 
             <div class="no_contract_text">
-                <h3 style="font-size: 16px;
-    font-weight: 400;">No contract &#8226 Free UK delivery &#8226 Cancel anytime<h3>
+                <h3
+                    style="font-size: 16px;
+                                                                                                                                                                                                font-weight: 400;">
+                    No
+                    contract
+                    &#8226
+                    Free
+                    UK
+                    delivery
+                    &#8226
+                    Cancel
+                    anytime
+                    <h3>
             </div>
 
             <!-- radio -->
@@ -301,8 +312,7 @@
 
                         <div class="addtocart-btn">
 
-                            <button class="button-30" id="FirstBOX_btn" onclick="addToCart(1, 'subscription', 7.46)"
-                                role="button">
+                            <button class="button-30" id="FirstBOX_btn" onclick="addCart(1, 'subscription', 7.46)">
                                 <h4 class="button-30_price">&#163;7.46</h4><i class="fa fa-shopping-cart"></i> Add
                                 To
                                 cart
@@ -326,7 +336,8 @@
                     </div>
                     <div class="addtocart-btn">
 
-                        <button class="button-30" role="button"><i class="fa fa-shopping-cart"></i>Add To
+                        <button class="button-30" role="button" onclick="addCart(2, 'one-time-purchase', 7.46)"><i
+                                class="fa fa-shopping-cart"></i>Add To
                             cart</button>
                     </div>
                 </div>
@@ -349,7 +360,7 @@
                             <div class="smallBOX" id="smallbox1">
                                 <div class="radiodetails">
                                     <input type="radio" id="smallboxradio1" name="fav_language" value="HTML">
-                                      <label for="html" class="cans">2 cases</label>
+                                    <label for="html" class="cans">2 cases</label>
                                 </div>
                                 <p>&#128 8.49 each</p>
 
@@ -359,7 +370,7 @@
                             <div class="smallBOX" id="smallbox2">
                                 <div class="radiodetails">
                                     <input type="radio" id="smallboxradio2" name="fav_language" value="HTML">
-                                      <label for="smallboxradio2" class="cans">3 cases</label>
+                                    <label for="smallboxradio2" class="cans">3 cases</label>
                                 </div>
                                 <p>&#128 8.49 each</p>
                             </div>
@@ -368,7 +379,7 @@
                             <div class="smallBOX" id="smallbox3">
                                 <div class="radiodetails radiodetails_3">
                                     <input type="radio" id="smallboxradio3" name="fav_language" value="HTML">
-                                      <label for="html" class="cans">
+                                    <label for="html" class="cans">
 
                                         <select name="1" id="small_select_box" onchange="getSmallSelectedValue(event)">
                                             <option>4</option>
@@ -391,7 +402,8 @@
                     </div>
                     <div class="addtocart-btn">
 
-                        <button class="button-30" id="button-30_2" role="button">
+                        <button class="button-30" id="button-30_2" role="button"
+                            onclick="addCart(3, 'bulk-purchase', 7.46)">
                             <h4 class="button-30_price_2">&#163;8.49</h4><i class="fa fa-shopping-cart"></i> Add
                             To
                             cart
@@ -417,15 +429,15 @@
 
                 </div>
                 <!-- <div>
-                    <div class="select">
-                        <select>
-                            <option value="1">Every 3 Week(s)</option>
-                            <option value="2">Every 6 Week(s)</option>
-                            <option value="3">Every 9 Weeks'(s)</option>
-                        </select>
-                    </div>
+                                                                                                                                                                                                                <div class="select">
+                                                                                                                                                                                                                    <select>
+                                                                                                                                                                                                                        <option value="1">Every 3 Week(s)</option>
+                                                                                                                                                                                                                        <option value="2">Every 6 Week(s)</option>
+                                                                                                                                                                                                                        <option value="3">Every 9 Weeks'(s)</option>
+                                                                                                                                                                                                                    </select>
+                                                                                                                                                                                                                </div>
 
-                </div> -->
+                                                                                                                                                                                                            </div> -->
 
             </div>
 
@@ -1444,8 +1456,7 @@
 
                     If you wish to exercise your legal rights to reject products you must, arrange delivery of the
                     products back to us.
-                    Please call customer services on +44 20 000 00 or email us at <a
-                        id="email_text">info@bossdrinks.com</a>
+                    Please call customer services on +44 20 000 00 or email us at <a id="email_text">info@bossdrinks.com</a>
                     for a
                     return label or to arrange
                     collection
@@ -1536,8 +1547,7 @@
                 <h4 id="section_title">How we may use your personal information</h4>
                 <p id="agreement_text"><span id="span_1">How we will use your personal information.</span><br>
 
-                    We will use the personal information you provide to us in accordance with our <a
-                        id="email_text">privacy
+                    We will use the personal information you provide to us in accordance with our <a id="email_text">privacy
                         and
                         cookies policy</a>. Please read
                     these carefully.
@@ -1669,8 +1679,7 @@
 
                 <div class="P_SPAN_Div">
                     <div class="p_and_span">
-                        <p>UK Mainland except some areas in Scotland. (3-5 working days) – </p><span
-                            id="dark_text">Orders
+                        <p>UK Mainland except some areas in Scotland. (3-5 working days) – </p><span id="dark_text">Orders
                             over
                             £29.00</span>
                     </div>
@@ -2426,7 +2435,7 @@
                 forbidden.</p>
             <p>Develeped By TATAMAX LIMITED</p>
             <!-- <h3>Maintained By</h3>
-            <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
+                                                                                                                                                                                                        <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
         </div>
 
 
@@ -2492,8 +2501,7 @@
                         <path opacity=".07"
                             d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
                         </path>
-                        <path fill="#fff"
-                            d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32">
+                        <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32">
                         </path>
                         <path
                             d="M12 12v3.7c0 .3-.2.3-.5.2-1.9-.8-3-3.3-2.3-5.4.4-1.1 1.2-2 2.3-2.4.4-.2.5-.1.5.2V12zm2 0V8.3c0-.3 0-.3.3-.2 2.1.8 3.2 3.3 2.4 5.4-.4 1.1-1.2 2-2.3 2.4-.4.2-.4.1-.4-.2V12zm7.2-7H13c3.8 0 6.8 3.1 6.8 7s-3 7-6.8 7h8.2c3.8 0 6.8-3.1 6.8-7s-3-7-6.8-7z"
@@ -2507,8 +2515,7 @@
                         <path fill="#000" opacity=".07"
                             d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
                         </path>
-                        <path d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32z"
-                            fill="#fff">
+                        <path d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32z" fill="#fff">
                         </path>
                         <path
                             d="M3.57 7.16H2v5.5h1.57c.83 0 1.43-.2 1.96-.63.63-.52 1-1.3 1-2.11-.01-1.63-1.22-2.76-2.96-2.76zm1.26 4.14c-.34.3-.77.44-1.47.44h-.29V8.1h.29c.69 0 1.11.12 1.47.44.37.33.59.84.59 1.37 0 .53-.22 1.06-.59 1.39zm2.19-4.14h1.07v5.5H7.02v-5.5zm3.69 2.11c-.64-.24-.83-.4-.83-.69 0-.35.34-.61.8-.61.32 0 .59.13.86.45l.56-.73c-.46-.4-1.01-.61-1.62-.61-.97 0-1.72.68-1.72 1.58 0 .76.35 1.15 1.35 1.51.42.15.63.25.74.31.21.14.32.34.32.57 0 .45-.35.78-.83.78-.51 0-.92-.26-1.17-.73l-.69.67c.49.73 1.09 1.05 1.9 1.05 1.11 0 1.9-.74 1.9-1.81.02-.89-.35-1.29-1.57-1.74zm1.92.65c0 1.62 1.27 2.87 2.9 2.87.46 0 .86-.09 1.34-.32v-1.26c-.43.43-.81.6-1.29.6-1.08 0-1.85-.78-1.85-1.9 0-1.06.79-1.89 1.8-1.89.51 0 .9.18 1.34.62V7.38c-.47-.24-.86-.34-1.32-.34-1.61 0-2.92 1.28-2.92 2.88zm12.76.94l-1.47-3.7h-1.17l2.33 5.64h.58l2.37-5.64h-1.16l-1.48 3.7zm3.13 1.8h3.04v-.93h-1.97v-1.48h1.9v-.93h-1.9V8.1h1.97v-.94h-3.04v5.5zm7.29-3.87c0-1.03-.71-1.62-1.95-1.62h-1.59v5.5h1.07v-2.21h.14l1.48 2.21h1.32l-1.73-2.32c.81-.17 1.26-.72 1.26-1.56zm-2.16.91h-.31V8.03h.33c.67 0 1.03.28 1.03.82 0 .55-.36.85-1.05.85z"
@@ -2553,8 +2560,7 @@
                         <title id="pi-google_pay">Google Pay</title>
                         <path d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"
                             fill="#000" opacity=".07"></path>
-                        <path d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"
-                            fill="#FFF">
+                        <path d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32" fill="#FFF">
                         </path>
                         <path
                             d="M18.093 11.976v3.2h-1.018v-7.9h2.691a2.447 2.447 0 0 1 1.747.692 2.28 2.28 0 0 1 .11 3.224l-.11.116c-.47.447-1.098.69-1.747.674l-1.673-.006zm0-3.732v2.788h1.698c.377.012.741-.135 1.005-.404a1.391 1.391 0 0 0-1.005-2.354l-1.698-.03zm6.484 1.348c.65-.03 1.286.188 1.778.613.445.43.682 1.03.65 1.649v3.334h-.969v-.766h-.049a1.93 1.93 0 0 1-1.673.931 2.17 2.17 0 0 1-1.496-.533 1.667 1.667 0 0 1-.613-1.324 1.606 1.606 0 0 1 .613-1.336 2.746 2.746 0 0 1 1.698-.515c.517-.02 1.03.093 1.49.331v-.208a1.134 1.134 0 0 0-.417-.901 1.416 1.416 0 0 0-.98-.368 1.545 1.545 0 0 0-1.319.717l-.895-.564a2.488 2.488 0 0 1 2.182-1.06zM23.29 13.52a.79.79 0 0 0 .337.662c.223.176.5.269.785.263.429-.001.84-.17 1.146-.472.305-.286.478-.685.478-1.103a2.047 2.047 0 0 0-1.324-.374 1.716 1.716 0 0 0-1.03.294.883.883 0 0 0-.392.73zm9.286-3.75l-3.39 7.79h-1.048l1.281-2.728-2.224-5.062h1.103l1.612 3.885 1.569-3.885h1.097z"
@@ -2565,8 +2571,7 @@
                         <path
                             d="M9.629 15.721a4.352 4.352 0 0 0 3.01-1.097l-1.466-1.14a2.752 2.752 0 0 1-4.094-1.44H5.577v1.17a4.53 4.53 0 0 0 4.052 2.507z"
                             fill="#34A853"></path>
-                        <path
-                            d="M7.079 12.05a2.709 2.709 0 0 1 0-1.735v-1.17H5.577a4.505 4.505 0 0 0 0 4.075l1.502-1.17z"
+                        <path d="M7.079 12.05a2.709 2.709 0 0 1 0-1.735v-1.17H5.577a4.505 4.505 0 0 0 0 4.075l1.502-1.17z"
                             fill="#FBBC04"></path>
                         <path
                             d="M9.629 8.44a2.452 2.452 0 0 1 1.74.68l1.3-1.293a4.37 4.37 0 0 0-3.065-1.183 4.53 4.53 0 0 0-4.027 2.5l1.502 1.171a2.715 2.715 0 0 1 2.55-1.875z"
@@ -2580,8 +2585,7 @@
                         <path opacity=".07"
                             d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
                         </path>
-                        <path fill="#fff"
-                            d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32">
+                        <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32">
                         </path>
                         <circle fill="#EB001B" cx="15" cy="12" r="7"></circle>
                         <circle fill="#00A2E5" cx="23" cy="12" r="7"></circle>
@@ -2597,8 +2601,7 @@
                         <path opacity=".07"
                             d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
                         </path>
-                        <path fill="#fff"
-                            d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32">
+                        <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32">
                         </path>
                         <circle fill="#EB001B" cx="15" cy="12" r="7"></circle>
                         <circle fill="#F79E1B" cx="23" cy="12" r="7"></circle>
@@ -2614,8 +2617,7 @@
                         <path opacity=".07"
                             d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
                         </path>
-                        <path fill="#fff"
-                            d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32">
+                        <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32">
                         </path>
                         <path fill="#003087"
                             d="M23.9 8.3c.2-1 0-1.7-.6-2.3-.6-.7-1.7-1-3.1-1h-4.1c-.3 0-.5.2-.6.5L14 15.6c0 .2.1.4.3.4H17l.4-3.4 1.8-2.2 4.7-2.1z">
@@ -2650,8 +2652,7 @@
                         <path opacity=".07"
                             d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
                         </path>
-                        <path fill="#fff"
-                            d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32">
+                        <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32">
                         </path>
                         <path
                             d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z"
@@ -2720,7 +2721,7 @@
                 forbidden.</p>
             <p>Develeped By TATAMAX LIMITED</p>
             <!-- <h3>Maintained By</h3>
-            <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
+                                                                                                                                                                                                        <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
         </div>
 
         <div class="payment_method">
@@ -2744,9 +2745,8 @@
                         </svg>
                     </li>
                     <li class="HorizontalList__Item">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" role="img" x="0" y="0" width="38"
-                            height="24" viewBox="0 0 165.521 105.965" xml:space="preserve"
-                            aria-labelledby="pi-apple_pay">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" role="img" x="0" y="0" width="38" height="24"
+                            viewBox="0 0 165.521 105.965" xml:space="preserve" aria-labelledby="pi-apple_pay">
                             <title id="pi-apple_pay">Apple Pay</title>
                             <path fill="#000"
                                 d="M150.698 0H14.823c-.566 0-1.133 0-1.698.003-.477.004-.953.009-1.43.022-1.039.028-2.087.09-3.113.274a10.51 10.51 0 0 0-2.958.975 9.932 9.932 0 0 0-4.35 4.35 10.463 10.463 0 0 0-.975 2.96C.113 9.611.052 10.658.024 11.696a70.22 70.22 0 0 0-.022 1.43C0 13.69 0 14.256 0 14.823v76.318c0 .567 0 1.132.002 1.699.003.476.009.953.022 1.43.028 1.036.09 2.084.275 3.11a10.46 10.46 0 0 0 .974 2.96 9.897 9.897 0 0 0 1.83 2.52 9.874 9.874 0 0 0 2.52 1.83c.947.483 1.917.79 2.96.977 1.025.183 2.073.245 3.112.273.477.011.953.017 1.43.02.565.004 1.132.004 1.698.004h135.875c.565 0 1.132 0 1.697-.004.476-.002.952-.009 1.431-.02 1.037-.028 2.085-.09 3.113-.273a10.478 10.478 0 0 0 2.958-.977 9.955 9.955 0 0 0 4.35-4.35c.483-.947.789-1.917.974-2.96.186-1.026.246-2.074.274-3.11.013-.477.02-.954.022-1.43.004-.567.004-1.132.004-1.699V14.824c0-.567 0-1.133-.004-1.699a63.067 63.067 0 0 0-.022-1.429c-.028-1.038-.088-2.085-.274-3.112a10.4 10.4 0 0 0-.974-2.96 9.94 9.94 0 0 0-4.35-4.35A10.52 10.52 0 0 0 156.939.3c-1.028-.185-2.076-.246-3.113-.274a71.417 71.417 0 0 0-1.431-.022C151.83 0 151.263 0 150.698 0z">
@@ -2793,8 +2793,8 @@
                         </svg>
                     </li>
                     <li class="HorizontalList__Item">
-                        <svg viewBox="0 0 38 24" width="38" height="24" role="img" aria-labelledby="pi-discover"
-                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 38 24" width="38" height="24" role="img" aria-labelledby="pi-discover" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <title id="pi-discover">Discover</title>
                             <path fill="#000" opacity=".07"
                                 d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
@@ -2963,6 +2963,167 @@
 
 @endsection
 
+<script>
+    window.onload = () => {
+        const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+        const cartItems = document.getElementById('cart-items');
+        if (oldData?.length > 0) {
+            for (let i = 0; i < oldData.length; i++) {
+                let addCart = ""
+                addCart += "<div class='FirstBOX' id='test_" + i + "'>";
+                addCart += "<div class='FirstBOX_content'>";
+                addCart += "<div class='FirstBOX_img'>";
+                addCart += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
+                addCart += "</div>";
+                addCart += " <div class='count_plus_text'>";
+                addCart += "<div class='count_text'>";
+                addCart += "<p>" + oldData[i].title + "</p>";
+                addCart += "<h4>" + oldData[i].deliveryTitle + "</h4>";
+                addCart += "</div>";
+                addCart += "<div class='counterBOX'>";
+                addCart += " <button onclick='quantityDecrement(" + i + ")'>-</button>";
+                addCart += "<h4 id='ROOT' class='root'>" + oldData[i].quantity + "</h4>";
+                addCart += "<button onclick='quantityIncrement(" + i + ")'>+</button>";
+                addCart += "<div class='amount'>";
+                addCart += "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'>&euro;" + oldData[i]
+                    .totalAmount.toFixed(2) + "</h4>";
+                addCart += "<h4 id='ROOT_2' class='root2'>" + oldData[i].quantity + "</h4>";
+                addCart += "<button onclick='closeItem(event," + i + ")'>&#10006;</button>";
+                addCart += "</div>";
+                addCart += "</div>";
+                addCart += "</div>";
+                addCart += "</div>";
+                addCart += "</div>";
+                cartItems.insertAdjacentHTML("beforeend", addCart);
+            }
+        }
+    }
+    const addCart = (id, type, unitprice) => {
+        cart_sidebar.style.right = "0px";
+        const cartItems = document.getElementById('cart-items');
+
+        const setData = `[]`
+        if (localStorage.getItem("cartDetails") === null) {
+            localStorage.setItem('cartDetails', setData)
+        }
+        const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+        let items
+        const itemDetails = {
+            'id': id,
+            'title': id === 1 ? 'Energy Boss Subscription' : id === 2 ? 'Energy Boss' : id === 3 ?
+                'Energy Boss Bulk' : '',
+            'deliveryTitle': 'Delivered every 30 days',
+            'quantity': 0,
+            'totalAmount': 0,
+            'type': type
+        }
+        if (oldData.length < 1) {
+            oldData.push(itemDetails)
+            let addCart = ""
+                addCart += "<div class='FirstBOX' id='test_0'>";
+                addCart += "<div class='FirstBOX_content'>";
+                addCart += "<div class='FirstBOX_img'>";
+                addCart += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
+                addCart += "</div>";
+                addCart += " <div class='count_plus_text'>";
+                addCart += "<div class='count_text'>";
+                addCart += "<p>" + itemDetails.title + "</p>";
+                addCart += "<h4>" + itemDetails.deliveryTitle + "</h4>";
+                addCart += "</div>";
+                addCart += "<div class='counterBOX'>";
+                addCart += " <button onclick='quantityDecrement(0)'>-</button>";
+                addCart += "<h4 id='ROOT' class='root'>" + itemDetails.quantity + "</h4>";
+                addCart += "<button onclick='quantityIncrement(0)'>+</button>";
+                addCart += "<div class='amount'>";
+                addCart += "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'>&euro;" +
+                    itemDetails.totalAmount.toFixed(2) +
+                    "</h4>";
+                addCart += "<h4 id='ROOT_2' class='root2'>" + itemDetails.quantity + "</h4>";
+                addCart += "<button onclick='closeItem(event,0)'>&#10006;</button>";
+                addCart += "</div>";
+                addCart += "</div>";
+                addCart += "</div>";
+                addCart += "</div>";
+                addCart += "</div>";
+                cartItems.insertAdjacentHTML("beforeend", addCart);
+        } else {
+            const existItem = oldData.find(function(post, index) {
+                if (post.id == id)
+                    return true;
+            });
+            if (!existItem) {
+                oldData.push(itemDetails)
+                let addCart = ""
+                addCart += "<div class='FirstBOX' id='test_" + (oldData.length-1) + "'>";
+                addCart += "<div class='FirstBOX_content'>";
+                addCart += "<div class='FirstBOX_img'>";
+                addCart += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
+                addCart += "</div>";
+                addCart += " <div class='count_plus_text'>";
+                addCart += "<div class='count_text'>";
+                addCart += "<p>" + itemDetails.title + "</p>";
+                addCart += "<h4>" + itemDetails.deliveryTitle + "</h4>";
+                addCart += "</div>";
+                addCart += "<div class='counterBOX'>";
+                addCart += " <button onclick='quantityDecrement("+ (oldData.length-1) +")'>-</button>";
+                addCart += "<h4 id='ROOT' class='root'>" + itemDetails.quantity + "</h4>";
+                addCart += "<button onclick='quantityIncrement(" + (oldData.length-1) +")'>+</button>";
+                addCart += "<div class='amount'>";
+                addCart += "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'>&euro;" +
+                    itemDetails.totalAmount.toFixed(2) +
+                    "</h4>";
+                addCart += "<h4 id='ROOT_2' class='root2'>" + itemDetails.quantity + "</h4>";
+                addCart += "<button onclick='closeItem(event," + (oldData.length-1) + ")'>&#10006;</button>";
+                addCart += "</div>";
+                addCart += "</div>";
+                addCart += "</div>";
+                addCart += "</div>";
+                addCart += "</div>";
+                cartItems.insertAdjacentHTML("beforeend", addCart);
+            }
+        }
+        localStorage.setItem('cartDetails', JSON.stringify(oldData))
+
+
+
+    }
+
+    const closeItem = (event, itemId) => {
+        event.preventDefault();
+        const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+        oldData.splice(itemId, 1)
+        localStorage.setItem('cartDetails', JSON.stringify(oldData))
+        document.getElementById("test_" + itemId).remove()
+    }
+
+    function quantityIncrement(id) {
+        const increments = document.querySelectorAll('.root')
+        const decrements = document.querySelectorAll('.root2')
+        const totalAmount = document.querySelectorAll('.total-amount')
+        const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+        oldData[id].quantity = oldData[id].quantity + 1
+        oldData[id].totalAmount = oldData[id].totalAmount + 7.49
+        increments[id].innerText = oldData[id].quantity
+        totalAmount[id].innerText = parseFloat(oldData[id].totalAmount).toFixed(2)
+        localStorage.removeItem('cartDetails')
+        localStorage.setItem('cartDetails', JSON.stringify(oldData))
+    }
+
+    function quantityDecrement(id) {
+        const increments = document.querySelectorAll('.root')
+        const decrements = document.querySelectorAll('.root2')
+        const totalAmount = document.querySelectorAll('.total-amount')
+        const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+        if (oldData[id].quantity > 0) {
+            oldData[id].quantity = oldData[id].quantity - 1
+            oldData[id].totalAmount = oldData[id].totalAmount - 7.49
+            increments[id].innerText = oldData[id].quantity
+            totalAmount[id].innerText = parseFloat(oldData[id].totalAmount).toFixed(2)
+            localStorage.removeItem('cartDetails')
+            localStorage.setItem('cartDetails', JSON.stringify(oldData))
+        }
+    }
+</script>
 @push('script')
 
 @endpush
