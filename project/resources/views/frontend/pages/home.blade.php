@@ -119,12 +119,17 @@
 </div>
 <!-- ******************************************************************************************* -->
 <div class="container product_variety">
-  <div>
+  <!-- <div>
     <a href="energydrinks.html">ENERGY</a>
   </div>
   <div><a href="sport.html">SPORT </a></div>
   <div><a href="appetiser.html">APPETISER</a></div>
-  <div><a href="bcca.html">SPORT-BCCA </a></div>
+  <div><a href="bcca.html">SPORT-BCCA </a></div> -->
+  @foreach($categories as $category)
+  <div>
+    <a href="energydrinks.html">{{$category->name}}</a>
+  </div>
+  @endforeach
 
 </div>
 <!-- <img src="/img/wave down.svg" alt="something" style="margin-top:-190px"> -->
@@ -702,23 +707,25 @@
 <div class="MainProductDisplaySection">
 
   <div class="productdisplaysection">
-
+    @foreach ($products1 as $product)
     <div class="card card2">
       <div class="productdisplayimgBOX">
-        <a href="firstproduct.html">
+        <a href="{{route('front.product', $product->slug)}}">
           <img src="/img/PDSEnergy Boss Original Blue.png" alt="comething">
         </a>
       </div>
       <div class="product_display_contentbox">
-        <h4>Energy BOSS Original</h4>
-        <h4 class="price">&#128 40.<small>99</small></h4>
-        <a href="firstproduct.html" class="buy">Veiw Details</a>
+        <h4>{{$product->name}}</h4>
+        <h4 class="price">&#128 {{$product->price}}</h4>
+        <a href="{{route('front.product', $product->slug)}}" class="buy">Veiw Details</a>
       </div>
 
 
 
     </div>
-    <div class="card card2">
+    @endforeach
+
+    <!-- <div class="card card2">
       <div class="productdisplayimgBOX">
         <a href="secondproduct.html">
           <img src="/img/PDSEnergy Boss Original Red.png" alt="comething">
@@ -747,12 +754,29 @@
 
 
 
-    </div>
+    </div> -->
 
 
   </div>
   <div class="productdisplaysection productdisplaysection2">
+    @foreach ($products2 as $product)
+    <div class="card card2">
+      <div class="productdisplayimgBOX">
+        <a href="{{route('front.product', $product->slug)}}">
+          <img src="/img/PDSEnergy Boss Sports - IT (BCAA Apple).png" alt="comething">
+        </a>
+      </div>
+      <div class="product_display_contentbox">
+        <h4>{{$product->name}}</h4>
+        <h4 class="price">&#128 {{$product->price}}</h4>
+        <a href="{{route('front.product', $product->slug)}}" class="buy">Veiw Details</a>
+      </div>
 
+
+
+    </div>
+    @endforeach
+    <!-- 
     <div class="card card2">
       <div class="productdisplayimgBOX">
         <a href="fourthproduct.html">
@@ -797,7 +821,7 @@
 
 
 
-    </div>
+    </div> -->
 
 
   </div>
