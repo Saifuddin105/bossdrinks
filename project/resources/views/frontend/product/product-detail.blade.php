@@ -2774,6 +2774,168 @@
 
 @endsection
 
+<script>
+  window.onload = () => {
+    const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+    const cartItems = document.getElementById('cart-items');
+    if (oldData?.length > 0) {
+      for (let i = 0; i < oldData.length; i++) {
+        let addCart = ""
+        addCart += "<div class='FirstBOX' id='test_" + i + "'>";
+        addCart += "<div class='FirstBOX_content'>";
+        addCart += "<div class='FirstBOX_img'>";
+        addCart += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
+        addCart += "</div>";
+        addCart += " <div class='count_plus_text'>";
+        addCart += "<div class='count_text'>";
+        addCart += "<p>" + oldData[i].title + "</p>";
+        addCart += "<h4>" + oldData[i].deliveryTitle + "</h4>";
+        addCart += "</div>";
+        addCart += "<div class='counterBOX'>";
+        addCart += " <button onclick='quantityDecrement(" + i + ")'>-</button>";
+        addCart += "<h4 id='ROOT' class='root'>" + oldData[i].quantity + "</h4>";
+        addCart += "<button onclick='quantityIncrement(" + i + ")'>+</button>";
+        addCart += "<div class='amount'>";
+        addCart += "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'>&euro;" + oldData[i]
+          .totalAmount.toFixed(2) + "</h4>";
+        addCart += "<h4 id='ROOT_2' class='root2'>" + oldData[i].quantity + "</h4>";
+        addCart += "<button onclick='closeItem(event," + i + ")'>&#10006;</button>";
+        addCart += "</div>";
+        addCart += "</div>";
+        addCart += "</div>";
+        addCart += "</div>";
+        addCart += "</div>";
+        cartItems.insertAdjacentHTML("beforeend", addCart);
+      }
+    }
+  }
+  const addCart = (id, type, unitprice) => {
+    cart_sidebar.style.right = "0px";
+    const cartItems = document.getElementById('cart-items');
+
+    const setData = `[]`
+    if (localStorage.getItem("cartDetails") === null) {
+      localStorage.setItem('cartDetails', setData)
+    }
+    const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+    let items
+    const itemDetails = {
+      'id': id,
+      'title': id === 1 ? 'Energy Boss Subscription' : id === 2 ? 'Energy Boss' : id === 3 ?
+        'Energy Boss Bulk' : '',
+      'deliveryTitle': 'Delivered every 30 days',
+      'quantity': 0,
+      'totalAmount': 0,
+      'type': type
+    }
+    if (oldData.length < 1) {
+      oldData.push(itemDetails)
+      let addCart = ""
+      addCart += "<div class='FirstBOX' id='test_0'>";
+      addCart += "<div class='FirstBOX_content'>";
+      addCart += "<div class='FirstBOX_img'>";
+      addCart += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
+      addCart += "</div>";
+      addCart += " <div class='count_plus_text'>";
+      addCart += "<div class='count_text'>";
+      addCart += "<p>" + itemDetails.title + "</p>";
+      addCart += "<h4>" + itemDetails.deliveryTitle + "</h4>";
+      addCart += "</div>";
+      addCart += "<div class='counterBOX'>";
+      addCart += " <button onclick='quantityDecrement(0)'>-</button>";
+      addCart += "<h4 id='ROOT' class='root'>" + itemDetails.quantity + "</h4>";
+      addCart += "<button onclick='quantityIncrement(0)'>+</button>";
+      addCart += "<div class='amount'>";
+      addCart += "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'>&euro;" +
+        itemDetails.totalAmount.toFixed(2) +
+        "</h4>";
+      addCart += "<h4 id='ROOT_2' class='root2'>" + itemDetails.quantity + "</h4>";
+      addCart += "<button onclick='closeItem(event,0)'>&#10006;</button>";
+      addCart += "</div>";
+      addCart += "</div>";
+      addCart += "</div>";
+      addCart += "</div>";
+      addCart += "</div>";
+      cartItems.insertAdjacentHTML("beforeend", addCart);
+    } else {
+      const existItem = oldData.find(function(post, index) {
+        if (post.id == id)
+          return true;
+      });
+      if (!existItem) {
+        oldData.push(itemDetails)
+        let addCart = ""
+        addCart += "<div class='FirstBOX' id='test_" + (oldData.length - 1) + "'>";
+        addCart += "<div class='FirstBOX_content'>";
+        addCart += "<div class='FirstBOX_img'>";
+        addCart += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
+        addCart += "</div>";
+        addCart += " <div class='count_plus_text'>";
+        addCart += "<div class='count_text'>";
+        addCart += "<p>" + itemDetails.title + "</p>";
+        addCart += "<h4>" + itemDetails.deliveryTitle + "</h4>";
+        addCart += "</div>";
+        addCart += "<div class='counterBOX'>";
+        addCart += " <button onclick='quantityDecrement(" + (oldData.length - 1) + ")'>-</button>";
+        addCart += "<h4 id='ROOT' class='root'>" + itemDetails.quantity + "</h4>";
+        addCart += "<button onclick='quantityIncrement(" + (oldData.length - 1) + ")'>+</button>";
+        addCart += "<div class='amount'>";
+        addCart += "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'>&euro;" +
+          itemDetails.totalAmount.toFixed(2) +
+          "</h4>";
+        addCart += "<h4 id='ROOT_2' class='root2'>" + itemDetails.quantity + "</h4>";
+        addCart += "<button onclick='closeItem(event," + (oldData.length - 1) + ")'>&#10006;</button>";
+        addCart += "</div>";
+        addCart += "</div>";
+        addCart += "</div>";
+        addCart += "</div>";
+        addCart += "</div>";
+        cartItems.insertAdjacentHTML("beforeend", addCart);
+      }
+    }
+    localStorage.setItem('cartDetails', JSON.stringify(oldData))
+
+
+
+  }
+
+  const closeItem = (event, itemId) => {
+    event.preventDefault();
+    const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+    oldData.splice(itemId, 1)
+    localStorage.setItem('cartDetails', JSON.stringify(oldData))
+    document.getElementById("test_" + itemId).remove()
+  }
+
+  function quantityIncrement(id) {
+    const increments = document.querySelectorAll('.root')
+    const decrements = document.querySelectorAll('.root2')
+    const totalAmount = document.querySelectorAll('.total-amount')
+    const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+    oldData[id].quantity = oldData[id].quantity + 1
+    oldData[id].totalAmount = oldData[id].totalAmount + 7.49
+    increments[id].innerText = oldData[id].quantity
+    totalAmount[id].innerText = parseFloat(oldData[id].totalAmount).toFixed(2)
+    localStorage.removeItem('cartDetails')
+    localStorage.setItem('cartDetails', JSON.stringify(oldData))
+  }
+
+  function quantityDecrement(id) {
+    const increments = document.querySelectorAll('.root')
+    const decrements = document.querySelectorAll('.root2')
+    const totalAmount = document.querySelectorAll('.total-amount')
+    const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+    if (oldData[id].quantity > 0) {
+      oldData[id].quantity = oldData[id].quantity - 1
+      oldData[id].totalAmount = oldData[id].totalAmount - 7.49
+      increments[id].innerText = oldData[id].quantity
+      totalAmount[id].innerText = parseFloat(oldData[id].totalAmount).toFixed(2)
+      localStorage.removeItem('cartDetails')
+      localStorage.setItem('cartDetails', JSON.stringify(oldData))
+    }
+  }
+</script>
+
 @push('script')
 
 @endpush
