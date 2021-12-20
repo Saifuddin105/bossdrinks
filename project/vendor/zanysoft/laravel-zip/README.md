@@ -1,6 +1,12 @@
 # zanysoft/laravel-zip
 
-> ZipArchive toolbox
+[![Downloads](https://img.shields.io/packagist/dt/zanysoft/laravel-zip.svg?style=flat-square)](https://packagist.org/packages/zanysoft/laravel-zip)
+[![GitHub license](https://img.shields.io/badge/License-MIT-informational.svg)](https://github.com/zanysoft/laravel-zip/blob/master/LICENSE)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-informational.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![GitHub tag](https://img.shields.io/github/tag/ZanySoft/laravel-zip.svg?style=flat&logo=laravel&color=informational)](https://github.com/zanysoft/laravel-zip/tags)
+
+
+> laravel-zip is the world's leading zip utility for file compression and backup.
 
 This library was written to simplify and automate Zip files management using [PHP ZipArchive](http://php.net/manual/en/class.ziparchive.php).
 
@@ -62,6 +68,23 @@ use Zip;
 
     // extract multiple files
     $zip->extract('/path/to/uncompressed/files', array('file1','file2'));
+
+    ```
+	
+- Check if zip has a file:
+
+    ```php    
+    // Check if archive has a file
+    $zip->has('/path/to/file/in/archive');
+
+    // Check if archive has a file case insensitively
+    $zip->has('/path/to/file/in/archive', ZipArchive::FL_NOCASE);
+
+    // Check if archive has a file ignoring directory component
+    $zip->has('file', ZipArchive::FL_NODIR);
+
+    // Check if archive has a file case insensitively ignoring directory component
+    $zip->has('file', ZipArchive::FL_NOCASE|ZipArchive::FL_NODIR);
 
     ```
 
