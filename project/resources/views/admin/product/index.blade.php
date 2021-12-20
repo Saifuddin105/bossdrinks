@@ -203,8 +203,7 @@
 		ordering: false,
 		processing: true,
 		serverSide: true,
-		ajax: '{{ route('
-		admin - prod - datatables ') }}',
+		ajax: '{{ route('admin-prod-datatables') }}',
 		columns: [{
 				data: 'name',
 				name: 'name'
@@ -244,8 +243,7 @@
 
 	$(function() {
 		$(".btn-area").append('<div class="col-sm-4 table-contents">' +
-			'<a class="add-btn" href="{{route('
-			admin - prod - types ')}}">' +
+			'<a class="add-btn" href="{{route('admin-prod-types')}}">' +
 			'<i class="fas fa-plus"></i> <span class="remove-mobile">{{ __("Add New Product") }}<span>' +
 			'</a>' +
 			'</div>');
@@ -366,7 +364,7 @@
 	});
 
 
-	// Gallery Section Update Ends	
+	// Gallery Section Update Ends
 </script>
 
 
