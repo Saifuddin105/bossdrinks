@@ -203,7 +203,7 @@
 		ordering: false,
 		processing: true,
 		serverSide: true,
-		ajax: '{{ route('admin-prod-datatables') }}',
+		ajax: 'https://bossdrinks.com/admin/products/datatables',
 		columns: [{
 				data: 'name',
 				name: 'name'
