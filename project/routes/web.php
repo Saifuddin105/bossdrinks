@@ -4,7 +4,7 @@
 
 Route::prefix('admin')->group(function () {
 
-  //------------ ADMIN LOGIN SECTION ------------
+    //------------ ADMIN LOGIN SECTION ------------
 
     Route::get('/login', 'Admin\LoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Admin\LoginController@login')->name('admin.login.submit');
@@ -162,8 +162,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/user/default/image', 'Admin\UserController@image')->name('admin-user-image');
 
         // WITHDRAW SECTION
-    Route::get('/users/withdraws/datatables', 'Admin\UserController@withdrawdatatables')->name('admin-withdraw-datatables'); //JSON REQUEST
-    Route::get('/users/withdraws', 'Admin\UserController@withdraws')->name('admin-withdraw-index');
+        Route::get('/users/withdraws/datatables', 'Admin\UserController@withdrawdatatables')->name('admin-withdraw-datatables'); //JSON REQUEST
+        Route::get('/users/withdraws', 'Admin\UserController@withdraws')->name('admin-withdraw-index');
         Route::get('/user/withdraw/{id}/show', 'Admin\UserController@withdrawdetails')->name('admin-withdraw-show');
         Route::get('/users/withdraws/accept/{id}', 'Admin\UserController@accept')->name('admin-withdraw-accept');
         Route::get('/user/withdraws/reject/{id}', 'Admin\UserController@reject')->name('admin-withdraw-reject');
@@ -301,7 +301,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/childcategory/status/{id1}/{id2}', 'Admin\ChildCategoryController@status')->name('admin-childcat-status');
         Route::get('/load/childcategories/{id}/', 'Admin\ChildCategoryController@load')->name('admin-childcat-load'); //JSON REQUEST
 
-    // CHILDCATEGORY SECTION ENDS------------
+        // CHILDCATEGORY SECTION ENDS------------
     });
 
     //------------ ADMIN CATEGORY SECTION ENDS------------
@@ -320,7 +320,7 @@ Route::prefix('admin')->group(function () {
 
     Route::group(['middleware' => 'permissions:product_discussion'], function () {
 
-    // RATING SECTION ENDS------------
+        // RATING SECTION ENDS------------
 
         Route::get('/ratings/datatables', 'Admin\RatingController@datatables')->name('admin-rating-datatables'); //JSON REQUEST
         Route::get('/ratings', 'Admin\RatingController@index')->name('admin-rating-index');
@@ -354,7 +354,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/general-settings/report/{status}', 'Admin\GeneralSettingController@isreport')->name('admin-gs-isreport');
         // REPORT CHECK ENDS
 
-    // REPORT SECTION ENDS ------------
+        // REPORT SECTION ENDS ------------
     });
 
     //------------ ADMIN PRODUCT DISCUSSION SECTION ENDS ------------
@@ -499,7 +499,7 @@ Route::prefix('admin')->group(function () {
 
     Route::group(['middleware' => 'permissions:home_page_settings'], function () {
 
-    //------------ ADMIN SLIDER SECTION ------------
+        //------------ ADMIN SLIDER SECTION ------------
 
         Route::get('/slider/datatables', 'Admin\SliderController@datatables')->name('admin-sl-datatables'); //JSON REQUEST
         Route::get('/slider', 'Admin\SliderController@index')->name('admin-sl-index');
@@ -578,7 +578,7 @@ Route::prefix('admin')->group(function () {
 
     Route::group(['middleware' => 'permissions:menu_page_settings'], function () {
 
-    //------------ ADMIN MENU PAGE SETTINGS SECTION ------------
+        //------------ ADMIN MENU PAGE SETTINGS SECTION ------------
 
         //------------ ADMIN FAQ SECTION ------------
 
@@ -639,7 +639,7 @@ Route::prefix('admin')->group(function () {
 
     Route::group(['middleware' => 'permissions:payment_settings'], function () {
 
-    // Payment Informations
+        // Payment Informations
 
         Route::get('/payment-informations', 'Admin\GeneralSettingController@paymentsinfo')->name('admin-gs-payments');
 
@@ -704,7 +704,7 @@ Route::prefix('admin')->group(function () {
 
     Route::group(['middleware' => 'permissions:language_settings'], function () {
 
-    //  Multiple Language Section
+        //  Multiple Language Section
 
         Route::get('/general-settings/language/{status}', 'Admin\GeneralSettingController@language')->name('admin-gs-islanguage');
 
@@ -733,7 +733,7 @@ Route::prefix('admin')->group(function () {
 
         //------------ ADMIN PANEL LANGUAGE SETTINGS SECTION ENDS ------------
 
-    //------------ ADMIN LANGUAGE SETTINGS SECTION ENDS ------------
+        //------------ ADMIN LANGUAGE SETTINGS SECTION ENDS ------------
     });
 
     //------------ ADMIN SEOTOOL SETTINGS SECTION ------------
@@ -837,27 +837,27 @@ Route::prefix('user')->group(function () {
     Route::get('/cart', function () {
         return view('frontend/pages/cart');
     });
-    Route::get('/shop', function () {
-        return view('frontend/pages/shop');
-    });
-    Route::get('/product-details', function () {
-        return view('frontend/pages/productDetails');
-    });
-    Route::get('/shop', function () {
-        return view('frontend/pages/shop');
-    });
-    Route::get('/energy-drinks', function () {
-        return view('frontend/pages/energyDrinks');
-    });
-    Route::get('/sport-drinks', function () {
-        return view('frontend/pages/sportDrinks');
-    });
-    Route::get('/bcca-drinks', function () {
-        return view('frontend/pages/bccaDrinks');
-    });
-    Route::get('/appe-tiser', function () {
-        return view('frontend/pages/appeTiser');
-    });
+    // Route::get('/shop', function () {
+    //     return view('frontend/pages/shop');
+    // });
+    // Route::get('/product-details', function () {
+    //     return view('frontend/pages/productDetails');
+    // });
+    // Route::get('/shop', function () {
+    //     return view('frontend/pages/shop');
+    // });
+    // Route::get('/energy-drinks', function () {
+    //     return view('frontend/pages/energyDrinks');
+    // });
+    // Route::get('/sport-drinks', function () {
+    //     return view('frontend/pages/sportDrinks');
+    // });
+    // Route::get('/bcca-drinks', function () {
+    //     return view('frontend/pages/bccaDrinks');
+    // });
+    // Route::get('/appe-tiser', function () {
+    //     return view('frontend/pages/appeTiser');
+    // });
 
 
 
@@ -936,15 +936,13 @@ Route::prefix('user')->group(function () {
     Route::post('/paystack/submit', 'User\PaystackController@store')->name('user.paystack.submit');
 
     //PayTM Routes
-    Route::post('/paytm/submit', 'User\PaytmController@store')->name('user.paytm.submit');
-    ;
+    Route::post('/paytm/submit', 'User\PaytmController@store')->name('user.paytm.submit');;
     Route::post('/paytm/notify', 'User\PaytmController@notify')->name('user.paytm.notify');
 
 
 
     //PayTM Routes
-    Route::post('/razorpay/submit', 'User\RazorpayController@store')->name('user.razorpay.submit');
-    ;
+    Route::post('/razorpay/submit', 'User\RazorpayController@store')->name('user.razorpay.submit');;
     Route::post('/razorpay/notify', 'User\RazorpayController@notify')->name('user.razorpay.notify');
 
 
@@ -1007,7 +1005,7 @@ Route::get('/under-maintenance', 'Front\FrontendController@maintenance')->name('
 
 Route::group(['middleware' => 'maintenance'], function () {
 
-  // ************************************ VENDOR SECTION **********************************************
+    // ************************************ VENDOR SECTION **********************************************
 
 
     Route::prefix('vendor')->group(function () {
@@ -1297,13 +1295,11 @@ Route::group(['middleware' => 'maintenance'], function () {
     // Molly Routes Ends
 
     //PayTM Routes
-    Route::post('/paytm-submit', 'Front\PaytmController@store')->name('paytm.submit');
-    ;
+    Route::post('/paytm-submit', 'Front\PaytmController@store')->name('paytm.submit');;
     Route::post('/paytm-callback', 'Front\PaytmController@paytmCallback')->name('paytm.notify');
 
     //RazorPay Routes
-    Route::post('/razorpay-submit', 'Front\RazorpayController@store')->name('razorpay.submit');
-    ;
+    Route::post('/razorpay-submit', 'Front\RazorpayController@store')->name('razorpay.submit');;
     Route::post('/razorpay-callback', 'Front\RazorpayController@razorCallback')->name('razorpay.notify');
 
     Route::post('/cashondelivery', 'Front\CheckoutController@cashondelivery')->name('cash.submit');

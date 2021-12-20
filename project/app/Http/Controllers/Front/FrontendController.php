@@ -136,19 +136,24 @@ class FrontendController extends Controller
         $sliders = DB::table('sliders')->get();
         $top_small_banners = DB::table('banners')->where('type', '=', 'TopSmall')->get();
         $ps = DB::table('pagesettings')->find(1);
-        $feature_products =  Product::with('user')->where('featured', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(8)->get()->reject(function ($item) {
+        $categories = DB::table('categories')->get();
+        $products = DB::table('products')->get()->toArray();
+        //$products1 = array_splice((array)$products, 0, 2);
+        // $products2 = array_splice($products, 3, 5);
 
-            if ($item->user_id != 0) {
-                if ($item->user->is_vendor != 2) {
-                    return true;
-                }
-            }
-            return false;
-        });
-        if ($_SERVER['REQUEST_URI'] === '/')
-            return view('front.index', compact('ps', 'sliders', 'top_small_banners', 'feature_products'));
-        else
-            return view('frontend.pages.home', compact('ps', 'sliders', 'top_small_banners', 'feature_products'));
+        list($products1, $products2) = array_chunk((array) $products, 3);
+
+        // $products =  Product::with('user')->where('featured', '=', 0)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(8)->get()->reject(function ($item) {
+
+        //     if ($item->user_id != 0) {
+        //         if ($item->user->is_vendor != 2) {
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // });
+
+        return view('frontend.pages.home', compact('categories', 'sliders', 'top_small_banners', 'products1', 'products2'));
         // return view('frontend.pages.home');
     }
 

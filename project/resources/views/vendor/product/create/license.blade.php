@@ -12,8 +12,7 @@
 	<div class="mr-breadcrumb">
 		<div class="row">
 			<div class="col-lg-12">
-				<h4 class="heading">{{ $langg->lang631 }} <a class="add-btn" href="{{ route('vendor-prod-types') }}"><i
-							class="fas fa-arrow-left"></i> {{ $langg->lang550 }}</a></h4>
+				<h4 class="heading">{{ $langg->lang631 }} <a class="add-btn" href="{{ route('vendor-prod-physical-create') }}"><i class="fas fa-arrow-left"></i> {{ $langg->lang550 }}</a></h4>
 				<ul class="links">
 					<li>
 						<a href="{{ route('vendor-dashboard') }}">{{ $langg->lang441 }}</a>
@@ -25,7 +24,7 @@
 						<a href="{{ route('vendor-prod-index') }}">{{ $langg->lang446 }}</a>
 					</li>
 					<li>
-						<a href="{{ route('vendor-prod-types') }}">{{ $langg->lang445 }}</a>
+						<a href="{{ route('vendor-prod-physical-create') }}">{{ $langg->lang445 }}</a>
 					</li>
 					<li>
 						<a href="{{ route('vendor-prod-license-create') }}">{{ $langg->lang631 }}</a>
@@ -36,25 +35,23 @@
 	</div>
 
 
-	<form id="geniusform" action="{{route('vendor-prod-store')}}" method="POST"
-									enctype="multipart/form-data">
-									{{csrf_field()}}
-		
-	<div class="row">
-		<div class="col-lg-8">
-			<div class="add-product-content">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="product-description">
-							<div class="body-area">
-		
-								<div class="gocover"
-									style="background: url({{asset('assets/images/'.$gs->admin_loader)}}) no-repeat scroll center center rgba(45, 45, 45, 0.5);">
-								</div>
-								
+	<form id="geniusform" action="{{route('vendor-prod-store')}}" method="POST" enctype="multipart/form-data">
+		{{csrf_field()}}
+
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="add-product-content">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="product-description">
+								<div class="body-area">
+
+									<div class="gocover" style="background: url({{asset('assets/images/'.$gs->admin_loader)}}) no-repeat scroll center center rgba(45, 45, 45, 0.5);">
+									</div>
+
 									@include('includes.vendor.form-both')
-		
-		
+
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -63,12 +60,11 @@
 											</div>
 										</div>
 										<div class="col-lg-12">
-											<input type="text" class="input-field" placeholder="{{ $langg->lang632 }}"
-												name="name" required="">
+											<input type="text" class="input-field" placeholder="{{ $langg->lang632 }}" name="name" required="">
 										</div>
 									</div>
-		
-		
+
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -79,13 +75,12 @@
 											<select id="cat" name="category_id" required="">
 												<option value="">{{ $langg->lang691 }}</option>
 												@foreach($cats as $cat)
-												<option data-href="{{ route('vendor-subcat-load',$cat->id) }}"
-													value="{{ $cat->id }}">{{$cat->name}}</option>
+												<option data-href="{{ route('vendor-subcat-load',$cat->id) }}" value="{{ $cat->id }}">{{$cat->name}}</option>
 												@endforeach
 											</select>
 										</div>
 									</div>
-		
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -98,7 +93,7 @@
 											</select>
 										</div>
 									</div>
-		
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -111,7 +106,7 @@
 											</select>
 										</div>
 									</div>
-		
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -125,7 +120,7 @@
 											</select>
 										</div>
 									</div>
-		
+
 									<div class="row file">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -136,7 +131,7 @@
 											<input type="file" name="file" required="">
 										</div>
 									</div>
-		
+
 									<div class="row link hidden">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -144,11 +139,10 @@
 											</div>
 										</div>
 										<div class="col-lg-12">
-											<textarea class="input-field" rows="4" name="link"
-												placeholder="{{ $langg->lang696 }}"></textarea>
+											<textarea class="input-field" rows="4" name="link" placeholder="{{ $langg->lang696 }}"></textarea>
 										</div>
 									</div>
-		
+
 
 									<div class="row">
 										<div class="col-lg-12">
@@ -160,14 +154,14 @@
 												<div class="feature-tag-top-filds" id="license-section">
 													<div class="license-area">
 														<span class="remove license-remove"><i class="fas fa-times"></i></span>
-															<div  class="row">
-															   <div class="col-lg-6">
-																  <input type="text" name="license[]" class="input-field" placeholder="{{ $langg->lang698 }}" required="">
-																</div>
-																<div class="col-lg-6">
-																   <input type="number" min="1" name="license_qty[]" class="input-field" placeholder="{{ $langg->lang699 }}" value="1">
-																</div>
-														   </div>
+														<div class="row">
+															<div class="col-lg-6">
+																<input type="text" name="license[]" class="input-field" placeholder="{{ $langg->lang698 }}" required="">
+															</div>
+															<div class="col-lg-6">
+																<input type="number" min="1" name="license_qty[]" class="input-field" placeholder="{{ $langg->lang699 }}" value="1">
+															</div>
+														</div>
 													</div>
 												</div>
 
@@ -192,9 +186,9 @@
 											</div>
 										</div>
 									</div>
-		
-		
-		
+
+
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -209,19 +203,18 @@
 											</div>
 										</div>
 									</div>
-		
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="checkbox-wrapper">
-												<input type="checkbox" name="seo_check" class="checkclick" id="allowProductSEO"
-													value="1">
+												<input type="checkbox" name="seo_check" class="checkclick" id="allowProductSEO" value="1">
 												<label for="allowProductSEO">{{ $langg->lang683 }}</label>
 											</div>
 										</div>
 									</div>
-		
-		
-		
+
+
+
 									<div class="showbox">
 										<div class="row">
 											<div class="col-lg-12">
@@ -234,7 +227,7 @@
 												</ul>
 											</div>
 										</div>
-		
+
 										<div class="row">
 											<div class="col-lg-12">
 												<div class="left-area">
@@ -245,15 +238,14 @@
 											</div>
 											<div class="col-lg-12">
 												<div class="text-editor">
-													<textarea name="meta_description" class="input-field"
-														placeholder="{{ $langg->lang685 }}"></textarea>
+													<textarea name="meta_description" class="input-field" placeholder="{{ $langg->lang685 }}"></textarea>
 												</div>
 											</div>
 										</div>
 									</div>
-		
-	
-		
+
+
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -262,11 +254,10 @@
 											</div>
 										</div>
 										<div class="col-lg-12">
-											<input type="text" class="input-field" placeholder="{{ $langg->lang701 }}"
-												name="platform">
+											<input type="text" class="input-field" placeholder="{{ $langg->lang701 }}" name="platform">
 										</div>
 									</div>
-		
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -275,11 +266,10 @@
 											</div>
 										</div>
 										<div class="col-lg-12">
-											<input type="text" class="input-field" placeholder="{{ $langg->lang702 }}"
-												name="region">
+											<input type="text" class="input-field" placeholder="{{ $langg->lang702 }}" name="region">
 										</div>
 									</div>
-		
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -288,35 +278,34 @@
 											</div>
 										</div>
 										<div class="col-lg-12">
-											<input type="text" class="input-field" placeholder="{{ $langg->lang703 }}"
-												name="licence_type">
+											<input type="text" class="input-field" placeholder="{{ $langg->lang703 }}" name="licence_type">
 										</div>
 									</div>
 									<input type="hidden" name="type" value="License">
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
-		
+
 											</div>
 										</div>
 										<div class="col-lg-12 text-center">
 											<button class="addProductSubmit-btn" type="submit">{{ $langg->lang690 }}</button>
 										</div>
 									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-lg-4">
-			<div class="add-product-content">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="product-description">
-							<div class="body-area">
-		
-		
+			<div class="col-lg-4">
+				<div class="add-product-content">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="product-description">
+								<div class="body-area">
+
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -325,26 +314,22 @@
 										</div>
 										<div class="col-lg-12">
 											<div class="img-upload custom-image-upload">
-												<div id="image-preview" class="img-preview"
-													style="background: url({{ asset('assets/vendor/images/upload.png') }});">
-													<label for="image-upload" class="img-label" id="image-label"><i
-															class="icofont-upload-alt"></i>{{ $langg->lang512 }}</label>
-													<input type="file" name="photo" class="img-upload-p" id="image-upload"
-														required>
+												<div id="image-preview" class="img-preview" style="background: url({{ asset('assets/vendor/images/upload.png') }});">
+													<label for="image-upload" class="img-label" id="image-label"><i class="icofont-upload-alt"></i>{{ $langg->lang512 }}</label>
+													<input type="file" name="photo" class="img-upload-p" id="image-upload" required>
 												</div>
 												<p class="img-alert mt-2 text-danger d-none"></p>
 												<p class="text">
 													{{ isset($langg->lang805) ? $langg->lang805 : 'Prefered Size: (800x800) or Square Size.' }}
 												</p>
 											</div>
-		
+
 										</div>
 									</div>
-		
-		
-		
-									<input type="file" name="gallery[]" class="hidden" id="uploadgallery" accept="image/*"
-										multiple>
+
+
+
+									<input type="file" name="gallery[]" class="hidden" id="uploadgallery" accept="image/*" multiple>
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -359,7 +344,7 @@
 											</a>
 										</div>
 									</div>
-		
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -372,11 +357,10 @@
 											</div>
 										</div>
 										<div class="col-lg-12">
-											<input name="price" step="0.1" type="number" class="input-field"
-												placeholder="{{ $langg->lang666 }}" required="" min="0">
+											<input name="price" step="0.1" type="number" class="input-field" placeholder="{{ $langg->lang666 }}" required="" min="0">
 										</div>
 									</div>
-		
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -385,8 +369,7 @@
 											</div>
 										</div>
 										<div class="col-lg-12">
-											<input name="previous_price" step="0.1" type="number" class="input-field"
-												placeholder="{{ $langg->lang666 }}" min="0">
+											<input name="previous_price" step="0.1" type="number" class="input-field" placeholder="{{ $langg->lang666 }}" min="0">
 										</div>
 									</div>
 									<div class="row">
@@ -395,34 +378,31 @@
 												<div class="left-area">
 													<h4 class="heading">{{ $langg->lang686 }}</h4>
 												</div>
-		
+
 												<div class="feature-tag-top-filds" id="feature-section">
 													<div class="feature-area">
 														<span class="remove feature-remove"><i class="fas fa-times"></i></span>
 														<div class="row">
 															<div class="col-lg-6">
-																<input type="text" name="features[]" class="input-field"
-																	placeholder="{{ $langg->lang687 }}">
+																<input type="text" name="features[]" class="input-field" placeholder="{{ $langg->lang687 }}">
 															</div>
-		
+
 															<div class="col-lg-6">
 																<div class="input-group colorpicker-component cp">
-																	<input type="text" name="colors[]" value="#000000"
-																		class="input-field cp" />
+																	<input type="text" name="colors[]" value="#000000" class="input-field cp" />
 																	<span class="input-group-addon"><i></i></span>
 																</div>
 															</div>
 														</div>
 													</div>
 												</div>
-		
-												<a href="javascript:;" id="feature-btn" class="add-fild-btn"><i
-														class="icofont-plus"></i> {{ $langg->lang688 }}</a>
+
+												<a href="javascript:;" id="feature-btn" class="add-fild-btn"><i class="icofont-plus"></i> {{ $langg->lang688 }}</a>
 											</div>
 										</div>
 									</div>
-		
-		
+
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -434,17 +414,17 @@
 											</ul>
 										</div>
 									</div>
-		
-									
-								
+
+
+
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</form>
+	</form>
 </div>
 
 <div class="modal fade" id="setgallery" tabindex="-1" role="dialog" aria-labelledby="setgallery" aria-hidden="true">
@@ -465,8 +445,7 @@
 							</div>
 						</div>
 						<div class="col-sm-6">
-							<a href="javascript:;" class="upload-done" data-dismiss="modal"> <i
-									class="fas fa-check"></i> {{ $langg->lang621 }}</a>
+							<a href="javascript:;" class="upload-done" data-dismiss="modal"> <i class="fas fa-check"></i> {{ $langg->lang621 }}</a>
 						</div>
 						<div class="col-sm-12 text-center">( <small>{{ $langg->lang622 }}</small> )</div>
 					</div>
@@ -494,20 +473,20 @@
 <script type="text/javascript">
 	// Gallery Section Insert
 
-	$(document).on('click', '.remove-img', function () {
+	$(document).on('click', '.remove-img', function() {
 		var id = $(this).find('input[type=hidden]').val();
 		$('#galval' + id).remove();
 		$(this).parent().parent().remove();
 	});
 
-	$(document).on('click', '#prod_gallery', function () {
+	$(document).on('click', '#prod_gallery', function() {
 		$('#uploadgallery').click();
 		$('.selected-image .row').html('');
 		$('#geniusform').find('.removegal').val(0);
 	});
 
 
-	$("#uploadgallery").change(function () {
+	$("#uploadgallery").change(function() {
 		var total_file = document.getElementById("uploadgallery").files.length;
 		for (var i = 0; i < total_file; i++) {
 			$('.selected-image .row').append('<div class="col-sm-6">' +
