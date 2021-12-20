@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '2f3835f9edc8f1e076734713012c67ee5811a42a',
+        'reference' => 'b229717f649ba1049d11f58ab0a0eedac575bb14',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -446,12 +446,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '2f3835f9edc8f1e076734713012c67ee5811a42a',
+            'reference' => 'b229717f649ba1049d11f58ab0a0eedac575bb14',
             'dev_requirement' => false,
         ),
         'laravel/socialite' => array(
