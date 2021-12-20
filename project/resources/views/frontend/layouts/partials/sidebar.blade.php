@@ -1,6 +1,5 @@
 <div class="top-bar bg-light py-2 text-center col-lg-12 col-sm-12 col-12 font-weight-bold">
   FREE SHIPPING ON ALL CASES ORDERS OVER "amount"
-
 </div>
 
 <div class="Sidebar_test">
@@ -19,7 +18,14 @@
     <div class="Sidebar_menu">
       <div class="menu_items"><img src="/img/shopping-bag (1).png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('user/shop')}}" class="menu_item_text">SHOP</a></div>
     </div>
+
+    @foreach($categories as $category)
     <div class="Sidebar_menu">
+      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('user/energy-drinks')}}" class="menu_item_text">{{$category->name}}</a>
+      </div>
+    </div>
+    @endforeach
+    <!-- <div class="Sidebar_menu">
       <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('user/energy-drinks')}}" class="menu_item_text">ENERGY
           DRINKS</a>
       </div>
@@ -37,7 +43,7 @@
       <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('user/bcca-drinks')}}" class="menu_item_text">BCAA
           DRINKS</a>
       </div>
-    </div>
+    </div> -->
     <div class="Sidebar_menu">
       <div class="menu_items"><img src="/img/story-removebg-preview.png" alt="" style="height: 25px; margin-top: 30px"><a href="#" class="menu_item_text">STORY</a></div>
     </div>
