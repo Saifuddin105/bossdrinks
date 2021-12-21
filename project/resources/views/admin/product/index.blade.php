@@ -6,7 +6,7 @@
 						<div class="mr-breadcrumb">
 							<div class="row">
 								<div class="col-lg-12">
-										<h4 class="heading">{{ route('admin-prod-datatables') }} {{ __("Products") }}</h4>
+										<h4 class="heading"> {{ __("Products") }}</h4>
 										<ul class="links">
 											<li>
 												<a href="{{ route('admin.dashboard') }}">{{ __("Dashboard") }} </a>
@@ -204,7 +204,7 @@
 			   ordering: false,
                processing: true,
                serverSide: true,
-               ajax: '{{ route('admin-prod-datatables') }}',
+               ajax: 'https://bossdrinks.com/admin/products/datatables',
                columns: [
                         { data: 'name', name: 'name' },
                         { data: 'type', name: 'type' },
