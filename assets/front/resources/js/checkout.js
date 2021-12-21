@@ -27,14 +27,26 @@ const CalculetedPrice2 = document.querySelector(".button-30_price_2")
 if (CalculetedPrice2) CalculetedPrice2.innerHTML = "&#163; 8.49"
 
 Smallbox1?.addEventListener("change", (event) => {
-    console.log("asdads")
-    console.log(event.target.checked)
+  
     if (event.target.checked = true) {
         CalculetedPrice2.innerHTML = "&#163;" + 2 * 8.49
     }
     else {
         CalculetedPrice2.innerHTML = "&#163;" + 8.49
     }
+
+    const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+    let cartIndx
+    if (oldData?.productDetails?.length > 0) {
+        oldData.productDetails.filter((item, itemIndx) => {
+            if (item.id === 3) {
+                cartIndx = itemIndx
+            }
+        })
+        oldData.productDetails[cartIndx].amount=oldData.productDetails[cartIndx].amount+()
+    }
+
+    console.log(cartIndx)
 })
 
 Smallbox2.addEventListener("change", (event) => {

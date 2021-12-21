@@ -66,7 +66,7 @@
                 <h3 id="drinktitle " style="">ENERGY BOSS
                     ORIGINAL</h3>
                 <!-- <p style="font-size: 19px;
-                                                                                                                                                                                                                                                            font-weight: 700;">&euro;30.36</p> -->
+                                                                                                                                                                                                                                                                    font-weight: 700;">&euro;30.36</p> -->
             </div>
 
             <!-- accordion1 starts -->
@@ -164,7 +164,7 @@
             <div class="no_contract_text">
                 <h3
                     style="font-size: 16px;
-                                                                                                                                                                                                                                                            font-weight: 400;">
+                                                                                                                                                                                                                                                                    font-weight: 400;">
                     No
                     contract
                     &#8226
@@ -278,7 +278,8 @@
                         <label for="smallboxradio2">
                             <div class="smallBOX" id="smallbox2">
                                 <div class="radiodetails">
-                                    <input type="radio" id="smallboxradio2" name="fav_language" value="HTML">
+                                    <input type="radio" id="smallboxradio2" name="fav_language" value="HTML"
+                                        >
                                     <label for="smallboxradio2" class="cans">3 cases</label>
                                 </div>
                                 <p>&#128 8.49 each</p>
@@ -338,15 +339,15 @@
 
                 </div>
                 <!-- <div>
-                                                                                                                                                                                                                                                                            <div class="select">
-                                                                                                                                                                                                                                                                                <select>
-                                                                                                                                                                                                                                                                                    <option value="1">Every 3 Week(s)</option>
-                                                                                                                                                                                                                                                                                    <option value="2">Every 6 Week(s)</option>
-                                                                                                                                                                                                                                                                                    <option value="3">Every 9 Weeks'(s)</option>
-                                                                                                                                                                                                                                                                                </select>
-                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                    <div class="select">
+                                                                                                                                                                                                                                                                                        <select>
+                                                                                                                                                                                                                                                                                            <option value="1">Every 3 Week(s)</option>
+                                                                                                                                                                                                                                                                                            <option value="2">Every 6 Week(s)</option>
+                                                                                                                                                                                                                                                                                            <option value="3">Every 9 Weeks'(s)</option>
+                                                                                                                                                                                                                                                                                        </select>
+                                                                                                                                                                                                                                                                                    </div>
 
-                                                                                                                                                                                                                                                                        </div> -->
+                                                                                                                                                                                                                                                                                </div> -->
 
             </div>
 
@@ -2248,7 +2249,7 @@
                 forbidden.</p>
             <p>Develeped By TATAMAX LIMITED</p>
             <!-- <h3>Maintained By</h3>
-                                                                                                                                                                                                                                                                    <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
+                                                                                                                                                                                                                                                                            <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
         </div>
 
 
@@ -2534,7 +2535,7 @@
                 forbidden.</p>
             <p>Develeped By TATAMAX LIMITED</p>
             <!-- <h3>Maintained By</h3>
-                                                                                                                                                                                                                                                                    <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
+                                                                                                                                                                                                                                                                            <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
         </div>
 
         <div class="payment_method">
@@ -2927,7 +2928,7 @@
         const calculateTotalAmount = () => {
             let totalAmount = 0
             const oldData = JSON.parse(localStorage.getItem('cartDetails'))
-            if (oldData?.productDetails.length > 0) {
+            if (oldData.productDetails.length > 0) {
                 const showTotalAmount = document.getElementById('show-total-amount')
                 const totalAmountOfPerProduct = document.querySelectorAll('.per-product-total')
                 for (let i = 0; i < totalAmountOfPerProduct.length; i++) {
@@ -2986,6 +2987,19 @@
             calculateTotalAmount()
 
         }
+
+        // const bulkProductIncrement = () => {
+        //     const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+        //     let cartIndx
+        //     if (oldData?.productDetails?.length > 0) {
+        //         oldData.productDetails.filter((item, itemIndx) => {
+        //             if (itemIndx === 3) {
+        //                 cartIndx = itemIndx
+        //             }
+        //         })
+        //     }
+        //     console.log(cartIndx)
+        // }
     </script>>
 
 
