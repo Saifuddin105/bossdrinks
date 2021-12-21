@@ -1,6 +1,6 @@
 const First_cart_button = document.getElementById("FirstBOX_btn")
 
-// const cart_sidebar = document.querySelector(".addtocart_sidebar")
+const cart_sidebar = document.querySelector(".addtocart_sidebar")
 
 
 
@@ -13,30 +13,30 @@ const First_cart_button = document.getElementById("FirstBOX_btn")
 
 // })
 
-function addToCart(id, type, unitprice) {
-    cart_sidebar.style.right = "0px";
-    let energybossdb = localStorage.getItem('energybossdb')
-    if (!energybossdb) {
-        localStorage.setItem('energybossdb', JSON.stringify({}))
-        energybossdb = {}
-    } else {
-        energybossdb = JSON.parse(energybossdb)
-    }
-    // if not create a new one
+// function addToCart(id, type, unitprice) {
+//     cart_sidebar.style.right = "0px";
+//     let energybossdb = localStorage.getItem('energybossdb')
+//     if (!energybossdb) {
+//         localStorage.setItem('energybossdb', JSON.stringify({}))
+//         energybossdb = {}
+//     } else {
+//         energybossdb = JSON.parse(energybossdb)
+//     }
+//     // if not create a new one
 
-    {
-        cart: [
-            { id: 1, type: 'subscription', unitprice: 5, quantity: 1 },
-            { id: 1, type: 'ónetime', unitprice: 10, quantity: '' }
-        ]
-    }
+//     {
+//         cart: [
+//             { id: 1, type: 'subscription', unitprice: 5, quantity: 1 },
+//             { id: 1, type: 'ónetime', unitprice: 10, quantity: '' }
+//         ]
+//     }
 
-    // if ()
+//     // if ()
 
-    // if exists, check if the product id and type already exists
-    // if product exists, then quantity + 1
-    // if not product exists, then add new item with quantity select value
-}
+//     // if exists, check if the product id and type already exists
+//     // if product exists, then quantity + 1
+//     // if not product exists, then add new item with quantity select value
+// }
 
 const CalculetedPrice1 = document.querySelector(".button-30_price")
 CalculetedPrice1?.innerHTML = "&#163; 7.46"
