@@ -1,4 +1,4 @@
-// const First_cart_button = document.getElementById("FirstBOX_btn")
+const First_cart_button = document.getElementById("FirstBOX_btn")
 
 // const cart_sidebar = document.querySelector(".addtocart_sidebar")
 
@@ -6,6 +6,39 @@
 
 
 
+
+
+// First_cart_button.addEventListener("click", e => {
+//     cart_sidebar.style.right = "0px";
+
+// })
+
+function addToCart(id, type, unitprice) {
+    cart_sidebar.style.right = "0px";
+    console.log('çlicked on cart', id, type, unitprice)
+    // check if addtocartdb already exists in localstorage
+    let energybossdb = localStorage.getItem('energybossdb')
+    if (!energybossdb) {
+        localStorage.setItem('energybossdb', JSON.stringify({}))
+        energybossdb = {}
+    } else {
+        energybossdb = JSON.parse(energybossdb)
+    }
+    // if not create a new one
+
+    {
+        cart: [
+            { id: 1, type: 'subscription', unitprice: 5, quantity: 1 },
+            { id: 1, type: 'ónetime', unitprice: 10, quantity: '' }
+        ]
+    }
+
+    // if ()
+
+    // if exists, check if the product id and type already exists
+    // if product exists, then quantity + 1
+    // if not product exists, then add new item with quantity select value
+}
 
 const CalculetedPrice1 = document.querySelector(".button-30_price")
 if (CalculetedPrice1) CalculetedPrice1.innerHTML = "&#163; 7.46"

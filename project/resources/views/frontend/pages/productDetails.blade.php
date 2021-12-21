@@ -221,7 +221,7 @@
 
                         <div class="addtocart-btn">
 
-                            <button class="button-30" id="FirstBOX_btn" onclick="addCartItem(1, 'subscription', 7.46)">
+                            <button class="button-30" id="FirstBOX_btn" onclick="addCart(1, 'subscription', 7.46)">
                                 <h4 class="button-30_price">&#163;7.46</h4><i class="fa fa-shopping-cart"></i> Add
                                 To
                                 cart
@@ -245,7 +245,7 @@
                     </div>
                     <div class="addtocart-btn">
 
-                        <button class="button-30" role="button" onclick="addCartItem(2, 'one-time-purchase', 7.46)"><i
+                        <button class="button-30" role="button" onclick="addCart(2, 'one-time-purchase', 7.46)"><i
                                 class="fa fa-shopping-cart"></i>Add To
                             cart</button>
                     </div>
@@ -312,7 +312,7 @@
                     <div class="addtocart-btn">
 
                         <button class="button-30" id="button-30_2" role="button"
-                            onclick="addCartItem(3, 'bulk-purchase', 7.46)">
+                            onclick="addCart(3, 'bulk-purchase', 7.46)">
                             <h4 class="button-30_price_2">&#163;8.49</h4><i class="fa fa-shopping-cart"></i> Add
                             To
                             cart
@@ -2795,6 +2795,214 @@
 
 @push('script')
 
-   
+    <script>
+        window.onload = () => {
+            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+            const cartItems = document.getElementById('cart-items');
+            if (oldData?.productDetails?.length > 0) {
+                calculateTotalAmount()
+                for (let i = 0; i < oldData.productDetails.length; i++) {
+                    let addCart = ""
+                    addCart += "<div class='FirstBOX' id='test_" + i + "'>";
+                    addCart += "<div class='FirstBOX_content'>";
+                    addCart += "<div class='FirstBOX_img'>";
+                    addCart += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
+                    addCart += "</div>";
+                    addCart += " <div class='count_plus_text'>";
+                    addCart += "<div class='count_text'>";
+                    addCart += "<p>" + oldData.productDetails[i].title + "</p>";
+                    addCart += "<h4>" + oldData.productDetails[i].deliveryTitle + "</h4>";
+                    addCart += "</div>";
+                    addCart += "<div class='counterBOX'>";
+                    addCart += " <button onclick='quantityDecrement(" + i + ")'>-</button>";
+                    addCart += "<h4 id='ROOT' class='root'>" + oldData.productDetails[i].quantity + "</h4>";
+                    addCart += "<button onclick='quantityIncrement(" + i + ")'>+</button>";
+                    addCart += "<div class='amount'>";
+                    addCart +=
+                        "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
+                        oldData.productDetails[i].totalAmount.toFixed(2) + "</span></h4>";
+                    addCart += "<button onclick='closeItem(event," + i + ")'>&#10006;</button>";
+                    addCart += "</div>";
+                    addCart += "</div>";
+                    addCart += "</div>";
+                    addCart += "</div>";
+                    addCart += "</div>";
+                    cartItems.insertAdjacentHTML("beforeend", addCart);
+                }
+            }
+        }
+        const addCart = (id, type, unitPrice) => {
+            console.log(typeof(unitPrice))
+            calculateTotalAmount()
+            cart_sidebar.style.right = "0px";
+            const cartItems = document.getElementById('cart-items');
+            const setData = `{
+                    "productDetails": [],
+                    "subTotal": 0
+                }`
+            if (localStorage.getItem("cartDetails") === null) {
+                localStorage.setItem('cartDetails', setData)
+            }
+
+
+            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+            let items
+            const itemDetails = {
+                'id': id,
+                'title': id === 1 ? 'Energy Boss Subscription' : id === 2 ? 'Energy Boss' : id === 3 ?
+                    'Energy Boss Bulk' : '',
+                'deliveryTitle': 'Delivered every 30 days',
+                'quantity': 0,
+                'totalAmount': 0,
+                'type': type
+            }
+            if (oldData?.productDetails.length < 1) {
+                oldData?.productDetails.push(itemDetails)
+                let addCart = ""
+                addCart += "<div class='FirstBOX' id='test_0'>";
+                addCart += "<div class='FirstBOX_content'>";
+                addCart += "<div class='FirstBOX_img'>";
+                addCart += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
+                addCart += "</div>";
+                addCart += " <div class='count_plus_text'>";
+                addCart += "<div class='count_text'>";
+                addCart += "<p>" + itemDetails.title + "</p>";
+                addCart += "<h4>" + itemDetails.deliveryTitle + "</h4>";
+                addCart += "</div>";
+                addCart += "<div class='counterBOX'>";
+                addCart += " <button onclick='quantityDecrement(0)'>-</button>";
+                addCart += "<h4 id='ROOT' class='root'>" + itemDetails.quantity + "</h4>";
+                addCart += "<button onclick='quantityIncrement(0)'>+</button>";
+                addCart += "<div class='amount'>";
+                addCart +=
+                    "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
+                    (itemDetails.totalAmount + unitPrice).toFixed(2) + "</span></h4>";
+                addCart += "<button onclick='closeItem(event,0)'>&#10006;</button>";
+                addCart += "</div>";
+                addCart += "</div>";
+                addCart += "</div>";
+                addCart += "</div>";
+                addCart += "</div>";
+                cartItems.insertAdjacentHTML("beforeend", addCart);
+            } else {
+                const existItem = oldData.productDetails.find(function(post, index) {
+                    if (post.id == id)
+                        return true;
+                });
+                const itemIndx = oldData.productDetails.findIndex((element, index) => {
+                    if (element.id === id) {
+                        return true
+                    }
+                })
+               
+                if (!existItem) {
+                    oldData.productDetails.push(itemDetails)
+                    let addCart = ""
+                    addCart += "<div class='FirstBOX' id='test_" + (oldData.productDetails.length - 1) + "'>";
+                    addCart += "<div class='FirstBOX_content'>";
+                    addCart += "<div class='FirstBOX_img'>";
+                    addCart += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
+                    addCart += "</div>";
+                    addCart += " <div class='count_plus_text'>";
+                    addCart += "<div class='count_text'>";
+                    addCart += "<p>" + itemDetails.title + "</p>";
+                    addCart += "<h4>" + itemDetails.deliveryTitle + "</h4>";
+                    addCart += "</div>";
+                    addCart += "<div class='counterBOX'>";
+                    addCart += " <button onclick='quantityDecrement(" + (oldData.productDetails.length - 1) +
+                        ")'>-</button>";
+                    addCart += "<h4 id='ROOT' class='root'>" + 1 + "</h4>";
+                    addCart += "<button onclick='quantityIncrement(" + (oldData.productDetails.length - 1) +
+                        ")'>+</button>";
+                    addCart += "<div class='amount'>";
+                    addCart +=
+                        "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
+                        unitPrice.toFixed(2) + "</span></h4>"; + "</span></h4>";
+                    addCart += "<button onclick='closeItem(event," + (oldData.productDetails.length - 1) +
+                        ")'>&#10006;</button>";
+                    addCart += "</div>";
+                    addCart += "</div>";
+                    addCart += "</div>";
+                    addCart += "</div>";
+                    addCart += "</div>";
+                    cartItems.insertAdjacentHTML("beforeend", addCart);
+                    oldData.productDetails[oldData.productDetails.length - 1].totalAmount = oldData.productDetails[
+                        oldData.productDetails.length - 1].totalAmount + unitPrice
+                    oldData.productDetails[oldData.productDetails.length - 1].quantity = oldData.productDetails[oldData
+                        .productDetails.length - 1].quantity + 1
+
+                } else {
+                    oldData.productDetails[itemIndx].totalAmount = oldData.productDetails[
+                        itemIndx].totalAmount + unitPrice
+                    oldData.productDetails[itemIndx].quantity = oldData.productDetails[itemIndx].quantity + 1
+                    quantityIncrement(itemIndx)
+                }
+            }
+            localStorage.setItem('cartDetails', JSON.stringify(oldData))
+        }
+
+        const calculateTotalAmount = () => {
+            let totalAmount = 0
+            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+            if (oldData?.productDetails.length > 0) {
+                const showTotalAmount = document.getElementById('show-total-amount')
+                const totalAmountOfPerProduct = document.querySelectorAll('.per-product-total')
+                for (let i = 0; i < totalAmountOfPerProduct.length; i++) {
+                    totalAmount = totalAmount + parseInt(totalAmountOfPerProduct[i].innerText)
+                }
+                showTotalAmount.innerText = totalAmount
+                oldData.subTotal = totalAmount
+                localStorage.setItem('cartDetails', JSON.stringify(oldData))
+            }
+        }
+
+        const closeItem = (event, itemId) => {
+            event.preventDefault();
+            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+            oldData.productDetails.splice(itemId, 1)
+            localStorage.setItem('cartDetails', JSON.stringify(oldData))
+            document.getElementById("test_" + itemId).remove()
+            calculateTotalAmount()
+        }
+
+        const quantityIncrement = (id) => {
+            const increments = document.querySelectorAll('.root')
+            const totalAmount = document.querySelectorAll('.per-product-total')
+            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+            const productDetails = oldData.productDetails[id]
+
+            productDetails.quantity = productDetails.quantity + 1
+            productDetails.totalAmount = productDetails.totalAmount + 7.49
+            increments[id].innerText = productDetails.quantity
+            totalAmount[id].innerText = productDetails.totalAmount.toFixed(2)
+            localStorage.removeItem('cartDetails')
+            localStorage.setItem('cartDetails', JSON.stringify(oldData))
+            calculateTotalAmount()
+        }
+
+        const quantityDecrement = (id) => {
+            const increments = document.querySelectorAll('.root')
+            const totalAmount = document.querySelectorAll('.per-product-total')
+            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+            const productDetails = oldData.productDetails[id]
+            if (productDetails.quantity > 0) {
+                productDetails.quantity = productDetails.quantity - 1
+                productDetails.totalAmount = productDetails.totalAmount - 7.49
+                if (productDetails.totalAmount < 1) {
+                    totalAmount[id].innerText = 0
+                    productDetails.totalAmount=0
+                } else {
+                    totalAmount[id].innerText = productDetails.totalAmount.toFixed(2)
+                }
+                increments[id].innerText = productDetails.quantity
+
+
+                localStorage.removeItem('cartDetails')
+                localStorage.setItem('cartDetails', JSON.stringify(oldData))
+            }
+            calculateTotalAmount()
+
+        }
+    </script>
 
 @endpush

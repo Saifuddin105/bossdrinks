@@ -133,12 +133,12 @@ $isDev = isset($_GET['dev']) ? true : false;
         <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'category') active @endif">
             <a href="{{ route('admin-cat-index') }}"><span>{{ __('Main Category') }}</span></a>
         </li>
-        <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'subcategory') active @endif">
+        <!-- <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'subcategory') active @endif">
             <a href="{{ route('admin-subcat-index') }}"><span>{{ __('Sub Category') }}</span></a>
         </li>
         <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'childcategory') active @endif">
             <a href="{{ route('admin-childcat-index') }}"><span>{{ __('Child Category') }}</span></a>
-        </li>
+        </li> -->
     </ul>
 </li>
 
@@ -386,11 +386,11 @@ $isDev = isset($_GET['dev']) ? true : false;
     <a href="{{ route('admin-staff-index') }}" class=" wave-effect"><i class="fas fa-user-secret"></i>{{ __('Manage Staffs') }}</a>
 </li>
 @endif
-{{-- @if ($isDev) --}}
+
 <li>
     <a href="{{ route('admin-subs-index') }}" class=" wave-effect"><i class="fas fa-users-cog mr-2"></i>{{ __('Subscribers') }}</a>
 </li>
-{{-- @endif --}}
+
 @if ($isDev)
 <li>
     <a href="{{ route('admin-role-index') }}" class=" wave-effect"><i class="fas fa-user-tag"></i>{{ __('Manage Roles') }}</a>
