@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
             }));
 
             $settings->with('categories', cache()->remember('categories', now()->addDay(), function () {
-                return Category::with('subs')->where('status', '=', 1)->get();
+                return Category::where('status', '=', 1)->get();
             }));
 
             if (Session::has('language')) {

@@ -1,5 +1,9 @@
 <?php
 
+if (env('APP_ENV') === 'production')  {
+    URL::forceScheme('https');
+}
+
 // ************************************ ADMIN SECTION **********************************************
 
 Route::prefix('admin')->group(function () {

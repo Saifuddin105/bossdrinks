@@ -167,6 +167,11 @@ class ProductController extends Controller
         return view('admin.product.index');
     }
 
+    public function categoryProduct($cat)
+    {
+        echo $cat;
+    }
+
     //*** GET Request
     public function deactive()
     {
