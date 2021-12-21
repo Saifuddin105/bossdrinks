@@ -261,6 +261,9 @@ $isDev = isset($_GET['dev']) ? true : false;
         <li>
             <a href="{{ route('admin-sl-index') }}"><span>{{ __('Sliders') }}</span></a>
         </li>
+
+@if ($isDev)
+
         <li>
             <a href="{{ route('admin-service-index') }}"><span>{{ __('Services') }}</span></a>
         </li>
@@ -287,11 +290,10 @@ $isDev = isset($_GET['dev']) ? true : false;
         <li>
             <a href="{{ route('admin-partner-index') }}"><span>{{ __('Partners') }}</span></a>
         </li>
-
-
         <li>
             <a href="{{ route('admin-ps-customize') }}"><span>{{ __('Home Page Customization') }}</span></a>
         </li>
+@endif
     </ul>
 </li>
 
@@ -385,11 +387,11 @@ $isDev = isset($_GET['dev']) ? true : false;
     <a href="{{ route('admin-staff-index') }}" class=" wave-effect"><i class="fas fa-user-secret"></i>{{ __('Manage Staffs') }}</a>
 </li>
 @endif
-@if ($isDev)
+
 <li>
     <a href="{{ route('admin-subs-index') }}" class=" wave-effect"><i class="fas fa-users-cog mr-2"></i>{{ __('Subscribers') }}</a>
 </li>
-@endif
+
 @if ($isDev)
 <li>
     <a href="{{ route('admin-role-index') }}" class=" wave-effect"><i class="fas fa-user-tag"></i>{{ __('Manage Roles') }}</a>
