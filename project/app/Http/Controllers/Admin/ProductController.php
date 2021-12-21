@@ -31,6 +31,8 @@ class ProductController extends Controller
     public function datatables()
     {
         //--- Integrating This Collection Into Datatables
+        // $user = Auth::user();
+        $datas = Product::where('product_type','normal')->orderBy('id','desc')->get();
         return Datatables::of($datas)
             ->editColumn('name', function (Product $data) {
                 $name =  mb_strlen($data->name, 'UTF-8') > 50 ? mb_substr($data->name, 0, 50, 'UTF-8') . '...' : $data->name;
