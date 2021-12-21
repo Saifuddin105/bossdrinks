@@ -1,3 +1,8 @@
+<?php
+$isDev = isset($_GET['dev']) ? true : false;
+?>
+<!-- SOME CARDS ARE HIDDEN, ONLY SHOW WHEN URL PARAM ?dev=true -->
+
 @extends('layouts.admin')
 
 @section('content')
@@ -11,7 +16,7 @@
         <h3 class="text-center">{!! $activation_notify !!}</h3>
     </div>
     @endif
-    
+
     @if(Session::has('cache'))
 
     <div class="alert alert-success validation">
@@ -68,6 +73,9 @@
                 </div>
             </div>
         </div>
+
+        @if ($isDev)
+
         <div class="col-md-12 col-lg-6 col-xl-4">
             <div class="mycard bg4">
                 <div class="left">
@@ -111,7 +119,12 @@
             </div>
         </div>
 
+        @endif
+
     </div>
+
+    @if ($isDev)
+
 
     <div class="row row-cards-one">
         <div class="col-md-6 col-xl-3">
@@ -199,7 +212,7 @@
                 <div class="card">
                         <h5 class="card-header">{{ __('Recent Customer(s)') }}</h5>
                         <div class="card-body">
-        
+
                             <div class="my-table-responsiv">
                                 <table class="table table-hover dt-responsive" cellspacing="0" width="100%">
                                     <thead>
@@ -221,7 +234,7 @@
                                     </thead>
                                 </table>
                             </div>
-        
+
                         </div>
                     </div>
         </div>
@@ -233,7 +246,7 @@
                     <div class="card">
                             <h5 class="card-header">{{ __('Popular Product(s)') }}</h5>
                             <div class="card-body">
-            
+
                                 <div class="table-responsiv  dashboard-home-table">
                                     <table id="poproducts" class="table table-hover dt-responsive" cellspacing="0" width="100%">
                                         <thead>
@@ -244,7 +257,7 @@
                                                 <th>{{ __('Type') }}</th>
                                                 <th>{{ __('Price') }}</th>
                                                 <th></th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -278,9 +291,9 @@
                                 </div>
                             </div>
                         </div>
-    
+
             </div>
-    
+
         </div>
 
     <div class="row row-cards-one">
@@ -289,7 +302,7 @@
                     <div class="card">
                             <h5 class="card-header">{{ __('Recent Product(s)') }}</h5>
                             <div class="card-body">
-            
+
                                 <div class="table-responsiv dashboard-home-table">
                                     <table id="pproducts" class="table table-hover dt-responsive" cellspacing="0" width="100%">
                                             <thead>
@@ -300,7 +313,7 @@
                                                         <th>{{ __('Type') }}</th>
                                                         <th>{{ __('Price') }}</th>
                                                         <th></th>
-                                                        
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -330,12 +343,12 @@
                                                 </tbody>
                                     </table>
                                 </div>
-            
+
                             </div>
                         </div>
-    
+
             </div>
-    
+
         </div>
 
     <div class="row row-cards-one">
@@ -366,7 +379,7 @@
                     <div class="admin-fix-height-card">
                          <div id="chartContainer-topReference"></div>
                     </div>
-                       
+
                 </div>
             </div>
 
@@ -376,18 +389,20 @@
                 <div class="card">
                         <h5 class="card-header">{{ __('Most Used OS') }}</h5>
                         <div class="card-body">
-<div class="admin-fix-height-card">
+        <div class="admin-fix-height-card">
                         <div id="chartContainer-os"></div>
-</div>
+        </div>
                         </div>
                     </div>
         </div>
-        
+
     </div>
 
 
 
 </div>
+
+@endif
 
 @endsection
 
@@ -422,7 +437,7 @@
     }
 
 
-    
+
 </script>
 
 <script type="text/javascript">
@@ -520,7 +535,7 @@
                     }
                 ]
             });
-        chart.render();    
+        chart.render();
 </script>
 
 @endsection
