@@ -127,7 +127,7 @@
   <div><a href="bcca.html">SPORT-BCCA </a></div> -->
   @foreach($categories as $category)
   <div>
-    <a href="{{route('front.category.product', $category->id)}}">{{$category->name}}</a>
+    <a href="{{route('front.category', $category->id)}}">{{$category->name}}</a>
   </div>
   @endforeach
 
