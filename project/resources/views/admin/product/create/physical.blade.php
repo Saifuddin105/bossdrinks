@@ -25,7 +25,7 @@
 						<a href="{{ route('admin-prod-index') }}">{{ __('All Products') }}</a>
 					</li>
 					<li>
-						<a href="{{ route('admin-prod-types') }}">{{ __('Add Product') }}</a>
+						<a href="{{ route('admin-prod-physical-create') }}">{{ __('Add Product') }}</a>
 					</li>
 					<li>
 						<a href="{{ route('admin-prod-physical-create') }}">{{ __(' Product') }}</a>
@@ -110,7 +110,7 @@
 											</select>
 										</div>
 									</div>
-									<!-- 		
+									<!--
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -123,7 +123,7 @@
 											</select>
 										</div>
 									</div>
-		
+
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -136,18 +136,18 @@
 											</select>
 										</div>
 									</div>
-		
-		
+
+
 									<div id="catAttributes"></div>
 									<div id="subcatAttributes"></div>
 									<div id="childcatAttributes"></div>
-		
-		
-		
+
+
+
 			 -->
 
 
-
+<!--
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -162,7 +162,7 @@
 												</li>
 											</ul>
 										</div>
-									</div>
+									</div> -->
 
 
 
@@ -188,14 +188,14 @@
 
 											</div>
 										</div>
-										<div class="col-lg-12">
+										<!-- <div class="col-lg-12">
 											<ul class="list">
 												<li>
 													<input name="size_check" type="checkbox" id="size-check" value="1">
 													<label for="size-check">{{ __('Allow Product Sizes') }}</label>
 												</li>
 											</ul>
-										</div>
+										</div> -->
 									</div>
 									<div class="showbox" id="size-display">
 										<div class="row">
@@ -247,17 +247,17 @@
 
 											</div>
 										</div>
-										<div class="col-lg-12">
+										<!-- <div class="col-lg-12">
 											<ul class="list">
 												<li>
 													<input class="checkclick1" name="color_check" type="checkbox" id="check3" value="1">
 													<label for="check3">{{ __('Allow Product Colors') }}</label>
 												</li>
 											</ul>
-										</div>
+										</div> -->
 									</div>
 
-									<div class="showbox">
+									<!-- <div class="showbox">
 
 										<div class="row">
 											<div class="col-lg-12">
@@ -284,9 +284,9 @@
 											</div>
 										</div>
 
-									</div>
+									</div> -->
 
-									<div class="row">
+									<!-- <div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
 
@@ -300,7 +300,7 @@
 												</li>
 											</ul>
 										</div>
-									</div>
+									</div> -->
 
 									<div class="showbox">
 										<div class="row">
