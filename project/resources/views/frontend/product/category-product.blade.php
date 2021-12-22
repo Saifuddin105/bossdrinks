@@ -69,77 +69,20 @@
         <div class="container more_info" style="margin-top: 100px;">
             <h2>More Information</h2>
             <div class="accordion_moreinfo">
+                @foreach($faqs as $faq)
                 <div class="item">
                     <div class="title_moreinfo">
-                        HOW MUCH CAFFEINE DO ENERGY BOSS DRINK CONTAIN ?
+                        {{$faq->title}}
                     </div>
                     <div class="icon_moreinfo">
                         +
                     </div>
                     <div class="desc">
-                        <p>Our Energy Boss Drink contain 30mg of caffeine per 100ml.<br>We advise that all
-                            energy
-                            driks are
-                            consumed in moderation.<br>The maximum daily consumption of caffeine for adults os
-                            400mg(other
-                            than pregnant women or people sensetive to caffeine).</p>
+                        <p>{{$faq->details}}</p>
                     </div>
 
                 </div>
-                <div class="item">
-                    <div class="title_moreinfo">
-                        ARE ENERGY BOSS DRINKS SUITABLE FOR VEGETARIANS ?
-                    </div>
-                    <div class="icon_moreinfo">
-                        +
-                    </div>
-                    <div class="desc">
-                        <p>All our Energy Boss Drinks are suitable for vegetarians.</p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="title_moreinfo">
-                        IS ENERGY BOSS DRINK GLUTEN FREE ?
-                    </div>
-                    <div class="icon_moreinfo">
-                        +
-                    </div>
-                    <div class="desc">
-                        <p>Yes, all our energy drinks are gluten free, so they are suitable for those with
-                            gluten
-                            intolerence.
-                        </p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="title_moreinfo">
-                        IS ENERGY BOSS DRINK DAIRY FREE?
-                    </div>
-                    <div class="icon_moreinfo">
-                        +
-                    </div>
-                    <div class="desc">
-                        <p>Yes, our Energy Boss Drinks are dairy free</p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="title_moreinfo">
-                        ADVISORY
-                    </div>
-                    <div class="icon_moreinfo">
-                        +
-                    </div>
-                    <div class="desc">
-                        <p>High caffeine content.Not recommended for children or pregnant or breast-feeding
-                            women.
-                            Consume
-                            Moderately. Not to be consumed by under 18.</p>
-                    </div>
-
-                </div>
+                @endforeach
             </div>
 
         </div>

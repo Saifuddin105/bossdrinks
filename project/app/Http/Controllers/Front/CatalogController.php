@@ -45,13 +45,14 @@ class CatalogController extends Controller
     {
 
         if (!empty($slug)) {
+            $faqs = DB::table('faqs')->orderBy('id', 'desc')->get();
             $cat = Category::where('id', $slug)->firstOrFail();
             $products = DB::table('products')
                 ->where('category_id', '<>', $slug)
                 ->limit(3)
                 ->get();
 
-            return view('frontend.product.category-product', compact('products', 'cat'));
+            return view('frontend.product.category-product', compact('products', 'cat', 'faqs'));
         }
 
         // if (Session::has('currency')) {

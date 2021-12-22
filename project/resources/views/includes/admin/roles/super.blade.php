@@ -296,7 +296,7 @@ $isDev = isset($_GET['dev']) ? true : false;
     </ul>
 </li>
 
-@if ($isDev)
+
 <li>
     <a href="#menu" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
         <i class="fas fa-file-code"></i>{{ __('Menu Page Settings') }}
@@ -305,15 +305,15 @@ $isDev = isset($_GET['dev']) ? true : false;
         <li>
             <a href="{{ route('admin-faq-index') }}"><span>{{ __('FAQ Page') }}</span></a>
         </li>
-        <li>
+        <!-- <li>
             <a href="{{ route('admin-ps-contact') }}"><span>{{ __('Contact Us Page') }}</span></a>
         </li>
         <li>
             <a href="{{ route('admin-page-index') }}"><span>{{ __('Other Pages') }}</span></a>
-        </li>
+        </li> -->
     </ul>
 </li>
-@endif
+
 @if ($isDev)
 <li>
     <a href="#emails" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
@@ -350,7 +350,7 @@ $isDev = isset($_GET['dev']) ? true : false;
     </ul>
 </li>
 
-@if ($isDev)
+
 <li>
     <a href="#langs" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
         <i class="fas fa-language"></i>{{ __('Language Settings') }}
@@ -362,7 +362,7 @@ $isDev = isset($_GET['dev']) ? true : false;
 
     </ul>
 </li>
-@endif
+
 @if ($isDev)
 <li>
     <a href="#seoTools" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
