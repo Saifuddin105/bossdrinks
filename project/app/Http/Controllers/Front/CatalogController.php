@@ -44,12 +44,16 @@ class CatalogController extends Controller
     public function category(Request $request, $slug = null, $slug1 = null, $slug2 = null)
     {
 
-        $products = DB::table('products')
-            ->where('category_id', '<>', $slug)
-            ->limit(3)
-            ->get();
+        if (!empty($slug)) {
+            $cat = Category::where('id', $slug)->firstOrFail();
+            $products = DB::table('products')
+                ->where('category_id', '<>', $slug)
+                ->limit(3)
+                ->get();
 
-        return view('frontend.product.category-product', compact('products'));
+            return view('frontend.product.category-product', compact('products', 'cat'));
+        }
+
         // if (Session::has('currency')) {
         //     $curr = Currency::find(Session::get('currency'));
         // } else {

@@ -8,7 +8,7 @@
 @section('content')
 
     <div class="prdct_details_heading">
-        <h4>Energy BOSS Original</h4>
+        <h4>{{$cat->name}}</h4>
     </div>
 
     <div class="product_details_complete">
