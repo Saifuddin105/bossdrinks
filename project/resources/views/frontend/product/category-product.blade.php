@@ -15,6 +15,7 @@
 
 
 
+    @foreach ($products as $product)
 
         <div class="card card2">
             <div class="productdisplayimgBOX">
@@ -23,12 +24,13 @@
                 </a>
             </div>
             <div class="product_display_contentbox">
-                <h4>Energy BOSS Original</h4>
-                <h4 class="price">&#128 40.<small>99</small></h4>
-                <a href="firstproduct.html" class="buy">Veiw Details</a>
-            </div>
+        <h4>{{$product->name}}</h4>
+        <h4 class="price">&#128 {{$product->price}}</h4>
+        <a href="{{route('front.product', $product->slug)}}" class="buy">Veiw Details</a>
+      </div>
         </div>
-        <div class="card card2">
+        @endforeach
+        <!-- <div class="card card2">
             <div class="productdisplayimgBOX">
                 <a href="secondproduct.html">
                     <img src="/img/PDSEnergy Boss Original Red.png" alt="comething">
@@ -57,7 +59,7 @@
 
 
 
-        </div>
+        </div> -->
 
 
     </div>
