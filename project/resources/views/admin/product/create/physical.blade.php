@@ -339,13 +339,13 @@
 												<p class="sub-heading">{{ __('(Leave Empty will Show Always Available)') }}</p>
 											</div>
 										</div>
-										<div class="col-lg-12">
+										<!-- <div class="col-lg-12">
 											<input name="stock" type="text" class="input-field" placeholder="{{ __('e.g 20') }}">
 											<div class="checkbox-wrapper">
 												<input type="checkbox" name="measure_check" class="checkclick" id="allowProductMeasurement" value="1">
 												<label for="allowProductMeasurement">{{ __('Allow Product Measurement') }}</label>
 											</div>
-										</div>
+										</div> -->
 									</div>
 
 
