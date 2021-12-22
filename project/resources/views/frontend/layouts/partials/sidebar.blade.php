@@ -21,7 +21,8 @@
 
     @foreach($categories as $category)
     <div class="Sidebar_menu">
-      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('user/energy-drinks')}}" class="menu_item_text">{{$category->name}}</a>
+      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px">
+      <a href="{{route('front.category', $category->id)}}" class="menu_item_text">{{$category->name}}</a>
       </div>
     </div>
     @endforeach
