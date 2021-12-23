@@ -66,7 +66,7 @@
                 <h3 id="drinktitle " style="">ENERGY BOSS
                     ORIGINAL</h3>
                 <!-- <p style="font-size: 19px;
-                                                                                                                                                                                                                                                                    font-weight: 700;">&euro;30.36</p> -->
+                                                                                                                                                                                                                                                                                                                                                        font-weight: 700;">&euro;30.36</p> -->
             </div>
 
             <!-- accordion1 starts -->
@@ -164,7 +164,7 @@
             <div class="no_contract_text">
                 <h3
                     style="font-size: 16px;
-                                                                                                                                                                                                                                                                    font-weight: 400;">
+                                                                                                                                                                                                                                                                                                                                                        font-weight: 400;">
                     No
                     contract
                     &#8226
@@ -268,7 +268,7 @@
                         <label for="smallboxradio1">
                             <div class="smallBOX" id="smallbox1">
                                 <div class="radiodetails">
-                                    <input type="radio" id="smallboxradio1" name="fav_language" value="HTML">
+                                    <input type="radio" id="smallboxradio1" name="fav_language" value="HTML" checked>
                                     <label for="html" class="cans">2 cases</label>
                                 </div>
                                 <p>&#128 8.49 each</p>
@@ -278,8 +278,7 @@
                         <label for="smallboxradio2">
                             <div class="smallBOX" id="smallbox2">
                                 <div class="radiodetails">
-                                    <input type="radio" id="smallboxradio2" name="fav_language" value="HTML"
-                                        >
+                                    <input type="radio" id="smallboxradio2" name="fav_language" value="HTML">
                                     <label for="smallboxradio2" class="cans">3 cases</label>
                                 </div>
                                 <p>&#128 8.49 each</p>
@@ -313,7 +312,7 @@
                     <div class="addtocart-btn">
 
                         <button class="button-30" id="button-30_2" role="button"
-                            onclick="addCartItem(3, 'bulk-purchase', 7.46)">
+                            onclick="addCartItem(3, 'bulk-purchase', 8.49)">
                             <h4 class="button-30_price_2">&#163;8.49</h4><i class="fa fa-shopping-cart"></i> Add
                             To
                             cart
@@ -339,15 +338,15 @@
 
                 </div>
                 <!-- <div>
-                                                                                                                                                                                                                                                                                    <div class="select">
-                                                                                                                                                                                                                                                                                        <select>
-                                                                                                                                                                                                                                                                                            <option value="1">Every 3 Week(s)</option>
-                                                                                                                                                                                                                                                                                            <option value="2">Every 6 Week(s)</option>
-                                                                                                                                                                                                                                                                                            <option value="3">Every 9 Weeks'(s)</option>
-                                                                                                                                                                                                                                                                                        </select>
-                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                        <div class="select">
+                                                                                                                                                                                                                                                                                                                                                                            <select>
+                                                                                                                                                                                                                                                                                                                                                                                <option value="1">Every 3 Week(s)</option>
+                                                                                                                                                                                                                                                                                                                                                                                <option value="2">Every 6 Week(s)</option>
+                                                                                                                                                                                                                                                                                                                                                                                <option value="3">Every 9 Weeks'(s)</option>
+                                                                                                                                                                                                                                                                                                                                                                            </select>
+                                                                                                                                                                                                                                                                                                                                                                        </div>
 
-                                                                                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                                                                                                                                                                    </div> -->
 
             </div>
 
@@ -2249,7 +2248,7 @@
                 forbidden.</p>
             <p>Develeped By TATAMAX LIMITED</p>
             <!-- <h3>Maintained By</h3>
-                                                                                                                                                                                                                                                                            <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
+                                                                                                                                                                                                                                                                                                                                                                <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
         </div>
 
 
@@ -2535,7 +2534,7 @@
                 forbidden.</p>
             <p>Develeped By TATAMAX LIMITED</p>
             <!-- <h3>Maintained By</h3>
-                                                                                                                                                                                                                                                                            <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
+                                                                                                                                                                                                                                                                                                                                                                <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
         </div>
 
         <div class="payment_method">
@@ -2773,6 +2772,7 @@
         </div>
 
     </div>
+    <div id="snackbar"></div>
 
 
 @endsection
@@ -2780,14 +2780,86 @@
 
 @push('script')
     <script>
+        const CalculetedPrice1 = document.querySelector(".button-30_price")
+        let subScribeCases = 1
+        if (CalculetedPrice1) CalculetedPrice1.innerHTML = "&#163; 7.46"
+
+        function getSelectedVAlue(event) {
+            const selectedText = Number(event.target.options[event.target.selectedIndex].textContent)
+            subScribeCases = selectedText
+
+
+            CalculetedPrice1.innerHTML = "&#163;" + selectedText * 7.46
+        }
+
+        const Smallbox1 = document.getElementById("smallboxradio1")
+        const Smallbox2 = document.getElementById("smallboxradio2")
+        const Smallbox3 = document.getElementById("smallboxradio3")
+        let bulkCases = 2
+        const CalculetedPrice2 = document.querySelector(".button-30_price_2")
+        if (CalculetedPrice2) CalculetedPrice2.innerHTML = "&#163; 8.49"
+
+        Smallbox1?.addEventListener("change", (event) => {
+            bulkCases = 2
+
+            if (event.target.checked = true) {
+                CalculetedPrice2.innerHTML = "&#163;" + 2 * 8.49
+
+            } else {
+                CalculetedPrice2.innerHTML = "&#163;" + 8.49
+            }
+
+        })
+
+        Smallbox2.addEventListener("change", (event) => {
+            bulkCases = 3
+            if (event.target.checked = true) {
+                CalculetedPrice2.innerHTML = "&#163;" + 3 * 8.49
+            } else {
+                CalculetedPrice2.innerHTML = "&#163;" + 8.49
+            }
+        })
+
+        
+        Smallbox3.addEventListener("change", (event) => {
+            bulkCases = 4
+            if (event.target.checked = true) {
+                CalculetedPrice2.innerHTML = "&#163;" + 4 * 8.49
+            } else {
+                CalculetedPrice2.innerHTML = "&#163;" + 8.49
+            }
+        })
+
+        const Small_selectBOx = document.getElementById("small_select_box")
+
+
+        function getSmallSelectedValue(event) {
+            const selectedText2 = Number(event.target.options[event.target.selectedIndex].textContent)
+            smallboxradio3.checked = true
+            bulkCases = selectedText2
+            CalculetedPrice2.innerHTML = "&#163;" + selectedText2 * 8.49
+
+        }
+
+
+
+
+        const setData = `{
+            "productDetails": [],
+            "subTotal": 0
+        }`
+        if (localStorage.getItem("cartDetails") === null) {
+            localStorage.setItem('cartDetails', setData)
+        }
+
+        const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+
         window.onload = () => {
-            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
             const cartItems = document.getElementById('cart-items');
             if (oldData?.productDetails?.length > 0) {
-                calculateTotalAmount()
                 for (let i = 0; i < oldData.productDetails.length; i++) {
                     let addCartItem = ""
-                    addCartItem += "<div class='FirstBOX' id='test_" + i + "'>";
+                    addCartItem += "<div class='FirstBOX' id='box_" + oldData.productDetails[i].productId + "'>";
                     addCartItem += "<div class='FirstBOX_content'>";
                     addCartItem += "<div class='FirstBOX_img'>";
                     addCartItem += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
@@ -2798,52 +2870,51 @@
                     addCartItem += "<h4>" + oldData.productDetails[i].deliveryTitle + "</h4>";
                     addCartItem += "</div>";
                     addCartItem += "<div class='counterBOX'>";
-                    addCartItem += " <button onclick='cartQuantityDecrement(" + i + ")'>-</button>";
+                    addCartItem += " <button onclick='cartQuantityDecrement(" + i + "," + oldData.productDetails[i]
+                        .productPrice + ")'>-</button>";
                     addCartItem += "<h4 id='ROOT' class='root'>" + oldData.productDetails[i].quantity + "</h4>";
-                    addCartItem += "<button onclick='cartQuantityIncrement(" + i + ")'>+</button>";
+                    addCartItem += "<button onclick='cartQuantityIncrement(" + i + "," + oldData.productDetails[i]
+                        .productPrice + ")'>+</button>";
                     addCartItem += "<div class='amount'>";
                     addCartItem +=
                         "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
                         oldData.productDetails[i].totalAmount.toFixed(2) + "</span></h4>";
-                    addCartItem += "<button onclick='closeCartItem(event," + i + ")'>&#10006;</button>";
+                    addCartItem += "<button onclick='closeCartItem(event," + oldData.productDetails[i].productId +
+                        ")'>&#10006;</button>";
                     addCartItem += "</div>";
                     addCartItem += "</div>";
                     addCartItem += "</div>";
                     addCartItem += "</div>";
                     addCartItem += "</div>";
                     cartItems.insertAdjacentHTML("beforeend", addCartItem);
+
                 }
             }
         }
-        const addCartItem = (id, type, unitPrice) => {
-            console.log(typeof(unitPrice))
-            calculateTotalAmount()
+        const addCartItem = (productId, type, unitPrice) => {
             cart_sidebar.style.right = "0px";
             const cartItems = document.getElementById('cart-items');
-            const setData = `{
-            "productDetails": [],
-            "subTotal": 0
-        }`
-            if (localStorage.getItem("cartDetails") === null) {
-                localStorage.setItem('cartDetails', setData)
-            }
-
-
-            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
             let items
             const itemDetails = {
-                'id': id,
-                'title': id === 1 ? 'Energy Boss Subscription' : id === 2 ? 'Energy Boss' : id === 3 ?
+                'productId': productId,
+                'title': type === 'subscription' ? 'Energy Boss Subscription' : type === 'one-time-purchase' ?
+                    'Energy Boss' : type ===
+                    'bulk-purchase' ?
                     'Energy Boss Bulk' : '',
                 'deliveryTitle': 'Delivered every 30 days',
-                'quantity': 0,
-                'totalAmount': 0,
+                'quantity': type === 'subscription' ? subScribeCases : type === 'one-time-purchase' ? 1 : type ===
+                    'bulk-purchase' ? bulkCases : 1,
+                'productPrice': unitPrice,
+                'totalAmount': type === 'subscription' ? unitPrice * subScribeCases : type === 'one-time-purchase' ?
+                    unitPrice : type ===
+                    'bulk-purchase' ? unitPrice *
+                    bulkCases : 0,
                 'type': type
             }
             if (oldData?.productDetails.length < 1) {
                 oldData?.productDetails.push(itemDetails)
                 let addCartItem = ""
-                addCartItem += "<div class='FirstBOX' id='test_0'>";
+                addCartItem += "<div class='FirstBOX' id='box_" + itemDetails.productId + "'>";
                 addCartItem += "<div class='FirstBOX_content'>";
                 addCartItem += "<div class='FirstBOX_img'>";
                 addCartItem += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
@@ -2854,35 +2925,46 @@
                 addCartItem += "<h4>" + itemDetails.deliveryTitle + "</h4>";
                 addCartItem += "</div>";
                 addCartItem += "<div class='counterBOX'>";
-                addCartItem += " <button onclick='cartQuantityDecrement(0)'>-</button>";
+                addCartItem += " <button onclick='cartQuantityDecrement(0," + itemDetails.productPrice +
+                    ")'>-</button>";
                 addCartItem += "<h4 id='ROOT' class='root'>" + itemDetails.quantity + "</h4>";
-                addCartItem += "<button onclick='cartQuantityIncrement(0)'>+</button>";
+                addCartItem += "<button onclick='cartQuantityIncrement(0," + itemDetails.productPrice + ")'>+</button>";
                 addCartItem += "<div class='amount'>";
                 addCartItem +=
                     "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
-                    (itemDetails.totalAmount + unitPrice).toFixed(2) + "</span></h4>";
-                addCartItem += "<button onclick='closeCartItem(event,0)'>&#10006;</button>";
+                    itemDetails.totalAmount.toFixed(2) + "</span></h4>";
+                addCartItem += "<button onclick='closeCartItem(event," + itemDetails.productId + ")'>&#10006;</button>";
                 addCartItem += "</div>";
                 addCartItem += "</div>";
                 addCartItem += "</div>";
                 addCartItem += "</div>";
                 addCartItem += "</div>";
                 cartItems.insertAdjacentHTML("beforeend", addCartItem);
+                calculateTotalAmount()
             } else {
-                const existItem = oldData.productDetails.find(function(post, index) {
-                    if (post.id == id)
+                const existItem = oldData.productDetails.find(function(item, index) {
+                    if (item.productId === productId)
                         return true;
                 });
-                const itemIndx = oldData.productDetails.findIndex((element, index) => {
-                    if (element.id === id) {
+                const productIndx = oldData.productDetails.findIndex((element, index) => {
+                    if (element.productId === productId) {
                         return true
                     }
                 })
 
-                if (!existItem) {
+                const existSubscribed = oldData.productDetails.find(function(item, index) {
+                    if (item.type === 'subscription')
+                        return true;
+                });
+                console.log(existSubscribed)
+                if (!existItem && !existSubscribed) {
+                    if(type ==='subscription'){
+                    handleSnackBar('You have to cancel all cart to add subscribe.')
+                    return 0    
+                    }
                     oldData.productDetails.push(itemDetails)
                     let addCartItem = ""
-                    addCartItem += "<div class='FirstBOX' id='test_" + (oldData.productDetails.length - 1) + "'>";
+                    addCartItem += "<div class='FirstBOX' id='box_" + itemDetails.productId + "'>";
                     addCartItem += "<div class='FirstBOX_content'>";
                     addCartItem += "<div class='FirstBOX_img'>";
                     addCartItem += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
@@ -2894,15 +2976,15 @@
                     addCartItem += "</div>";
                     addCartItem += "<div class='counterBOX'>";
                     addCartItem += " <button onclick='cartQuantityDecrement(" + (oldData.productDetails.length - 1) +
-                        ")'>-</button>";
-                    addCartItem += "<h4 id='ROOT' class='root'>" + 1 + "</h4>";
+                        "," + itemDetails.productPrice + ")'>-</button>";
+                    addCartItem += "<h4 id='ROOT' class='root'>" + itemDetails.quantity + "</h4>";
                     addCartItem += "<button onclick='cartQuantityIncrement(" + (oldData.productDetails.length - 1) +
-                        ")'>+</button>";
+                        "," + itemDetails.productPrice + ")'>+</button>";
                     addCartItem += "<div class='amount'>";
                     addCartItem +=
                         "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
-                        unitPrice.toFixed(2) + "</span></h4>"; + "</span></h4>";
-                    addCartItem += "<button onclick='closeCartItem(event," + (oldData.productDetails.length - 1) +
+                        itemDetails.totalAmount.toFixed(2) + "</span></h4>"; + "</span></h4>";
+                    addCartItem += "<button onclick='closeCartItem(event," + itemDetails.productId +
                         ")'>&#10006;</button>";
                     addCartItem += "</div>";
                     addCartItem += "</div>";
@@ -2910,16 +2992,12 @@
                     addCartItem += "</div>";
                     addCartItem += "</div>";
                     cartItems.insertAdjacentHTML("beforeend", addCartItem);
-                    oldData.productDetails[oldData.productDetails.length - 1].totalAmount = oldData.productDetails[
-                        oldData.productDetails.length - 1].totalAmount + unitPrice
-                    oldData.productDetails[oldData.productDetails.length - 1].quantity = oldData.productDetails[oldData
-                        .productDetails.length - 1].quantity + 1
-
-                } else {
-                    oldData.productDetails[itemIndx].totalAmount = oldData.productDetails[
-                        itemIndx].totalAmount + unitPrice
-                    oldData.productDetails[itemIndx].quantity = oldData.productDetails[itemIndx].quantity + 1
-                    cartQuantityIncrement(itemIndx)
+                }
+                else if(existSubscribed && type!=='subscription') {
+                    handleSnackBar('One Subscription already exist.Please complete the transaction first.')
+                }
+                else {
+                    bulkProductIncrement(productIndx, oldData.productDetails[productIndx].productPrice)
                 }
             }
             localStorage.setItem('cartDetails', JSON.stringify(oldData))
@@ -2927,58 +3005,67 @@
 
         const calculateTotalAmount = () => {
             let totalAmount = 0
-            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
-            if (oldData.productDetails.length > 0) {
-                const showTotalAmount = document.getElementById('show-total-amount')
+            const showTotalAmount = document.getElementById('show-total-amount')
+            if (oldData?.productDetails?.length > 0) {
                 const totalAmountOfPerProduct = document.querySelectorAll('.per-product-total')
                 for (let i = 0; i < totalAmountOfPerProduct.length; i++) {
-                    totalAmount = totalAmount + parseInt(totalAmountOfPerProduct[i].innerText)
+                    totalAmount += parseInt(totalAmountOfPerProduct[i].innerText)
                 }
-                showTotalAmount.innerText = totalAmount
                 oldData.subTotal = totalAmount
+                showTotalAmount.innerText = totalAmount
+            } else {
+                showTotalAmount.innerText = 0
+            }
+            localStorage.removeItem('cartDetails')
+            localStorage.setItem('cartDetails', JSON.stringify(oldData))
+
+        }
+
+        const closeCartItem = (event, productId) => {
+            event.preventDefault();
+            const productIndx = oldData.productDetails.findIndex((element, index) => {
+                if (element.productId === productId) {
+                    return true
+                }
+            })
+            oldData.productDetails.splice(productIndx, 1)
+            document.getElementById("box_" + productId).remove()
+            if (oldData?.productDetails?.length < 1) {
+                oldData.subTotal = 0
+            }
+            localStorage.setItem('cartDetails', JSON.stringify(oldData))
+            calculateTotalAmount()
+        }
+
+        const cartQuantityIncrement = (productIndx, price) => {
+            const increments = document.querySelectorAll('.root')
+            const totalAmount = document.querySelectorAll('.per-product-total')
+            const productDetails = oldData.productDetails[productIndx]
+            if (productDetails) {
+                productDetails.quantity += 1
+                productDetails.totalAmount += price
+                increments[productIndx].innerText = productDetails.quantity
+                totalAmount[productIndx].innerText = productDetails.totalAmount.toFixed(2)
+                localStorage.removeItem('cartDetails')
                 localStorage.setItem('cartDetails', JSON.stringify(oldData))
+                calculateTotalAmount()
             }
         }
 
-        const closeCartItem = (event, itemId) => {
-            event.preventDefault();
-            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
-            oldData.productDetails.splice(itemId, 1)
-            localStorage.setItem('cartDetails', JSON.stringify(oldData))
-            document.getElementById("test_" + itemId).remove()
-            calculateTotalAmount()
-        }
-
-        const cartQuantityIncrement = (id) => {
+        const cartQuantityDecrement = (productIndx, price) => {
             const increments = document.querySelectorAll('.root')
             const totalAmount = document.querySelectorAll('.per-product-total')
-            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
-            const productDetails = oldData.productDetails[id]
-
-            productDetails.quantity = productDetails.quantity + 1
-            productDetails.totalAmount = productDetails.totalAmount + 7.49
-            increments[id].innerText = productDetails.quantity
-            totalAmount[id].innerText = productDetails.totalAmount.toFixed(2)
-            localStorage.removeItem('cartDetails')
-            localStorage.setItem('cartDetails', JSON.stringify(oldData))
-            calculateTotalAmount()
-        }
-
-        const cartQuantityDecrement = (id) => {
-            const increments = document.querySelectorAll('.root')
-            const totalAmount = document.querySelectorAll('.per-product-total')
-            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
-            const productDetails = oldData.productDetails[id]
+            const productDetails = oldData.productDetails[productIndx]
             if (productDetails.quantity > 0) {
                 productDetails.quantity = productDetails.quantity - 1
-                productDetails.totalAmount = productDetails.totalAmount - 7.49
+                productDetails.totalAmount = productDetails.totalAmount - price
                 if (productDetails.totalAmount < 1) {
-                    totalAmount[id].innerText = 0
+                    totalAmount[productIndx].innerText = 0
                     productDetails.totalAmount = 0
                 } else {
-                    totalAmount[id].innerText = productDetails.totalAmount.toFixed(2)
+                    totalAmount[productIndx].innerText = productDetails.totalAmount.toFixed(2)
                 }
-                increments[id].innerText = productDetails.quantity
+                increments[productIndx].innerText = productDetails.quantity
 
 
                 localStorage.removeItem('cartDetails')
@@ -2988,18 +3075,41 @@
 
         }
 
-        // const bulkProductIncrement = () => {
-        //     const oldData = JSON.parse(localStorage.getItem('cartDetails'))
-        //     let cartIndx
-        //     if (oldData?.productDetails?.length > 0) {
-        //         oldData.productDetails.filter((item, itemIndx) => {
-        //             if (itemIndx === 3) {
-        //                 cartIndx = itemIndx
-        //             }
-        //         })
-        //     }
-        //     console.log(cartIndx)
-        // }
+        const bulkProductIncrement = (productIndx, price) => {
+            const increments = document.querySelectorAll('.root')
+            const totalAmount = document.querySelectorAll('.per-product-total')
+            const productDetails = oldData.productDetails[productIndx]
+            if (productDetails) {
+                if (productDetails.type === 'subscription') {
+                    productDetails.quantity = subScribeCases
+                    productDetails.totalAmount = price * subScribeCases
+                    increments[productIndx].innerText = subScribeCases
+                    totalAmount[productIndx].innerText = price * subScribeCases.toFixed(2)
+                } else if (productDetails.type === 'bulk-purchase') {
+                    productDetails.quantity = bulkCases
+                    productDetails.totalAmount = (price * bulkCases)
+                    increments[productIndx].innerText = bulkCases
+                    totalAmount[productIndx].innerText = price * bulkCases.toFixed(2)
+                } else {
+                    productDetails.quantity += 1
+                    productDetails.totalAmount += price
+                    increments[productIndx].innerText = productDetails?.quantity
+                    totalAmount[productIndx].innerText = productDetails?.totalAmount.toFixed(2)
+                }
+                localStorage.removeItem('cartDetails')
+                localStorage.setItem('cartDetails', JSON.stringify(oldData))
+                calculateTotalAmount()
+            }
+        }
+
+        const handleSnackBar = (message) => {
+            var x = document.getElementById("snackbar");
+            x.innerHTML = message
+            x.className = "show";
+            setTimeout(function() {
+                x.className = x.className.replace("show", "");
+            }, 3000);
+        }
     </script>>
 
 
