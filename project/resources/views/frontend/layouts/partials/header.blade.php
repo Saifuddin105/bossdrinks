@@ -19,7 +19,7 @@
       <button id="searchbtn" class="navbar-btn" type="button">
         <i class="fas fa-search"></i>
       </button>
-      <a href="user_account.html"><button id="userbtn" class="navbar-btn" type="button">
+      <a href="{{route('user.login')}}"><button id="userbtn" class="navbar-btn" type="button">
           <i class="fas fa-user"></i>
         </button></a>
       <a href="cart.html"> <button id="cart-btn" class="navbar-btn " type="button">
