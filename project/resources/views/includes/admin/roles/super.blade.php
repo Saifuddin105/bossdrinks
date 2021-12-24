@@ -59,7 +59,7 @@ $isDev = isset($_GET['dev']) ? true : false;
     </ul>
 </li>
 @endif
-@if ($isDev)
+
 <li>
     <a href="#menu3" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
         <i class="icofont-user"></i>{{ __('Customers') }}
@@ -68,15 +68,15 @@ $isDev = isset($_GET['dev']) ? true : false;
         <li>
             <a href="{{ route('admin-user-index') }}"><span>{{ __('Customers List') }}</span></a>
         </li>
-        <li>
+        <!-- <li>
             <a href="{{ route('admin-withdraw-index') }}"><span>{{ __('Withdraws') }}</span></a>
-        </li>
+        </li> -->
         <li>
             <a href="{{ route('admin-user-image') }}"><span>{{ __('Customer Default Image') }}</span></a>
         </li>
     </ul>
 </li>
-@endif
+
 @if ($isDev)
 <li>
     <a href="#vendor" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">

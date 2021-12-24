@@ -19,7 +19,8 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         $this->code_image();
-        return view('user.login');
+
+        return view('frontend.auth.login');
     }
 
     public function login(Request $request)

@@ -25,6 +25,9 @@
       <a href="cart.html"> <button id="cart-btn" class="navbar-btn " type="button">
           <i class="cart-btn fas fa-shopping-cart"></i>
         </button></a>
+        @if(Auth::user())
+        <a href="{{route('user-logout')}}"> Log Out</a>
+        @endif
 
     </div>
 
