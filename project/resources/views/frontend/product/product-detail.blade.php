@@ -2853,10 +2853,12 @@
         }
 
         const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+        const showTotalAmount = document.getElementById('show-total-amount')
 
         window.onload = () => {
             const cartItems = document.getElementById('cart-items');
             if (oldData?.productDetails?.length > 0) {
+                showTotalAmount.innerText=oldData.sub
                 for (let i = 0; i < oldData.productDetails.length; i++) {
                     let addCartItem = ""
                     addCartItem += "<div class='FirstBOX' id='box_" + oldData.productDetails[i].productId + "'>";
@@ -3005,7 +3007,6 @@
 
         const calculateTotalAmount = () => {
             let totalAmount = 0
-            const showTotalAmount = document.getElementById('show-total-amount')
             if (oldData?.productDetails?.length > 0) {
                 const totalAmountOfPerProduct = document.querySelectorAll('.per-product-total')
                 for (let i = 0; i < totalAmountOfPerProduct.length; i++) {
