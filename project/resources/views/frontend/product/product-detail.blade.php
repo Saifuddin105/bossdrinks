@@ -234,87 +234,13 @@
           <p>Pause, skip and cancel anytime</p>
         </div>
 
-        <div class="selectbox_firstproduct">
-          <div>
-            <select name="1" id="selectBOX_1" style="color:black;" onchange="getSelectedVAlue(event)">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-              <option>11</option>
-            </select>
-            <small>Cases Delivered every</small>
-
-            <select name="30" id="">
-              <option>30 </option>
-              <option>45 </option>
-              <option>60 </option>
-            </select> <small>Days</small>
-          </div>
-        </div>
-        <div>
-
-        </div>
-        <div class="cart_button_total">
-
-          <div class="addtocart-btn">
-
-            <button class="button-30" id="FirstBOX_btn" onclick="addToCart(1, 'subscription', 7.46)" role="button">
-              <h4 class="button-30_price">&#163;7.46</h4><i class="fa fa-shopping-cart"></i> Add
-              To
-              cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-    </label>
-
-    <label for="radio2" class="dis-blk">
-      <div class="radioDIV2">
-        <label class="rad-label ">
-          <input id="radio2" type="radio" class="rad-input" name="rad">
-          <div class="rad-design"></div>
-          <div class="rad-text">One-time purchase</div>
-        </label>
-        <p class="product_price">&#163; {{$productt->price}}</p>
-        <div class="small_text small_text_1">
-          <p>Delivered once, reorder when you need</p>
-        </div>
-        <div class="addtocart-btn">
-
-          <button class="button-30" role="button"><i class="fa fa-shopping-cart"></i>Add To
-            cart</button>
-        </div>
-      </div>
-    </label>
-
-    <label for="RADIO" class="dis-blk">
-      <div class="radioDIV2 radioDIV_2">
-        <label class="rad-label ">
-          <input type="radio" class="rad-input" id="RADIO" name="rad">
-          <div class="rad-design"></div>
-          <div class="pdt-price">From <small>&#163; {{$productt->price}}</small> bulk on time</div>
-        </label>
-        <!-- <p class="product_price"></p> -->
-        <div class="small_text">
-          <p>Order in bulk to save, delivered once</p>
-        </div>
-
-        <div class="small_radiobox">
-          <label for="smallboxradio1">
-            <div class="smallBOX" id="smallbox1">
-              <div class="radiodetails">
-                <input type="radio" id="smallboxradio1" name="fav_language" value="HTML">
-                  <label for="html" class="cans">2 cases</label>
-              </div>
-              <p>&#128 {{$productt->price}} each</p>
+        <div class="col-12 col-lg-6">
+            <div class="drinktitleclass">
+                <h3 id="drinktitle " style="">ENERGY BOSS
+                    ORIGINAL</h3>
+                <!-- <p style="font-size: 19px;
+                                                                                                                                                                                                                                                                                                                                                        font-weight: 700;">&euro;30.36</p> -->
+            </div>
 
             </div>
           </label>
@@ -326,28 +252,23 @@
               </div>
               <p>&#128 {{$productt->price}} each</p>
             </div>
-          </label>
-          <label for="smallboxradio3">
-            <div class="smallBOX" id="smallbox3">
-              <div class="radiodetails radiodetails_3">
-                <input type="radio" id="smallboxradio3" name="fav_language" value="HTML">
-                  <label for="html" class="cans">
 
-                  <select name="1" id="small_select_box" onchange="getSmallSelectedValue(event)">
-                    <option>4</option>
-                    <option>6</option>
-                    <option>8</option>
-                    <option>10</option>
-                    <option>12</option>
-                    <option>14</option>
-                    <option>16</option>
-                    <option>18</option>
-                    <option>20</option>
-                  </select>
-                  <small>Cases</small>
-                </label>
-              </div>
-              <p>&#128 {{$productt->price}} each</p>
+            <!-- accordion 2 ends -->
+
+            <div class="no_contract_text">
+                <h3
+                    style="font-size: 16px;
+                                                                                                                                                                                                                                                                                                                                                        font-weight: 400;">
+                    No
+                    contract
+                    &#8226
+                    Free
+                    UK
+                    delivery
+                    &#8226
+                    Cancel
+                    anytime
+                    <h3>
             </div>
           </label>
 
@@ -367,14 +288,42 @@
 
 
 
+                    <div class="small_radiobox">
+                        <label for="smallboxradio1">
+                            <div class="smallBOX" id="smallbox1">
+                                <div class="radiodetails">
+                                    <input type="radio" id="smallboxradio1" name="fav_language" value="HTML" checked>
+                                    <label for="html" class="cans">2 cases</label>
+                                </div>
+                                <p>&#128 8.49 each</p>
 
+                            </div>
+                        </label>
+                        <label for="smallboxradio2">
+                            <div class="smallBOX" id="smallbox2">
+                                <div class="radiodetails">
+                                    <input type="radio" id="smallboxradio2" name="fav_language" value="HTML">
+                                    <label for="smallboxradio2" class="cans">3 cases</label>
+                                </div>
+                                <p>&#128 8.49 each</p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="addtocart-btn">
+
+                        <button class="button-30" id="button-30_2" role="button"
+                            onclick="addCartItem(3, 'bulk-purchase', 8.49)">
+                            <h4 class="button-30_price_2">&#163;8.49</h4><i class="fa fa-shopping-cart"></i> Add
+                            To
+                            cart
+                        </button>
+                    </div>
 
     <!-- radio -->
 
     <!-- select box -->
     <div class=" selectbox">
       <div>
-        <h4 style="font-size: 20px; font-weight: 700;">SUBSCRIPTION EASY<br>FREE
           CANCELLATION ANYTIME
         </h4>
 
@@ -396,16 +345,17 @@
 
     <!-- add to cart -->
 
-    <!-- social media icon -->
-    <div class="socialmedia">
-      <div>
-        <h4 style="margin-top: 20px;">Share BOSS Drinks on social media : </h4>
-      </div>
+                </div>
+                <!-- <div>
+                                                                                                                                                                                                                                                                                                                                                                        <div class="select">
+                                                                                                                                                                                                                                                                                                                                                                            <select>
+                                                                                                                                                                                                                                                                                                                                                                                <option value="1">Every 3 Week(s)</option>
+                                                                                                                                                                                                                                                                                                                                                                                <option value="2">Every 6 Week(s)</option>
+                                                                                                                                                                                                                                                                                                                                                                                <option value="3">Every 9 Weeks'(s)</option>
+                                                                                                                                                                                                                                                                                                                                                                            </select>
+                                                                                                                                                                                                                                                                                                                                                                        </div>
 
-      <div class="icons_socilamedia">
-        <ul>
-          <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                                                                                                                                                                                                                                                                                                                                                    </div> -->
 
           <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
           <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
@@ -1592,6 +1542,21 @@
 
 
 
+        <div class="footer_bottom">
+            <p>©️ BOSS DRINKS LTD. 2017 - 2021.All rights reserved.ENERGY BOSS and the ENERGY BOSS logo are
+                registered
+                trademarks of
+                BOSS DRINKS.BOSS DRINKS LTD. Registered Office: 3-5, Ripple Road, Barking,Essex, IG11 7ND.ENERGY
+                BOSS
+                Limited a Company
+                incorporated in England and Wales under company number: 13264607. VAT Number: GB326621906
+                BOSSDRINKS.COM Online website is owned and provided by BOSS DRINKS Limited -Any reproduction of the
+                contents is strictly
+                forbidden.</p>
+            <p>Develeped By TATAMAX LIMITED</p>
+            <!-- <h3>Maintained By</h3>
+                                                                                                                                                                                                                                                                                                                                                                <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
+        </div>
 
 
 
@@ -1811,13 +1776,20 @@
             includes details about payments to and from you and other details of products
             and services you have purchased from us.</p>
         </div>
-        <div class="data_3rd_tnc_info">
-          <p><span id="span_1">• Technical Data</span>
-            includes internet protocol (IP) address, your login data, browser type and
-            version, time zone setting and location,
-            browser plug-in types and versions, operating system and platform and other technology on
-            the devices you use to access
-            this website.</p>
+        <div class="footer_bottom_mobile">
+            <p>©️ BOSS DRINKS LTD. 2017 - 2021.All rights reserved.ENERGY BOSS and the ENERGY BOSS logo are
+                registered
+                trademarks of
+                BOSS DRINKS.BOSS DRINKS LTD. Registered Office: 3-5, Ripple Road, Barking,Essex, IG11 7ND.ENERGY
+                BOSS
+                Limited a Company
+                incorporated in England and Wales under company number: 13264607. VAT Number: GB326621906
+                BOSSDRINKS.COM Online website is owned and provided by BOSS DRINKS Limited -Any reproduction of the
+                contents is strictly
+                forbidden.</p>
+            <p>Develeped By TATAMAX LIMITED</p>
+            <!-- <h3>Maintained By</h3>
+                                                                                                                                                                                                                                                                                                                                                                <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
         </div>
         <div class="data_3rd_tnc_info">
           <p><span id="span_1">• Profile Data</span>
@@ -2358,6 +2330,7 @@
       </div>
 
     </div>
+    <div id="snackbar"></div>
 
 
 
@@ -2937,5 +2910,339 @@
 </script>
 
 @push('script')
+    <script>
+        const CalculetedPrice1 = document.querySelector(".button-30_price")
+        let subScribeCases = 1
+        if (CalculetedPrice1) CalculetedPrice1.innerHTML = "&#163; 7.46"
+
+        function getSelectedVAlue(event) {
+            const selectedText = Number(event.target.options[event.target.selectedIndex].textContent)
+            subScribeCases = selectedText
+
+
+            CalculetedPrice1.innerHTML = "&#163;" + selectedText * 7.46
+        }
+
+        const Smallbox1 = document.getElementById("smallboxradio1")
+        const Smallbox2 = document.getElementById("smallboxradio2")
+        const Smallbox3 = document.getElementById("smallboxradio3")
+        let bulkCases = 2
+        const CalculetedPrice2 = document.querySelector(".button-30_price_2")
+        if (CalculetedPrice2) CalculetedPrice2.innerHTML = "&#163; 8.49"
+
+        Smallbox1?.addEventListener("change", (event) => {
+            bulkCases = 2
+
+            if (event.target.checked = true) {
+                CalculetedPrice2.innerHTML = "&#163;" + 2 * 8.49
+
+            } else {
+                CalculetedPrice2.innerHTML = "&#163;" + 8.49
+            }
+
+        })
+
+        Smallbox2.addEventListener("change", (event) => {
+            bulkCases = 3
+            if (event.target.checked = true) {
+                CalculetedPrice2.innerHTML = "&#163;" + 3 * 8.49
+            } else {
+                CalculetedPrice2.innerHTML = "&#163;" + 8.49
+            }
+        })
+
+        
+        Smallbox3.addEventListener("change", (event) => {
+            bulkCases = 4
+            if (event.target.checked = true) {
+                CalculetedPrice2.innerHTML = "&#163;" + 4 * 8.49
+            } else {
+                CalculetedPrice2.innerHTML = "&#163;" + 8.49
+            }
+        })
+
+        const Small_selectBOx = document.getElementById("small_select_box")
+
+
+        function getSmallSelectedValue(event) {
+            const selectedText2 = Number(event.target.options[event.target.selectedIndex].textContent)
+            smallboxradio3.checked = true
+            bulkCases = selectedText2
+            CalculetedPrice2.innerHTML = "&#163;" + selectedText2 * 8.49
+
+        }
+
+
+
+
+        const setData = `{
+            "productDetails": [],
+            "subTotal": 0
+        }`
+        if (localStorage.getItem("cartDetails") === null) {
+            localStorage.setItem('cartDetails', setData)
+        }
+
+        const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+        const showTotalAmount = document.getElementById('show-total-amount')
+
+        window.onload = () => {
+            const cartItems = document.getElementById('cart-items');
+            if (oldData?.productDetails?.length > 0) {
+                showTotalAmount.innerText=oldData.sub
+                for (let i = 0; i < oldData.productDetails.length; i++) {
+                    let addCartItem = ""
+                    addCartItem += "<div class='FirstBOX' id='box_" + oldData.productDetails[i].productId + "'>";
+                    addCartItem += "<div class='FirstBOX_content'>";
+                    addCartItem += "<div class='FirstBOX_img'>";
+                    addCartItem += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
+                    addCartItem += "</div>";
+                    addCartItem += " <div class='count_plus_text'>";
+                    addCartItem += "<div class='count_text'>";
+                    addCartItem += "<p>" + oldData.productDetails[i].title + "</p>";
+                    addCartItem += "<h4>" + oldData.productDetails[i].deliveryTitle + "</h4>";
+                    addCartItem += "</div>";
+                    addCartItem += "<div class='counterBOX'>";
+                    addCartItem += " <button onclick='cartQuantityDecrement(" + i + "," + oldData.productDetails[i]
+                        .productPrice + ")'>-</button>";
+                    addCartItem += "<h4 id='ROOT' class='root'>" + oldData.productDetails[i].quantity + "</h4>";
+                    addCartItem += "<button onclick='cartQuantityIncrement(" + i + "," + oldData.productDetails[i]
+                        .productPrice + ")'>+</button>";
+                    addCartItem += "<div class='amount'>";
+                    addCartItem +=
+                        "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
+                        oldData.productDetails[i].totalAmount.toFixed(2) + "</span></h4>";
+                    addCartItem += "<button onclick='closeCartItem(event," + oldData.productDetails[i].productId +
+                        ")'>&#10006;</button>";
+                    addCartItem += "</div>";
+                    addCartItem += "</div>";
+                    addCartItem += "</div>";
+                    addCartItem += "</div>";
+                    addCartItem += "</div>";
+                    cartItems.insertAdjacentHTML("beforeend", addCartItem);
+
+                }
+            }
+        }
+        const addCartItem = (productId, type, unitPrice) => {
+            cart_sidebar.style.right = "0px";
+            const cartItems = document.getElementById('cart-items');
+            let items
+            const itemDetails = {
+                'productId': productId,
+                'title': type === 'subscription' ? 'Energy Boss Subscription' : type === 'one-time-purchase' ?
+                    'Energy Boss' : type ===
+                    'bulk-purchase' ?
+                    'Energy Boss Bulk' : '',
+                'deliveryTitle': 'Delivered every 30 days',
+                'quantity': type === 'subscription' ? subScribeCases : type === 'one-time-purchase' ? 1 : type ===
+                    'bulk-purchase' ? bulkCases : 1,
+                'productPrice': unitPrice,
+                'totalAmount': type === 'subscription' ? unitPrice * subScribeCases : type === 'one-time-purchase' ?
+                    unitPrice : type ===
+                    'bulk-purchase' ? unitPrice *
+                    bulkCases : 0,
+                'type': type
+            }
+            if (oldData?.productDetails.length < 1) {
+                oldData?.productDetails.push(itemDetails)
+                let addCartItem = ""
+                addCartItem += "<div class='FirstBOX' id='box_" + itemDetails.productId + "'>";
+                addCartItem += "<div class='FirstBOX_content'>";
+                addCartItem += "<div class='FirstBOX_img'>";
+                addCartItem += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
+                addCartItem += "</div>";
+                addCartItem += " <div class='count_plus_text'>";
+                addCartItem += "<div class='count_text'>";
+                addCartItem += "<p>" + itemDetails.title + "</p>";
+                addCartItem += "<h4>" + itemDetails.deliveryTitle + "</h4>";
+                addCartItem += "</div>";
+                addCartItem += "<div class='counterBOX'>";
+                addCartItem += " <button onclick='cartQuantityDecrement(0," + itemDetails.productPrice +
+                    ")'>-</button>";
+                addCartItem += "<h4 id='ROOT' class='root'>" + itemDetails.quantity + "</h4>";
+                addCartItem += "<button onclick='cartQuantityIncrement(0," + itemDetails.productPrice + ")'>+</button>";
+                addCartItem += "<div class='amount'>";
+                addCartItem +=
+                    "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
+                    itemDetails.totalAmount.toFixed(2) + "</span></h4>";
+                addCartItem += "<button onclick='closeCartItem(event," + itemDetails.productId + ")'>&#10006;</button>";
+                addCartItem += "</div>";
+                addCartItem += "</div>";
+                addCartItem += "</div>";
+                addCartItem += "</div>";
+                addCartItem += "</div>";
+                cartItems.insertAdjacentHTML("beforeend", addCartItem);
+                calculateTotalAmount()
+            } else {
+                const existItem = oldData.productDetails.find(function(item, index) {
+                    if (item.productId === productId)
+                        return true;
+                });
+                const productIndx = oldData.productDetails.findIndex((element, index) => {
+                    if (element.productId === productId) {
+                        return true
+                    }
+                })
+
+                const existSubscribed = oldData.productDetails.find(function(item, index) {
+                    if (item.type === 'subscription')
+                        return true;
+                });
+                console.log(existSubscribed)
+                if (!existItem && !existSubscribed) {
+                    if(type ==='subscription'){
+                    handleSnackBar('You have to cancel all cart to add subscribe.')
+                    return 0    
+                    }
+                    oldData.productDetails.push(itemDetails)
+                    let addCartItem = ""
+                    addCartItem += "<div class='FirstBOX' id='box_" + itemDetails.productId + "'>";
+                    addCartItem += "<div class='FirstBOX_content'>";
+                    addCartItem += "<div class='FirstBOX_img'>";
+                    addCartItem += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
+                    addCartItem += "</div>";
+                    addCartItem += " <div class='count_plus_text'>";
+                    addCartItem += "<div class='count_text'>";
+                    addCartItem += "<p>" + itemDetails.title + "</p>";
+                    addCartItem += "<h4>" + itemDetails.deliveryTitle + "</h4>";
+                    addCartItem += "</div>";
+                    addCartItem += "<div class='counterBOX'>";
+                    addCartItem += " <button onclick='cartQuantityDecrement(" + (oldData.productDetails.length - 1) +
+                        "," + itemDetails.productPrice + ")'>-</button>";
+                    addCartItem += "<h4 id='ROOT' class='root'>" + itemDetails.quantity + "</h4>";
+                    addCartItem += "<button onclick='cartQuantityIncrement(" + (oldData.productDetails.length - 1) +
+                        "," + itemDetails.productPrice + ")'>+</button>";
+                    addCartItem += "<div class='amount'>";
+                    addCartItem +=
+                        "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
+                        itemDetails.totalAmount.toFixed(2) + "</span></h4>"; + "</span></h4>";
+                    addCartItem += "<button onclick='closeCartItem(event," + itemDetails.productId +
+                        ")'>&#10006;</button>";
+                    addCartItem += "</div>";
+                    addCartItem += "</div>";
+                    addCartItem += "</div>";
+                    addCartItem += "</div>";
+                    addCartItem += "</div>";
+                    cartItems.insertAdjacentHTML("beforeend", addCartItem);
+                }
+                else if(existSubscribed && type!=='subscription') {
+                    handleSnackBar('One Subscription already exist.Please complete the transaction first.')
+                }
+                else {
+                    bulkProductIncrement(productIndx, oldData.productDetails[productIndx].productPrice)
+                }
+            }
+            localStorage.setItem('cartDetails', JSON.stringify(oldData))
+        }
+
+        const calculateTotalAmount = () => {
+            let totalAmount = 0
+            if (oldData?.productDetails?.length > 0) {
+                const totalAmountOfPerProduct = document.querySelectorAll('.per-product-total')
+                for (let i = 0; i < totalAmountOfPerProduct.length; i++) {
+                    totalAmount += parseInt(totalAmountOfPerProduct[i].innerText)
+                }
+                oldData.subTotal = totalAmount
+                showTotalAmount.innerText = totalAmount
+            } else {
+                showTotalAmount.innerText = 0
+            }
+            localStorage.removeItem('cartDetails')
+            localStorage.setItem('cartDetails', JSON.stringify(oldData))
+
+        }
+
+        const closeCartItem = (event, productId) => {
+            event.preventDefault();
+            const productIndx = oldData.productDetails.findIndex((element, index) => {
+                if (element.productId === productId) {
+                    return true
+                }
+            })
+            oldData.productDetails.splice(productIndx, 1)
+            document.getElementById("box_" + productId).remove()
+            if (oldData?.productDetails?.length < 1) {
+                oldData.subTotal = 0
+            }
+            localStorage.setItem('cartDetails', JSON.stringify(oldData))
+            calculateTotalAmount()
+        }
+
+        const cartQuantityIncrement = (productIndx, price) => {
+            const increments = document.querySelectorAll('.root')
+            const totalAmount = document.querySelectorAll('.per-product-total')
+            const productDetails = oldData.productDetails[productIndx]
+            if (productDetails) {
+                productDetails.quantity += 1
+                productDetails.totalAmount += price
+                increments[productIndx].innerText = productDetails.quantity
+                totalAmount[productIndx].innerText = productDetails.totalAmount.toFixed(2)
+                localStorage.removeItem('cartDetails')
+                localStorage.setItem('cartDetails', JSON.stringify(oldData))
+                calculateTotalAmount()
+            }
+        }
+
+        const cartQuantityDecrement = (productIndx, price) => {
+            const increments = document.querySelectorAll('.root')
+            const totalAmount = document.querySelectorAll('.per-product-total')
+            const productDetails = oldData.productDetails[productIndx]
+            if (productDetails.quantity > 0) {
+                productDetails.quantity = productDetails.quantity - 1
+                productDetails.totalAmount = productDetails.totalAmount - price
+                if (productDetails.totalAmount < 1) {
+                    totalAmount[productIndx].innerText = 0
+                    productDetails.totalAmount = 0
+                } else {
+                    totalAmount[productIndx].innerText = productDetails.totalAmount.toFixed(2)
+                }
+                increments[productIndx].innerText = productDetails.quantity
+
+
+                localStorage.removeItem('cartDetails')
+                localStorage.setItem('cartDetails', JSON.stringify(oldData))
+            }
+            calculateTotalAmount()
+
+        }
+
+        const bulkProductIncrement = (productIndx, price) => {
+            const increments = document.querySelectorAll('.root')
+            const totalAmount = document.querySelectorAll('.per-product-total')
+            const productDetails = oldData.productDetails[productIndx]
+            if (productDetails) {
+                if (productDetails.type === 'subscription') {
+                    productDetails.quantity = subScribeCases
+                    productDetails.totalAmount = price * subScribeCases
+                    increments[productIndx].innerText = subScribeCases
+                    totalAmount[productIndx].innerText = price * subScribeCases.toFixed(2)
+                } else if (productDetails.type === 'bulk-purchase') {
+                    productDetails.quantity = bulkCases
+                    productDetails.totalAmount = (price * bulkCases)
+                    increments[productIndx].innerText = bulkCases
+                    totalAmount[productIndx].innerText = price * bulkCases.toFixed(2)
+                } else {
+                    productDetails.quantity += 1
+                    productDetails.totalAmount += price
+                    increments[productIndx].innerText = productDetails?.quantity
+                    totalAmount[productIndx].innerText = productDetails?.totalAmount.toFixed(2)
+                }
+                localStorage.removeItem('cartDetails')
+                localStorage.setItem('cartDetails', JSON.stringify(oldData))
+                calculateTotalAmount()
+            }
+        }
+
+        const handleSnackBar = (message) => {
+            var x = document.getElementById("snackbar");
+            x.innerHTML = message
+            x.className = "show";
+            setTimeout(function() {
+                x.className = x.className.replace("show", "");
+            }, 3000);
+        }
+    </script>>
+
 
 @endpush
