@@ -245,7 +245,7 @@
                     </div>
                     <div class="addtocart-btn">
 
-                        <button class="button-30" role="button" onclick="addCartItem(2, 'one-time-purchase', 7.46)"><i
+                        <button class="button-30" role="button" onclick="addCartItem(1, 'one-time-purchase', 7.46)"><i
                                 class="fa fa-shopping-cart"></i>Add To
                             cart</button>
                     </div>
@@ -312,7 +312,7 @@
                     <div class="addtocart-btn">
 
                         <button class="button-30" id="button-30_2" role="button"
-                            onclick="addCartItem(3, 'bulk-purchase', 8.49)">
+                            onclick="addCartItem(1, 'bulk-purchase', 8.49)">
                             <h4 class="button-30_price_2">&#163;8.49</h4><i class="fa fa-shopping-cart"></i> Add
                             To
                             cart
@@ -2945,11 +2945,11 @@
                 calculateTotalAmount()
             } else {
                 const existItem = oldData.productDetails.find(function(item, index) {
-                    if (item.productId === productId)
+                    if (item.productId === productId && item.type===type)
                         return true;
                 });
                 const productIndx = oldData.productDetails.findIndex((element, index) => {
-                    if (element.productId === productId) {
+                    if (element.productId === productId && element.type===type) {
                         return true
                     }
                 })
@@ -3080,6 +3080,7 @@
             const increments = document.querySelectorAll('.root')
             const totalAmount = document.querySelectorAll('.per-product-total')
             const productDetails = oldData.productDetails[productIndx]
+            console.log(productIndx)
             if (productDetails) {
                 if (productDetails.type === 'subscription') {
                     productDetails.quantity = subScribeCases
