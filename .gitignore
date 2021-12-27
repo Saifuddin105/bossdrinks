@@ -2,3 +2,4 @@
 project/schedule.data
 assets/images/capcha_code.png
 project/.env
+project/storage/logs/laravel.log

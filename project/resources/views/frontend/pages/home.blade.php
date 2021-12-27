@@ -127,7 +127,7 @@
   <div><a href="bcca.html">SPORT-BCCA </a></div> -->
   @foreach($categories as $category)
   <div>
-    <a href="energydrinks.html">{{$category->name}}</a>
+    <a href="{{route('front.category', $category->id)}}">{{$category->name}}</a>
   </div>
   @endforeach
 
@@ -776,7 +776,7 @@
 
     </div>
     @endforeach
-    <!-- 
+    <!--
     <div class="card card2">
       <div class="productdisplayimgBOX">
         <a href="fourthproduct.html">

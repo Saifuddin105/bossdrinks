@@ -9,10 +9,10 @@
       <i id="cross_btn" class="fas fa-times"></i>
     </div>
     <div class="Sidebar_menu">
-      <div class="menu_items"><img src="/img/home.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('/frontend-2')}}" class="menu_item_text">HOME</a></div>
+      <div class="menu_items"><img src="/img/home.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('/')}}" class="menu_item_text">HOME</a></div>
     </div>
     <div class="Sidebar_menu">
-      <div class="menu_items"><img src="/img/customer.png" alt="" style="height: 25px; margin-top: 30px"><a href="user_account.html" class="menu_item_text">My Account</a></div>
+      <div class="menu_items"><img src="/img/customer.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{route('user.login')}}" class="menu_item_text">My Account</a></div>
     </div>
 
     <div class="Sidebar_menu">
@@ -21,7 +21,8 @@
 
     @foreach($categories as $category)
     <div class="Sidebar_menu">
-      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('user/energy-drinks')}}" class="menu_item_text">{{$category->name}}</a>
+      <div class="menu_items"><img src="/img/energy-drink.png" alt="" style="height: 25px; margin-top: 30px">
+      <a href="{{route('front.category', $category->id)}}" class="menu_item_text">{{$category->name}}</a>
       </div>
     </div>
     @endforeach

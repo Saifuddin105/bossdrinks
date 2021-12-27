@@ -561,7 +561,3 @@ if (stock_nowbtn != null) {
 
 
 
-
-
-
-
