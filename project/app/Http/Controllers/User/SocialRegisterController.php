@@ -36,9 +36,11 @@ class SocialRegisterController extends Controller
 
     public function handleProviderCallback($provider)
     {
+       
         try
         {
             $socialUser = Socialite::driver($provider)->user();
+           
         }
         catch(\Exception $e)
         {
@@ -46,18 +48,21 @@ class SocialRegisterController extends Controller
         }
         //check if we have logged provider
         $socialProvider = SocialProvider::where('provider_id',$socialUser->getId())->first();
+      
         if(!$socialProvider)
         {
 
             if(User::where('email',$socialUser->email)->exists())
             {
                 $auser = User::where('email',$socialUser->email)->first();
+               
                 Auth::guard('web')->login($auser); 
                 return redirect()->route('user-dashboard');
             }
             //create a new user and provider
             $user = new User;
             $user->email = $socialUser->email;
+            $user->provider_id = $socialUser->getId();
             $user->name = $socialUser->name;
             $user->photo = $socialUser->avatar_original;
             $user->email_verified = 'Yes';
@@ -75,19 +80,19 @@ class SocialRegisterController extends Controller
 
         }
         else
-        {
-
-
-            if(User::where('email',$socialUser->email)->exists())
+        {   
+            if(User::where('provider_id',$socialUser->getId())->exists())
             {
-                $auser = User::where('email',$socialUser->email)->first();
+                
+                $auser = User::where('provider_id',$socialUser->getId())->first();
                 Auth::guard('web')->login($auser); 
                 return redirect()->route('user-dashboard');
             }
 
             $user = $socialProvider->user;
         }
-
+        
+      
         Auth::guard('web')->login($user); 
         return redirect()->route('user-dashboard');
 

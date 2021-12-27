@@ -59,7 +59,7 @@ $isDev = isset($_GET['dev']) ? true : false;
     </ul>
 </li>
 @endif
-@if ($isDev)
+
 <li>
     <a href="#menu3" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
         <i class="icofont-user"></i>{{ __('Customers') }}
@@ -68,15 +68,15 @@ $isDev = isset($_GET['dev']) ? true : false;
         <li>
             <a href="{{ route('admin-user-index') }}"><span>{{ __('Customers List') }}</span></a>
         </li>
-        <li>
+        <!-- <li>
             <a href="{{ route('admin-withdraw-index') }}"><span>{{ __('Withdraws') }}</span></a>
-        </li>
+        </li> -->
         <li>
             <a href="{{ route('admin-user-image') }}"><span>{{ __('Customer Default Image') }}</span></a>
         </li>
     </ul>
 </li>
-@endif
+
 @if ($isDev)
 <li>
     <a href="#vendor" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
@@ -133,12 +133,12 @@ $isDev = isset($_GET['dev']) ? true : false;
         <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'category') active @endif">
             <a href="{{ route('admin-cat-index') }}"><span>{{ __('Main Category') }}</span></a>
         </li>
-        <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'subcategory') active @endif">
+        <!-- <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'subcategory') active @endif">
             <a href="{{ route('admin-subcat-index') }}"><span>{{ __('Sub Category') }}</span></a>
         </li>
         <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'childcategory') active @endif">
             <a href="{{ route('admin-childcat-index') }}"><span>{{ __('Child Category') }}</span></a>
-        </li>
+        </li> -->
     </ul>
 </li>
 
@@ -260,6 +260,9 @@ $isDev = isset($_GET['dev']) ? true : false;
         <li>
             <a href="{{ route('admin-sl-index') }}"><span>{{ __('Sliders') }}</span></a>
         </li>
+
+@if ($isDev)
+
         <li>
             <a href="{{ route('admin-service-index') }}"><span>{{ __('Services') }}</span></a>
         </li>
@@ -286,15 +289,14 @@ $isDev = isset($_GET['dev']) ? true : false;
         <li>
             <a href="{{ route('admin-partner-index') }}"><span>{{ __('Partners') }}</span></a>
         </li>
-
-
         <li>
             <a href="{{ route('admin-ps-customize') }}"><span>{{ __('Home Page Customization') }}</span></a>
         </li>
+@endif
     </ul>
 </li>
 
-@if ($isDev)
+
 <li>
     <a href="#menu" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
         <i class="fas fa-file-code"></i>{{ __('Menu Page Settings') }}
@@ -303,15 +305,15 @@ $isDev = isset($_GET['dev']) ? true : false;
         <li>
             <a href="{{ route('admin-faq-index') }}"><span>{{ __('FAQ Page') }}</span></a>
         </li>
-        <li>
+        <!-- <li>
             <a href="{{ route('admin-ps-contact') }}"><span>{{ __('Contact Us Page') }}</span></a>
         </li>
         <li>
             <a href="{{ route('admin-page-index') }}"><span>{{ __('Other Pages') }}</span></a>
-        </li>
+        </li> -->
     </ul>
 </li>
-@endif
+
 @if ($isDev)
 <li>
     <a href="#emails" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
@@ -348,7 +350,7 @@ $isDev = isset($_GET['dev']) ? true : false;
     </ul>
 </li>
 
-@if ($isDev)
+
 <li>
     <a href="#langs" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
         <i class="fas fa-language"></i>{{ __('Language Settings') }}
@@ -360,7 +362,7 @@ $isDev = isset($_GET['dev']) ? true : false;
 
     </ul>
 </li>
-@endif
+
 @if ($isDev)
 <li>
     <a href="#seoTools" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
@@ -384,11 +386,11 @@ $isDev = isset($_GET['dev']) ? true : false;
     <a href="{{ route('admin-staff-index') }}" class=" wave-effect"><i class="fas fa-user-secret"></i>{{ __('Manage Staffs') }}</a>
 </li>
 @endif
-{{-- @if ($isDev) --}}
+
 <li>
     <a href="{{ route('admin-subs-index') }}" class=" wave-effect"><i class="fas fa-users-cog mr-2"></i>{{ __('Subscribers') }}</a>
 </li>
-{{-- @endif --}}
+
 @if ($isDev)
 <li>
     <a href="{{ route('admin-role-index') }}" class=" wave-effect"><i class="fas fa-user-tag"></i>{{ __('Manage Roles') }}</a>

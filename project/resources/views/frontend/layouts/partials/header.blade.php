@@ -19,12 +19,15 @@
       <button id="searchbtn" class="navbar-btn" type="button">
         <i class="fas fa-search"></i>
       </button>
-      <a href="user_account.html"><button id="userbtn" class="navbar-btn" type="button">
+      <a href="{{route('user.login')}}"><button id="userbtn" class="navbar-btn" type="button">
           <i class="fas fa-user"></i>
         </button></a>
       <a href="cart.html"> <button id="cart-btn" class="navbar-btn " type="button">
           <i class="cart-btn fas fa-shopping-cart"></i>
         </button></a>
+        @if(Auth::user())
+        <a href="{{route('user-logout')}}"> Log Out</a>
+        @endif
 
     </div>
 
