@@ -39,7 +39,7 @@
                 <h4 style="font-size: 12px;">I agree to the <a id="modal_text">Terms and Conditions</a></h4>
             </div>
             <div class="checkout_btn">
-                <a href="checkout.html"><button>Proceed to Checkout</button></a>
+                <a href={{route('front.showCheckout')}}><button>Proceed to Checkout</button></a>
             </div>
         </div>
 

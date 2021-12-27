@@ -1,189 +1,125 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'bcca-drinks')
+@section('title', 'checkout')
 
 
 
 
 @section('content')
 
-    <div class="prdct_details_heading">
-        <h4>Boss BCCA Drink</h4>
+    <div class="checkoutMAIN_complete">
+        <div class="checkoutMain">
+
+
+
+            <div class="shipping">
+                <p class="shipping_p">SHIPPING ADDRESS</p>
+
+                <form action="place_order.html" class="shipping_form">
+                    <input type="text" placeholder="First Name" required>
+                    <input type="text" placeholder="Last Name" required>
+                    <input type="text" placeholder="Company (Optional)">
+                    <input type="text" placeholder="Address Line 1" required>
+                    <input type="text" placeholder="Address Line 2" required>
+                    <input type="text" placeholder="City" required>
+                    <input type="text" placeholder="Post Code" required>
+                    <input type="number" placeholder="Phone" required>
+
+                    <input type="submit" class="adress_submit" value="Continue">
+
+                </form>
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+        <div class="shopping_details">
+            <div class="shopping-details_title">
+                Order Summery
+            </div>
+            <div class="order-items" id="order-items">
+
+            </div>
+
+            <div class="coupon">
+                <h4>Have a rewards or discount code ?</h4>
+                <div class="enter_here">
+                    <span>Enter Here</span>
+                    <input type="text">
+                    <input type="submit" class="OK_BUTTON" value="OK">
+                </div>
+
+
+            </div>
+
+            <div class="subtotal">
+                <div class="subtotal_calculation">
+                    <h4 >Subtotal</h4>
+                    <span id="sub-total">26.5</span>
+                </div>
+                <div class="subtotal_calculation">
+                    <h4>Shipping Fee</h4>
+                    <span>-</span>
+                </div>
+                <div class="subtotal_calculation">
+                    <h4>Taxes</h4>
+                    <span>-</span>
+                </div>
+                <hr>
+                <div class="subtotal_calculation">
+                    <h4 >Total</h4>
+                    <span id="total">26.5</span>
+                </div>
+            </div>
+
+            <div class="Payment_due">
+                <h2>Payment Due</h2>
+                <div class="GBP">GBP</div>
+                <span id="payment-due">26.65</span>
+            </div>
+
+
+        </div>
+
     </div>
 
-
-
-
-
-    <div class="productdisplaysection productdisplaysection2">
-
-        <div class="card card2">
-            <div class="productdisplayimgBOX">
-                <a href="fourthproduct.html">
-                    <img src="/img/PDSEnergy Boss Sports - IT (BCAA Apple).png" alt="comething">
-                </a>
-            </div>
-            <div class="product_display_contentbox">
-                <h4>Energy BOSS Appetiser</h4>
-                <h4 class="price">&#128 40.<small>99</small></h4>
-                <a href="fourthproduct.html" class="buy">Veiw Details</a>
-            </div>
-
-
-
-        </div>
-        <div class="card card2 card_5">
-            <div class="productdisplayimgBOX">
-                <a href="fifthproduct.html">
-                    <img src="/img/PDSEnergy Boss Sports - IT (BCAA Lemon).png" alt="comething">
-                </a>
-            </div>
-            <div class="product_display_contentbox">
-                <h4>Energy BOSS Sport</h4>
-                <h4 class="price">&#128 40.<small>99</small></h4>
-                <a href="fifthproduct.html" class="buy">Veiw Details</a>
-            </div>
-
-
-
-        </div>
-        <div class="card card2 final_card">
-            <div class="productdisplayimgBOX">
-                <a href="sixthproduct.html">
-                    <img src="/img/PDSEnergy Boss Sports - IT (BCAA Orange).png" alt="comething">
-                </a>
-            </div>
-            <div class="product_display_contentbox">
-                <h4>Energy BOSS Appetiser</h4>
-                <h4 class="price">&#128 40.<small>99</small></h4>
-                <a href="sixthproduct.html" class="buy">Veiw Details</a>
-            </div>
-
-
-
-        </div>
-
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div>
-        <div class="container more_info" style="margin-top: 100px;">
-            <h2>More Information</h2>
-            <div class="accordion_moreinfo">
-                <div class="item">
-                    <div class="title_moreinfo">
-                        HOW MUCH CAFFEINE DO ENERGY BOSS DRINK CONTAIN ?
-                    </div>
-                    <div class="icon_moreinfo">
-                        +
-                    </div>
-                    <div class="desc">
-                        <p>Our Energy Boss Drink contain 30mg of caffeine per 100ml.<br>We advise that all
-                            energy
-                            driks are
-                            consumed in moderation.<br>The maximum daily consumption of caffeine for adults os
-                            400mg(other
-                            than pregnant women or people sensetive to caffeine).</p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="title_moreinfo">
-                        ARE ENERGY BOSS DRINKS SUITABLE FOR VEGETARIANS ?
-                    </div>
-                    <div class="icon_moreinfo">
-                        +
-                    </div>
-                    <div class="desc">
-                        <p>All our Energy Boss Drinks are suitable for vegetarians.</p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="title_moreinfo">
-                        IS ENERGY BOSS DRINK GLUTEN FREE ?
-                    </div>
-                    <div class="icon_moreinfo">
-                        +
-                    </div>
-                    <div class="desc">
-                        <p>Yes, all our energy drinks are gluten free, so they are suitable for those with
-                            gluten
-                            intolerence.
-                        </p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="title_moreinfo">
-                        IS ENERGY BOSS DRINK DAIRY FREE?
-                    </div>
-                    <div class="icon_moreinfo">
-                        +
-                    </div>
-                    <div class="desc">
-                        <p>Yes, our Energy Boss Drinks are dairy free</p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="title_moreinfo">
-                        ADVISORY
-                    </div>
-                    <div class="icon_moreinfo">
-                        +
-                    </div>
-                    <div class="desc">
-                        <p>High caffeine content.Not recommended for children or pregnant or breast-feeding
-                            women.
-                            Consume
-                            Moderately. Not to be consumed by under 18.</p>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <x-newsletter/>
-
-
-    <div class="contactUS">
-
-        <div>
-            <p>Become a BOSS Drinks Stockist</p>
-        </div>
-
-        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, omnis!</h3>
-        <div class="contactUS_btn">
-            <a href="stock_register.html"><button type="button">Register</button></a>
-        </div>
-    </div>
 
 @endsection
 
 @push('script')
+
+    <script>
+        window.onload = () => {
+            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+            const total=document.getElementById('total')
+            const subTotal=document.getElementById('sub-total')
+            const paymentDue=document.getElementById('payment-due')
+            const orderItems = document.getElementById('order-items');
+            if (oldData?.productDetails?.length > 0) {
+                for (let i = 0; i < oldData.productDetails.length; i++) {
+                    let addCartItem = ""
+                    addCartItem += "<div class='shopping_details_summery' id='shopping_details_summery'>";
+                    addCartItem += "<img src='/img/Energy Boss - IT (13-10-2021) - Blue BG.png' alt='' style='height: 100px;''>";
+                    addCartItem += "<div class='shopping_details_type' id='shopping_details_type'>";
+                    addCartItem += "<span>"+oldData.productDetails[i].title+"</span>";
+                    addCartItem += "<p>"+oldData.productDetails[i].deliveryTitle+"</p>";
+                    addCartItem += " </div>";
+                    addCartItem += "<div class='shopping_details_price'>"+oldData.productDetails[i].totalAmount+"</div>";
+                    addCartItem += "</div>";
+                    orderItems.insertAdjacentHTML("beforeend", addCartItem);
+                }
+
+                subTotal.innerHTML =oldData.subTotal
+                total.innerHTML =oldData.subTotal
+                paymentDue.innerHTML =oldData.subTotal
+            }
+
+        }
+    </script>
 
 @endpush
