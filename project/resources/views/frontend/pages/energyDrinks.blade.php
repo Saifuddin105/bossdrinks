@@ -7,60 +7,59 @@
 
 @section('content')
 
-    <div class="prdct_details_heading">
-        <h4>Energy BOSS Original</h4>
-    </div>
-
-    <div class="product_details_complete">
-
-
-
-
-        <div class="card card2">
-            <div class="productdisplayimgBOX">
-                <a href="firstproduct.html">
-                    <img src="/img/PDSEnergy Boss Original Blue.png" alt="comething">
-                </a>
-            </div>
-            <div class="product_display_contentbox">
-                <h4>Energy BOSS Original</h4>
-                <h4 class="price">&#128 40.<small>99</small></h4>
-                <a href="firstproduct.html" class="buy">Veiw Details</a>
-            </div>
-        </div>
-        <div class="card card2">
-            <div class="productdisplayimgBOX">
-                <a href="secondproduct.html">
-                    <img src="/img/PDSEnergy Boss Original Red.png" alt="comething">
-                </a>
-            </div>
-            <div class="product_display_contentbox">
-                <h4>Energy BOSS Original</h4>
-                <h4 class="price">&#128 40.<small>99</small></h4>
-                <a href="secondproduct.html" class="buy">Veiw Details</a>
-            </div>
-
-
-
-        </div>
-        <div class="card card2">
-            <div class="productdisplayimgBOX">
-                <a href="thirdproduct.html">
-                    <img src="/img/PDSEnergy Boss Original Silver.png" alt="comething">
-                </a>
-            </div>
-            <div class="product_display_contentbox">
-                <h4>Energy BOSS Original</h4>
-                <h4 class="price">&#128 40.<small>99</small></h4>
-                <a href="thirdproduct.html" class="buy">Veiw Details</a>
-            </div>
-
-
-
+  <div class="prdct_details_heading">
+            <h4>Energy BOSS Original</h4>
         </div>
 
+        <div class="energydrinks_display">
 
-    </div>
+            <div class="energydrink1">
+                <div class="productdisplay_imgbox" style="background: #20B2AA;;">
+                    <a href="firstproduct.html">
+                        <img id="can_image" src="/Size_3  193x500px/Energy-Boss---IT-(13-10-2021)---Blue-BG.png" alt="">
+                    </a>
+                </div>
+                <div class="productidsplay_contentbox">
+                    <h4>Energy BOSS Drink Blue</h4>
+                    <span class="price_productDisplay">&#163;40.<small>99</small></span>
+                    <a href="firstproduct.html" class="view_details">Veiw Details</a>
+
+                </div>
+
+            </div>
+            <div class="energydrink1">
+                <div class="productdisplay_imgbox" style="background: #F6E3BA;">
+                    <a href="secondproduct.html">
+                        <img id="can_image" src="/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png" alt="">
+                    </a>
+                </div>
+                <div class="productidsplay_contentbox">
+                    <h4>Energy BOSS Drink Red</h4>
+                    <span class="price_productDisplay">&#163;40.<small>99</small></span>
+                    <a href="secondproduct.html" class="view_details">Veiw Details</a>
+
+                </div>
+
+            </div>
+            <div class="energydrink1">
+                <div class="productdisplay_imgbox" style="background: paleturquoise;">
+                    <a href="thirdproduct.html">
+                        <img id="can_image" src="/Size_3  193x500px/Energy-Boss-Silver-Can---IT-(13-10-2021).png"
+                            alt="">
+                    </a>
+                </div>
+                <div class="productidsplay_contentbox">
+                    <h4>Energy BOSS Drink Silver</h4>
+                    <span class="price_productDisplay">&#163;40.<small>99</small></span>
+                    <a href="thirdproduct.html" class="view_details">Veiw Details</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
 
 
     <div>
