@@ -1,47 +1,17 @@
-@extends('layouts.front')
-@section('content')
-
-<!-- Breadcrumb Area Start -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404</title>
+</head>
+<body>
 <div class="breadcrumb-area">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <ul class="pages">
-          <li>
-            <a href="{{ route('front.index') }}">
-              {{ $langg->lang17 }}
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              {{ $langg->lang427 }}
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+   <img src="{{asset('assets/images/6M513.png') }}" width="100%"/>
 </div>
-<!-- Breadcrumb Area End -->
 
-<section class="fourzerofour">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="content">
-            <img src="{{ $gs->error_banner ? asset('assets/images/'.$gs->error_banner):asset('assets/images/noimage.png') }}" alt="">
-            <h4 class="heading">
-              {{ $langg->lang428 }}
-            </h4>
-            <p class="text">
-              {{ $langg->lang429 }}
-            </p>
-            <a class="mybtn1" href="{{ route('front.index') }}">{{ $langg->lang430 }}</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+</body>
+</html>
 
-
-@endsection
