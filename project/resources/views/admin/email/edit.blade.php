@@ -46,7 +46,7 @@
                                                 <td>{{ __('Customer Name') }}</td>
                                                 <td>{customer_name}</td>
                                             </tr>
-                                            <tr>
+                                            <!-- <tr>
                                                 <td>{{ __('Order Amount') }}</td>
                                                 <td>{order_amount}</td>
                                             </tr>
@@ -57,15 +57,15 @@
                                             <tr>
                                                 <td>{{ __('Admin Email') }}</td>
                                                 <td>{admin_email}</td>
-                                            </tr>
+                                            </tr> -->
                                             <tr>
                                                 <td>{{ __('Website Title') }}</td>
                                                 <td>{website_title}</td>
                                             </tr>
-                                            <tr>
+                                            <!-- <tr>
                                                 <td>{{ __('Order Number') }}</td>
                                                 <td>{order_number}</td>
-                                            </tr>
+                                            </tr> -->
 
                                             </tbody>
                                         </table>
