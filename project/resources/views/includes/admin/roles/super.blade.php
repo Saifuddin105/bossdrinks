@@ -77,6 +77,18 @@ $isDev = isset($_GET['dev']) ? true : false;
     </ul>
 </li>
 
+<li>
+    <a href="#ambassadors" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
+        <i class="icofont-user"></i>{{ __('Ambassadors') }}
+    </a>
+    <ul class="collapse list-unstyled" id="ambassadors" data-parent="#accordion">
+        <li>
+            <a href="{{ route('admin-ambassedor-index') }}"><span>{{ __('Ambassadors List') }}</span></a>
+        </li>
+     
+    </ul>
+</li>
+
 @if ($isDev)
 <li>
     <a href="#vendor" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
