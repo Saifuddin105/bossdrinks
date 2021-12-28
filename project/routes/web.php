@@ -1,6 +1,6 @@
 <?php
 
-if (env('APP_ENV') === 'production')  {
+if (env('APP_ENV') === 'production') {
     URL::forceScheme('https');
 }
 
@@ -56,7 +56,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/password/update', 'Admin\DashboardController@changepass')->name('admin.password.update');
     //------------ ADMIN DASHBOARD & PROFILE SECTION ENDS ------------
 
-
     //------------ ADMIN ORDER SECTION ------------
 
     Route::group(['middleware' => 'permissions:orders'], function () {
@@ -90,7 +89,6 @@ Route::prefix('admin')->group(function () {
 
     //------------ ADMIN ORDER SECTION ENDS------------
 
-
     //------------ ADMIN PRODUCT SECTION ------------
 
     Route::group(['middleware' => 'permissions:products'], function () {
@@ -101,7 +99,6 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/products/deactive/datatables', 'Admin\ProductController@deactivedatatables')->name('admin-prod-deactive-datatables'); //JSON REQUEST
         Route::get('/products/deactive', 'Admin\ProductController@deactive')->name('admin-prod-deactive');
-
 
         Route::get('/products/catalogs/datatables', 'Admin\ProductController@catalogdatatables')->name('admin-prod-catalog-datatables'); //JSON REQUEST
         Route::get('/products/catalogs/', 'Admin\ProductController@catalogs')->name('admin-prod-catalog-index');
@@ -120,12 +117,9 @@ Route::prefix('admin')->group(function () {
         Route::post('/products/edit/{id}', 'Admin\ProductController@update')->name('admin-prod-update');
         // EDIT SECTION ENDS
 
-
-
         // DELETE SECTION
         Route::get('/products/delete/{id}', 'Admin\ProductController@destroy')->name('admin-prod-delete');
         // DELETE SECTION ENDS
-
 
         Route::get('/products/catalog/{id1}/{id2}', 'Admin\ProductController@catalog')->name('admin-prod-catalog');
         //------------ ADMIN PRODUCT SECTION ENDS------------
@@ -137,13 +131,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/products/import/create', 'Admin\ImportController@createImport')->name('admin-import-create');
         Route::get('/products/import/edit/{id}', 'Admin\ImportController@edit')->name('admin-import-edit');
 
-
         Route::get('/products/import/datatables', 'Admin\ImportController@datatables')->name('admin-import-datatables'); //JSON REQUEST
         Route::get('/products/import/index', 'Admin\ImportController@index')->name('admin-import-index');
 
         Route::post('/products/import/store', 'Admin\ImportController@store')->name('admin-import-store');
         Route::post('/products/import/update/{id}', 'Admin\ImportController@update')->name('admin-import-update');
-
 
         // DELETE SECTION
         Route::get('/affiliate/products/delete/{id}', 'Admin\ProductController@destroy')->name('admin-affiliate-prod-delete');
@@ -152,16 +144,18 @@ Route::prefix('admin')->group(function () {
 
     //------------ ADMIN AFFILIATE PRODUCT SECTION ENDS ------------
 
-
     //------------ ADMIN USER SECTION ------------
 
     Route::group(['middleware' => 'permissions:customers'], function () {
         Route::get('/users/datatables', 'Admin\UserController@datatables')->name('admin-user-datatables'); //JSON REQUEST
+        Route::get('/ambassedors/datatables', 'Admin\UserController@ambassedorsDatatables')->name('admin-ambassedor-datatables'); //JSON REQUEST
         Route::get('/users', 'Admin\UserController@index')->name('admin-user-index');
+        Route::get('/ambassedors', 'Admin\UserController@ambassedors')->name('admin-ambassedor-index');
         Route::get('/users/edit/{id}', 'Admin\UserController@edit')->name('admin-user-edit');
         Route::post('/users/edit/{id}', 'Admin\UserController@update')->name('admin-user-update');
         Route::get('/users/delete/{id}', 'Admin\UserController@destroy')->name('admin-user-delete');
         Route::get('/user/{id}/show', 'Admin\UserController@show')->name('admin-user-show');
+        Route::get('/ambassedor/{id}/show', 'Admin\UserController@ambassedorDetail')->name('admin-ambassedor-show');
         Route::get('/users/ban/{id1}/{id2}', 'Admin\UserController@ban')->name('admin-user-ban');
         Route::get('/user/default/image', 'Admin\UserController@image')->name('admin-user-image');
 
@@ -207,8 +201,6 @@ Route::prefix('admin')->group(function () {
 
         //  Vendor Registration Section Ends
 
-
-
         // Verification Section
 
         Route::get('/verificatons/datatables/{status}', 'Admin\VerificationController@datatables')->name('admin-vr-datatables');
@@ -221,16 +213,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/verificatons/status/{id1}/{id2}', 'Admin\VerificationController@status')->name('admin-vr-st');
         Route::get('/verificatons/delete/{id}', 'Admin\VerificationController@destroy')->name('admin-vr-delete');
 
-
-
         // Verification Section Ends
     });
 
-
-
-
     //------------ ADMIN VENDOR SECTION ENDS ------------
-
 
     //------------ ADMIN SUBSCRIPTION SECTION ------------
 
@@ -250,7 +236,6 @@ Route::prefix('admin')->group(function () {
 
     //------------ ADMIN SUBSCRIPTION SECTION ENDS ------------
 
-
     //------------ ADMIN CATEGORY SECTION ------------
 
     Route::group(['middleware' => 'permissions:categories'], function () {
@@ -262,7 +247,6 @@ Route::prefix('admin')->group(function () {
         Route::post('/category/edit/{id}', 'Admin\CategoryController@update')->name('admin-cat-update');
         Route::get('/category/delete/{id}', 'Admin\CategoryController@destroy')->name('admin-cat-delete');
         Route::get('/category/status/{id1}/{id2}', 'Admin\CategoryController@status')->name('admin-cat-status');
-
 
         //------------ ADMIN ATTRIBUTE SECTION ------------
 
@@ -277,7 +261,6 @@ Route::prefix('admin')->group(function () {
         Route::post('/attribute/edit/{id}', 'Admin\AttributeController@update')->name('admin-attr-update');
         Route::get('/attribute/{id}/options', 'Admin\AttributeController@options')->name('admin-attr-options');
         Route::get('/attribute/delete/{id}', 'Admin\AttributeController@destroy')->name('admin-attr-delete');
-
 
         // SUBCATEGORY SECTION ------------
 
@@ -309,7 +292,6 @@ Route::prefix('admin')->group(function () {
     });
 
     //------------ ADMIN CATEGORY SECTION ENDS------------
-
 
     //------------ ADMIN CSV IMPORT SECTION ------------
 
@@ -344,7 +326,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/general-settings/comment/{status}', 'Admin\GeneralSettingController@comment')->name('admin-gs-iscomment');
         // COMMENT CHECK ENDS
 
-
         // COMMENT SECTION ENDS ------------
 
         // REPORT SECTION ------------
@@ -362,7 +343,6 @@ Route::prefix('admin')->group(function () {
     });
 
     //------------ ADMIN PRODUCT DISCUSSION SECTION ENDS ------------
-
 
     //------------ ADMIN COUPON SECTION ------------
 
@@ -400,7 +380,6 @@ Route::prefix('admin')->group(function () {
     });
 
     //------------ ADMIN BLOG SECTION ENDS ------------
-
 
     //------------ ADMIN USER MESSAGE SECTION ------------
 
@@ -465,8 +444,6 @@ Route::prefix('admin')->group(function () {
 
         //------------ ADMIN PACKAGE ENDS------------
 
-
-
         //------------ ADMIN GENERAL SETTINGS JSON SECTION ------------
 
         // General Setting Section
@@ -492,12 +469,10 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/general-settings/capcha/{status}', 'Admin\GeneralSettingController@iscapcha')->name('admin-gs-iscapcha');
 
-
         //------------ ADMIN GENERAL SETTINGS JSON SECTION ENDS------------
     });
 
     //------------ ADMIN GENERAL SETTINGS SECTION ENDS ------------
-
 
     //------------ ADMIN HOME PAGE SETTINGS SECTION ------------
 
@@ -537,7 +512,6 @@ Route::prefix('admin')->group(function () {
         Route::get('large/banner/create', 'Admin\BannerController@largecreate')->name('admin-sb-create-large');
         Route::get('bottom/small/banner/create', 'Admin\BannerController@bottomcreate')->name('admin-sb-create-bottom');
 
-
         Route::post('/banner/create', 'Admin\BannerController@store')->name('admin-sb-store');
         Route::get('/banner/edit/{id}', 'Admin\BannerController@edit')->name('admin-sb-edit');
         Route::post('/banner/edit/{id}', 'Admin\BannerController@update')->name('admin-sb-update');
@@ -557,7 +531,6 @@ Route::prefix('admin')->group(function () {
 
         //------------ ADMIN REVIEW SECTION ENDS ------------
 
-
         //------------ ADMIN PARTNER SECTION ------------
 
         Route::get('/partner/datatables', 'Admin\PartnerController@datatables')->name('admin-partner-datatables');
@@ -569,7 +542,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/partner/delete/{id}', 'Admin\PartnerController@destroy')->name('admin-partner-delete');
 
         //------------ ADMIN PARTNER SECTION ENDS ------------
-
 
         //------------ ADMIN PAGE SETTINGS SECTION ------------
 
@@ -596,7 +568,6 @@ Route::prefix('admin')->group(function () {
 
         //------------ ADMIN FAQ SECTION ENDS ------------
 
-
         //------------ ADMIN PAGE SECTION ------------
 
         Route::get('/page/datatables', 'Admin\PageController@datatables')->name('admin-page-datatables'); //JSON REQUEST
@@ -611,7 +582,6 @@ Route::prefix('admin')->group(function () {
 
         //------------ ADMIN PAGE SECTION ENDS------------
 
-
         Route::get('/general-settings/contact/{status}', 'Admin\GeneralSettingController@iscontact')->name('admin-gs-iscontact');
         Route::get('/general-settings/faq/{status}', 'Admin\GeneralSettingController@isfaq')->name('admin-gs-isfaq');
         Route::get('/page-settings/contact', 'Admin\PageSettingController@contact')->name('admin-ps-contact');
@@ -619,8 +589,6 @@ Route::prefix('admin')->group(function () {
     });
 
     //------------ ADMIN MENU PAGE SETTINGS SECTION ENDS ------------
-
-
 
     //------------ ADMIN EMAIL SETTINGS SECTION ------------
 
@@ -636,8 +604,6 @@ Route::prefix('admin')->group(function () {
     });
 
     //------------ ADMIN EMAIL SETTINGS SECTION ENDS ------------
-
-
 
     //------------ ADMIN PAYMENT SETTINGS SECTION ------------
 
@@ -669,7 +635,6 @@ Route::prefix('admin')->group(function () {
 
         // Currency Settings
 
-
         // MULTIPLE CURRENCY
 
         Route::get('/general-settings/currency/{status}', 'Admin\GeneralSettingController@currency')->name('admin-gs-iscurrency');
@@ -685,10 +650,6 @@ Route::prefix('admin')->group(function () {
 
     //------------ ADMIN PAYMENT SETTINGS SECTION ENDS------------
 
-
-
-
-
     //------------ ADMIN SOCIAL SETTINGS SECTION ------------
 
     Route::group(['middleware' => 'permissions:social_settings'], function () {
@@ -701,8 +662,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/social/google/{status}', 'Admin\SocialSettingController@googleup')->name('admin-social-googleup');
     });
     //------------ ADMIN SOCIAL SETTINGS SECTION ENDS------------
-
-
 
     //------------ ADMIN LANGUAGE SETTINGS SECTION ------------
 
@@ -722,7 +681,6 @@ Route::prefix('admin')->group(function () {
         Route::post('/languages/edit/{id}', 'Admin\LanguageController@update')->name('admin-lang-update');
         Route::get('/languages/status/{id1}/{id2}', 'Admin\LanguageController@status')->name('admin-lang-st');
         Route::get('/languages/delete/{id}', 'Admin\LanguageController@destroy')->name('admin-lang-delete');
-
 
         //------------ ADMIN PANEL LANGUAGE SETTINGS SECTION ------------
 
@@ -788,6 +746,7 @@ Route::prefix('admin')->group(function () {
     // FEATURE SECTION
     Route::get('/products/feature/{id}', 'Admin\ProductController@feature')->name('admin-prod-feature');
     Route::post('/products/feature/{id}', 'Admin\ProductController@featuresubmit')->name('admin-prod-feature');
+
     // FEATURE SECTION ENDS
 
     // GALLERY SECTION ------------
@@ -832,7 +791,6 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-
 // ************************************ ADMIN SECTION ENDS**********************************************
 
 // ************************************ USER SECTION **********************************************
@@ -863,8 +821,6 @@ Route::prefix('user')->group(function () {
     //     return view('frontend/pages/appeTiser');
     // });
 
-
-
     // User Dashboard
     Route::get('/dashboard', 'User\UserController@index')->name('user-dashboard');
 
@@ -875,7 +831,7 @@ Route::prefix('user')->group(function () {
 
     // User Register
     Route::get('/register', 'User\RegisterController@showRegisterForm')->name('user-register');
-    Route::post('/register', 'User\RegisterController@register')->name('user-register-submit');
+    Route::post('/register', 'User\RegisterController@userCreate')->name('user-register-submit');
     Route::get('/register/verify/{token}', 'User\RegisterController@token')->name('user-register-token');
     // User Register End
 
@@ -916,7 +872,6 @@ Route::prefix('user')->group(function () {
 
     // User Orders Ends
 
-
     // User Subscription
 
     Route::get('/package', 'User\UserController@package')->name('user-package');
@@ -932,7 +887,6 @@ Route::prefix('user')->group(function () {
     Route::get('/instamojo/notify', 'User\InstamojoController@notify')->name('user.instamojo.notify');
     Route::post('/instamojo/submit', 'User\InstamojoController@store')->name('user.instamojo.submit');
 
-
     Route::get('/molly/notify', 'User\MollyController@notify')->name('user.molly.notify');
     Route::post('/molly/submit', 'User\MollyController@store')->name('user.molly.submit');
 
@@ -943,12 +897,9 @@ Route::prefix('user')->group(function () {
     Route::post('/paytm/submit', 'User\PaytmController@store')->name('user.paytm.submit');;
     Route::post('/paytm/notify', 'User\PaytmController@notify')->name('user.paytm.notify');
 
-
-
     //PayTM Routes
     Route::post('/razorpay/submit', 'User\RazorpayController@store')->name('user.razorpay.submit');;
     Route::post('/razorpay/notify', 'User\RazorpayController@notify')->name('user.razorpay.notify');
-
 
     // User Subscription Ends
 
@@ -964,7 +915,6 @@ Route::prefix('user')->group(function () {
     // User Vendor Send Message Ends
 
     // User Admin Send Message
-
 
     // Tickets
     Route::get('admin/tickets', 'User\MessageController@adminmessages')->name('user-message-index');
@@ -998,25 +948,20 @@ Route::prefix('user')->group(function () {
 
 // ************************************ USER SECTION ENDS**********************************************
 
-
-
 Route::post('the/genius/ocean/2441139', 'Front\FrontendController@subscription');
 Route::get('finalize', 'Front\FrontendController@finalize');
 Route::get('update-finalize', 'Front\FrontendController@updateFinalize');
 
 Route::get('/under-maintenance', 'Front\FrontendController@maintenance')->name('front-maintenance');
 
-
 Route::group(['middleware' => 'maintenance'], function () {
 
     // ************************************ VENDOR SECTION **********************************************
-
 
     Route::prefix('vendor')->group(function () {
         Route::group(['middleware' => 'vendor'], function () {
             // Vendor Dashboard
             Route::get('/dashboard', 'Vendor\VendorController@index')->name('vendor-dashboard');
-
 
             //IMPORT SECTION
             Route::get('/products/import/create', 'Vendor\ImportController@createImport')->name('vendor-import-create');
@@ -1029,7 +974,6 @@ Route::group(['middleware' => 'maintenance'], function () {
             Route::post('/products/import/csv/store', 'Vendor\ImportController@importStore')->name('vendor-import-csv-store');
             //IMPORT SECTION
 
-
             //------------ ADMIN ORDER SECTION ------------
             Route::get('/orders', 'Vendor\OrderController@index')->name('vendor-order-index');
             Route::get('/order/{id}/show', 'Vendor\OrderController@show')->name('vendor-order-show');
@@ -1040,7 +984,6 @@ Route::group(['middleware' => 'maintenance'], function () {
             Route::post('/order/{slug}/license', 'Vendor\OrderController@license')->name('vendor-order-license');
 
             //------------ ADMIN CATEGORY SECTION ENDS------------
-
 
             //------------ VENDOR SUBCATEGORY SECTION ------------
 
@@ -1115,7 +1058,6 @@ Route::group(['middleware' => 'maintenance'], function () {
 
             //------------ ADMIN SHIPPING ENDS ------------
 
-
             //------------ ADMIN PACKAGE ------------
 
             Route::get('/package/datatables', 'Vendor\PackageController@datatables')->name('vendor-package-datatables');
@@ -1126,10 +1068,7 @@ Route::group(['middleware' => 'maintenance'], function () {
             Route::post('/package/edit/{id}', 'Vendor\PackageController@update')->name('vendor-package-update');
             Route::get('/package/delete/{id}', 'Vendor\PackageController@destroy')->name('vendor-package-delete');
 
-
             //------------ ADMIN PACKAGE ENDS------------
-
-
 
             //------------ VENDOR NOTIFICATION SECTION ------------
 
@@ -1171,13 +1110,11 @@ Route::group(['middleware' => 'maintenance'], function () {
             Route::post('/service/edit/{id}', 'Vendor\ServiceController@update')->name('vendor-service-update');
             Route::get('/service/delete/{id}', 'Vendor\ServiceController@destroy')->name('vendor-service-delete');
 
-
             Route::get('/verify', 'Vendor\VendorController@verify')->name('vendor-verify');
             Route::get('/warning/verify/{id}', 'Vendor\VendorController@warningVerify')->name('vendor-warning');
             Route::post('/verify', 'Vendor\VendorController@verifysubmit')->name('vendor-verify-submit');
         });
     });
-
 
     // ************************************ VENDOR SECTION ENDS**********************************************
 
@@ -1229,11 +1166,10 @@ Route::group(['middleware' => 'maintenance'], function () {
     Route::get('/search/', 'Front\CatalogController@search')->name('front.search');
     // TAG SECTION ENDS
 
-
-
     // PRODCT SECTION
     Route::get('/item/{slug}', 'Front\CatalogController@product')->name('front.product');
     Route::get('/afbuy/{slug}', 'Front\CatalogController@affProductRedirect')->name('affiliate.product');
+    Route::get('/category/{id}', 'Front\CatalogController@categoryProduct')->name('front.category.product');
     Route::get('/item/quick/view/{id}/', 'Front\CatalogController@quick')->name('product.quick');
     Route::post('/item/review', 'Front\CatalogController@reviewsubmit')->name('front.review.submit');
     Route::get('/item/view/review/{id}', 'Front\CatalogController@reviews')->name('front.reviews');
@@ -1248,7 +1184,6 @@ Route::group(['middleware' => 'maintenance'], function () {
     // REPORT SECTION
     Route::post('/item/report', 'Front\CatalogController@report')->name('product.report');
     // REPORT SECTION ENDS
-
 
     // COMPARE SECTION
     Route::get('/item/compare/view', 'Front\CompareController@compare')->name('product.compare');
@@ -1291,7 +1226,6 @@ Route::group(['middleware' => 'maintenance'], function () {
     Route::post('/paypal-submit', 'Front\PaymentController@store')->name('paypal.submit');
     Route::post('/stripe-submit', 'Front\StripeController@store')->name('stripe.submit');
 
-
     // Molly Routes
 
     Route::post('/molly/submit', 'Front\MollyController@store')->name('molly.submit');
@@ -1325,7 +1259,6 @@ Route::group(['middleware' => 'maintenance'], function () {
 
     // SUBSCRIBE SECTION ENDS
 
-
     // LOGIN WITH FACEBOOK OR GOOGLE SECTION
     Route::get('auth/{provider}', 'User\SocialRegisterController@redirectToProvider')->name('social-provider');
     Route::get('auth/{provider}/callback', 'User\SocialRegisterController@handleProviderCallback');
@@ -1341,3 +1274,8 @@ Route::group(['middleware' => 'maintenance'], function () {
 
     // ************************************ FRONT SECTION ENDS**********************************************
 });
+//Route::get('/ambassedor','Front\AmbassedorController@index')->name('front.ambassedor');
+
+Route::get('brand/ambassedor', 'Front\AmbassedorController@index')->name('ambassedor');
+Route::post('join/ambassedor', 'Front\AmbassedorController@crateAmbassedor')->name('join-ambassedor');
+Route::get('join/ambassedor', 'Front\AmbassedorController@registerForm')->name('join-ambassedor');
