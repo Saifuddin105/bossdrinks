@@ -9,6 +9,7 @@
   <meta name="author" content="">
 
   <title>{{ config('app.name') }} | @yield('title')</title>
+  @yield('styles')
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
