@@ -1234,6 +1234,8 @@ Route::group(['middleware' => 'maintenance'], function () {
     //Checkout
 
     Route::get('/show-checkout', 'Front\CheckoutController@showCheckout')->name('front.showCheckout');
+    Route::get('/place-order', 'Front\CheckoutController@showCheckout')->name('front.placeOrder');
+    Route::post('/store-shipping-address', 'Front\CheckoutController@StoreShippingAdress')->name('front.store.shipping.address');
 
     // PRODCT SECTION
     Route::get('/item/{slug}', 'Front\CatalogController@product')->name('front.product');

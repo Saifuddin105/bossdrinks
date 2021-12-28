@@ -2858,7 +2858,7 @@
         window.onload = () => {
             const cartItems = document.getElementById('cart-items');
             if (oldData?.productDetails?.length > 0) {
-                showTotalAmount.innerText=oldData.sub
+                showTotalAmount.innerText=oldData.subTotal
                 for (let i = 0; i < oldData.productDetails.length; i++) {
                     let addCartItem = ""
                     addCartItem += "<div class='FirstBOX' id='box_" + oldData.productDetails[i].productId + "'>";
