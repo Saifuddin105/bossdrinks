@@ -799,27 +799,6 @@ Route::prefix('user')->group(function () {
     Route::get('/cart', function () {
         return view('frontend/pages/cart');
     });
-    // Route::get('/shop', function () {
-    //     return view('frontend/pages/shop');
-    // });
-    // Route::get('/product-details', function () {
-    //     return view('frontend/pages/productDetails');
-    // });
-    // Route::get('/shop', function () {
-    //     return view('frontend/pages/shop');
-    // });
-    // Route::get('/energy-drinks', function () {
-    //     return view('frontend/pages/energyDrinks');
-    // });
-    // Route::get('/sport-drinks', function () {
-    //     return view('frontend/pages/sportDrinks');
-    // });
-    // Route::get('/bcca-drinks', function () {
-    //     return view('frontend/pages/bccaDrinks');
-    // });
-    // Route::get('/appe-tiser', function () {
-    //     return view('frontend/pages/appeTiser');
-    // });
 
     // User Dashboard
     Route::get('/dashboard', 'User\UserController@index')->name('user-dashboard');
@@ -1171,6 +1150,7 @@ Route::group(['middleware' => 'maintenance'], function () {
     //Checkout
 
     Route::get('/show-checkout', 'Front\CheckoutController@showCheckout')->name('front.showCheckout');
+    Route::get('/show-cart', 'Front\CheckoutController@showCart')->name('front.showCart');
     Route::get('/place-order', 'Front\CheckoutController@showCheckout')->name('front.placeOrder');
     Route::post('/store-shipping-address', 'Front\CheckoutController@StoreShippingAdress')->name('front.store.shipping.address');
 
