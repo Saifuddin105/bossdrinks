@@ -77,6 +77,18 @@ $isDev = isset($_GET['dev']) ? true : false;
     </ul>
 </li>
 
+<li>
+    <a href="#ambassadors" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
+        <i class="icofont-user"></i>{{ __('Ambassadors') }}
+    </a>
+    <ul class="collapse list-unstyled" id="ambassadors" data-parent="#accordion">
+        <li>
+            <a href="{{ route('admin-ambassedor-index') }}"><span>{{ __('Ambassadors List') }}</span></a>
+        </li>
+     
+    </ul>
+</li>
+
 @if ($isDev)
 <li>
     <a href="#vendor" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
@@ -314,7 +326,7 @@ $isDev = isset($_GET['dev']) ? true : false;
     </ul>
 </li>
 
-@if ($isDev)
+
 <li>
     <a href="#emails" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
         <i class="fas fa-at"></i>{{ __('Email Settings') }}
@@ -323,10 +335,10 @@ $isDev = isset($_GET['dev']) ? true : false;
         <li><a href="{{ route('admin-mail-index') }}"><span>{{ __('Email Template') }}</span></a></li>
         <li><a href="{{ route('admin-mail-config') }}"><span>{{ __('Email Configurations') }}</span></a>
         </li>
-        <li><a href="{{ route('admin-group-show') }}"><span>{{ __('Group Email') }}</span></a></li>
+        <!-- <li><a href="{{ route('admin-group-show') }}"><span>{{ __('Group Email') }}</span></a></li> -->
     </ul>
 </li>
-@endif
+
 
 <li>
     <a href="#payments" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">

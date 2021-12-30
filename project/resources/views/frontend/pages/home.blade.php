@@ -971,7 +971,7 @@
   </div>
     <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, omnis!</h3>
   <div class="brand_btn">
-    <a href=""><button type="button">Register</button></a>
+    <a href="{{route('ambassedor')}}"><button type="button">Register</button></a>
   </div>
 
   

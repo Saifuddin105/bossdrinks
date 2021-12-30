@@ -20,7 +20,7 @@ class ForgotController extends Controller
 
     public function showForgotForm()
     {
-      return view('user.forgot');
+      return view('frontend.auth.forgot-password');
     }
 
     public function forgot(Request $request)
@@ -35,6 +35,8 @@ class ForgotController extends Controller
       $admin->update($input);
       $subject = "Reset Password Request";
       $msg = "Your New Password is : ".$autopass;
+     //We have e-mailed your password reset link!
+     //Your password has been reset!. 
       if($gs->is_smtp == 1)
       {
           $data = [
@@ -55,7 +57,9 @@ class ForgotController extends Controller
       }
       else{
       // user not found
-      return response()->json(array('errors' => [ 0 => 'No Account Found With This Email.' ]));    
+      //
+      return redirect()->route('user-forgot')->with('error', "We can't find a user with that e-mail address")->withInput();
+      //return response()->json(array('errors' => [ 0 => 'No Account Found With This Email.' ]));    
       }  
     }
 
