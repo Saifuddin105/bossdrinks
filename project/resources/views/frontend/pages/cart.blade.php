@@ -2,6 +2,22 @@
 
 @section('title', 'Cart')
 
+@section('styles')
+<style type = "text/css">
+.cart-box{
+    position: relative;
+}
+.cart-close-btn{
+    position: absolute;
+    right: 0;
+    border: none;
+    background: none;
+    top: -1px;
+}
+    
+</style>
+
+@endsection
 
 
 
