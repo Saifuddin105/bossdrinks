@@ -2,6 +2,22 @@
 
 @section('title', 'Cart')
 
+@section('styles')
+<style type = "text/css">
+.cart-box{
+    position: relative;
+}
+.cart-close-btn{
+    position: absolute;
+    right: 0;
+    border: none;
+    background: none;
+    top: -1px;
+}
+    
+</style>
+
+@endsection
 
 
 
@@ -10,19 +26,14 @@
     <div class="main">
 
 
-
-
-
         <div class="my_cart ">
 
             <h4 id="shop_cart">Your Shopping Cart</h4>
 
             <div class="container my_cart_details" id="order-items">
-
-
             </div>
 
-            <div class="checkout checkout_cart">
+            <div class="checkout checkout_cart" id="checkout_cart">
                 <div>
                     Your Subtotal is &#163;<span id="sub-total"></span>
                 </div>
@@ -1905,7 +1916,9 @@
             if (oldData?.productDetails?.length > 0) {
                 for (let i = 0; i < oldData.productDetails.length; i++) {
                     let addCartItem = ""
-                    addCartItem += "<div class='cart-box'>";
+                    addCartItem += "<div class='cart-box' id='box_" + oldData.productDetails[i].productId + "'>";
+                        addCartItem += "<button class='cart-close-btn' onclick='closeCartItem(event," + oldData.productDetails[i].productId +
+                        ")'>&#10006;</button>";
                     addCartItem += "<div class='cart_img'>";
                     addCartItem += "<img src='/Size_4  50x130px/Energy-Boss---IT-(13-10-2021)---Blue-BG.png' alt=''>";
                     addCartItem += "</div>";
@@ -1932,6 +1945,10 @@
                 }
 
                 subTotal.innerHTML = oldData.subTotal
+            }
+            else{
+               document.getElementById('checkout_cart').style="display:none"
+                orderItems.innerText='There are no items in this cart'
             }
 
 
@@ -1989,6 +2006,22 @@
             localStorage.removeItem('cartDetails')
             localStorage.setItem('cartDetails', JSON.stringify(oldData))
 
+        }
+
+        const closeCartItem = (event, productId) => {
+            event.preventDefault();
+            const productIndx = oldData.productDetails.findIndex((element, index) => {
+                if (element.productId === productId) {
+                    return true
+                }
+            })
+            oldData.productDetails.splice(productIndx, 1)
+            document.getElementById("box_" + productId).remove()
+            if (oldData?.productDetails?.length < 1) {
+                oldData.subTotal = 0
+            }
+            localStorage.setItem('cartDetails', JSON.stringify(oldData))
+            calculateTotalAmount()
         }
     </script>
 
