@@ -2,6 +2,25 @@
 
 @section('title', 'Place order')
 
+@section('styles')
+<style type = "text/css">
+       .payPal {
+    display: none;
+}
+
+.PaywithCard {
+    display: none;
+}
+
+.payment_system {
+    font-weight: 600;
+    color: #ea5119;
+}
+    
+</style>
+
+@endsection
+
 
 
 
@@ -31,14 +50,28 @@
 
 
 
-        <div class="billing-method">
-            <h4>Select Payment Method</h4>
-            <div class="billing-system">
-                <a href="">PayPal</a>
-                <a href="">Pay with card</a>
-            </div>
+            <div class="billing-method">
+                <h4>Select Payment Method</h4>
+                <div class="billing-system">
+                    <label class="payment_system">
+                        <input id="radio_ONE" type="radio" name="RADIOagain" value="paypal"> PayPal
+                    </label>
+                    <div class="payPal">
+                        PayPal window
+                    </div>
 
-        </div>
+
+                    <label class="payment_system">
+                        <input id="radio_two" type="radio" name="RADIOagain" value="card"> Pay With Card
+                    </label>
+                    <div class="PaywithCard">
+                        Pay with card
+                    </div>
+
+                </div>
+
+
+            </div>
 
         <div class="checkBOX">
 
@@ -132,6 +165,39 @@
 @push('script')
 
     <script>
+
+         const paymentradio1 = document.getElementById("radio_ONE")
+const PaypalWindow = document.querySelector(".payPal")
+
+paymentradio1.addEventListener("click", e => {
+
+
+    
+    if (paymentradio1.value == "paypal") {
+        PaypalWindow.style.display = "block"
+        PayCardWindow.style.display = "none"
+        console.log(paymentradio1.value)
+
+    }
+
+})
+
+const paymentradio2 = document.getElementById("radio_two")
+const PayCardWindow = document.querySelector(".PaywithCard")
+
+
+paymentradio2.addEventListener("click", e => {
+
+
+
+    if (paymentradio2.value == "card") {
+        PayCardWindow.style.display = "block"
+        PaypalWindow.style.display = "none"
+
+    }
+
+})
+
         window.onload = () => {
             const oldData = JSON.parse(localStorage.getItem('cartDetails'))
             const total=document.getElementById('total')
