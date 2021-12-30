@@ -50,16 +50,16 @@
                 <div class="main_form">
                     <div class="form_component">
                         <span>Email *</span>
-                        <input type="email" name="email">
+                        <input type="email" name="email" required>
                     </div>
                     <div class="name_form">
                         <div>
                             <span>First Name *</span>
-                            <input id="name_field" name="first_name" type="text">
+                            <input id="name_field" name="first_name" type="text" required>
                         </div>
                         <div>
                             <span>Last Name *</span>
-                            <input id="name_field" name="last_name" type="text">
+                            <input id="name_field" name="last_name" type="text" required>
                         </div>
                     </div>
                     <div class="form_component">
@@ -73,7 +73,7 @@
                             <div id="social_logo">
                                 <h4 id="instagram">@</h4>
                             </div>
-                            <input type="text" name="instagram">
+                            <input type="text" name="instagram" required>
                         </div>
                     </div>
                     <div class="form_component">
@@ -116,21 +116,21 @@
 
                     <div class="form_component">
                         <span>Paypal Email Address*</span>
-                        <input type="email" name="payple_email">
+                        <input type="email" name="payple_email" required>
                     </div>
 
                     <div class="joinnow_selectboxes">
                         <div class="joinnow_checkbox">
-                            <input type="checkbox" name="agree_terms">
+                            <input type="checkbox" name="agree_terms" required>
                             <h3>I agree to the <a href="">terms and conditions *</a></h3>
                         </div>
                         <div class="joinnow_checkbox">
-                            <input type="checkbox" name="agree_referral">
+                            <input type="checkbox" name="agree_referral" required>
                             <h3>I agree to only post my referral link and/or coupon code on my own site and social
                                 channels *</h3>
                         </div>
                         <div class="joinnow_checkbox">
-                            <input type="checkbox" name="agree_post">
+                            <input type="checkbox" name="agree_post" required>
                             <h3>I will not post or submit any referral links or coupon codes to any discount coupon or
                                 promotion code aggregator
                                 websites, browsers, or social media discount threads *</h3>
