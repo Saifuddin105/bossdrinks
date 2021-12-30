@@ -74,7 +74,7 @@
 
         </div>
 
-        <div class="coupon">
+        {{-- <div class="coupon">
             <h4>Have a rewards or discount code ?</h4>
             <div class="enter_here">
                 <span>Enter Here</span>
@@ -83,7 +83,7 @@
             </div>
 
 
-        </div>
+        </div> --}}
 
         <div class="subtotal">
             <div class="subtotal_calculation">
@@ -147,7 +147,7 @@
                     addCartItem += "<span>"+oldData.productDetails[i].title+"</span>";
                     addCartItem += "<p>"+oldData.productDetails[i].deliveryTitle+"</p>";
                     addCartItem += " </div>";
-                    addCartItem += "<div class='shopping_details_price'>"+oldData.productDetails[i].totalAmount+"</div>";
+                    addCartItem += "<div class='shopping_details_price'>"+oldData.productDetails[i].totalAmount.toFixed()+"</div>";
                     addCartItem += "</div>";
                     orderItems.insertAdjacentHTML("beforeend", addCartItem);
                 }
