@@ -59,28 +59,28 @@
             <div class="subtotal">
                 <div class="subtotal_calculation">
                     <h4>Subtotal</h4>
-                    <span id="sub-total">26.5</span>
+                    <span id="sub-total">0</span>
                 </div>
                 <div class="subtotal_calculation">
                     <h4>Shipping Fee</h4>
-                    <span>-</span>
+                    <span>0</span>
                 </div>
                 <div class="subtotal_calculation">
                     <h4>Taxes</h4>
-                    <span>-</span>
+                    <span>0</span>
                 </div>
                 <hr>
                 <div class="subtotal_calculation">
                     <h4>Total</h4>
-                    <span id="total">26.5</span>
+                    <span id="total">0</span>
                 </div>
             </div>
 
-            <div class="Payment_due">
+            {{-- <div class="Payment_due">
                 <h2>Payment Due</h2>
                 <div class="GBP">GBP</div>
-                <span id="payment-due">26.65</span>
-            </div>
+                {{-- <span id="payment-due"></span> --}}
+            {{-- </div> --}}
 
 
         </div>
@@ -97,7 +97,7 @@
             const oldData = JSON.parse(localStorage.getItem('cartDetails'))
             const total = document.getElementById('total')
             const subTotal = document.getElementById('sub-total')
-            const paymentDue = document.getElementById('payment-due')
+            // const paymentDue = document.getElementById('payment-due')
             const orderItems = document.getElementById('order-items');
             if (oldData?.productDetails?.length > 0) {
                 for (let i = 0; i < oldData.productDetails.length; i++) {
@@ -117,7 +117,7 @@
 
                 subTotal.innerHTML = oldData.subTotal.toFixed(2);
                 total.innerHTML = oldData.subTotal.toFixed(2);
-                paymentDue.innerHTML = oldData.subTotal.toFixed(2);
+                // paymentDue.innerHTML = oldData.subTotal.toFixed(2);
             }
 
         }
