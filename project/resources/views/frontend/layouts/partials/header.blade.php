@@ -22,7 +22,7 @@
       <a href="{{route('user.login')}}"><button id="userbtn" class="navbar-btn" type="button">
           <i class="fas fa-user"></i>
         </button></a>
-      <a href="cart.html"> <button id="cart-btn" class="navbar-btn " type="button">
+      <a href="{{route('front.showCart')}}"> <button id="cart-btn" class="navbar-btn " type="button">
           <i class="cart-btn fas fa-shopping-cart"></i>
         </button></a>
         @if(Auth::user())

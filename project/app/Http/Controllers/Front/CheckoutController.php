@@ -830,6 +830,10 @@ class CheckoutController extends Controller
     {
         return view('frontend.Pages.checkout');
     }
+    public function showCart()
+    {
+        return view('frontend.Pages.cart');
+    }
     public function placeOrder()
     {
         return view('frontend.Pages.placeOrder');
