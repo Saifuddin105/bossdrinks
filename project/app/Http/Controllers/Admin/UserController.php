@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Ambassedor;
 use Datatables;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -37,10 +38,26 @@ class UserController extends Controller
                                 ->toJson(); //--- Returning Json Data To Client Side
         }
 
+        public function ambassedorsDatatables(){
+            $datas = Ambassedor::orderBy('id')->get();
+            //--- Integrating This Collection Into Datatables
+            return Datatables::of($datas)
+                               ->addColumn('action', function(Ambassedor $data) {
+                                   $class = $data->ban == 0 ? 'drop-success' : 'drop-danger';
+                                   return '<div class="action-list"><a href="' . route('admin-ambassedor-show',$data->id) . '" > <i class="fas fa-eye"></i> Details</a><a href="javascript:;" class="send" data-email="'. $data->email .'" data-toggle="modal" data-target="#vendorform"><i class="fas fa-envelope"></i> Send</a><a href="javascript:;" data-href="' . route('admin-user-delete',$data->id) . '" data-toggle="modal" data-target="#confirm-delete" class="delete"><i class="fas fa-trash-alt"></i></a></div>';
+                               }) 
+                               ->rawColumns(['action'])
+                               ->toJson(); 
+         }
+
         //*** GET Request
         public function index()
         {
             return view('admin.user.index');
+        }
+
+        public function ambassedors(){
+            return view('admin.ambassedor.index');
         }
 
         //*** GET Request
@@ -59,6 +76,19 @@ class UserController extends Controller
             $data = User::findOrFail($id);
             return view('admin.user.show',compact('data'));
         }
+
+        public function ambassedorDetail($id){
+            
+            if(!Ambassedor::where('id',$id)->exists())
+            {
+              
+                return redirect()->route('admin.dashboard')->with('unsuccess',__('Sorry the page does not exist.'));
+            }
+            $data = Ambassedor::findOrFail($id);
+      
+           
+            return view('admin.ambassedor.ambassedor-detail',compact('data'));
+         }
 
         //*** GET Request
         public function ban($id1,$id2)

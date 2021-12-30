@@ -1,47 +1,10 @@
-@extends('layouts.front')
-@section('content')
+@extends('../frontend.layouts.master')
 
-<!-- Breadcrumb Area Start -->
+@section('title', '404')
+
+@section('content')
 <div class="breadcrumb-area">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <ul class="pages">
-          <li>
-            <a href="{{ route('front.index') }}">
-              {{ $langg->lang17 }}
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              {{ $langg->lang427 }}
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+   <img src="{{asset('assets/images/6M513.png') }}" width="100%"/>
 </div>
-<!-- Breadcrumb Area End -->
-
-<section class="fourzerofour">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="content">
-            <img src="{{ $gs->error_banner ? asset('assets/images/'.$gs->error_banner):asset('assets/images/noimage.png') }}" alt="">
-            <h4 class="heading">
-              {{ $langg->lang428 }}
-            </h4>
-            <p class="text">
-              {{ $langg->lang429 }}
-            </p>
-            <a class="mybtn1" href="{{ route('front.index') }}">{{ $langg->lang430 }}</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
 @endsection
