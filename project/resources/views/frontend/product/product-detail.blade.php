@@ -2903,7 +2903,10 @@
                     'Energy Boss' : type ===
                     'bulk-purchase' ?
                     'Energy Boss Bulk' : '',
-                'deliveryTitle': 'Delivered every 30 days',
+                'deliveryTitle':  type === 'subscription' ? 'Energy Boss Subscription' : type === 'one-time-purchase' ?
+                    'One time purchase' : type ===
+                    'bulk-purchase' ?
+                    'Bulk Purchase' : '',
                 'quantity': type === 'subscription' ? subScribeCases : type === 'one-time-purchase' ? 1 : type ===
                     'bulk-purchase' ? bulkCases : 1,
                 'productPrice': unitPrice,
