@@ -107,7 +107,8 @@ class ForgotController extends Controller
 
     public function passwordUpdate(Request $request)
     {
-        $user = User::where('id', '=', $request->id);
+        $user = User::find($request->id);
+        
         $rules = [
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password|min:8',
@@ -121,7 +122,9 @@ class ForgotController extends Controller
         if ($validator->fails()) {
             return redirect('user/password/form')->withErrors($validator, 'login')->withInput();
         }
-        $status = $user->update(['password' => bcrypt($request->password)]);
+         $user->password= bcrypt($request->password);
+         $status = $user->save();
+        
         if ($status) {
             return redirect()->route('user.login')->with('success', 'Password Updated successfully, please login now !!');
         }
