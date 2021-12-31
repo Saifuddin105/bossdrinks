@@ -26,18 +26,18 @@
                 <div class="menu_footer">
                     <ul class="first_collumn_footer">
                         <li><span>Menu</span></li>
-                        <li><span><a href="index.html">Home</a></span></li>
+                        <li><span><a href="{{url('/')}}">Home</a></span></li>
                         <li><span>About Us</span></li>
                         <li><span><a href="shop.html">Products</a></span></li>
                         <li><span><a href="shop.html">Buy Drinks</a></span></li>
-                        <li><span><a href="contactus.html">Contact Us</a></span></li>
+                        <li><span><a href="{{route('front.contact')}}">Contact Us</a></span></li>
                     </ul>
                 </div>
                 <div class="more_links_footer">
                     <ul class="first_collumn_footer">
                         <li><span>More Links</span></li>
-                        <li><span><a href="terms.html">Terms and Conditions</a></span></li>
-                        <li><span><a href="terms.html">Privacy and Policy</a></span></li>
+                        <li><span><a href="{{route('front.term')}}">Terms and Conditions</a></span></li>
+                        <li><span><a href="{{route('privacy')}}">Privacy and Policy</a></span></li>
                         <li><span>Our Mission</span></li>
                         <li><span>Our Vision</span></li>
                         <li><span>Our Community</span></li>
@@ -50,7 +50,7 @@
                         <li><span>Merchandise</span></li>
                         <li><span><a href="delivery.html">Delivery</a></span></li>
                         <li><span>Returns</span></li>
-                        <li><span><a href="coockies.html">Coockies</a></span></li>
+                        <li><span><a href="{{route('privacy')}}">Coockies</a></span></li>
                     </ul>
                 </div>
                 <div class="footer_contact">

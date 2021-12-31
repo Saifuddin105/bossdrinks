@@ -88,6 +88,17 @@ $isDev = isset($_GET['dev']) ? true : false;
      
     </ul>
 </li>
+<li>
+    <a href="#contacts" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
+        <i class="icofont-ui-contact-list"></i>{{ __('Conatcts') }}
+    </a>
+    <ul class="collapse list-unstyled" id="contacts" data-parent="#accordion">
+        <li>
+            <a href="{{ route('admin-contact-index') }}"><span>{{ __('Contact List') }}</span></a>
+        </li>
+     
+    </ul>
+</li>
 
 @if ($isDev)
 <li>

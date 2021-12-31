@@ -149,6 +149,9 @@ Route::prefix('admin')->group(function () {
     Route::group(['middleware' => 'permissions:customers'], function () {
         Route::get('/users/datatables', 'Admin\UserController@datatables')->name('admin-user-datatables'); //JSON REQUEST
         Route::get('/ambassedors/datatables', 'Admin\UserController@ambassedorsDatatables')->name('admin-ambassedor-datatables'); //JSON REQUEST
+        Route::get('/contacts', 'Admin\ContactController@contacts')->name('admin-contact-index');
+        Route::get('/contacts/datatables', 'Admin\ContactController@cotactsDatatables')->name('admin-contact-datatables'); 
+        Route::get('/contact/{id}/show', 'Admin\ContactController@contactDetails')->name('admin-contact-show'); 
         Route::get('/users', 'Admin\UserController@index')->name('admin-user-index');
         Route::get('/ambassedors', 'Admin\UserController@ambassedors')->name('admin-ambassedor-index');
         Route::get('/users/edit/{id}', 'Admin\UserController@edit')->name('admin-user-edit');
@@ -1142,7 +1145,7 @@ Route::group(['middleware' => 'maintenance'], function () {
 
     // CONTACT SECTION
     Route::get('/contact', 'Front\FrontendController@contact')->name('front.contact');
-    Route::post('/contact', 'Front\FrontendController@contactemail')->name('front.contact.submit');
+    Route::post('/contact', 'Front\FrontendController@contactSubmit')->name('front.contact.submit');
     Route::get('/contact/refresh_code', 'Front\FrontendController@refresh_code');
     // CONTACT SECTION  ENDS
 
@@ -1279,3 +1282,6 @@ Route::group(['middleware' => 'maintenance'], function () {
 Route::get('brand/ambassedor', 'Front\AmbassedorController@index')->name('ambassedor');
 Route::post('join/ambassedor', 'Front\AmbassedorController@crateAmbassedor')->name('join-ambassedor');
 Route::get('join/ambassedor', 'Front\AmbassedorController@registerForm')->name('join-ambassedor');
+Route::get('privacy/policy',function(){
+    return view('frontend.pages.privacy-policy');
+})->name('privacy');
