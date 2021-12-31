@@ -11,9 +11,13 @@ $id="";
 $token="";
 if(isset($_GET['id'])){
   $id=$_GET['id'];
+}else{
+  $id = old('user_id');
 }
 if(isset($_GET['token'])){
   $token=$_GET['token'];
+}else{
+  $id = old('token');
 }
 @endphp
     <form action="{{route('user-password-update')}}" method="POST" >
