@@ -94,6 +94,9 @@ class ForgotController extends Controller
         if ($user->count() > 0 && $userGet->remember_token === $token) {
             return redirect()->route('user-password-form', ['id' => $id])->with('success', "Please Create New Password")->withInput();
 
+        }else{
+          return redirect()->route('user.login')->with('error', 'Token is not valid!');
+
         }
     }
 
