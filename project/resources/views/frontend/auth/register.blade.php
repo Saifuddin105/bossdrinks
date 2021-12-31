@@ -52,7 +52,7 @@
                         <button id="navbar-btn" class="navbar-btn" type="button">
                             <i class="bar-btn fas fa-bars"></i>
                         </button>
-                        <a href="shop.html">
+                        <a href="{{route('front.shop')}}">
                             <h1 class="shop-text font-weight-bold ml-2 m-0">SHOP</h1>
                         </a>
                     </div>
@@ -162,8 +162,8 @@
                             <li><span>Menu</span></li>
                             <li><span><a href="index.html">Home</a></span></li>
                             <li><span>About Us</span></li>
-                            <li><span><a href="shop.html">Products</a></span></li>
-                            <li><span><a href="shop.html">Buy Drinks</a></span></li>
+                            <li><span><a href="{{route('front.shop')}}">Products</a></span></li>
+                            <li><span><a href="{{route('front.shop')}}">Buy Drinks</a></span></li>
                             <li><span>Contact Us</span></li>
                         </ul>
                     </div>

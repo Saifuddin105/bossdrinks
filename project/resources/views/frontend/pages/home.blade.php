@@ -59,7 +59,7 @@
       </div>
 
       <div class="col-lg-4">
-        <a href="shop.html"><button id="btn-shopnow" type="button" class="btn btn-light font-weight-bold">SHOP
+        <a href="{{route('front.shop')}}"><button id="btn-shopnow" type="button" class="btn btn-light font-weight-bold">SHOP
             NOW</button></a>
       </div>
       <div class="col-4 imgshow_secondcollum">
@@ -275,7 +275,7 @@
     font-weight: 400;">No contract &#8226 Free UK delivery &#8226 Cancel anytime<h3>
     </div>
     <div id="Button_forproductdetails">
-      <a href="shop.html"><button id="btn-shopnow" type="button" class="btn btn-light font-weight-bold">SHOP
+      <a href="{{route('front.shop')}}"><button id="btn-shopnow" type="button" class="btn btn-light font-weight-bold">SHOP
           NOW</button></a>
     </div>
 
@@ -418,7 +418,7 @@
     font-weight: 400;">No contract &#8226 Free UK delivery &#8226 Cancel anytime<h3>
     </div>
     <div id="Button_forproductdetails">
-      <a href="shop.html"><button id="btn-shopnow" type="button" class="btn btn-light font-weight-bold">SHOP
+      <a href="{{route('front.shop')}}"><button id="btn-shopnow" type="button" class="btn btn-light font-weight-bold">SHOP
           NOW</button></a>
     </div>
 
@@ -559,7 +559,7 @@
         font-weight: 400;">No contract &#8226 Free UK delivery &#8226 Cancel anytime<h3>
     </div>
     <div id="Button_forproductdetails">
-      <a href="shop.html"><button id="btn-shopnow" type="button" class="btn btn-light font-weight-bold">SHOP
+      <a href="{{route('front.shop')}}"><button id="btn-shopnow" type="button" class="btn btn-light font-weight-bold">SHOP
           NOW</button></a>
     </div>
 
@@ -701,7 +701,7 @@
         font-weight: 400;">No contract &#8226 Free UK delivery &#8226 Cancel anytime<h3>
     </div>
     <div id="Button_forproductdetails">
-      <a href="shop.html"><button id="btn-shopnow" type="button" class="btn btn-light font-weight-bold">SHOP
+      <a href="{{route('front.shop')}}"><button id="btn-shopnow" type="button" class="btn btn-light font-weight-bold">SHOP
           NOW</button></a>
     </div>
 

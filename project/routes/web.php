@@ -802,27 +802,7 @@ Route::prefix('user')->group(function () {
     Route::get('/cart', function () {
         return view('frontend/pages/cart');
     });
-    // Route::get('/shop', function () {
-    //     return view('frontend/pages/shop');
-    // });
-    // Route::get('/product-details', function () {
-    //     return view('frontend/pages/productDetails');
-    // });
-    // Route::get('/shop', function () {
-    //     return view('frontend/pages/shop');
-    // });
-    // Route::get('/energy-drinks', function () {
-    //     return view('frontend/pages/energyDrinks');
-    // });
-    // Route::get('/sport-drinks', function () {
-    //     return view('frontend/pages/sportDrinks');
-    // });
-    // Route::get('/bcca-drinks', function () {
-    //     return view('frontend/pages/bccaDrinks');
-    // });
-    // Route::get('/appe-tiser', function () {
-    //     return view('frontend/pages/appeTiser');
-    // });
+    Route::get('shop', 'Front\FrontendController@shop')->name('front.shop');
 
     // User Dashboard
     Route::get('/dashboard', 'User\UserController@index')->name('user-dashboard');
@@ -956,6 +936,7 @@ Route::prefix('user')->group(function () {
 
 Route::post('the/genius/ocean/2441139', 'Front\FrontendController@subscription');
 Route::get('finalize', 'Front\FrontendController@finalize');
+
 Route::get('update-finalize', 'Front\FrontendController@updateFinalize');
 
 Route::get('/under-maintenance', 'Front\FrontendController@maintenance')->name('front-maintenance');
@@ -1127,6 +1108,7 @@ Route::group(['middleware' => 'maintenance'], function () {
     // ************************************ FRONT SECTION **********************************************
 
     Route::get('/', 'Front\FrontendController@index')->name('front.index');
+    
     Route::get('/frontend-2', 'Front\FrontendController@index')->name('front.index');
     Route::get('/term-condition', 'Front\FrontendController@term')->name('front.term');
     Route::get('/extras', 'Front\FrontendController@extraIndex')->name('front.extraIndex');

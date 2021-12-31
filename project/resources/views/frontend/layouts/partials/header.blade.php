@@ -6,7 +6,7 @@
         <button id="navbar-btn" class="navbar-btn" type="button">
           <i class="bar-btn fas fa-bars"></i>
         </button>
-        <a href="shop.html">
+        <a href="{{route('front.shop')}}">
           <h1 class="shop-text font-weight-bold ml-2 m-0">SHOP</h1>
         </a>
       </div>

@@ -158,6 +158,17 @@ class FrontendController extends Controller
         // return view('frontend.pages.home');
     }
 
+    public function shop(){
+        $categories = DB::table('categories')->get();
+        $products = DB::table('products')->get()->toArray();
+        //$products1 = array_splice((array)$products, 0, 2);
+        // $products2 = array_splice($products, 3, 5);
+
+        list($products1, $products2) = array_chunk((array) $products, 3);
+        return view('frontend.pages.shop', compact('categories', 'products1', 'products2'));
+
+    }
+
     public function term()
     {
         return view('frontend.pages.terms');

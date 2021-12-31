@@ -64,7 +64,7 @@
             </div>
 
             <div class="account_shop_now">
-                <a id="acount_shop_now" href="shop.html">Shop Now</a>
+                <a id="acount_shop_now" href="{{route('front.shop')}}">Shop Now</a>
             </div>
 
 

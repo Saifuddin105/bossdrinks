@@ -12,7 +12,7 @@
             <!-- <h4 class="text-12">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                                     Voluptate,
                                     ad.</h4> -->
-            <a href="shop.html"><button id="btn-1" type="button" class="btn btn-light font-weight-bold ">SHOP
+            <a href="{{route('front.shop')}}"><button id="btn-1" type="button" class="btn btn-light font-weight-bold ">SHOP
                 NOW</button></a>
 
           </div>
