@@ -95,7 +95,7 @@ class ForgotController extends Controller
             return redirect()->route('user-password-form', ['id' => $id])->with('success', "Please Create New Password")->withInput();
 
         }else{
-          return redirect()->route('user.login#login_form')->with('error', 'Token is not valid!');
+          return redirect('user/login#login_form')->with('error', 'Token is not valid!');
 
         }
     }
@@ -126,10 +126,10 @@ class ForgotController extends Controller
          $status = $user->save();
         
         if ($status) {
-            return redirect()->route('user.login#login_form')->with('success', 'Password Updated successfully, please login now !!');
+            return redirect('user/login#login_form')->with('success', 'Password Updated successfully, please login now !!');
         }
          }else{
-          return redirect()->route('user.login#login_form')->with('error', 'sometimes wrong!!');
+          return redirect('user/login#login_form')->with('error', 'sometimes wrong!!');
 
           }
       
