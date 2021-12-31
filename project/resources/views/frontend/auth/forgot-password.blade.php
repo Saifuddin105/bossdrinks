@@ -34,9 +34,7 @@
             <form action="{{route('user-forgot-submit')}}" method="POST">
               @csrf
                 <div class="forget_pass">
-                    <input type="email" name="email" value="{{old('email')}}" placeholder="Email...">
-
-
+                    <input type="email" name="email" value="{{old('email')}}" placeholder="Email..." required>
 
                     <button type="submit">Submit</button>
                     <a href="{{route('user.login')}}">Back to Log in</a>
