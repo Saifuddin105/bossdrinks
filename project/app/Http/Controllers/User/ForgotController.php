@@ -63,7 +63,7 @@ class ForgotController extends Controller
 
       }
       catch (\Exception $e){
-           //die($e->getMessage());
+           die($e->getMessage());
       }
         return redirect()->route('user-forgot')->with('success', "Please Check your email Address.");
 
