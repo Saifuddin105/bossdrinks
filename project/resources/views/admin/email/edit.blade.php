@@ -45,6 +45,7 @@
                                             <tr>
                                                 <td>{{ __('Customer Name') }}</td>
                                                 <td>{customer_name}</td>
+                                                <td>{reset_password_url}</td>
                                             </tr>
                                             <!-- <tr>
                                                 <td>{{ __('Order Amount') }}</td>

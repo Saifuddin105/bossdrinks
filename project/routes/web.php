@@ -851,6 +851,7 @@ Route::prefix('user')->group(function () {
     // User Forgot
     Route::get('/forgot', 'User\ForgotController@showforgotform')->name('user-forgot');
     Route::post('/forgot', 'User\ForgotController@forgot')->name('user-forgot-submit');
+    Route::post('/reset/{token}', 'User\ForgotController@resetPassword')->name('user-reset-password');
     // User Forgot Ends
 
     // User Wishlist

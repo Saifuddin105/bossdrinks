@@ -35,7 +35,7 @@ class LoginController extends Controller
         
         
         if ($validator->fails()) {
-            return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
+            return redirect('user/login#login_form')->withErrors($validator, 'login')->withInput();
         }
         //--- Validation Section Ends
         // Attempt to log the user in
