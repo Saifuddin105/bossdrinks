@@ -92,7 +92,7 @@ class ForgotController extends Controller
         $user = User::where('id', '=', $id);
         $userGet = $user->first();
         if ($user->count() > 0 && $userGet->remember_token === $token) {
-            return redirect()->route('user-password-form', ['id' => $id])->with('success', "Please Create New Password")->withInput();
+            return redirect()->route('user-password-form', ['id' => $id, 'token' => $token])->with('success', "Please Create New Password")->withInput();
 
         }else{
           return redirect('user/login#login_form')->with('error', 'Token is not valid!');
@@ -108,7 +108,7 @@ class ForgotController extends Controller
     public function passwordUpdate(Request $request)
     {
         $user = User::find($request->user_id);
-        if($user){
+        if($user && $user->remember_token === $request->token){
           $rules = [
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password|min:8',
@@ -129,7 +129,7 @@ class ForgotController extends Controller
             return redirect('user/login#login_form')->with('success', 'Password Updated successfully, please login now !!');
         }
          }else{
-          return redirect('user/login#login_form')->with('error', 'sometimes wrong!!');
+          return redirect('user/login#login_form')->with('error', 'Token is not valid!!');
 
           }
       

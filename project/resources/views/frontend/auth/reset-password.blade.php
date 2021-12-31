@@ -7,8 +7,13 @@
 
 <div class="sign_in_form" id="login_form">
 @php
-if(!isset($id)){
-  $id="";
+$id="";
+$token="";
+if(isset($_GET['id'])){
+  $id=$_GET['id'];
+}
+if(isset($_GET['token'])){
+  $token=$_GET['token'];
 }
 @endphp
     <form action="{{route('user-password-update')}}" method="POST" >
@@ -16,6 +21,7 @@ if(!isset($id)){
         <div class="sign_in">
         <div>
           <input type="hidden" value="{{$id}}" name="user_id"> 
+          <input type="hidden" value="{{$token}}" name="token"> 
                     <input type="password" name="password" value="{{ old('password') }}" placeholder="Password...">
                     <br/>
                     @if ($errors->login->has('password'))
