@@ -31,12 +31,12 @@ class ForgotController extends Controller
       $user = User::where('email', '=', $request->email);
       if ($user->count() > 0) {
       // user found
-
+      $userGet = $user->first();
       $random = Str::random(8);
       $token = bcrypt($random);
       $setup = Generalsetting::find(1);
       $temp = EmailTemplate::where('email_type','=','reset_password_tamplate')->first();
-      $body = preg_replace("/{customer_name}/", $user->name ,$temp->email_body);
+      $body = preg_replace("/{customer_name}/", $userGet->name ,$temp->email_body);
       $body = preg_replace("/{website_title}/", $setup->title ,$body);
       $body = preg_replace("/{reset_password_url}/", route('user-reset-password',['token'=>$token]) ,$body);
 
