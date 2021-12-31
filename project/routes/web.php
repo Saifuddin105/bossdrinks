@@ -851,7 +851,7 @@ Route::prefix('user')->group(function () {
     // User Forgot
     Route::get('/forgot', 'User\ForgotController@showforgotform')->name('user-forgot');
     Route::post('/forgot', 'User\ForgotController@forgot')->name('user-forgot-submit');
-    Route::post('/reset/{token}/{id}', 'User\ForgotController@resetPassword')->name('user-reset-password');
+    Route::get('/reset/{token}/{id}', 'User\ForgotController@resetPassword')->name('user-reset-password');
     Route::get('/password/form', 'User\ForgotController@resetPasswordForm')->name('user-password-form');
     Route::post('/password/update', 'User\ForgotController@passwordUpdate')->name('user-password-update');
     // User Forgot Ends
