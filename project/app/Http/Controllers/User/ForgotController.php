@@ -95,7 +95,7 @@ class ForgotController extends Controller
             return redirect()->route('user-password-form', ['id' => $id])->with('success', "Please Create New Password")->withInput();
 
         }else{
-          return redirect()->route('user.login')->with('error', 'Token is not valid!');
+          return redirect()->route('user.login#login_form')->with('error', 'Token is not valid!');
 
         }
     }
