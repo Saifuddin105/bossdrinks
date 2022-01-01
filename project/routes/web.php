@@ -1152,7 +1152,7 @@ Route::group(['middleware' => 'maintenance'], function () {
     Route::get('/show-checkout', 'Front\CheckoutController@showCheckout')->name('front.showCheckout');
     Route::get('/show-cart', 'Front\CheckoutController@showCart')->name('front.showCart');
     Route::get('/place-order', 'Front\CheckoutController@showCheckout')->name('front.placeOrder');
-    Route::post('/store-shipping-address', 'Front\CheckoutController@StoreShippingAdress')->name('front.store.shipping.address');
+    Route::post('/store-shipping-address', 'Front\CheckoutController@storeShippingAdress')->name('front.store.shipping.address');
 
     // PRODCT SECTION
     Route::get('/item/{slug}', 'Front\CatalogController@product')->name('front.product');

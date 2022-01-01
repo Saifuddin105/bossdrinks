@@ -838,8 +838,15 @@ class CheckoutController extends Controller
     {
         return view('frontend.Pages.placeOrder');
     }
-    public function StoreShippingAdress(Request $request)
+
+    
+    public function storeShippingAdress(Request $request)
     {
         return view('frontend.Pages.placeOrder');
+    }
+
+    public function payment(Request $request)
+    {
+        var_dump($request);
     }
 }
