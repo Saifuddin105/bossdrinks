@@ -852,7 +852,7 @@ class CheckoutController extends Controller
     public function storeOrder(Request $request) {
         $paymentMethod = $request->RADIOagain;
         $shippingAddress = Session::get('shipping_address');
-        if($paymentMethod === 'stripe') {
+        if($paymentMethod === 'card') {
             $stripe = Stripe::make(Config::get('services.stripe.secret'));
             $token = $stripe->tokens()->create([
                 'card' =>[
