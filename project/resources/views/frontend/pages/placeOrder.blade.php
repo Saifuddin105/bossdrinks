@@ -39,17 +39,18 @@
                 abcd@gmail.com
             </div>
             <div class="Information_details" style="margin-left: 20px;">
-                <span>customer name</span>
+                <span>{{ $shipping_address['fname'] }} {{ $shipping_address['lname'] }}</span>
                 <span>customer Address</span>
-                <span>City</span>
+                <span>{{ $shipping_address['city'] }}</span>
                 <span>COuntry</span>
-                <span>01928374677</span>
+                <span>{{ $shipping_address['phone'] }}</span>
             </div>
 
         </div>
 
 
-
+        <form action="{{route('front.store.checkout.order')}}" method="POST">
+            <textarea name="card_details" value=""></textarea>
             <div class="billing-method">
                 <h4>Select Payment Method</h4>
                 <div class="billing-system">
@@ -65,7 +66,59 @@
                         <input id="radio_two" type="radio" name="RADIOagain" value="card"> Pay With Card
                     </label>
                     <div class="PaywithCard">
-                        Pay with card
+                    <input type="hidden" name="method" value="Stripe">
+                                  <div class="row" >
+                                    <div class="col-lg-6">
+                                      <input class="form-control card-elements" required name="cardNumber" type="text" placeholder="{{ $langg->lang163 }}" autocomplete="off"  oninput="validateCard(this.value);" />
+                                      <span id="errCard"></span>
+                                    </div>
+                                    <div class="col-lg-6">
+                                      <input class="form-control card-elements" required name="cardCVC" type="text" placeholder="{{ $langg->lang164 }}" autocomplete="off"  oninput="validateCVC(this.value);" />
+                                      <span id="errCVC"></span>
+                                    </div>
+                                    <div class="col-lg-6">
+                                      <input class="form-control card-elements" required name="month" type="text" placeholder="{{ $langg->lang165 }}"  />
+                                    </div>
+                                    <div class="col-lg-6">
+                                      <input class="form-control card-elements" required name="year" type="text" placeholder="{{ $langg->lang166 }}"  />
+                                    </div>
+                                </div>
+
+
+                                <script type="text/javascript" src="{{ asset('assets/front/js/payvalid.js') }}"></script>
+                                <script type="text/javascript" src="{{ asset('assets/front/js/paymin.js') }}"></script>
+                                <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+                                <script type="text/javascript" src="{{ asset('assets/front/js/payform.js') }}"></script>
+
+
+                                <script type="text/javascript">
+                                  var cnstatus = false;
+                                  var dateStatus = false;
+                                  var cvcStatus = false;
+                              
+                                  function validateCard(cn) {
+                                    cnstatus = Stripe.card.validateCardNumber(cn);
+                                    if (!cnstatus) {
+                                      $("#errCard").html('{{ $langg->lang781 }}');
+                                    } else {
+                                      $("#errCard").html('');
+                                    }
+
+                              
+                              
+                                  }
+                              
+                                  function validateCVC(cvc) {
+                                    cvcStatus = Stripe.card.validateCVC(cvc);
+                                    if (!cvcStatus) {
+                                      $("#errCVC").html('{{ $langg->lang782 }}');
+                                    } else {
+                                      $("#errCVC").html('');
+                                    }
+            
+                                  }
+                              
+                                </script>
                     </div>
 
                 </div>
@@ -93,10 +146,10 @@
 
 
         <div class="Place_order_btn">
-            <button>Place Order</button>
+            <button type="submit">Place Order</button>
         </div>
 
-
+                                </form>
     </div>
 
     <div class="shopping_details shopping_details_placeOrder">

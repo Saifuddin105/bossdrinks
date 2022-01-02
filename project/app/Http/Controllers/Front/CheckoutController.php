@@ -24,6 +24,8 @@ use DB;
 use Illuminate\Http\Request;
 use Session;
 use Validator;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Config;
 
 class CheckoutController extends Controller
 {
@@ -839,10 +841,47 @@ class CheckoutController extends Controller
         return view('frontend.Pages.placeOrder');
     }
 
-    
     public function storeShippingAdress(Request $request)
     {
-        return view('frontend.Pages.placeOrder');
+        $shippingData = $request->all();
+        unset($shippingData['_token']);
+        Session::put('shipping_address', $shippingData);
+        return view('frontend.Pages.placeOrder', ['shipping_address' => $shippingData]);
+    }
+
+    public function storeOrder(Request $request) {
+        $paymentMethod = $request->RADIOagain;
+        $shippingAddress = Session::get('shipping_address');
+        if($paymentMethod === 'stripe') {
+            $stripe = Stripe::make(Config::get('services.stripe.secret'));
+            $token = $stripe->tokens()->create([
+                'card' =>[
+                    'number' => $request->cardNumber,
+                    'exp_month' => $request->month,
+                    'exp_year' => $request->year,
+                    'cvc' => $request->cardCVC,
+                    ],
+                ]);
+            if (!isset($token['id'])) {
+                return redirect()->with('error','Token Problem With Your Token.');
+            }
+
+            $charge = $stripe->charges()->create([
+                'card' => $token['id'],
+                'currency' => $curr->name,
+                'amount' => $item_amount,
+                'description' => $item_name,
+                ]);
+
+            if ($charge['status'] == 'succeeded') {
+                $txnid = $charge['balance_transaction'];
+                $order['txnid'] = $charge['balance_transaction'];
+                $order['charge_id'] = $charge['id'];
+
+                // place order code here
+
+            }
+        }
     }
 
     public function payment(Request $request)
