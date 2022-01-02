@@ -849,10 +849,14 @@ class CheckoutController extends Controller
         return view('frontend.Pages.placeOrder', ['shipping_address' => $shippingData]);
     }
 
-    public function storeOrder(Request $request) {
+    public function storeOrder(Request $request)
+    {
+        $user_id=Auth::user()->id;
+        $cart_details=json_decode($request->cart_details);
         $paymentMethod = $request->RADIOagain;
         $shippingAddress = Session::get('shipping_address');
-        if($paymentMethod === 'card') {
+
+        if ($paymentMethod === 'card') {
             $stripe = Stripe::make(Config::get('services.stripe.secret'));
             $token = $stripe->tokens()->create([
                 'card' =>[
@@ -863,7 +867,7 @@ class CheckoutController extends Controller
                     ],
                 ]);
             if (!isset($token['id'])) {
-                return redirect()->with('error','Token Problem With Your Token.');
+                return redirect()->with('error', 'Token Problem With Your Token.');
             }
 
             $charge = $stripe->charges()->create([
@@ -878,9 +882,26 @@ class CheckoutController extends Controller
                 $order['txnid'] = $charge['balance_transaction'];
                 $order['charge_id'] = $charge['id'];
 
-                // place order code here
+                DB::table('orders')->insert([
+            'user_id' =>$user_id,
+            'first_name' =>$shippingAddress['fname'],
+            'last_name' =>$shippingAddress['lname'],
+            'company' =>$shippingAddress['company'],
+            'address1' =>$shippingAddress['address1'],
+            'address2' =>$shippingAddress['address2'],
+            'company' =>$shippingAddress['company'],
+            'city' =>$shippingAddress['city'],
+            'post_code' =>$shippingAddress['post_code'],
+            'phone' =>$shippingAddress['phone'],
+            'payment_method' =>$paymentMethod,
+            'total_amount' =>$cart_details->subTotal,
+        ]);
 
+                DB::table('order_details')->insert([
+        ]);
             }
+        
+            return view('frontend.Pages.placeOrder');
         }
     }
 
