@@ -856,6 +856,8 @@ class CheckoutController extends Controller
         $paymentMethod = $request->RADIOagain;
         $shippingAddress = Session::get('shipping_address');
 
+     
+
         if ($paymentMethod === 'card') {
             $stripe = Stripe::make(Config::get('services.stripe.secret'));
             $token = $stripe->tokens()->create([
@@ -883,25 +885,31 @@ class CheckoutController extends Controller
                 $order['charge_id'] = $charge['id'];
 
                 DB::table('orders')->insert([
-            'user_id' =>$user_id,
-            'first_name' =>$shippingAddress['fname'],
-            'last_name' =>$shippingAddress['lname'],
-            'company' =>$shippingAddress['company'],
-            'address1' =>$shippingAddress['address1'],
-            'address2' =>$shippingAddress['address2'],
-            'company' =>$shippingAddress['company'],
-            'city' =>$shippingAddress['city'],
-            'post_code' =>$shippingAddress['post_code'],
-            'phone' =>$shippingAddress['phone'],
-            'payment_method' =>$paymentMethod,
-            'total_amount' =>$cart_details->subTotal,
-        ]);
-
-                DB::table('order_details')->insert([
-        ]);
+                    'user_id' =>$user_id,
+                    'first_name' =>$shippingAddress['fname'],
+                    'last_name' =>$shippingAddress['lname'],
+                    'company' =>$shippingAddress['company'],
+                    'address1' =>$shippingAddress['address1'],
+                    'address2' =>$shippingAddress['address2'],
+                    'company' =>$shippingAddress['company'],
+                    'city' =>$shippingAddress['city'],
+                    'post_code' =>$shippingAddress['post_code'],
+                    'phone' =>$shippingAddress['phone'],
+                    'payment_method' =>$paymentMethod,
+                    'total_amount' =>$cart_details->subTotal,
+                ]);
+                $order_id =   DB::getPdo()->lastInsertId();
+                foreach ($cart_details->productDetails as $data) {
+                    DB::table('order_details')->insert([
+                        'order_id'=>$order_id,
+                        'product_id' =>$data->productId,
+                        'product_qty'=>$data->quantity,
+                        'sub_total'=>$data->totalAmount
+                    ]);
+                }
             }
         
-            return view('frontend.Pages.placeOrder');
+            return view('frontend.Pages.placeOrder', ['shipping_address' => $shippingAddress]);
         }
     }
 
