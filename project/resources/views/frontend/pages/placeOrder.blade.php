@@ -150,10 +150,9 @@
                 </div>
 
 
-
-                <div class="Place_order_btn">
-                    <button type="submit">Place Order</button>
-                </div>
+        <div class="Place_order_btn">
+            <button type="submit" id="submit_btn">Place Order</button>
+        </div>
 
             </form>
         </div>
@@ -222,26 +221,47 @@
 @endsection
 
 @push('script')
-
+<script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_API_KEY') }}"></script>
     <script>
-        const paymentradio1 = document.getElementById("radio_ONE")
-        const PaypalWindow = document.querySelector(".payPal")
 
-        paymentradio1.addEventListener("click", e => {
+const createOrderHandler = (_, actions) => {
+    const dynValues = setDefaultValues()
+    const totalAmount = (orderAmount + shippingAmount + taxAmount).toFixed(2) * 1
+    return actions.order.create({
+      purchase_units: [{
+        amount:
+        {
+          currency_code: attr.currency,
+          value: totalAmount,
+        },
+      }],
+    })
+  }
+
+         const paymentradio1 = document.getElementById("radio_ONE")
+const PaypalWindow = document.querySelector(".payPal")
+
+const submitBtn = document.getElementById('submit_btn')
+paymentradio1.addEventListener("click", e => {
 
 
-
-            if (paymentradio1.value == "paypal") {
-                PaypalWindow.style.display = "block"
-                PayCardWindow.style.display = "none"
-                console.log(paymentradio1.value)
-
-            }
+    
+    if (paymentradio1.value == "paypal") {
+        PaypalWindow.innerHTML = ''
+        PaypalWindow.style.display = "block"
+        PayCardWindow.style.display = "none"
+        submitBtn.style.display = "none"
+        const btnProps = {}
+        btnProps.createOrder = (data, actions) => createOrderHandler(data, actions)
+        btnProps.onApprove = (data, actions) => onApproveHanlder(data, actions)
+        paypal.Buttons(btnProps).render(PaypalWindow)
+    }
 
         })
 
-        const paymentradio2 = document.getElementById("radio_two")
-        const PayCardWindow = document.querySelector(".PaywithCard")
+
+const paymentradio2 = document.getElementById("radio_two")
+const PayCardWindow = document.querySelector(".PaywithCard")
 
 
         paymentradio2.addEventListener("click", e => {
@@ -251,7 +271,7 @@
             if (paymentradio2.value == "card") {
                 PayCardWindow.style.display = "block"
                 PaypalWindow.style.display = "none"
-
+                submitBtn.style.display = "block"
             }
 
         })

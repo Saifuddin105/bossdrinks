@@ -300,7 +300,7 @@ class CheckoutController extends Controller
                 return view('front.checkout', ['products' => $cart->items, 'totalPrice' => $total, 'pickups' => $pickups, 'totalQty' => $cart->totalQty, 'gateways' => $gateways, 'shipping_cost' => 0, 'checked' => $ck, 'digital' => $dp, 'curr' => $curr,'shipping_data' => $shipping_data,'package_data' => $package_data, 'vendor_shipping_id' => $vendor_shipping_id, 'vendor_packing_id' => $vendor_packing_id]);
             }
         }
-    }
+    } 
 
 
     public function cashondelivery(Request $request)
@@ -856,10 +856,8 @@ class CheckoutController extends Controller
         $paymentMethod = $request->RADIOagain;
         $shippingAddress = Session::get('shipping_address');
 
-     
-
         if ($paymentMethod === 'card') {
-            $stripe = Stripe::make(Config::get('services.stripe.secret'));
+            $stripe = Stripe::make(env('STRIPE_API_KEY'));
             $token = $stripe->tokens()->create([
                 'card' =>[
                     'number' => $request->cardNumber,
@@ -875,7 +873,7 @@ class CheckoutController extends Controller
             $charge = $stripe->charges()->create([
                 'card' => $token['id'],
                 'currency' => $curr->name,
-                'amount' => $item_amount,
+                'amount' => $cart_details->subTotal,
                 'description' => $item_name,
                 ]);
 
