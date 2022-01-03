@@ -24,6 +24,7 @@ class OrderController extends Controller
     //*** JSON Request
     public function datatables($status)
     {
+        echo 1;
         if ($status == 'pending') {
             $datas = Order::where('status', '=', 'pending')->get();
         } elseif ($status == 'processing') {

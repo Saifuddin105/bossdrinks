@@ -23,7 +23,7 @@
 
 <h4 id="or">or</h4>
 
-<div class="sign_in_form">
+<div class="sign_in_form" id="login_form">
 
                 @if (session()->has('success'))
                       <div class="row" style="display: flex;justify-content: center;">
@@ -54,12 +54,21 @@
 
     <h4>Sign In</h4>
 
-    <form action="{{route('user.login.submit')}}" method="POST">
+    <form action="{{route('user.login.submit')}}" method="POST" >
       @csrf
         <div class="sign_in">
             <input type="email" value="{{old('email')}}" name="email" placeholder="Email...">
+            @if ($errors->login->has('email'))
+                                <span class="text-danger" role="alert">
+                                <strong>{{ $errors->login->first('email') }}</strong>
+                            </span>
+                            @endif
             <input type="password" value="{{old('password')}}" name="password"  placeholder="Password...">
-
+            @if ($errors->login->has('password'))
+                                <span class="text-danger" role="alert">
+                                <strong>{{ $errors->login->first('password') }}</strong>
+                            </span>
+                            @endif
             <a href="{{route('user-forgot')}}">Forget your Password?</a>
             <button type="submit">Sign In</button>
             <div class="goto_signup">

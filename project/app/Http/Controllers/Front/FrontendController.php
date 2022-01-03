@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Session;
 use InvalidArgumentException;
 use Markury\MarkuryPost;
 use Artisan;
+use App\Contact;
 
 class FrontendController extends Controller
 {
@@ -155,6 +156,17 @@ class FrontendController extends Controller
 
         return view('frontend.pages.home', compact('categories', 'sliders', 'top_small_banners', 'products1', 'products2'));
         // return view('frontend.pages.home');
+    }
+
+    public function shop(){
+        $categories = DB::table('categories')->get();
+        $products = DB::table('products')->get()->toArray();
+        //$products1 = array_splice((array)$products, 0, 2);
+        // $products2 = array_splice($products, 3, 5);
+
+        list($products1, $products2) = array_chunk((array) $products, 3);
+        return view('frontend.pages.shop', compact('categories', 'products1', 'products2'));
+
     }
 
     public function term()
@@ -415,55 +427,84 @@ class FrontendController extends Controller
     // -------------------------------- CONTACT SECTION ----------------------------------------
     public function contact()
     {
-        $this->code_image();
-        if (DB::table('generalsettings')->find(1)->is_contact == 0) {
-            return redirect()->back();
-        }
-        $ps =  DB::table('pagesettings')->where('id', '=', 1)->first();
-        return view('front.contact', compact('ps'));
+        // $this->code_image();
+        // if (DB::table('generalsettings')->find(1)->is_contact == 0) {
+        //     return redirect()->back();
+        // }
+        // $ps =  DB::table('pagesettings')->where('id', '=', 1)->first();
+        return view('frontend.pages.contact-us');
+    }
+
+    public function contactSubmit(Request $request){
+        $data = $request->all();
+        $persionInfo = new \stdClass;
+        $persionInfo->first_name = $request->first_name;
+        $persionInfo->last_name = $request->last_name;
+        $persionInfo->email = $request->email;
+        $persionInfo->occupation = $request->occupation;
+        $persionInfo->industry = $request->industry;
+        $persionInfo->website = $request->website;
+        $persionInfo->city = $request->city;
+        $persionInfo->state = $request->state;
+        $persionInfo->country = $request->country;
+        $data['persional_info'] = json_encode($persionInfo);
+        $data['number'] = $request->countryCode.' '.$request->number;
+   
+        if(is_array($request->collaboration)){
+            $data['collaboration'] = implode(",", $request->collaboration );
+         }
+        if(is_array($request->channel_type)){
+            $data['channel_type'] = implode(",", $request->channel_type );
+         }else{ 
+            $data['channel_type'] = $request->channel_type_specify;
+         }
+       $status = Contact::create($data);
+       if($status){
+        return redirect()->route('front.contact')->with('success', 'Thank you for your message. We will get in touch with you shortly');
+     }
     }
 
 
     //Send email to admin
-    public function contactemail(Request $request)
-    {
-        $gs = Generalsetting::findOrFail(1);
+    // public function contactemail(Request $request)
+    // {
+    //     $gs = Generalsetting::findOrFail(1);
 
-        if ($gs->is_capcha == 1) {
+    //     if ($gs->is_capcha == 1) {
 
-            // Capcha Check
-            $value = session('captcha_string');
-            if ($request->codes != $value) {
-                return response()->json(array('errors' => [0 => 'Please enter Correct Capcha Code.']));
-            }
-        }
+    //         // Capcha Check
+    //         $value = session('captcha_string');
+    //         if ($request->codes != $value) {
+    //             return response()->json(array('errors' => [0 => 'Please enter Correct Capcha Code.']));
+    //         }
+    //     }
 
-        // Login Section
-        $ps = DB::table('pagesettings')->where('id', '=', 1)->first();
-        $subject = "Email From Of " . $request->name;
-        $to = $request->to;
-        $name = $request->name;
-        $phone = $request->phone;
-        $from = $request->email;
-        $msg = "Name: " . $name . "\nEmail: " . $from . "\nPhone: " . $phone . "\nMessage: " . $request->text;
-        if ($gs->is_smtp) {
-            $data = [
-                'to' => $to,
-                'subject' => $subject,
-                'body' => $msg,
-            ];
+    //     // Login Section
+    //     $ps = DB::table('pagesettings')->where('id', '=', 1)->first();
+    //     $subject = "Email From Of " . $request->name;
+    //     $to = $request->to;
+    //     $name = $request->name;
+    //     $phone = $request->phone;
+    //     $from = $request->email;
+    //     $msg = "Name: " . $name . "\nEmail: " . $from . "\nPhone: " . $phone . "\nMessage: " . $request->text;
+    //     if ($gs->is_smtp) {
+    //         $data = [
+    //             'to' => $to,
+    //             'subject' => $subject,
+    //             'body' => $msg,
+    //         ];
 
-            $mailer = new GeniusMailer();
-            $mailer->sendCustomMail($data);
-        } else {
-            $headers = "From: " . $gs->from_name . "<" . $gs->from_email . ">";
-            mail($to, $subject, $msg, $headers);
-        }
-        // Login Section Ends
+    //         $mailer = new GeniusMailer();
+    //         $mailer->sendCustomMail($data);
+    //     } else {
+    //         $headers = "From: " . $gs->from_name . "<" . $gs->from_email . ">";
+    //         mail($to, $subject, $msg, $headers);
+    //     }
+    //     // Login Section Ends
 
-        // Redirect Section
-        return response()->json($ps->contact_success);
-    }
+    //     // Redirect Section
+    //     return response()->json($ps->contact_success);
+    // }
 
     // Refresh Capcha Code
     public function refresh_code()

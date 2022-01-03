@@ -149,6 +149,9 @@ Route::prefix('admin')->group(function () {
     Route::group(['middleware' => 'permissions:customers'], function () {
         Route::get('/users/datatables', 'Admin\UserController@datatables')->name('admin-user-datatables'); //JSON REQUEST
         Route::get('/ambassedors/datatables', 'Admin\UserController@ambassedorsDatatables')->name('admin-ambassedor-datatables'); //JSON REQUEST
+        Route::get('/contacts', 'Admin\ContactController@contacts')->name('admin-contact-index');
+        Route::get('/contacts/datatables', 'Admin\ContactController@cotactsDatatables')->name('admin-contact-datatables'); 
+        Route::get('/contact/{id}/show', 'Admin\ContactController@contactDetails')->name('admin-contact-show'); 
         Route::get('/users', 'Admin\UserController@index')->name('admin-user-index');
         Route::get('/ambassedors', 'Admin\UserController@ambassedors')->name('admin-ambassedor-index');
         Route::get('/users/edit/{id}', 'Admin\UserController@edit')->name('admin-user-edit');
@@ -799,6 +802,7 @@ Route::prefix('user')->group(function () {
     Route::get('/cart', function () {
         return view('frontend/pages/cart');
     });
+    Route::get('shop', 'Front\FrontendController@shop')->name('front.shop');
 
     // User Dashboard
     Route::get('/dashboard', 'User\UserController@index')->name('user-dashboard');
@@ -827,6 +831,9 @@ Route::prefix('user')->group(function () {
     // User Forgot
     Route::get('/forgot', 'User\ForgotController@showforgotform')->name('user-forgot');
     Route::post('/forgot', 'User\ForgotController@forgot')->name('user-forgot-submit');
+    Route::get('/reset/{token}/{id}', 'User\ForgotController@resetPassword')->name('user-reset-password');
+    Route::get('/password/form', 'User\ForgotController@resetPasswordForm')->name('user-password-form');
+    Route::post('/password/update', 'User\ForgotController@passwordUpdate')->name('user-password-update');
     // User Forgot Ends
 
     // User Wishlist
@@ -931,6 +938,7 @@ Route::prefix('user')->group(function () {
 
 Route::post('the/genius/ocean/2441139', 'Front\FrontendController@subscription');
 Route::get('finalize', 'Front\FrontendController@finalize');
+
 Route::get('update-finalize', 'Front\FrontendController@updateFinalize');
 
 Route::get('/under-maintenance', 'Front\FrontendController@maintenance')->name('front-maintenance');
@@ -1102,6 +1110,7 @@ Route::group(['middleware' => 'maintenance'], function () {
     // ************************************ FRONT SECTION **********************************************
 
     Route::get('/', 'Front\FrontendController@index')->name('front.index');
+    
     Route::get('/frontend-2', 'Front\FrontendController@index')->name('front.index');
     Route::get('/term-condition', 'Front\FrontendController@term')->name('front.term');
     Route::get('/extras', 'Front\FrontendController@extraIndex')->name('front.extraIndex');
@@ -1123,7 +1132,7 @@ Route::group(['middleware' => 'maintenance'], function () {
 
     // CONTACT SECTION
     Route::get('/contact', 'Front\FrontendController@contact')->name('front.contact');
-    Route::post('/contact', 'Front\FrontendController@contactemail')->name('front.contact.submit');
+    Route::post('/contact', 'Front\FrontendController@contactSubmit')->name('front.contact.submit');
     Route::get('/contact/refresh_code', 'Front\FrontendController@refresh_code');
     // CONTACT SECTION  ENDS
 
@@ -1270,3 +1279,6 @@ Route::group(['middleware' => 'maintenance'], function () {
 Route::get('brand/ambassedor', 'Front\AmbassedorController@index')->name('ambassedor');
 Route::post('join/ambassedor', 'Front\AmbassedorController@crateAmbassedor')->name('join-ambassedor');
 Route::get('join/ambassedor', 'Front\AmbassedorController@registerForm')->name('join-ambassedor');
+Route::get('privacy/policy',function(){
+    return view('frontend.pages.privacy-policy');
+})->name('privacy');

@@ -2183,8 +2183,8 @@
                         <li><span>Menu</span></li>
                         <li><span><a href="index.html">Home</a></span></li>
                         <li><span>About Us</span></li>
-                        <li><span><a href="shop.html">Products</a></span></li>
-                        <li><span><a href="shop.html">Buy Drinks</a></span></li>
+                        <li><span><a href="{{route('front.shop')}}">Products</a></span></li>
+                        <li><span><a href="{{route('front.shop')}}">Buy Drinks</a></span></li>
                         <li><span>Contact Us</span></li>
                     </ul>
                 </div>
