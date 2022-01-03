@@ -834,7 +834,7 @@ class CheckoutController extends Controller
     }
     public function showCart()
     {
-        return view('frontend.Pages.cart');
+        return view('frontend.pages.cart');
     }
     public function placeOrder()
     {
@@ -843,7 +843,7 @@ class CheckoutController extends Controller
         // } else {
         //     $curr = Currency::where('is_default', '=', 1)->first();
         // }
-        return view('frontend.Pages.placeOrder');
+        return view('frontend.pages.placeOrder');
     }
 
     public function storeShippingAdress(Request $request)
@@ -858,7 +858,7 @@ class CheckoutController extends Controller
             $curr = Currency::where('is_default', '=', 1)->first();
         }
     
-        return view('frontend.Pages.placeOrder', ['shipping_address' => $shippingData, 'curr'=>$curr]);
+        return view('frontend.pages.placeOrder', ['shipping_address' => $shippingData, 'curr'=>$curr]);
     }
 
     public function storeOrder(Request $request)
@@ -933,9 +933,9 @@ class CheckoutController extends Controller
             }
             
             if ($txnid) {
-                return view('frontend.Pages.placeOrder', ['shipping_address' => $shippingAddress, 'curr'=>$curr,'msg' => 'Payment successfully']);
+                return view('frontend.pages.placeOrder', ['shipping_address' => $shippingAddress, 'curr'=>$curr,'msg' => 'Payment successfully']);
             } else {
-                return view('frontend.Pages.placeOrder', ['shipping_address' => $shippingAddress, 'curr'=>$curr,'msg' => 'Payment failed']);
+                return view('frontend.pages.placeOrder', ['shipping_address' => $shippingAddress, 'curr'=>$curr,'msg' => 'Payment failed']);
             }
         }
     }
