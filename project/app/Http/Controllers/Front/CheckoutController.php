@@ -855,7 +855,6 @@ class CheckoutController extends Controller
         if (Auth::user()) {
             $user_id=Auth::user()->id;
         }
-        var_dump($user_id);
         $cart_details=json_decode($request->cart_details);
         $paymentMethod = $request->RADIOagain;
         $shippingAddress = Session::get('shipping_address');
