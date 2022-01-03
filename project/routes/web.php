@@ -880,11 +880,13 @@ Route::prefix('user')->group(function () {
     Route::post('/paystack/submit', 'User\PaystackController@store')->name('user.paystack.submit');
 
     //PayTM Routes
-    Route::post('/paytm/submit', 'User\PaytmController@store')->name('user.paytm.submit');;
+    Route::post('/paytm/submit', 'User\PaytmController@store')->name('user.paytm.submit');
+    ;
     Route::post('/paytm/notify', 'User\PaytmController@notify')->name('user.paytm.notify');
 
     //PayTM Routes
-    Route::post('/razorpay/submit', 'User\RazorpayController@store')->name('user.razorpay.submit');;
+    Route::post('/razorpay/submit', 'User\RazorpayController@store')->name('user.razorpay.submit');
+    ;
     Route::post('/razorpay/notify', 'User\RazorpayController@notify')->name('user.razorpay.notify');
 
     // User Subscription Ends
@@ -1154,6 +1156,14 @@ Route::group(['middleware' => 'maintenance'], function () {
     Route::get('/search/', 'Front\CatalogController@search')->name('front.search');
     // TAG SECTION ENDS
 
+    //Checkout
+
+    Route::get('/show-checkout', 'Front\CheckoutController@showCheckout')->name('front.showCheckout');
+    Route::get('/show-cart', 'Front\CheckoutController@showCart')->name('front.showCart');
+    Route::get('/place-order', 'Front\CheckoutController@showCheckout')->name('front.placeOrder');
+    Route::post('/store-shipping-address', 'Front\CheckoutController@storeShippingAdress')->name('front.store.shipping.address');
+    Route::post('/store-checkout-order', 'Front\CheckoutController@storeOrder')->name('front.store.checkout.order');
+
     // PRODCT SECTION
     Route::get('/item/{slug}', 'Front\CatalogController@product')->name('front.product');
     Route::get('/afbuy/{slug}', 'Front\CatalogController@affProductRedirect')->name('affiliate.product');
@@ -1221,11 +1231,13 @@ Route::group(['middleware' => 'maintenance'], function () {
     // Molly Routes Ends
 
     //PayTM Routes
-    Route::post('/paytm-submit', 'Front\PaytmController@store')->name('paytm.submit');;
+    Route::post('/paytm-submit', 'Front\PaytmController@store')->name('paytm.submit');
+    ;
     Route::post('/paytm-callback', 'Front\PaytmController@paytmCallback')->name('paytm.notify');
 
     //RazorPay Routes
-    Route::post('/razorpay-submit', 'Front\RazorpayController@store')->name('razorpay.submit');;
+    Route::post('/razorpay-submit', 'Front\RazorpayController@store')->name('razorpay.submit');
+    ;
     Route::post('/razorpay-callback', 'Front\RazorpayController@razorCallback')->name('razorpay.notify');
 
     Route::post('/cashondelivery', 'Front\CheckoutController@cashondelivery')->name('cash.submit');

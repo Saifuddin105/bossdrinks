@@ -2,6 +2,22 @@
 
 @section('title', 'Cart')
 
+@section('styles')
+<style type = "text/css">
+.cart-box{
+    position: relative;
+}
+.cart-close-btn{
+    position: absolute;
+    right: 0;
+    border: none;
+    background: none;
+    top: -1px;
+}
+    
+</style>
+
+@endsection
 
 
 
@@ -10,103 +26,16 @@
     <div class="main">
 
 
-
-
-
         <div class="my_cart ">
 
             <h4 id="shop_cart">Your Shopping Cart</h4>
 
-            <div class="container my_cart_details">
-                <div class="cart-box">
-                    <div class="cart_img">
-                        <img src="/Size_4  50x130px/Energy-Boss---IT-(13-10-2021)---Blue-BG.png" alt="">
-                    </div>
-                    <div class="count_text cart_text">
-                        <p>Energy Boss Subscription</p>
-                        <h4>Delivered every 30 days</h4>
-                    </div>
-                    <div class="counterBOX cart_counter">
-
-                        <button onclick="decrement()">-</button>
-                        <h4 id="ROOT"></h4>
-                        <button onclick="increament()">+</button>
-                        <div class="amount">
-
-
-
-
-                        </div>
-                    </div>
-                    <div class="cart_root">
-                        <h4 id="ROOT_2"></h4>
-                    </div>
-                </div>
-                <div class="cart-box">
-                    <div class="cart_img">
-                        <img src="/Size_4  50x130px/Energy-Boss---IT-(13-10-2021)---Blue-BG.png" alt="">
-                    </div>
-                    <div class="count_text cart_text">
-                        <p>Energy Boss</p>
-                        <h4>Delivered every 30 days</h4>
-                    </div>
-                    <div class="counterBOX_two cart_counter">
-
-                        <button onclick="decrement_two()">-</button>
-                        <h4 id="ROOT_two"></h4>
-                        <button onclick="increment_two()">+</button>
-
-                    </div>
-                    <div class="cart_root">
-                        <h4 id="ROOT_2_two"></h4>
-                    </div>
-                </div>
-                <div class="cart-box">
-                    <div class="cart_img">
-                        <img src="/Size_4  50x130px/Energy-Boss---IT-(13-10-2021)---Blue-BG.png" alt="">
-                    </div>
-                    <div class="count_text cart_text">
-                        <p>Energy Boss Bulk</p>
-                        <h4>Delivered every 30 days</h4>
-                    </div>
-                    <div class="counterBOX_three cart_counter">
-
-                        <button onclick="decrement_three()">-</button>
-                        <h4 id="ROOT_three"></h4>
-                        <button onclick="increment_three()">+</button>
-
-                    </div>
-                    <div class="cart_root">
-                        <h4 id="ROOT_2_three"></h4>
-                    </div>
-                </div>
+            <div class="container my_cart_details" id="order-items">
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- </div> -->
-
-
-            <div class="checkout checkout_cart">
+            <div class="checkout checkout_cart" id="checkout_cart">
                 <div>
-                    Your Subtotal Is "amount"
+                    Your Subtotal is &#163;<span id="sub-total"></span>
                 </div>
                 <div style="display: flex;">
                     <input id="i_agree_checkbox" type="checkbox" style="width: 20px;">
@@ -114,7 +43,7 @@
                     <h4 style="font-size: 12px;">I agree to the <a id="modal_text">Terms and Conditions</a></h4>
                 </div>
                 <div class="checkout_btn">
-                    <a href="checkout.html"><button>Proceed to Checkout</button></a>
+                    <a href="{{route('front.showCheckout')}}"><button>Proceed to Checkout</button></a>
                 </div>
             </div>
         </div>
@@ -2614,5 +2543,124 @@
 @endsection
 
 @push('script')
+
+    <script>
+        const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+        const subTotal = document.getElementById('sub-total')
+
+        window.onload = () => {
+            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+            const orderItems = document.getElementById('order-items');
+            if (oldData?.productDetails?.length > 0) {
+                for (let i = 0; i < oldData.productDetails.length; i++) {
+                    let addCartItem = ""
+                    addCartItem += "<div class='cart-box' id='box_" + oldData.productDetails[i].productId + "'>";
+                        addCartItem += "<button class='cart-close-btn' onclick='closeCartItem(event," + oldData.productDetails[i].productId +
+                        ")'>&#10006;</button>";
+                    addCartItem += "<div class='cart_img'>";
+                    addCartItem += "<img src='/Size_4  50x130px/Energy-Boss---IT-(13-10-2021)---Blue-BG.png' alt=''>";
+                    addCartItem += "</div>";
+                    addCartItem += "<div class='count_text cart_text'>";
+                    addCartItem += "<p>"+oldData.productDetails[i].title+"</p>";
+                    addCartItem += "<h4>"+oldData.productDetails[i].deliveryTitle+"</h4>";
+                    addCartItem +=
+                        "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
+                        oldData.productDetails[i].totalAmount.toFixed() + "</span></h4>";
+                    addCartItem += "</div>";
+                    addCartItem += "<div class='counterBOX cart_counter'>";
+                    addCartItem += " <button onclick='cartQuantityDecrement(" + i + "," + oldData.productDetails[i]
+                        .productPrice +
+                        ")'>-</button>";
+                    addCartItem += "<h4 id='ROOT' class='root'>" + oldData.productDetails[i].quantity + "</h4>";
+                    addCartItem += "<button onclick='cartQuantityIncrement(" + i + "," + oldData.productDetails[i]
+                        .productPrice + ")'>+</button>";
+                    addCartItem += "</div>";
+                    addCartItem += "<div class='cart_root'>";
+                    addCartItem += "<h4 id='ROOT_2'></h4>";
+                    addCartItem += "</div>";
+                    addCartItem += "</div>";
+                    orderItems.insertAdjacentHTML("beforeend", addCartItem);
+                }
+
+                subTotal.innerHTML = oldData.subTotal
+            }
+            else{
+               document.getElementById('checkout_cart').style="display:none"
+                orderItems.innerText='There are no items in this cart'
+            }
+
+
+
+        }
+
+        const cartQuantityIncrement = (productIndx, price) => {
+            const increments = document.querySelectorAll('.root')
+            const totalAmount = document.querySelectorAll('.per-product-total')
+            const productDetails = oldData.productDetails[productIndx]
+            if (productDetails) {
+                productDetails.quantity += 1
+                productDetails.totalAmount += price
+                increments[productIndx].innerText = productDetails.quantity
+                totalAmount[productIndx].innerText = productDetails.totalAmount.toFixed(2)
+                localStorage.removeItem('cartDetails')
+                localStorage.setItem('cartDetails', JSON.stringify(oldData))
+                calculateTotalAmount()
+            }
+        }
+
+        const cartQuantityDecrement = (productIndx, price) => {
+            const increments = document.querySelectorAll('.root')
+            const totalAmount = document.querySelectorAll('.per-product-total')
+            const productDetails = oldData.productDetails[productIndx]
+            if (productDetails.quantity > 0) {
+                productDetails.quantity = productDetails.quantity - 1
+                productDetails.totalAmount = productDetails.totalAmount - price
+                if (productDetails.totalAmount < 1) {
+                    totalAmount[productIndx].innerText = 0
+                    productDetails.totalAmount = 0
+                } else {
+                    totalAmount[productIndx].innerText = productDetails.totalAmount.toFixed(2)
+                }
+                increments[productIndx].innerText = productDetails.quantity
+                localStorage.removeItem('cartDetails')
+                localStorage.setItem('cartDetails', JSON.stringify(oldData))
+            }
+            calculateTotalAmount()
+
+        }
+
+        const calculateTotalAmount = () => {
+            let totalAmount = 0
+            if (oldData?.productDetails?.length > 0) {
+                const totalAmountOfPerProduct = document.querySelectorAll('.per-product-total')
+                for (let i = 0; i < totalAmountOfPerProduct.length; i++) {
+                    totalAmount += parseInt(totalAmountOfPerProduct[i].innerText)
+                }
+                oldData.subTotal = totalAmount
+                subTotal.innerText = totalAmount
+            } else {
+                subTotal.innerText = 0
+            }
+            localStorage.removeItem('cartDetails')
+            localStorage.setItem('cartDetails', JSON.stringify(oldData))
+
+        }
+
+        const closeCartItem = (event, productId) => {
+            event.preventDefault();
+            const productIndx = oldData.productDetails.findIndex((element, index) => {
+                if (element.productId === productId) {
+                    return true
+                }
+            })
+            oldData.productDetails.splice(productIndx, 1)
+            document.getElementById("box_" + productId).remove()
+            if (oldData?.productDetails?.length < 1) {
+                oldData.subTotal = 0
+            }
+            localStorage.setItem('cartDetails', JSON.stringify(oldData))
+            calculateTotalAmount()
+        }
+    </script>
 
 @endpush
