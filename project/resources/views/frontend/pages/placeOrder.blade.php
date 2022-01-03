@@ -49,7 +49,7 @@
             </div>
 
 
-            <form action="{{route('front.store.checkout.order')}}" method="POST">
+            <form action="{{route('front.store.checkout.order')}}" method="POST" id="checkout_form">
                 @csrf
                 <textarea name="cart_details" id="cart_details" value="" hidden></textarea>
                 <div class="billing-method">
@@ -223,25 +223,46 @@
 @push('script')
 <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_API_KEY') }}"></script>
     <script>
+    const oldData = JSON.parse(localStorage.getItem('cartDetails'))
+    const submitBtn = document.getElementById('submit_btn')
+    const formId = document.getElementById('checkout_form')
 
 const createOrderHandler = (_, actions) => {
-    const dynValues = setDefaultValues()
-    const totalAmount = (orderAmount + shippingAmount + taxAmount).toFixed(2) * 1
+    const totalAmount = (Number(oldData?.subTotal) || 0).toFixed(2) * 1
     return actions.order.create({
       purchase_units: [{
         amount:
         {
-          currency_code: attr.currency,
+          currency_code: @json($curr->name),
           value: totalAmount,
         },
       }],
     })
   }
 
+  const onApproveHanlder = (_, actions) => {
+  const order = actions.order.capture()
+  console.log(order);
+  order.then(result => {
+    if (typeof formId !== 'undefined' && formId !== null) {
+      const input = document.createElement('input')
+      input.setAttribute('type', 'hidden')
+      input.setAttribute('name', 'paypal_transaction_id')
+      input.setAttribute('value', result.id)
+      formId.appendChild(input)
+      if (!submitBtn) {
+        submitBtn = document.createElement('input')
+        submitBtn.setAttribute('type', 'submit')
+        submitBtn.style.display = 'none'
+        formId.appendChild(submitBtn)
+      }
+      formId.submit()
+    }
+  })
+}
+
          const paymentradio1 = document.getElementById("radio_ONE")
 const PaypalWindow = document.querySelector(".payPal")
-
-const submitBtn = document.getElementById('submit_btn')
 paymentradio1.addEventListener("click", e => {
 
 
@@ -277,7 +298,6 @@ const PayCardWindow = document.querySelector(".PaywithCard")
         })
 
         window.onload = () => {
-            const oldData = JSON.parse(localStorage.getItem('cartDetails'))
             const total = document.getElementById('total')
             const subTotal = document.getElementById('sub-total')
             const paymentDue = document.getElementById('payment-due')

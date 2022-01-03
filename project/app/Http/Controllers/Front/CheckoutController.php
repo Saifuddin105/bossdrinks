@@ -300,7 +300,7 @@ class CheckoutController extends Controller
                 return view('front.checkout', ['products' => $cart->items, 'totalPrice' => $total, 'pickups' => $pickups, 'totalQty' => $cart->totalQty, 'gateways' => $gateways, 'shipping_cost' => 0, 'checked' => $ck, 'digital' => $dp, 'curr' => $curr,'shipping_data' => $shipping_data,'package_data' => $package_data, 'vendor_shipping_id' => $vendor_shipping_id, 'vendor_packing_id' => $vendor_packing_id]);
             }
         }
-    } 
+    }
 
 
     public function cashondelivery(Request $request)
@@ -838,6 +838,11 @@ class CheckoutController extends Controller
     }
     public function placeOrder()
     {
+        // if (Session::has('currency')) {
+        //     $curr = Currency::find(Session::get('currency'));
+        // } else {
+        //     $curr = Currency::where('is_default', '=', 1)->first();
+        // }
         return view('frontend.Pages.placeOrder');
     }
 
@@ -846,11 +851,23 @@ class CheckoutController extends Controller
         $shippingData = $request->all();
         unset($shippingData['_token']);
         Session::put('shipping_address', $shippingData);
-        return view('frontend.Pages.placeOrder', ['shipping_address' => $shippingData]);
+
+        if (Session::has('currency')) {
+            $curr = Currency::find(Session::get('currency'));
+        } else {
+            $curr = Currency::where('is_default', '=', 1)->first();
+        }
+    
+        return view('frontend.Pages.placeOrder', ['shipping_address' => $shippingData, 'curr'=>$curr]);
     }
 
     public function storeOrder(Request $request)
     {
+        if (Session::has('currency')) {
+            $curr = Currency::find(Session::get('currency'));
+        } else {
+            $curr = Currency::where('is_default', '=', 1)->first();
+        }
         $user_id='';
         if (Auth::user()) {
             $user_id=Auth::user()->id;
@@ -859,6 +876,7 @@ class CheckoutController extends Controller
         $paymentMethod = $request->RADIOagain;
         $shippingAddress = Session::get('shipping_address');
 
+        
         if ($paymentMethod === 'card') {
             $stripe = Stripe::make(env('STRIPE_API_KEY'));
             $token = $stripe->tokens()->create([
@@ -877,15 +895,19 @@ class CheckoutController extends Controller
                 'card' => $token['id'],
                 'currency' => $curr->name,
                 'amount' => $cart_details->subTotal,
-                'description' => $item_name,
                 ]);
 
             if ($charge['status'] == 'succeeded') {
                 $txnid = $charge['balance_transaction'];
                 $order['txnid'] = $charge['balance_transaction'];
                 $order['charge_id'] = $charge['id'];
+            }
+        } elseif ($paymentMethod === 'paypal') {
+            $txnid =$request->paypal_transaction_id;
+        }
 
-                DB::table('orders')->insert([
+        if ($txnid) {
+            DB::table('orders')->insert([
                     'user_id' =>$user_id,
                     'first_name' =>$shippingAddress['fname'],
                     'last_name' =>$shippingAddress['lname'],
@@ -898,21 +920,24 @@ class CheckoutController extends Controller
                     'phone' =>$shippingAddress['phone'],
                     'payment_method' =>$paymentMethod,
                     'total_amount' =>$cart_details->subTotal,
+                    'txnid'=>$txnid
                 ]);
-                $order_id =   DB::getPdo()->lastInsertId();
-                foreach ($cart_details->productDetails as $data) {
-                    DB::table('order_details')->insert([
+            $order_id =   DB::getPdo()->lastInsertId();
+            foreach ($cart_details->productDetails as $data) {
+                DB::table('order_details')->insert([
                         'order_id'=>$order_id,
                         'product_id' =>$data->productId,
                         'product_qty'=>$data->quantity,
                         'sub_total'=>$data->totalAmount
                     ]);
-                }
             }
-        
-            return view('frontend.Pages.placeOrder', ['shipping_address' => $shippingAddress]);
+            
+            if ($txnid) {
+                return view('frontend.Pages.home', ['su' => $shippingAddress]);
+            }
         }
     }
+    
 
     public function payment(Request $request)
     {
