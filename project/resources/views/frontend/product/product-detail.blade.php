@@ -39,7 +39,7 @@
                 <h4 style="font-size: 12px;">I agree to the <a id="modal_text">Terms and Conditions</a></h4>
             </div>
             <div class="checkout_btn">
-                <a href="checkout.html"><button>Proceed to Checkout</button></a>
+                <a href={{route('front.showCheckout')}}><button>Proceed to Checkout</button></a>
             </div>
         </div>
 
@@ -245,7 +245,7 @@
                     </div>
                     <div class="addtocart-btn">
 
-                        <button class="button-30" role="button" onclick="addCartItem(2, 'one-time-purchase', 7.46)"><i
+                        <button class="button-30" role="button" onclick="addCartItem(1, 'one-time-purchase', 7.46)"><i
                                 class="fa fa-shopping-cart"></i>Add To
                             cart</button>
                     </div>
@@ -312,7 +312,7 @@
                     <div class="addtocart-btn">
 
                         <button class="button-30" id="button-30_2" role="button"
-                            onclick="addCartItem(3, 'bulk-purchase', 8.49)">
+                            onclick="addCartItem(1, 'bulk-purchase', 8.49)">
                             <h4 class="button-30_price_2">&#163;8.49</h4><i class="fa fa-shopping-cart"></i> Add
                             To
                             cart
@@ -2858,7 +2858,7 @@
         window.onload = () => {
             const cartItems = document.getElementById('cart-items');
             if (oldData?.productDetails?.length > 0) {
-                showTotalAmount.innerText=oldData.sub
+                showTotalAmount.innerText=oldData.subTotal
                 for (let i = 0; i < oldData.productDetails.length; i++) {
                     let addCartItem = ""
                     addCartItem += "<div class='FirstBOX' id='box_" + oldData.productDetails[i].productId + "'>";
@@ -2903,7 +2903,10 @@
                     'Energy Boss' : type ===
                     'bulk-purchase' ?
                     'Energy Boss Bulk' : '',
-                'deliveryTitle': 'Delivered every 30 days',
+                'deliveryTitle':  type === 'subscription' ? 'Energy Boss Subscription' : type === 'one-time-purchase' ?
+                    'One time purchase' : type ===
+                    'bulk-purchase' ?
+                    'Bulk Purchase' : '',
                 'quantity': type === 'subscription' ? subScribeCases : type === 'one-time-purchase' ? 1 : type ===
                     'bulk-purchase' ? bulkCases : 1,
                 'productPrice': unitPrice,
@@ -2945,11 +2948,11 @@
                 calculateTotalAmount()
             } else {
                 const existItem = oldData.productDetails.find(function(item, index) {
-                    if (item.productId === productId)
+                    if (item.productId === productId && item.type===type)
                         return true;
                 });
                 const productIndx = oldData.productDetails.findIndex((element, index) => {
-                    if (element.productId === productId) {
+                    if (element.productId === productId && element.type===type) {
                         return true
                     }
                 })
@@ -3080,6 +3083,7 @@
             const increments = document.querySelectorAll('.root')
             const totalAmount = document.querySelectorAll('.per-product-total')
             const productDetails = oldData.productDetails[productIndx]
+            console.log(productIndx)
             if (productDetails) {
                 if (productDetails.type === 'subscription') {
                     productDetails.quantity = subScribeCases
@@ -3111,6 +3115,8 @@
                 x.className = x.className.replace("show", "");
             }, 3000);
         }
+
+     
     </script>>
 
 
