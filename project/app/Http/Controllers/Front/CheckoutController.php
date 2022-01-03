@@ -851,12 +851,14 @@ class CheckoutController extends Controller
 
     public function storeOrder(Request $request)
     {
-        $user_id=Auth::user()->id;
+        $user_id='';
+        if (Auth::user()) {
+            $user_id=Auth::user()->id;
+        }
+        var_dump($user_id);
         $cart_details=json_decode($request->cart_details);
         $paymentMethod = $request->RADIOagain;
         $shippingAddress = Session::get('shipping_address');
-
-     
 
         if ($paymentMethod === 'card') {
             $stripe = Stripe::make(Config::get('services.stripe.secret'));
