@@ -2937,7 +2937,7 @@
                 addCartItem += "<div class='amount'>";
                 addCartItem +=
                     "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
-                    itemDetails.totalAmount.toFixed(2) + "</span></h4>";
+                    itemDetails.totalAmount + "</span></h4>";
                 addCartItem += "<button onclick='closeCartItem(event," + itemDetails.productId + ")'>&#10006;</button>";
                 addCartItem += "</div>";
                 addCartItem += "</div>";
@@ -2961,7 +2961,6 @@
                     if (item.type === 'subscription')
                         return true;
                 });
-                console.log(existSubscribed)
                 if (!existItem && !existSubscribed) {
                     if(type ==='subscription'){
                     handleSnackBar('You have to cancel all cart to add subscribe.')
@@ -2988,7 +2987,7 @@
                     addCartItem += "<div class='amount'>";
                     addCartItem +=
                         "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
-                        itemDetails.totalAmount.toFixed(2) + "</span></h4>"; + "</span></h4>";
+                        itemDetails.totalAmount + "</span></h4>"; + "</span></h4>";
                     addCartItem += "<button onclick='closeCartItem(event," + itemDetails.productId +
                         ")'>&#10006;</button>";
                     addCartItem += "</div>";
@@ -2997,6 +2996,7 @@
                     addCartItem += "</div>";
                     addCartItem += "</div>";
                     cartItems.insertAdjacentHTML("beforeend", addCartItem);
+                    calculateTotalAmount()
                 }
                 else if(existSubscribed && type!=='subscription') {
                     handleSnackBar('One Subscription already exist.Please complete the transaction first.')
@@ -3013,10 +3013,10 @@
             if (oldData?.productDetails?.length > 0) {
                 const totalAmountOfPerProduct = document.querySelectorAll('.per-product-total')
                 for (let i = 0; i < totalAmountOfPerProduct.length; i++) {
-                    totalAmount += parseInt(totalAmountOfPerProduct[i].innerText)
+                    totalAmount += Number(totalAmountOfPerProduct[i].innerText)
                 }
                 oldData.subTotal = totalAmount
-                showTotalAmount.innerText = totalAmount
+                showTotalAmount.innerText = totalAmount.toFixed(2)
             } else {
                 showTotalAmount.innerText = 0
             }
@@ -3067,11 +3067,9 @@
                     totalAmount[productIndx].innerText = 0
                     productDetails.totalAmount = 0
                 } else {
-                    totalAmount[productIndx].innerText = productDetails.totalAmount.toFixed(2)
+                    totalAmount[productIndx].innerText =  productDetails.totalAmount.toFixed(2)
                 }
                 increments[productIndx].innerText = productDetails.quantity
-
-
                 localStorage.removeItem('cartDetails')
                 localStorage.setItem('cartDetails', JSON.stringify(oldData))
             }
@@ -3083,13 +3081,13 @@
             const increments = document.querySelectorAll('.root')
             const totalAmount = document.querySelectorAll('.per-product-total')
             const productDetails = oldData.productDetails[productIndx]
-            console.log(productIndx)
             if (productDetails) {
                 if (productDetails.type === 'subscription') {
                     productDetails.quantity = subScribeCases
                     productDetails.totalAmount = price * subScribeCases
                     increments[productIndx].innerText = subScribeCases
                     totalAmount[productIndx].innerText = price * subScribeCases.toFixed(2)
+                    
                 } else if (productDetails.type === 'bulk-purchase') {
                     productDetails.quantity = bulkCases
                     productDetails.totalAmount = (price * bulkCases)
