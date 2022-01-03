@@ -45,10 +45,11 @@
                                                 <table id="geniustable" class="table table-hover dt-responsive" cellspacing="0" width="100%">
                                                     <thead>
                                                         <tr>
-                                                            <th>{{ __('Customer Email') }}</th>
-                                                            <th>{{ __('Order Number') }}</th>
-                                                            <th>{{ __('Total Qty') }}</th>
-                                                            <th>{{ __('Total Cost') }}</th>
+                                                            <th>{{ __('Transaction ID') }}</th>
+                                                            <th>{{ __('First Name') }}</th>
+                                                            <th>{{ __('Last Name') }}</th>
+                                                            <th>{{ __('Total Amount') }}</th>
+                                                            <th>{{ __('Payment Method') }}</th>
                                                             <th>{{ __('Options') }}</th>
                                                         </tr>
                                                     </thead>
@@ -184,10 +185,11 @@
                serverSide: true,
                ajax: '{{ route('admin-order-datatables','none') }}',
                columns: [
-                        { data: 'customer_email', name: 'customer_email' },
-                        { data: 'id', name: 'id' },
-                        { data: 'totalQty', name: 'totalQty' },
-                        { data: 'pay_amount', name: 'pay_amount' },
+                        { data: 'txnid', name: 'txnid' },
+                        { data: 'first_name', name: 'first_name' },
+                        { data: 'last_name', name: 'last_name' },
+                        { data: 'total_amount', name: 'total_amount' },
+                        { data: 'payment_method', name: 'payment_method' },
                         { data: 'action', searchable: false, orderable: false }
                      ],
                language : {

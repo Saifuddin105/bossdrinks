@@ -933,7 +933,9 @@ class CheckoutController extends Controller
             }
             
             if ($txnid) {
-                return view('frontend.Pages.home', ['su' => $shippingAddress]);
+                return view('frontend.Pages.placeOrder', ['shipping_address' => $shippingAddress, 'curr'=>$curr,'msg' => 'Payment successfully']);
+            } else {
+                return view('frontend.Pages.placeOrder', ['shipping_address' => $shippingAddress, 'curr'=>$curr,'msg' => 'Payment failed']);
             }
         }
     }

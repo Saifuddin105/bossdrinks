@@ -208,7 +208,11 @@
 
 
 
-
+        @if(session()->has('msg'))
+        <div class="alert alert-success">
+            {{ session()->get('msg') }}
+        </div>
+       @endif
 
 
 
@@ -221,7 +225,7 @@
 @endsection
 
 @push('script')
-<script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_API_KEY') }}"></script>
+<script src="https://www.paypal.com/sdk/js?client-id={{env('PAYPAL_API_KEY')}}"></script>
     <script>
     const oldData = JSON.parse(localStorage.getItem('cartDetails'))
     const submitBtn = document.getElementById('submit_btn')
@@ -283,18 +287,12 @@ paymentradio1.addEventListener("click", e => {
 
 const paymentradio2 = document.getElementById("radio_two")
 const PayCardWindow = document.querySelector(".PaywithCard")
-
-
         paymentradio2.addEventListener("click", e => {
-
-
-
             if (paymentradio2.value == "card") {
                 PayCardWindow.style.display = "block"
                 PaypalWindow.style.display = "none"
                 submitBtn.style.display = "block"
             }
-
         })
 
         window.onload = () => {
