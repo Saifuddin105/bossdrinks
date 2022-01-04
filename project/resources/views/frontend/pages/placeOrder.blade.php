@@ -310,14 +310,14 @@ const PayCardWindow = document.querySelector(".PaywithCard")
                     addCartItem += "<span>" + oldData.productDetails[i].title + "</span>";
                     addCartItem += "<p>" + oldData.productDetails[i].deliveryTitle + "</p>";
                     addCartItem += " </div>";
-                    addCartItem += "<div class='shopping_details_price'>" + oldData.productDetails[i].totalAmount
-                        .toFixed() + "</div>";
+                    addCartItem += "<div class='shopping_details_price'>" + oldData.productDetails[i].totalAmount.toFixed(2)
+                       + "</div>";
                     addCartItem += "</div>";
                     orderItems.insertAdjacentHTML("beforeend", addCartItem);
                 }
 
-                subTotal.innerHTML = oldData.subTotal
-                total.innerHTML = oldData.subTotal
+                subTotal.innerHTML = oldData.subTotal.toFixed(2)
+                total.innerHTML = oldData.subTotal.toFixed(2)
                 paymentDue.innerHTML = oldData.subTotal
             }
 
