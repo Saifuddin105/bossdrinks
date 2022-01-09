@@ -1927,7 +1927,7 @@
                     addCartItem += "<h4>"+oldData.productDetails[i].deliveryTitle+"</h4>";
                     addCartItem +=
                         "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
-                        oldData.productDetails[i].totalAmount.toFixed() + "</span></h4>";
+                        oldData.productDetails[i].totalAmount.toFixed(2) + "</span></h4>";
                     addCartItem += "</div>";
                     addCartItem += "<div class='counterBOX cart_counter'>";
                     addCartItem += " <button onclick='cartQuantityDecrement(" + i + "," + oldData.productDetails[i]
@@ -1944,7 +1944,7 @@
                     orderItems.insertAdjacentHTML("beforeend", addCartItem);
                 }
 
-                subTotal.innerHTML = oldData.subTotal
+                subTotal.innerHTML = oldData.subTotal.toFixed(2)
             }
             else{
                document.getElementById('checkout_cart').style="display:none"
@@ -1996,10 +1996,10 @@
             if (oldData?.productDetails?.length > 0) {
                 const totalAmountOfPerProduct = document.querySelectorAll('.per-product-total')
                 for (let i = 0; i < totalAmountOfPerProduct.length; i++) {
-                    totalAmount += parseInt(totalAmountOfPerProduct[i].innerText)
+                    totalAmount += Number(totalAmountOfPerProduct[i].innerText)
                 }
                 oldData.subTotal = totalAmount
-                subTotal.innerText = totalAmount
+                subTotal.innerText = totalAmount.toFixed(2)
             } else {
                 subTotal.innerText = 0
             }
