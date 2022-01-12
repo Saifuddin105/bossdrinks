@@ -66,11 +66,7 @@ return [
     | ahead and set this to a sensible default for you out of the box.
     |
     */
-    'STRIPE_API_KEY'=> env('STRIPE_API_KEY', 'sk_test_51CKj7rJCGom3sJNlA4TddmUtpIli2vT4mtY4PFaB94NHb0wogDps6N3mlwg7vTiPDq2xWw96zoL4YPZr3KO51rDo00c5LFC3m8'),
-    'STRIPE_Stripe_KEY'=> env('STRIPE_Stripe_KEY', 'pk_live_51IWZpkD1X3Wjk7OZDafCIZxrMqzKGDP5kO2jdBo0W7UmN72Uggm41lyFLKASHhF1IzzSGkzYfL46HtvWt9PcQNf000RzflvJHe'),
-    'PAYPAL_API_KEY'=> env('PAYPAL_API_KEY', 'AVCn9xOgLFK538FYxLaG0JloQQWeTEroTLur6Qm-j9-G8AvKKxqTD9LE1Td12RvXGYkSmrrNfJusYtSq'),
 
-    
     'timezone' => 'UTC',
 
     /*

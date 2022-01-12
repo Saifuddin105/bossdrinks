@@ -24,34 +24,35 @@ class OrderController extends Controller
     //*** JSON Request
     public function datatables($status)
     {
-        echo 1;
-        if ($status == 'pending') {
-            $datas = Order::where('status', '=', 'pending')->get();
-        } elseif ($status == 'processing') {
-            $datas = Order::where('status', '=', 'processing')->get();
-        } elseif ($status == 'completed') {
-            $datas = Order::where('status', '=', 'completed')->get();
-        } elseif ($status == 'declined') {
-            $datas = Order::where('status', '=', 'declined')->get();
-        } else {
-            $datas = Order::orderBy('id', 'desc')->get();
+        if($status == 'pending'){
+            $datas = Order::where('status','=','pending')->get();
         }
-        // echo json_encode($datas);
-        // die;
+        elseif($status == 'processing') {
+            $datas = Order::where('status','=','processing')->get();
+        }
+        elseif($status == 'completed') {
+            $datas = Order::where('status','=','completed')->get();
+        }
+        elseif($status == 'declined') {
+            $datas = Order::where('status','=','declined')->get();
+        }
+        else{
+          $datas = Order::orderBy('id','desc')->get();  
+        }
          
-        //--- Integrating This Collection Into Datatables
-        return Datatables::of($datas)
-                            ->editColumn('id', function (Order $data) {
-                                $id = '<a href="'.route('admin-order-invoice', $data->id).'">'.$data->order_number.'</a>';
+         //--- Integrating This Collection Into Datatables
+         return Datatables::of($datas)
+                            ->editColumn('id', function(Order $data) {
+                                $id = '<a href="'.route('admin-order-invoice',$data->id).'">'.$data->order_number.'</a>';
                                 return $id;
                             })
-                            ->editColumn('pay_amount', function (Order $data) {
-                                return $data->currency_sign . round($data->pay_amount * $data->currency_value, 2);
+                            ->editColumn('pay_amount', function(Order $data) {
+                                return $data->currency_sign . round($data->pay_amount * $data->currency_value , 2);
                             })
-                            ->addColumn('action', function (Order $data) {
-                                $orders = '<a href="javascript:;" data-href="'. route('admin-order-edit', $data->id) .'" class="delivery" data-toggle="modal" data-target="#modal1"><i class="fas fa-dollar-sign"></i> Delivery Status</a>';
-                                return '<div class="godropdown"><button class="go-dropdown-toggle"> Actions<i class="fas fa-chevron-down"></i></button><div class="action-list"><a href="' . route('admin-order-show', $data->id) . '" > <i class="fas fa-eye"></i> Details</a><a href="javascript:;" class="send" data-email="'. $data->customer_email .'" data-toggle="modal" data-target="#vendorform"><i class="fas fa-envelope"></i> Send</a><a href="javascript:;" data-href="'. route('admin-order-track', $data->id) .'" class="track" data-toggle="modal" data-target="#modal1"><i class="fas fa-truck"></i> Track Order</a>'.$orders.'</div></div>';
-                            })
+                            ->addColumn('action', function(Order $data) {
+                                $orders = '<a href="javascript:;" data-href="'. route('admin-order-edit',$data->id) .'" class="delivery" data-toggle="modal" data-target="#modal1"><i class="fas fa-dollar-sign"></i> Delivery Status</a>';
+                                return '<div class="godropdown"><button class="go-dropdown-toggle"> Actions<i class="fas fa-chevron-down"></i></button><div class="action-list"><a href="' . route('admin-order-show',$data->id) . '" > <i class="fas fa-eye"></i> Details</a><a href="javascript:;" class="send" data-email="'. $data->customer_email .'" data-toggle="modal" data-target="#vendorform"><i class="fas fa-envelope"></i> Send</a><a href="javascript:;" data-href="'. route('admin-order-track',$data->id) .'" class="track" data-toggle="modal" data-target="#modal1"><i class="fas fa-truck"></i> Track Order</a>'.$orders.'</div></div>';
+                            }) 
                             ->rawColumns(['id','action'])
                             ->toJson(); //--- Returning Json Data To Client Side
     }
@@ -63,7 +64,7 @@ class OrderController extends Controller
     public function edit($id)
     {
         $data = Order::find($id);
-        return view('admin.order.delivery', compact('data'));
+        return view('admin.order.delivery',compact('data'));
     }
 
     //*** POST Request
@@ -74,7 +75,7 @@ class OrderController extends Controller
         $data = Order::findOrFail($id);
 
         $input = $request->all();
-        if ($data->status == "completed") {
+        if ($data->status == "completed"){
 
         // Then Save Without Changing it.
             $input['status'] = "completed";
@@ -82,19 +83,22 @@ class OrderController extends Controller
             //--- Logic Section Ends
     
 
-            //--- Redirect Section
-            $msg = 'Status Updated Successfully.';
-            return response()->json($msg);
-        //--- Redirect Section Ends
-        } else {
-            if ($input['status'] == "completed") {
-                foreach ($data->vendororders as $vorder) {
+        //--- Redirect Section          
+        $msg = 'Status Updated Successfully.';
+        return response()->json($msg);    
+        //--- Redirect Section Ends     
+    
+            }else{
+            if ($input['status'] == "completed"){
+    
+                foreach($data->vendororders as $vorder)
+                {
                     $uprice = User::findOrFail($vorder->user_id);
                     $uprice->current_balance = $uprice->current_balance + $vorder->price;
                     $uprice->update();
                 }
     
-                if (User::where('id', $data->affilate_user)->exists()) {
+                if( User::where('id', $data->affilate_user)->exists() ){
                     $auser = User::where('id', $data->affilate_user)->first();
                     $auser->affilate_income += $data->affilate_charge;
                     $auser->update();
@@ -103,7 +107,8 @@ class OrderController extends Controller
 
 
                 $gs = Generalsetting::findOrFail(1);
-                if ($gs->is_smtp == 1) {
+                if($gs->is_smtp == 1)
+                {
                     $maildata = [
                         'to' => $data->customer_email,
                         'subject' => 'Your order '.$data->order_number.' is Confirmed!',
@@ -111,93 +116,111 @@ class OrderController extends Controller
                     ];
     
                     $mailer = new GeniusMailer();
-                    $mailer->sendCustomMail($maildata);
-                } else {
-                    $to = $data->customer_email;
-                    $subject = 'Your order '.$data->order_number.' is Confirmed!';
-                    $msg = "Hello ".$data->customer_name.","."\n Thank you for shopping with us. We are looking forward to your next visit.";
-                    $headers = "From: ".$gs->from_name."<".$gs->from_email.">";
-                    mail($to, $subject, $msg, $headers);
+                    $mailer->sendCustomMail($maildata);                
+                }
+                else
+                {
+                   $to = $data->customer_email;
+                   $subject = 'Your order '.$data->order_number.' is Confirmed!';
+                   $msg = "Hello ".$data->customer_name.","."\n Thank you for shopping with us. We are looking forward to your next visit.";
+                $headers = "From: ".$gs->from_name."<".$gs->from_email.">";
+                   mail($to,$subject,$msg,$headers);                
                 }
             }
-            if ($input['status'] == "declined") {
+            if ($input['status'] == "declined"){
+
                 $cart = unserialize(bzdecompress(utf8_decode($data->cart)));
 
-                foreach ($cart->items as $prod) {
+                foreach($cart->items as $prod)
+                {
                     $x = (string)$prod['stock'];
-                    if ($x != null) {
+                    if($x != null)
+                    {
+        
                         $product = Product::findOrFail($prod['item']['id']);
                         $product->stock = $product->stock + $prod['qty'];
-                        $product->update();
+                        $product->update();               
                     }
                 }
 
 
-                foreach ($cart->items as $prod) {
+                foreach($cart->items as $prod)
+                {
                     $x = (string)$prod['size_qty'];
-                    if (!empty($x)) {
+                    if(!empty($x))
+                    {
                         $product = Product::findOrFail($prod['item']['id']);
                         $x = (int)$x;
                         $temp = $product->size_qty;
                         $temp[$prod['size_key']] = $x;
                         $temp1 = implode(',', $temp);
                         $product->size_qty =  $temp1;
-                        $product->update();
+                        $product->update();               
                     }
                 }
 
 
                 
                 $gs = Generalsetting::findOrFail(1);
-                if ($gs->is_smtp == 1) {
+                if($gs->is_smtp == 1)
+                {
                     $maildata = [
                         'to' => $data->customer_email,
                         'subject' => 'Your order '.$data->order_number.' is Declined!',
                         'body' => "Hello ".$data->customer_name.","."\n We are sorry for the inconvenience caused. We are looking forward to your next visit.",
                     ];
-                    $mailer = new GeniusMailer();
-                    $mailer->sendCustomMail($maildata);
-                } else {
-                    $to = $data->customer_email;
-                    $subject = 'Your order '.$data->order_number.' is Declined!';
-                    $msg = "Hello ".$data->customer_name.","."\n We are sorry for the inconvenience caused. We are looking forward to your next visit.";
-                    $headers = "From: ".$gs->from_name."<".$gs->from_email.">";
-                    mail($to, $subject, $msg, $headers);
+                $mailer = new GeniusMailer();
+                $mailer->sendCustomMail($maildata);
                 }
+                else
+                {
+                   $to = $data->customer_email;
+                   $subject = 'Your order '.$data->order_number.' is Declined!';
+                   $msg = "Hello ".$data->customer_name.","."\n We are sorry for the inconvenience caused. We are looking forward to your next visit.";
+                   $headers = "From: ".$gs->from_name."<".$gs->from_email.">";
+                   mail($to,$subject,$msg,$headers);
+                }
+    
             }
 
             $data->update($input);
 
-            if ($request->track_text) {
-                $title = ucwords($request->status);
-                $ck = OrderTrack::where('order_id', '=', $id)->where('title', '=', $title)->first();
-                if ($ck) {
-                    $ck->order_id = $id;
-                    $ck->title = $title;
-                    $ck->text = $request->track_text;
-                    $ck->update();
-                } else {
-                    $data = new OrderTrack;
-                    $data->order_id = $id;
-                    $data->title = $title;
-                    $data->text = $request->track_text;
-                    $data->save();
-                }
+            if($request->track_text)
+            {
+                    $title = ucwords($request->status);
+                    $ck = OrderTrack::where('order_id','=',$id)->where('title','=',$title)->first();
+                    if($ck){
+                        $ck->order_id = $id;
+                        $ck->title = $title;
+                        $ck->text = $request->track_text;
+                        $ck->update();  
+                    }
+                    else {
+                        $data = new OrderTrack;
+                        $data->order_id = $id;
+                        $data->title = $title;
+                        $data->text = $request->track_text;
+                        $data->save();            
+                    }
+    
+    
+            } 
+
+
+        $order = VendorOrder::where('order_id','=',$id)->update(['status' => $input['status']]);
+
+         //--- Redirect Section          
+         $msg = 'Status Updated Successfully.';
+         return response()->json($msg);    
+         //--- Redirect Section Ends    
+    
             }
 
-
-            $order = VendorOrder::where('order_id', '=', $id)->update(['status' => $input['status']]);
-
-            //--- Redirect Section
-            $msg = 'Status Updated Successfully.';
-            return response()->json($msg);
-            //--- Redirect Section Ends
-        }
-
-        //--- Redirect Section
+        //--- Redirect Section          
         $msg = 'Status Updated Successfully.';
-        return response()->json($msg);
-        //--- Redirect Section Ends
+        return response()->json($msg);    
+        //--- Redirect Section Ends  
+
     }
 
     public function pending()
@@ -218,23 +241,25 @@ class OrderController extends Controller
     }
     public function show($id)
     {
-        if (!Order::where('id', $id)->exists()) {
-            return redirect()->route('admin.dashboard')->with('unsuccess', __('Sorry the page does not exist.'));
+        if(!Order::where('id',$id)->exists())
+        {
+            return redirect()->route('admin.dashboard')->with('unsuccess',__('Sorry the page does not exist.'));
         }
         $order = Order::findOrFail($id);
         $cart = unserialize(bzdecompress(utf8_decode($order->cart)));
-        return view('admin.order.details', compact('order', 'cart'));
+        return view('admin.order.details',compact('order','cart'));
     }
     public function invoice($id)
     {
         $order = Order::findOrFail($id);
         $cart = unserialize(bzdecompress(utf8_decode($order->cart)));
-        return view('admin.order.invoice', compact('order', 'cart'));
+        return view('admin.order.invoice',compact('order','cart'));
     }
     public function emailsub(Request $request)
     {
         $gs = Generalsetting::findOrFail(1);
-        if ($gs->is_smtp == 1) {
+        if($gs->is_smtp == 1)
+        {
             $data = 0;
             $datas = [
                     'to' => $request->to,
@@ -244,14 +269,16 @@ class OrderController extends Controller
 
             $mailer = new GeniusMailer();
             $mail = $mailer->sendCustomMail($datas);
-            if ($mail) {
+            if($mail) {
                 $data = 1;
             }
-        } else {
+        }
+        else
+        {
             $data = 0;
             $headers = "From: ".$gs->from_name."<".$gs->from_email.">";
-            $mail = mail($request->to, $request->subject, $request->message, $headers);
-            if ($mail) {
+            $mail = mail($request->to,$request->subject,$request->message,$headers);
+            if($mail) {
                 $data = 1;
             }
         }
@@ -263,7 +290,7 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
         $cart = unserialize(bzdecompress(utf8_decode($order->cart)));
-        return view('admin.order.print', compact('order', 'cart'));
+        return view('admin.order.print',compact('order','cart'));
     }
 
     public function license(Request $request, $id)
@@ -272,7 +299,7 @@ class OrderController extends Controller
         $cart = unserialize(bzdecompress(utf8_decode($order->cart)));
         $cart->items[$request->license_key]['license'] = $request->license;
         $order->cart = utf8_encode(bzcompress(serialize($cart), 9));
-        $order->update();
+        $order->update();       
         $msg = 'Successfully Changed The License Key.';
         return response()->json($msg);
     }
