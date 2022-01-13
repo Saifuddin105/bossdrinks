@@ -301,6 +301,22 @@
 
 }	
 
+
+
+@media only screen and (max-width: 576px) {
+
+    /* new design updated */
+
+    .login_modal {
+        width: 90% !important;
+        height: 76vh !important;
+    }
+
+    #eye_icon {
+        margin-left: 296px !important;
+    }
+}
+
 </style>
 
 
