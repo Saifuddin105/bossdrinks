@@ -301,6 +301,56 @@
 
 }	
 
+.apple_btn_class {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    border-radius: 20px;
+    height: 48px;
+    background: #081F2c;
+}
+.apple_btn_class p {
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+.google_btn_class {
+        display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    border-radius: 20px;
+    height: 48px;
+    background: #FFFFFF;
+}
+.google_btn_class p {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+    font-weight: 600;
+}
+.facebook_btn_class {
+        display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    border-radius: 20px;
+    height: 48px;
+    background: #4267B2;
+}
+.facebook_btn_class p {
+    
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+    font-weight: 600;
+}
 
 
 @media only screen and (max-width: 576px) {
@@ -374,15 +424,15 @@
     
             <div class="All_button_class">
     
-                <button class="login_btn_class" id="apple_btn">
+                <button class="apple_btn_class" id="apple_btn">
                     <img id="login_img" src="/img/appleFixed.png" alt="">
                     <p>Continue with Apple</p>
                 </button>
-                <button class="login_btn_class2" id="google_btn">
+                <button class="google_btn_class" id="google_btn">
                     <img id="login_img" src="/img/google_logo.png" alt="">
                     <p>Continue with Google</p>
                 </button>
-                <button class="login_btn_class3" id="facebook_btn">
+                <button class="facebook_btn_class" id="facebook_btn">
                     <img id="login_img" src="/img/facebook_logo.png" alt="">
                     <p>Continue with Facebook</p>
                 </button>
@@ -417,6 +467,9 @@
                             <a href="pass_recovery.html">Forget Password ?</a>
                         </div>
                     </div>
+                    <div style="text-align: center;">
+                    <button id="continue_btn" type="submit">Continue</button>
+                </div>
                 </div>
     
     
@@ -440,11 +493,12 @@
                         <h4 id="H-4">I confirm I have read and agree to the <a id="Anchor" href="terms.html  ">Terms and
                                 Conditions</a></h4>
                     </div>
-                </div>
-    
-                <div style="text-align: center;">
+                    <div style="text-align: center;">
                     <button id="continue_btn" type="submit">Continue</button>
                 </div>
+                </div>
+    
+                
             </form>
     
     
