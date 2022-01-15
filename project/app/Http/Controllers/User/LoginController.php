@@ -35,7 +35,8 @@ class LoginController extends Controller
         
         
         if ($validator->fails()) {
-            return redirect('user/login#login_form')->withErrors($validator, 'login')->withInput();
+            // return redirect('user/login#login_form')->withErrors($validator, 'login')->withInput();
+            return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
         }
         //--- Validation Section Ends
         // Attempt to log the user in
@@ -50,8 +51,8 @@ class LoginController extends Controller
 
             if (Auth::guard('web')->user()->ban == 1) {
                 Auth::guard('web')->logout();
-                return redirect()->route('user.login')->with('error', 'Your Account Has Been Banned !')->withInput();
-
+                // return redirect()->route('user.login')->with('error', 'Your Account Has Been Banned !')->withInput();
+                return response()->json(array('errors' => [ 0 => 'Your Email is not Verified!' ]));
             }
 
             // Login Via Modal
@@ -68,12 +69,13 @@ class LoginController extends Controller
                 return response()->json(1);
             }
             // Login as User
-            return redirect()->route('user-dashboard');
+            // return redirect()->route('user-dashboard');
+            return response()->json(1);
         }
 
         // if unsuccessful, then redirect back to the login with the form data
-        return redirect()->route('user.login')->with('error', 'Credentials Doesn\'t Match !')->withInput();
-        //return response()->json(array('errors' => [ 0 => 'Credentials Doesn\'t Match !' ]));
+        //return redirect()->route('user.login')->with('error', 'Credentials Doesn\'t Match !')->withInput();
+        return response()->json(array('errors' => [ 0 => 'Credentials Doesn\'t Match !' ]));
     }
 
     public function logout()

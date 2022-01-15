@@ -224,10 +224,10 @@
     margin-top: 3px;
 }
 
-#eye_icon {
+/* #eye_icon {
     margin-left: 355px;
     margin-top: -80px;
-}
+} */
 
 .pass_recovery_div {
     background: #CFDAE0;
@@ -351,6 +351,16 @@
     margin-top: 8px;
     font-weight: 600;
 }
+.pass{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #F0F5F8;border: 1px solid black;
+  border-radius: 16px;border: 1px solid #fff;
+}
+#login_modal_pass:hover {
+  width:'120%'
+}
 
 
 @media only screen and (max-width: 576px) {
@@ -423,19 +433,21 @@
                 need a BOSS Drink account.</p>
     
             <div class="All_button_class">
+
     
-                <button class="apple_btn_class" id="apple_btn">
+                <a class="apple_btn_class" id="apple_btn">
                     <img id="login_img" src="/img/appleFixed.png" alt="">
                     <p>Continue with Apple</p>
-                </button>
-                <button class="google_btn_class" id="google_btn">
+                </a>
+                
+                <a class="google_btn_class" href="{{route('social-provider',['provider'=>'google'])}}"  id="google_btn">
                     <img id="login_img" src="/img/google_logo.png" alt="">
                     <p>Continue with Google</p>
-                </button>
-                <button class="facebook_btn_class" id="facebook_btn">
+</a>
+                <a class="facebook_btn_class" href="{{route('social-provider',['provider'=>'facebook'])}}"  id="facebook_btn">
                     <img id="login_img" src="/img/facebook_logo.png" alt="">
                     <p>Continue with Facebook</p>
-                </button>
+</a>
             </div>
     
             <h4 id="or">or</h4>
@@ -446,14 +458,24 @@
                 <button id="signup_button">Sign up</button>
             </div>
     
-    
-            <form action="">
+            <div class="alert alert-info validation" style="display: none;">
+                    <p class="text-left"></p> 
+                  </div>
+                 <div class="alert alert-success validation" style="display: none;">
+                    <button type="button" class="close alert-close"><span>×</span></button>
+                    <p class="text-left"></p> 
+                </div>
+                 <div class="alert alert-danger validation" style="display: none;">
+                 <button type="button" class="close alert-close"><span>×</span></button>
+            	    <p class="text-left"></p> 
+                 </div>
+            <form class="bs_login" action="{{route('user.login.submit')}}" method="POST">
+            @csrf
                 <div class="LOGIN_FORM">
-                    <input type="email" placeholder="Email">
-                    <div>
-                    <input id="login_modal_pass" type="password" placeholder="Password">
-                          <img src="img/eye.png" alt="" id="eye_icon" onclick="togglePW()" style="height:20px">
-                        
+                    <input type="email" name="email" placeholder="Email">
+                    <div class="pass">
+                    <input id="login_modal_pass" style="border:none" name="password" type="password" placeholder="Password">
+                    <img src="img/eye.png" alt="" id="eye_icon" onclick="togglePW()" style="height:20px">
                     
                     </div>
                    
@@ -464,27 +486,30 @@
                             <span>Remember Me</span>
                         </div>
                         <div>
-                            <a href="pass_recovery.html">Forget Password ?</a>
+                            <a href="{{route('user-forgot')}}">Forget Password ?</a>
                         </div>
                     </div>
                     <div style="text-align: center;">
-                    <button id="continue_btn" type="submit">Continue</button>
+                      <button type="submit" id="continue_btn" type="submit">Continue
+                      <i id="btn_loading1"></i>
+                      </button>
+                    </div>
                 </div>
-                </div>
     
-    
-    
+                </form>
+
+                <form class="bs_signup" action="{{route('user-register-submit')}}" method="POST">
+                @csrf
                 <div class="SIGNUP_FORM">
     
                     <div class="NAMES">
-                        <input type="text" placeholder="First Name">
-                        <input type="text" placeholder="Last Name">
+                        <input type="text" name="first_name" placeholder="First Name">
+                        <input type="text" name="last_name" placeholder="Last Name">
                     </div>
-    
-                    <input type="email" placeholder="email">
-                    <input id="signup_pass" type="password" placeholder="Password">
+                    <input type="email" name="email" placeholder="email" required="required">
+                    <input id="signup_pass" name="password" type="password" placeholder="Password" required="required">
                     <img src="img/eye.png" alt="" id="eye_icon" onclick="togglePW1()" style="height:20px">
-                    <input id="signup_pass_confirm" type="password" placeholder="Confirm Password" style="margin-top: -12px;">
+                    <input id="signup_pass_confirm" name="password_confirmation" type="password" placeholder="Confirm Password" required="required" style="margin-top: -12px;">
                     <img src="img/eye.png" alt="" id="eye_icon" onclick="togglePW()" style="height:20px">
     
     
@@ -494,15 +519,16 @@
                                 Conditions</a></h4>
                     </div>
                     <div style="text-align: center;">
-                    <button id="continue_btn" type="submit">Continue</button>
-                </div>
+                    <button class="submit-btn" id="continue_btn" type="submit">
+                      Continue
+                      <i id="btn_loading"></i>
+                    </button>                
+                  </div>
                 </div>
     
                 
             </form>
-    
-    
-    
+               
         </div>
     </div>
     
@@ -515,6 +541,104 @@
 
 
 <script>
+
+$(".bs_login").on('submit', function (e) {
+      var $this = $(this).parent();
+      e.preventDefault();
+      $this.find('button.submit-btn').prop('disabled', true);
+      let btnLoading = document.getElementById("btn_loading1");
+      $this.find('.alert-info').show();
+      var authdata = $this.find('.mauthdata').val();
+      btnLoading.setAttribute("class", "fa fa-refresh fa-spin")
+      console.log(btn_loading, 'test')
+      $('.signin-form .alert-info p').html(authdata);
+      $.ajax({
+        method: "POST",
+        url: $(this).prop('action'),
+        data: new FormData(this),
+        dataType: 'JSON',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function (data) {
+          if ((data.errors)) {
+            $this.find('.alert-success').hide();
+            $this.find('.alert-info').hide();
+            $this.find('.alert-danger').show();
+            $this.find('.alert-danger ul').html('');
+            for (var error in data.errors) {
+              console.log(data.errors[error], 'error');
+              $('.alert-danger p').html(data.errors[error]);
+            }
+          } else {
+            $this.find('.alert-info').hide();
+            $this.find('.alert-danger').hide();
+            $this.find('.alert-success').show();
+            $this.find('.alert-success p').html('Success !');
+            if (data == 1) {
+              window.location = '{{ route("user-dashboard") }}';
+            } else {
+              window.location = data;
+            }
+
+          }
+          $this.find('button.submit-btn').prop('disabled', false);
+          btnLoading.classList.remove('fa')
+          btnLoading.classList.remove('fa-refresh')
+          btnLoading.classList.remove('fa-spin')
+        }
+
+      });
+
+    });
+
+    $(".bs_signup").on('submit', function (e) {
+      e.preventDefault();
+      var $this = $(this).parent();
+      $this.find('button.submit-btn').prop('disabled', true);
+      $this.find('.alert-info').show();
+      var processdata = $this.find('.mprocessdata').val();
+      let btnLoading = document.getElementById("btn_loading");
+      btnLoading.setAttribute("class", "fa fa-refresh fa-spin")
+      $this.find('.alert-info p').html(processdata);
+      $.ajax({
+        method: "POST",
+        url: $(this).prop('action'),
+        data: new FormData(this),
+        dataType: 'JSON',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function (data) {
+          if (data == 1) {
+            window.location = '{{ route("user-dashboard") }}';
+          } else {
+
+            if ((data.errors)) {
+              $this.find('.alert-success').hide();
+              $this.find('.alert-info').hide();
+              $this.find('.alert-danger').show();
+              $this.find('.alert-danger ul').html('');
+              for (var error in data.errors) {
+                $this.find('.alert-danger p').html(data.errors[error]);
+              }
+              $this.find('button.submit-btn').prop('disabled', false);
+            } else {
+              $this.find('.alert-info').hide();
+              $this.find('.alert-danger').hide();
+              $this.find('.alert-success').show();
+              $this.find('.alert-success p').html(data);
+              $this.find('button.submit-btn').prop('disabled', false);
+            }
+          }
+
+          btnLoading.classList.remove('fa')
+          btnLoading.classList.remove('fa-refresh')
+          btnLoading.classList.remove('fa-spin')
+        }
+      });
+
+    });
 
 const Fromloginbtn = document.getElementById("login_BUTTON");
 const FormsignupBtn = document.getElementById("signup_button");
