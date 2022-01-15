@@ -1,4 +1,70 @@
+<!-- newsletter section -->
 
+
+@if(!route('user-dashboard'))
+<style type="text/css">
+  .brand_amb {
+    text-align: center;
+    background: skyblue;
+    padding: 40px
+  }
+  .brand_amb p {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight:600;
+  }
+  .brand_amb h3 {
+    margin-bottom: 50px;
+    
+  }
+  .brand_btn {
+   text-align: center;
+   margin-bottom: 30px;
+  }
+  .brand_btn button {
+     height: 50px;
+    width:160px;
+    font-size:20px;
+    border-radius: 10px;
+    background:black;
+    color:white;
+  }
+
+</style>
+<x-newsletter/>
+
+<!-- newsletter section ends *************************************************************************-->
+
+
+<!-- contact us -->
+
+<div class="contactUS">
+
+  <div>
+    <p>Become a BOSS Drinks Stockist</p>
+  </div>
+
+  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, omnis!</h3>
+  <div class="contactUS_btn">
+    <a href="stock_register.html"><button type="button">Register</button></a>
+  </div>
+</div>
+
+<div class="brand_amb">
+  <div>
+    <p>Become a Boss Drink Brand Ambassedor</p>
+  </div>
+    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, omnis!</h3>
+  <div class="brand_btn">
+    <a href="{{route('ambassedor')}}"><button type="button">Register</button></a>
+  </div>
+
+  
+  
+
+</div>
+@endif
+</div>
     <div class="finalFooter">
 
 

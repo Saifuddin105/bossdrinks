@@ -579,14 +579,10 @@
     </div>
     <!-- u may also like ends********************************************************************** -->
     <!-- sunscription section -->
-
+<!-- 
     <x-newsletter/>
 
 
-
-    <!-- sunscription section ends *************************************************************************-->
-
-    <!-- contact us -->
     <div class="contactUS">
 
         <div>
@@ -597,7 +593,7 @@
         <div class="contactUS_btn">
             <a href="stock_register.html"><button type="button">Register</button></a>
         </div>
-    </div>
+    </div> -->
 
     <!-- contact us ends ******************************************************************* -->
     <div class="modal-bg">

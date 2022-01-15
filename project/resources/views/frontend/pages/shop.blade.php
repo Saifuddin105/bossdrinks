@@ -68,7 +68,7 @@
 
     <!-- newsletter section -->
 
-    <x-newsletter/>
+    <!-- <x-newsletter/>
 
 
     <div class="contactUS">
@@ -81,7 +81,7 @@
         <div class="contactUS_btn">
             <a href=""><button type="button">Register</button></a>
         </div>
-    </div>
+    </div> -->
 @endsection
 
 @push('script')

@@ -119,7 +119,8 @@ class RegisterController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('user/register')->withErrors($validator, 'register')->withInput();
+            // return redirect('user/register')->withErrors($validator, 'register')->withInput();
+            return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
         }
 				
         $user = new User;
@@ -128,9 +129,11 @@ class RegisterController extends Controller
         $input['password'] = bcrypt($request['password']);
 				$input['email_verified'] = 'Yes';
         $status = $user->fill($input)->save();
+
 				if($status){
-					
-				return redirect()->route('user.login')->with('success', 'sign up Successfully done, please login now !!');
+                    Auth::guard('web')->login($user);
+					return response()->json(1);
+				// return redirect()->route('user.login')->with('success', 'sign up Successfully done, please login now !!');
 				 }
     }
 
