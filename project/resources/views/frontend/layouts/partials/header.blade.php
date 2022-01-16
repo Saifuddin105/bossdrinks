@@ -3,7 +3,7 @@
 <style type="text/css">
 
 #account_Heading {
-   font-size: 18px;
+   font-size: 15px;
     font-weight: 600;
     margin-top: 16px;
     padding-left: 37px;
@@ -12,7 +12,7 @@
 .heading_for_form {
         display: flex;
     flex-direction: row;
-    gap: 100px;
+    gap: 50px;
 }
 
    
@@ -206,11 +206,13 @@
 }
 
 .forget_pss_div {
-    margin-top: 1px;
+    margin-top: 15px;
     margin-bottom: 20px;
     display: flex;
-    gap: 100px;
-    padding-left: 30px;
+    padding-left:15px
+    
+    
+    
 
 }
 
@@ -222,6 +224,7 @@
     display: flex;
     gap: 10px;
     margin-top: 3px;
+    width:58%;
 }
 
 /* #eye_icon {
@@ -324,14 +327,17 @@
     margin-right: auto;
     width: 85%;
     border-radius: 20px;
-    height: 48px;
+    height: 44px;
     background: #FFFFFF;
+    border: 1px solid black;
 }
 .google_btn_class p {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 8px;
+    margin-top: 10px;
     font-weight: 600;
+    font-size: 14px;
+
 }
 .facebook_btn_class {
         display: flex;
@@ -340,15 +346,15 @@
     margin-right: auto;
     width: 85%;
     border-radius: 20px;
-    height: 48px;
+    height: 44px;
     background: #4267B2;
 }
 .facebook_btn_class p {
-    
-
+    color: white;
+    font-size: 14px; 
     margin-left: auto;
     margin-right: auto;
-    margin-top: 8px;
+    margin-top: 11px;
     font-weight: 600;
 }
 .pass{
@@ -362,6 +368,15 @@
   width:'120%'
 }
 
+.eye_icon_1 {
+  margin-left: -10%;
+}
+.eye_icon_2 , .eye_icon_3 {
+  margin-top: -25%;
+  margin-left:88%;
+}
+
+
 
 @media only screen and (max-width: 576px) {
 
@@ -372,9 +387,9 @@
         height: 76vh !important;
     }
 
-    #eye_icon {
+    /* #eye_icon {
         margin-left: 296px !important;
-    }
+    } */
 }
 
 </style>
@@ -475,7 +490,7 @@
                     <input type="email" name="email" placeholder="Email">
                     <div class="pass">
                     <input id="login_modal_pass" style="border:none" name="password" type="password" placeholder="Password">
-                    <img src="img/eye.png" alt="" id="eye_icon" onclick="togglePW()" style="height:20px">
+                    <img class="eye_icon_1" src="img/eye.png" alt="" id="eye_icon" onclick="togglePW()" style="height:20px">
                     
                     </div>
                    
@@ -508,9 +523,9 @@
                     </div>
                     <input type="email" name="email" placeholder="email" required="required">
                     <input id="signup_pass" name="password" type="password" placeholder="Password" required="required">
-                    <img src="img/eye.png" alt="" id="eye_icon" onclick="togglePW1()" style="height:20px">
+                    <img src="img/eye.png" class="eye_icon_2" alt="" id="eye_icon" onclick="togglePW1()" style="height:20px">
                     <input id="signup_pass_confirm" name="password_confirmation" type="password" placeholder="Confirm Password" required="required" style="margin-top: -12px;">
-                    <img src="img/eye.png" alt="" id="eye_icon" onclick="togglePW()" style="height:20px">
+                    <img src="img/eye.png" class="eye_icon_3" alt="" id="eye_icon" onclick="togglePW()" style="height:20px">
     
     
                     <div class="checkbox_DIV">
