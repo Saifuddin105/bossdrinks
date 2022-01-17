@@ -12,7 +12,7 @@
 .heading_for_form {
         display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 133px;
 }
 
    
@@ -372,7 +372,7 @@
   margin-left: -10%;
 }
 .eye_icon_2 , .eye_icon_3 {
-  margin-top: -25%;
+  margin-top: -22%;
   margin-left:88%;
 }
 
