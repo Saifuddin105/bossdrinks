@@ -1,7 +1,7 @@
 <!-- newsletter section -->
 
 
-@if(!route('user-dashboard'))
+@if(!Request::is('user/dashboard'))
 <style type="text/css">
   .brand_amb {
     text-align: center;
@@ -63,7 +63,9 @@
   
 
 </div>
+
 @endif
+
 </div>
     <div class="finalFooter">
 
