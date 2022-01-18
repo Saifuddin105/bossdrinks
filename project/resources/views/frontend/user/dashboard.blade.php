@@ -73,19 +73,22 @@
     padding-top: 100px;
     padding-bottom: 100px;
        }
-       .subs_section button {
-       background: #08152C;
+       .sub_section_BTN {
+           margin-top:20px;
+           background:#081F2c;
     color: white;
     border-radius: 25px;
-    padding: 12px;
-    font-size: 18px;
+    padding: 10px;
+    font-size: 12px;
     letter-spacing: 1px;
     font-weight: 400;
     cursor: pointer;
-    width: 250px;
+    width: 160px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+       }
+       .sub_section_BTN a {
+           color:white;
        }
        .subs_section h4 {
            font-size: 20px;
@@ -615,7 +618,9 @@
         <div class="subs_section">
 
             <h4>You Currently have no active subscriptions</h4>
+            <div class="sub_section_BTN">
             <a href="{{route('front.shop')}}">Add More Packs</a>
+            </div>
         
         </div>
 
