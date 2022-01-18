@@ -422,9 +422,15 @@
       <button id="searchbtn" class="navbar-btn" type="button">
         <i class="fas fa-search"></i>
       </button>
+      @if(Auth::user())
+      <a href="{{route('user-dashboard')}}" class="navbar-btn" type="button">
+                            <i class="fas fa-user"></i>
+      </a>
+      @else
       <button id="userbtn" class="navbar-btn" type="button">
                             <i class="fas fa-user"></i>
-                        </button></a>
+      </button>
+      @endif
       <a href="{{route('front.showCart')}}"> <button id="cart-btn" class="navbar-btn " type="button">
           <i class="cart-btn fas fa-shopping-cart"></i>
         </button></a>
