@@ -30,7 +30,6 @@ class FrontendController extends Controller
         if (isset($_SERVER['HTTP_REFERER'])) {
             $referral = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
             if ($referral != $_SERVER['SERVER_NAME']) {
-
                 $brwsr = Counter::where('type', 'browser')->where('referral', $this->getOS());
                 if ($brwsr->count() > 0) {
                     $brwsr = $brwsr->first();
@@ -72,9 +71,8 @@ class FrontendController extends Controller
         }
     }
 
-    function getOS()
+    public function getOS()
     {
-
         $user_agent     =   !empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "Unknown";
 
         $os_platform    =   "Unknown OS Platform";
@@ -106,7 +104,6 @@ class FrontendController extends Controller
         );
 
         foreach ($os_array as $regex => $value) {
-
             if (preg_match($regex, $user_agent)) {
                 $os_platform    =   $value;
             }
@@ -119,7 +116,6 @@ class FrontendController extends Controller
 
     public function index(Request $request)
     {
-
         $path = base_path('.env');
 
         $this->code_image();
@@ -158,7 +154,8 @@ class FrontendController extends Controller
         // return view('frontend.pages.home');
     }
 
-    public function shop(){
+    public function shop()
+    {
         $categories = DB::table('categories')->get();
         $products = DB::table('products')->get()->toArray();
         //$products1 = array_splice((array)$products, 0, 2);
@@ -166,7 +163,6 @@ class FrontendController extends Controller
 
         list($products1, $products2) = array_chunk((array) $products, 3);
         return view('frontend.pages.shop', compact('categories', 'products1', 'products2'));
-
     }
 
     public function term()
@@ -184,7 +180,6 @@ class FrontendController extends Controller
         $partners = DB::table('partners')->get();
         $selectable = ['id', 'user_id', 'name', 'slug', 'features', 'colors', 'thumbnail', 'price', 'previous_price', 'attributes', 'size', 'size_price', 'discount_date'];
         $discount_products =  Product::with('user')->where('is_discount', '=', 1)->where('status', '=', 1)->orderBy('id', 'desc')->take(8)->get()->reject(function ($item) {
-
             if ($item->user_id != 0) {
                 if ($item->user->is_vendor != 2) {
                     return true;
@@ -193,7 +188,6 @@ class FrontendController extends Controller
             return false;
         });
         $best_products = Product::with('user')->where('best', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(6)->get()->reject(function ($item) {
-
             if ($item->user_id != 0) {
                 if ($item->user->is_vendor != 2) {
                     return true;
@@ -202,7 +196,6 @@ class FrontendController extends Controller
             return false;
         });
         $top_products = Product::with('user')->where('top', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(8)->get()->reject(function ($item) {
-
             if ($item->user_id != 0) {
                 if ($item->user->is_vendor != 2) {
                     return true;
@@ -211,7 +204,6 @@ class FrontendController extends Controller
             return false;
         });
         $big_products = Product::with('user')->where('big', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(6)->get()->reject(function ($item) {
-
             if ($item->user_id != 0) {
                 if ($item->user->is_vendor != 2) {
                     return true;
@@ -220,7 +212,6 @@ class FrontendController extends Controller
             return false;
         });
         $hot_products =  Product::with('user')->where('hot', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(9)->get()->reject(function ($item) {
-
             if ($item->user_id != 0) {
                 if ($item->user->is_vendor != 2) {
                     return true;
@@ -229,7 +220,6 @@ class FrontendController extends Controller
             return false;
         });
         $latest_products =  Product::with('user')->where('latest', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(9)->get()->reject(function ($item) {
-
             if ($item->user_id != 0) {
                 if ($item->user->is_vendor != 2) {
                     return true;
@@ -238,7 +228,6 @@ class FrontendController extends Controller
             return false;
         });
         $trending_products =  Product::with('user')->where('trending', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(9)->get()->reject(function ($item) {
-
             if ($item->user_id != 0) {
                 if ($item->user->is_vendor != 2) {
                     return true;
@@ -247,7 +236,6 @@ class FrontendController extends Controller
             return false;
         });
         $sale_products =  Product::with('user')->where('sale', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(9)->get()->reject(function ($item) {
-
             if ($item->user_id != 0) {
                 if ($item->user->is_vendor != 2) {
                     return true;
@@ -300,7 +288,6 @@ class FrontendController extends Controller
         if (mb_strlen($slug, 'utf-8') > 1) {
             $search = ' ' . $slug;
             $prods = Product::where('status', '=', 1)->where('name', 'like', '%' . $search . '%')->orWhere('name', 'like', $slug . '%')->take(10)->get()->reject(function ($item) {
-
                 if ($item->user_id != 0) {
                     if ($item->user->is_vendor != 2) {
                         return true;
@@ -399,7 +386,6 @@ class FrontendController extends Controller
     // -------------------------------- FAQ SECTION ----------------------------------------
     public function faq()
     {
-
         $this->code_image();
 
         if (DB::table('generalsettings')->find(1)->is_faq == 0) {
@@ -435,7 +421,8 @@ class FrontendController extends Controller
         return view('frontend.pages.contact-us');
     }
 
-    public function contactSubmit(Request $request){
+    public function contactSubmit(Request $request)
+    {
         $data = $request->all();
         $persionInfo = new \stdClass;
         $persionInfo->first_name = $request->first_name;
@@ -450,18 +437,18 @@ class FrontendController extends Controller
         $data['persional_info'] = json_encode($persionInfo);
         $data['number'] = $request->countryCode.' '.$request->number;
    
-        if(is_array($request->collaboration)){
-            $data['collaboration'] = implode(",", $request->collaboration );
-         }
-        if(is_array($request->channel_type)){
-            $data['channel_type'] = implode(",", $request->channel_type );
-         }else{ 
+        if (is_array($request->collaboration)) {
+            $data['collaboration'] = implode(",", $request->collaboration);
+        }
+        if (is_array($request->channel_type)) {
+            $data['channel_type'] = implode(",", $request->channel_type);
+        } else {
             $data['channel_type'] = $request->channel_type_specify;
-         }
-       $status = Contact::create($data);
-       if($status){
-        return redirect()->route('front.contact')->with('success', 'Thank you for your message. We will get in touch with you shortly');
-     }
+        }
+        $status = Contact::create($data);
+        if ($status) {
+            return redirect()->route('front.contact')->with('success', 'Thank you for your message. We will get in touch with you shortly');
+        }
     }
 
 
@@ -533,7 +520,6 @@ class FrontendController extends Controller
     {
         $gs = Generalsetting::find(1);
         if ($gs->is_maintain != 1) {
-
             return redirect()->route('front.index');
         }
 
@@ -590,7 +576,7 @@ class FrontendController extends Controller
 
 
     // Capcha Code Image
-    private function  code_image()
+    private function code_image()
     {
         $actual_path = str_replace('project', '', base_path());
         $image = imagecreatetruecolor(200, 50);
@@ -630,7 +616,7 @@ class FrontendController extends Controller
     // -------------------------------- PRINT SECTION ----------------------------------------
 
 
-    function finalize()
+    public function finalize()
     {
         $actual_path = str_replace('project', '', base_path());
         $dir = $actual_path . 'install';
@@ -641,7 +627,7 @@ class FrontendController extends Controller
         return redirect('/');
     }
 
-    function updateFinalize()
+    public function updateFinalize()
     {
         $actual_path = str_replace('project', '', base_path());
 
@@ -669,7 +655,7 @@ class FrontendController extends Controller
         return redirect('/');
     }
 
-    function auth_guests()
+    public function auth_guests()
     {
         $chk = MarkuryPost::marcuryBase();
         $chkData = MarkuryPost::marcurryBase();
@@ -726,5 +712,4 @@ class FrontendController extends Controller
 
 
     // -------------------------------- PRINT SECTION ENDS ----------------------------------------
-
 }

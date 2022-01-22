@@ -11,7 +11,6 @@
 
 
 
-
     <div class="addtocart_sidebar">
         <div class="addtocart_sidebar_top">
             <div>
@@ -39,7 +38,7 @@
                 <h4 style="font-size: 12px;">I agree to the <a id="modal_text">Terms and Conditions</a></h4>
             </div>
             <div class="checkout_btn">
-                <a href={{route('front.showCheckout')}}><button>Proceed to Checkout</button></a>
+                <a href={{ route('front.showCheckout') }}><button>Proceed to Checkout</button></a>
             </div>
         </div>
 
@@ -50,7 +49,7 @@
     <div class="productdetails row productdeitails_web">
         <div class="imgshowclass col-12 col-lg-6 imgshowclass_single">
             <div>
-                <img src="/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png" alt="something"
+                <img src="{{asset('assets/images/products/' . $productt->photo) }}" alt="something"
                     style="filter: drop-shadow(3px 4px 6px black);">
             </div>
 
@@ -63,10 +62,9 @@
 
         <div class="col-12 col-lg-6">
             <div class="drinktitleclass">
-                <h3 id="drinktitle " style="">ENERGY BOSS
-                    ORIGINAL</h3>
+                <h3 id="drinktitle " style="">{{$productt->name}}</h3>
                 <!-- <p style="font-size: 19px;
-                                                                                                                                                                                                                                                                                                                                                        font-weight: 700;">&euro;30.36</p> -->
+                                                                                                                                                                                                                                                                                                                                                                        font-weight: 700;">&euro;30.36</p> -->
             </div>
 
             <!-- accordion1 starts -->
@@ -164,7 +162,7 @@
             <div class="no_contract_text">
                 <h3
                     style="font-size: 16px;
-                                                                                                                                                                                                                                                                                                                                                        font-weight: 400;">
+                                                                                                                                                                                                                                                                                                                                                                        font-weight: 400;">
                     No
                     contract
                     &#8226
@@ -221,7 +219,8 @@
 
                         <div class="addtocart-btn">
 
-                            <button class="button-30" id="FirstBOX_btn" onclick="addCartItem(1, 'subscription', 7.46)">
+                            <button class="button-30" id="FirstBOX_btn"
+                                onclick="addCartItem({{ $productt->id }}, 'subscription', 7.46)">
                                 <h4 class="button-30_price">&#163;7.46</h4><i class="fa fa-shopping-cart"></i> Add
                                 To
                                 cart
@@ -232,7 +231,7 @@
 
             </label>
 
-            <label for="radio2" class="dis-blk">
+            {{-- <label for="radio2" class="dis-blk">
                 <div class="radioDIV2">
                     <label class="rad-label ">
                         <input id="radio2" type="radio" class="rad-input" name="rad">
@@ -250,14 +249,14 @@
                             cart</button>
                     </div>
                 </div>
-            </label>
+            </label> --}}
 
             <label for="RADIO" class="dis-blk">
                 <div class="radioDIV2 radioDIV_2">
                     <label class="rad-label ">
                         <input type="radio" class="rad-input" id="RADIO" name="rad">
                         <div class="rad-design"></div>
-                        <div class="pdt-price">From <small>&#163; 8.49</small> bulk on time</div>
+                        <div class="pdt-price">One time bulk purchase</div>
                     </label>
                     <!-- <p class="product_price"></p> -->
                     <div class="small_text">
@@ -312,7 +311,7 @@
                     <div class="addtocart-btn">
 
                         <button class="button-30" id="button-30_2" role="button"
-                            onclick="addCartItem(1, 'bulk-purchase', 8.49)">
+                            onclick="addCartItem({{ $productt->id }}, 'bulk-purchase', 8.49)">
                             <h4 class="button-30_price_2">&#163;8.49</h4><i class="fa fa-shopping-cart"></i> Add
                             To
                             cart
@@ -338,15 +337,15 @@
 
                 </div>
                 <!-- <div>
-                                                                                                                                                                                                                                                                                                                                                                        <div class="select">
-                                                                                                                                                                                                                                                                                                                                                                            <select>
-                                                                                                                                                                                                                                                                                                                                                                                <option value="1">Every 3 Week(s)</option>
-                                                                                                                                                                                                                                                                                                                                                                                <option value="2">Every 6 Week(s)</option>
-                                                                                                                                                                                                                                                                                                                                                                                <option value="3">Every 9 Weeks'(s)</option>
-                                                                                                                                                                                                                                                                                                                                                                            </select>
-                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                        <div class="select">
+                                                                                                                                                                                                                                                                                                                                                                                            <select>
+                                                                                                                                                                                                                                                                                                                                                                                                <option value="1">Every 3 Week(s)</option>
+                                                                                                                                                                                                                                                                                                                                                                                                <option value="2">Every 6 Week(s)</option>
+                                                                                                                                                                                                                                                                                                                                                                                                <option value="3">Every 9 Weeks'(s)</option>
+                                                                                                                                                                                                                                                                                                                                                                                            </select>
+                                                                                                                                                                                                                                                                                                                                                                                        </div>
 
-                                                                                                                                                                                                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                    </div> -->
 
             </div>
 
@@ -461,9 +460,6 @@
         </div>
 
     </div>
-
-
-
 
 
 
@@ -2183,8 +2179,8 @@
                         <li><span>Menu</span></li>
                         <li><span><a href="index.html">Home</a></span></li>
                         <li><span>About Us</span></li>
-                        <li><span><a href="{{route('front.shop')}}">Products</a></span></li>
-                        <li><span><a href="{{route('front.shop')}}">Buy Drinks</a></span></li>
+                        <li><span><a href="{{ route('front.shop') }}">Products</a></span></li>
+                        <li><span><a href="{{ route('front.shop') }}">Buy Drinks</a></span></li>
                         <li><span>Contact Us</span></li>
                     </ul>
                 </div>
@@ -2248,7 +2244,7 @@
                 forbidden.</p>
             <p>Develeped By TATAMAX LIMITED</p>
             <!-- <h3>Maintained By</h3>
-                                                                                                                                                                                                                                                                                                                                                                <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
+                                                                                                                                                                                                                                                                                                                                                                                <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
         </div>
 
 
@@ -2534,7 +2530,7 @@
                 forbidden.</p>
             <p>Develeped By TATAMAX LIMITED</p>
             <!-- <h3>Maintained By</h3>
-                                                                                                                                                                                                                                                                                                                                                                <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
+                                                                                                                                                                                                                                                                                                                                                                                <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
         </div>
 
         <div class="payment_method">
@@ -2820,7 +2816,7 @@
             }
         })
 
-        
+
         Smallbox3.addEventListener("change", (event) => {
             bulkCases = 4
             if (event.target.checked = true) {
@@ -2858,7 +2854,7 @@
         window.onload = () => {
             const cartItems = document.getElementById('cart-items');
             if (oldData?.productDetails?.length > 0) {
-                showTotalAmount.innerText=oldData.subTotal
+                showTotalAmount.innerText = oldData.subTotal
                 for (let i = 0; i < oldData.productDetails.length; i++) {
                     let addCartItem = ""
                     addCartItem += "<div class='FirstBOX' id='box_" + oldData.productDetails[i].productId + "'>";
@@ -2891,6 +2887,10 @@
                     cartItems.insertAdjacentHTML("beforeend", addCartItem);
 
                 }
+                cartQuantity()
+                document.getElementById('quantity-back').style = "display: flex"
+
+
             }
         }
         const addCartItem = (productId, type, unitPrice) => {
@@ -2903,7 +2903,8 @@
                     'Energy Boss' : type ===
                     'bulk-purchase' ?
                     'Energy Boss Bulk' : '',
-                'deliveryTitle':  type === 'subscription' ? 'Energy Boss Subscription' : type === 'one-time-purchase' ?
+                'deliveryTitle': type === 'subscription' ? 'Energy Boss Subscription' : type ===
+                    'one-time-purchase' ?
                     'One time purchase' : type ===
                     'bulk-purchase' ?
                     'Bulk Purchase' : '',
@@ -2946,26 +2947,29 @@
                 addCartItem += "</div>";
                 cartItems.insertAdjacentHTML("beforeend", addCartItem);
                 calculateTotalAmount()
+                cartQuantity()
+                document.getElementById('quantity-back').style = "display: flex"
+
             } else {
                 const existItem = oldData.productDetails.find(function(item, index) {
-                    if (item.productId === productId && item.type===type)
+                    if (item.productId === productId && item.type === type)
                         return true;
                 });
                 const productIndx = oldData.productDetails.findIndex((element, index) => {
-                    if (element.productId === productId && element.type===type) {
+                    if (element.productId === productId && element.type === type) {
                         return true
                     }
                 })
 
-                const existSubscribed = oldData.productDetails.find(function(item, index) {
-                    if (item.type === 'subscription')
-                        return true;
-                });
-                if (!existItem && !existSubscribed) {
-                    if(type ==='subscription'){
-                    handleSnackBar('You have to cancel all cart to add subscribe.')
-                    return 0    
-                    }
+                // const existSubscribed = oldData.productDetails.find(function(item, index) {
+                //     if (item.type === 'subscription')
+                //         return true;
+                // });
+                if (!existItem) {
+                    // if(type ==='subscription'){
+                    // handleSnackBar('You have to cancel all cart to add subscribe.')
+                    // return 0    
+                    // }
                     oldData.productDetails.push(itemDetails)
                     let addCartItem = ""
                     addCartItem += "<div class='FirstBOX' id='box_" + itemDetails.productId + "'>";
@@ -2997,10 +3001,12 @@
                     addCartItem += "</div>";
                     cartItems.insertAdjacentHTML("beforeend", addCartItem);
                     calculateTotalAmount()
+                    cartQuantity()
+
                 }
-                else if(existSubscribed && type!=='subscription') {
-                    handleSnackBar('One Subscription already exist.Please complete the transaction first.')
-                }
+                // else if(existSubscribed && type!=='subscription') {
+                //     handleSnackBar('One Subscription already exist.Please complete the transaction first.')
+                // }
                 else {
                     bulkProductIncrement(productIndx, oldData.productDetails[productIndx].productPrice)
                 }
@@ -3036,9 +3042,12 @@
             document.getElementById("box_" + productId).remove()
             if (oldData?.productDetails?.length < 1) {
                 oldData.subTotal = 0
+                document.getElementById('quantity-back').style = "display: none"
+
             }
             localStorage.setItem('cartDetails', JSON.stringify(oldData))
             calculateTotalAmount()
+            cartQuantity()
         }
 
         const cartQuantityIncrement = (productIndx, price) => {
@@ -3053,6 +3062,8 @@
                 localStorage.removeItem('cartDetails')
                 localStorage.setItem('cartDetails', JSON.stringify(oldData))
                 calculateTotalAmount()
+                cartQuantity()
+
             }
         }
 
@@ -3067,13 +3078,15 @@
                     totalAmount[productIndx].innerText = 0
                     productDetails.totalAmount = 0
                 } else {
-                    totalAmount[productIndx].innerText =  productDetails.totalAmount.toFixed(2)
+                    totalAmount[productIndx].innerText = productDetails.totalAmount.toFixed(2)
                 }
                 increments[productIndx].innerText = productDetails.quantity
                 localStorage.removeItem('cartDetails')
                 localStorage.setItem('cartDetails', JSON.stringify(oldData))
             }
             calculateTotalAmount()
+            cartQuantity()
+
 
         }
 
@@ -3087,7 +3100,7 @@
                     productDetails.totalAmount = price * subScribeCases
                     increments[productIndx].innerText = subScribeCases
                     totalAmount[productIndx].innerText = price * subScribeCases.toFixed(2)
-                    
+
                 } else if (productDetails.type === 'bulk-purchase') {
                     productDetails.quantity = bulkCases
                     productDetails.totalAmount = (price * bulkCases)
@@ -3102,6 +3115,23 @@
                 localStorage.removeItem('cartDetails')
                 localStorage.setItem('cartDetails', JSON.stringify(oldData))
                 calculateTotalAmount()
+                cartQuantity()
+
+            }
+        }
+
+        const cartQuantity = () => {
+            let cartQuantity = document.getElementById("cart-quantity")
+
+            if (oldData?.productDetails.length > 0) {
+                let productQuantity = 0
+                for (let i = 0; i < oldData.productDetails.length; i++) {
+                    productQuantity += oldData.productDetails[i].quantity
+                }
+                cartQuantity.innerText = productQuantity
+            }else{
+                document.getElementById('quantity-back').style="display: none"
+
             }
         }
 
@@ -3113,8 +3143,6 @@
                 x.className = x.className.replace("show", "");
             }, 3000);
         }
-
-     
     </script>>
 
 
