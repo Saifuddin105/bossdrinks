@@ -46,7 +46,7 @@
 
   <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, omnis!</h3>
   <div class="contactUS_btn">
-    <a href="stock_register.html"><button type="button">Register</button></a>
+    <a href="{{route('vendor.types')}}"><button type="button">Register</button></a>
   </div>
 </div>
 

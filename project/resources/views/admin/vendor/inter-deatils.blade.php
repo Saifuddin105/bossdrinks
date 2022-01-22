@@ -15,7 +15,10 @@ table#example2 {
 @endsection
 
 @section('content')
-
+@php
+$persionalInfo = json_decode($data->persional_info);
+$businessInfo = json_decode($data->business_info);
+@endphp
                     <div class="content-area">
                         <div class="mr-breadcrumb">
                             <div class="row">
@@ -41,7 +44,7 @@ table#example2 {
                                         <div class="product-description">
                                             <div class="body-area">
                                             <div class="row">
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-3">
                                                         <div class="user-image">
                                                             @if($data->is_provider == 1)
                                                             <img src="{{ $data->photo ? asset($data->photo):asset('assets/images/noimage.png')}}" alt="No Image">
@@ -51,38 +54,55 @@ table#example2 {
                                                         <a href="javascript:;" class="mybtn1 send" data-email="{{ $data->email }}" data-toggle="modal" data-target="#vendorform">{{ __("Send Message") }}</a>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-5">
                                                     <div class="table-responsive show-table">
                                                         <table class="table">
+                                                        <!-- <h4>Persional Information<h4> -->
                                                         <tr>
-                                                            <th>{{ __("Vendor ID#") }}</th>
-                                                            <td>{{$data->id}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>{{ __("Store Name") }}</th>
-                                                            <td>{{ $data->shop_name }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>{{ __("Owner Name") }}</th>
-                                                            <td>{{ $data->owner_name }}</td>
+                                                            <th>{{ __("Name") }}</th>
+                                                            <td>{{ $data->name }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th>{{ __("Email") }}</th>
                                                             <td>{{ $data->email }}</td>
                                                         </tr>
+                                                        @if(isset($persionalInfo->contact_name))
                                                         <tr>
-                                                            <th>{{ __("Shop Number") }}</th>
-                                                            <td>{{ $data->shop_number }}</td>
+                                                            <th>{{ __("Contact Persion") }}</th>
+                                                            <td>{{ $persionalInfo->contact_name }}</td>
                                                         </tr>
+                                                        @endif
+                                                     @if($persionalInfo !== null)
+                                                     <tr><td>Home Address</td></tr>
+                                                     @endif
+                                                        @if(isset($persionalInfo->address_1))
                                                         <tr>
-                                                            <th>{{ __("Registration Number") }}</th>
-                                                            <td>{{ $data->reg_number }}</td>
+                                                            <th>{{ __("Address 1") }}</th>
+                                                            <td>{{ $persionalInfo->address_1 }}</td>
                                                         </tr>
+                                                        @endif
+                                                        @if(isset($persionalInfo->address_2))
+                                                        <tr>
+                                                            <th>{{ __("Address 2") }}</th>
+                                                            <td>{{ $persionalInfo->address_2 }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if(isset($persionalInfo->address_3))
+                                                        <tr>
 
-                                                        <tr>
-                                                            <th>{{ __("Shop Address") }}</th>
-                                                            <td>{{ $data->shop_address }}</td>
+                                                            <th>{{ __("Address 3") }}</th>
+                                                            <td>{{ $persionalInfo->address_3 }}</td>
                                                         </tr>
+                                                        @endif
+                                                        @if(isset($persionalInfo->home_tel_no))
+                                                        <tr>
+
+                                                            <th>{{ __("Contact No") }}</th>
+                                                            <td>{{ $persionalInfo->home_tel_no }}</td>
+                                                        </tr>
+                                                        @endif
+                                                      
+
                                                         
                                                         </table>
                                                         </div>
@@ -90,87 +110,94 @@ table#example2 {
                                                     <div class="col-md-4">
                                                     <div class="table-responsive show-table">
                                                     <table class="table">
+                                                        @if(isset($businessInfo->busi_vat))
+                                                        <tr>
+                                                        <tr><td>Business Information</td></tr>
+                                                            <th>{{ __("VAT Number") }}</th>
+                                                            <td>{{ $businessInfo->busi_vat }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if(isset($businessInfo->busi_tel_no))
+                                                        <tr>
+                                                            <th>{{ __("Business Contact No") }}</th>
+                                                            <td>{{ $businessInfo->busi_tel_no }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if(isset($businessInfo->ownership))
+                                                        <tr>
+                                                            <th>{{ __("Ownership") }}</th>
+                                                            <td>{{ $businessInfo->ownership }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if(isset($businessInfo->licensed_alcohol))
+                                                        <tr>
+                                                            <th>{{ __("Licensed Alcohol") }}</th>
+                                                            <td>{{ $businessInfo->licensed_alcohol }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if(isset($businessInfo->trade_type))
+                                                        <tr>
+                                                            <th>{{ __("Trade Type") }}</th>
+                                                            <td>{{ $businessInfo->trade_type }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if(isset($businessInfo->busi_name))
+                                                        <tr>
+                                                        <tr><td>Business Address</td></tr>
 
-                                                        <tr>
-                                                            <th>{{ __("Message") }}</th>
-                                                            <td>{{ $data->shop_message }}</td>
+                                                            <th>{{ __("Business Name") }}</th>
+                                                            <td>{{ $businessInfo->busi_name }}</td>
                                                         </tr>
+                                                        @endif
+                                                        @if(isset($businessInfo->busi_country))
                                                         <tr>
-                                                            <th>{{ __("Total Product(s)") }}</th>
-                                                            <td>{{ $data->products()->count() }}</td>
+                                                            <th>{{ __("Business Location") }}</th>
+                                                            <td>{{ $businessInfo->busi_country }}</td>
                                                         </tr>
+                                                        @endif
+                                                        @if(isset($businessInfo->busi_address1))
+                                                        <tr>
+                                                            <th>{{ __("Address 1") }}</th>
+                                                            <td>{{ $businessInfo->busi_address1 }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if(isset($businessInfo->busi_address2))
+                                                        <tr>
+                                                            <th>{{ __("Address 2") }}</th>
+                                                            <td>{{ $businessInfo->busi_address2 }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if(isset($businessInfo->busi_address3))
+                                                        <tr>
+                                                            <th>{{ __("Address 3") }}</th>
+                                                            <td>{{ $businessInfo->busi_address3 }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if(isset($businessInfo->busi_address3))
+                                                        <tr>
+                                                            <th>{{ __("Post Code") }}</th>
+                                                            <td>{{ $businessInfo->busi_post_code }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        
                                                         <tr>
                                                             <th>{{ __("Joined") }}</th>
                                                             <td>{{ $data->created_at->diffForHumans() }}</td>
                                                         </tr>
-                                                        <tr>
-                                                            <th width="35%">{{ __("Shop Details") }}</th>
-                                                            <td>{!! $data->shop_details !!}</td>
-                                                        </tr>
+                                                     
                                                         <tr>
                                                             <td>
                                                                     @if($data->checkStatus())
                                                                     <a class="badge badge-success verify-link" href="javascript:;">Verified</a>
                                                                     <a class="set-gallery1" href="javascript:;" data-toggle="modal" data-target="#setgallery"><input type="hidden" value="{{ $data->verifies()->where('status','=','Verified')->first()->id }}">(View)</a>
                                                                     @else 
-                                                                    <a class="badge badge-danger verify-link" href="javascript:;">Unverified</a>
+                                                                    <a class="badge badge-danger verify-link" href="javascript:;">Pending</a>
                                                                     @endif
                                                             </td>
                                                             <td>
                                                             </td>
                                                         </tr>
                                                         </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="order-table-wrap">
-                                                <div class="order-details-table">
-                                                    <div class="mr-table">
-                                                        <h4 class="title">{{ __("Products Added") }}</h4>
-                                                        <div class="table-responsive">
-                                                                <table id="example2" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>{{ __("Product ID") }}</th>
-                                                                            <th>{{ __("Type") }}</th>
-                                                                            <th>{{ __("Stock") }}</th>
-                                                                            <th>{{ __("Price") }}</th>
-                                                                            <th>{{ __("Status") }}</th>
-                                                                            <th></th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        @foreach($data->products as $dt)
-                                                                        <tr>
-                                                                        <td><a href="{{ route('front.product', $dt->slug) }}" target="_blank">{{ sprintf("%'.08d",$dt->id) }}</a></td>
-                                                                            <td>{{ $dt->type }}</td>
-                                                                            @php 
-                                                                            $stck = (string)$dt->stock;
-                                                                            if($stck == "0")
-                                                                            $stck = "Out Of Stock";
-                                                                            elseif($stck == null)
-                                                                            $stck = "Unlimited";
-                                                                            @endphp
-                                                                            <td>{{ $stck  }}</td>
-                                                                            <td>{{  App\Models\Product::convertPrice($dt->price) }}</td>
-                                                                            <td>
-                                                                                <div class="action-list">
-                                                                                <select class="process select droplinks {{ $dt->status == 1 ? 'drop-success' : 'drop-danger' }}">
-                                                                                    <option data-val="1" value="{{ route('admin-prod-status',['id1' => $data->id, 'id2' => 1]) }}" {{ $dt->status == 1 ? 'selected' : '' }}>{{ __("Activated") }}</option>
-                                                                                    <<option data-val="0" value="{{ route('admin-prod-status',['id1' => $data->id, 'id2' => 0]) }}" {{ $dt->status == 0 ? 'selected' : '' }}>{{ __("Deactivated") }}</option>
-                                                                                </select>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <a href=" {{ route('admin-prod-edit',$dt->id) }}" class="view-details">
-                                                                                    <i class="fas fa-eye"></i>{{ __("Details") }}
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        @endforeach
-                                                                    </tbody>
-                                                                </table>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
-
+use Session;
+use Validator;
 
 class VendorController extends Controller
 {
@@ -155,5 +156,87 @@ class VendorController extends Controller
         imagepng($image, $actual_path."assets/images/capcha_code.png");
     }
 
+    public function vendorTypes(){
+        return view('frontend.vendor.vendor-types');
+     }
+
+    public function vendorRegistorForm(Request $request){
+        Session::forget('vendor_inter_email');  
+        if($request->type === 'uk'){
+            return view('frontend.vendor.uk-vendor-register');
+        }else{
+            $step = 1;
+            return view('frontend.vendor.inter-vendor-register',compact('step'));
+            
+         }
+     }
+
+     public function vendorInterCreate(Request $request){
+        $rules = [
+            'email' => 'required|email|unique:users',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect('vendor/register/international')->withErrors($validator, 'error')->withInput();
+        }
+        if($request->step == 1){
+            $request->session()->put('vendor_inter_email', $request->email);
+            $step = 2;
+            return view('frontend.vendor.inter-vendor-register',compact('step'));
+         }else{
+             $user = new User;
+            $businessInfo = $request->only('busi_name', 'busi_address1', 'busi_address2', 'busi_address3', 'busi_post_code', 'busi_tel_no', 'busi_vat');
+            $persionalInfo = $request->only('address_1', 'address_2', 'address_3', 'post_code', 'home_tel_no', 'email','recom', 'contact_name','title');
+            // echo json_encode($businessInfo);die;
+            $vendor['name'] = $request->customer_name;
+            $vendor['email'] = Session::get('vendor_inter_email');
+            $vendor['phone'] =$request->mobile_no;
+            $vendor['business_info'] = json_encode($businessInfo);  
+            $vendor['persional_info'] = json_encode($persionalInfo);
+            Session::forget('vendor_inter_email');
+            $vendor['is_vendor'] = 1;
+            $vendor['vendor_type'] = 'International';
+
+            $user->fill($vendor)->save();
+            return redirect()->route('vendor.register.form',['type'=>'international'])->with('success','Your request for registration has been accepted. You will be notified soon');
+
+            // $persionInfo = new \stdClass;
+          }
+       
+    }
+
+    public function vendorUkCreate(Request $request){
+        $rules = [
+            'email' => 'required|email|unique:users',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect('vendor/register/uk')->withErrors($validator, 'error')->withInput();
+        }
+        $vendor=[];
+        $user = new User;
+        $businessInfo = $request->only('busi_name', 'busi_address1', 'busi_address2', 'busi_address3', 'busi_post_code', 'busi_tel_no', 'busi_vat','busi_country','ownership','trade_type','licensed_alcohol','sell_tobacco','registered_vat','store');
+        $persionalInfo = $request->only('buld_name', 'street', 'city','post_code', 'located_year','gender', 'business_owner', 'date_of_birth','title');
+        if($request->located_year === 'less than 1 year'){
+            $persionalInfo['prev_buld_name'] = $request->prev_buld_name; 
+            $persionalInfo['prev_street'] = $request->prev_street; 
+            $persionalInfo['prev_post_code'] = $request->prev_post_code; 
+            $persionalInfo['prev_city'] = $request->prev_city; 
+            $persionalInfo['prev_country'] = $request->prev_country; 
+         }
+        // echo json_encode($businessInfo);die;
+        $vendor['name'] = $request->first_name.' '.$request->last_name;
+        $vendor['email'] = $request->email;
+        $vendor['phone'] =$request->countryCode.' '.$request->phone;
+        $vendor['country'] = $request->country;
+        $vendor['business_info'] = json_encode($businessInfo);  
+        $vendor['persional_info'] = json_encode($persionalInfo);
+        $vendor['is_vendor'] = 1;
+        $vendor['vendor_type'] = 'UK';
+        $user->fill($vendor)->save();
+        return redirect()->route('vendor.register.form',['type'=>'uk'])->with('success','Your request for registration has been accepted. You will be notified soon');
+     }
 
 }

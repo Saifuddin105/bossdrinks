@@ -1282,3 +1282,8 @@ Route::get('join/ambassedor', 'Front\AmbassedorController@registerForm')->name('
 Route::get('privacy/policy',function(){
     return view('frontend.pages.privacy-policy');
 })->name('privacy');
+
+Route::get('vendor/types', 'Front\VendorController@vendorTypes')->name('vendor.types');
+Route::get('vendor/register/{type}', 'Front\VendorController@vendorRegistorForm')->name('vendor.register.form');
+Route::post('vendor/inter/register', 'Front\VendorController@vendorInterCreate')->name('vendor.inter.register');
+Route::post('vendor/uk/register', 'Front\VendorController@vendorUkCreate')->name('vendor.uk.register');
