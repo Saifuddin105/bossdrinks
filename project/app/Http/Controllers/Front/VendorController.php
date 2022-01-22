@@ -194,6 +194,7 @@ class VendorController extends Controller
             $vendor['phone'] =$request->mobile_no;
             $vendor['business_info'] = json_encode($businessInfo);  
             $vendor['persional_info'] = json_encode($persionalInfo);
+            $vendor['terms_condition'] = $request->terms_condition == 'on' ? 1: 0;
             Session::forget('vendor_inter_email');
             $vendor['is_vendor'] = 1;
             $vendor['vendor_type'] = 'International';
@@ -233,6 +234,7 @@ class VendorController extends Controller
         $vendor['country'] = $request->country;
         $vendor['business_info'] = json_encode($businessInfo);  
         $vendor['persional_info'] = json_encode($persionalInfo);
+        $vendor['terms_condition'] = $request->terms_condition == 'on' ? 1: 0;
         $vendor['is_vendor'] = 1;
         $vendor['vendor_type'] = 'UK';
         $user->fill($vendor)->save();

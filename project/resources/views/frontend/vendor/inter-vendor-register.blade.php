@@ -151,7 +151,7 @@
 
 
             <div class="Final_part_reg">
-                <div class="checkbox_part"><input type="checkbox" name="term_condtion" id="int_reg_checkbox"></div>
+                <div class="checkbox_part"><input type="checkbox" name="terms_condition" id="int_reg_checkbox"></div>
 
                 <div class="TandC_text">By submitting, I agree with the <a href="" id="T_and_C">Terms and
                         Conditions</a>. I am over 18 and
