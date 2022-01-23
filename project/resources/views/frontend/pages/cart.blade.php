@@ -5,16 +5,16 @@
 @section('styles')
     <style type="text/css">
         /* .cart-box {
-                                                                                                                                                        position: relative;
-                                                                                                                                                    } */
+                                                                                                                                                                                                    position: relative;
+                                                                                                                                                                                                } */
 
         /* .cart-close-btn {
-                                                                                                                                                        position: absolute;
-                                                                                                                                                        right: 0;
-                                                                                                                                                        border: none;
-                                                                                                                                                        background: none;
-                                                                                                                                                        top: -1px;
-                                                                                                                                                    } */
+                                                                                                                                                                                                    position: absolute;
+                                                                                                                                                                                                    right: 0;
+                                                                                                                                                                                                    border: none;
+                                                                                                                                                                                                    background: none;
+                                                                                                                                                                                                    top: -1px;
+                                                                                                                                                                                                } */
 
 
 
@@ -25,6 +25,10 @@
             text-align: center;
             margin-top: 30px;
             margin-bottom: 30px;
+        }
+
+        #my_cart {
+            display: none;
         }
 
         #cart_H4 {
@@ -332,21 +336,6 @@
             width: 75%;
         }
 
-        #checkout_BTN {
-            border: 1px solid black;
-            width: 98%;
-            font-size: 18px;
-            padding: 13px;
-            border-radius: 20px;
-            background: #081F2c;
-            color: white;
-            margin-top: 30px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
         .order_summery_left {
             width: 33%;
         }
@@ -368,6 +357,34 @@
             font-size: 16px !important;
             text-decoration: underline !important;
         }
+
+        .checkout_part {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .checkout_part a {
+            border: 1px solid black;
+            width: 98%;
+            font-size: 18px;
+            padding: 13px;
+            border-radius: 20px;
+            background: #081F2c;
+            color: white;
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .checkout_part a:hover {
+            color: white;
+        }
+
 
         @media only screen and (max-width: 576px) {
 
@@ -542,13 +559,12 @@
                 const oneTimePurchaseTotal = oneTimePurchaseDataProduct1.reduce((sum, item) => {
                     return sum + item.totalAmount
                 }, 0)
-                console.log(oneTimePurchaseTotal)
 
 
 
                 for (let i = 0; i < oldData.productDetails.length; i++) {
                     let addCartItem = ""
-                    addCartItem += "<div class='total_one_time_purchase' id='box_" + i +
+                    addCartItem += "<div class='total_one_time_purchase' id='box_" + oldData.productDetails[i].id +
                         "'>";
                     addCartItem += "<div class='one_time_purchase'>";
                     if (oldData.productDetails[i].type === 'subscription') {
@@ -565,7 +581,7 @@
                     addCartItem += "</div>";
                     addCartItem += "<div class='one_time_p_info'>";
                     addCartItem += "<span id='product_total_" + oldData.productDetails[i]
-                        .productId + "' class='product_total'>&#163;" + oldData.productDetails[i]
+                        .id + "' class='product_total'>&#163;" + oldData.productDetails[i]
                         .totalAmount.toFixed(2) + "</span>";
                     if (oldData.productDetails[i].type === 'subscription') {
 
@@ -574,28 +590,29 @@
 
                         addCartItem += "<span id='OTP2'>Delivered once, reorder when you need</span>";
                     }
-                    addCartItem += "<span id='OTP3'>Boss Drink Original Blue</span>";
+                    addCartItem += "<span id='OTP3'>" + oldData.productDetails[i].name +
+                        "</span>";
                     if (oldData.productDetails[i].type !== 'subscription') {
 
                         addCartItem += "<div class='OTP_counter_box'>";
                         addCartItem += "<button  id='otp_minus' onclick='cartQuantityDecrement(" +
-                            oldData.productDetails[i].productId + "," + oldData.productDetails[i]
+                            oldData.productDetails[i].id + "," + oldData.productDetails[i]
                             .productPrice +
                             ")'>-</button>";
                         addCartItem += "<div class='Otp_value_div'>";
                         addCartItem += "<h4 id='otp_value_" + oldData.productDetails[i]
-                            .productId +
+                            .id +
                             "'  class='otp_value'>" + oldData.productDetails[i].quantity +
                             "</h4>";
                         addCartItem += "</div>";
                         addCartItem += "<button  id='otp_plus' onclick='cartQuantityIncrement(" +
-                            oldData.productDetails[i].productId + "," + oldData.productDetails[i]
+                            oldData.productDetails[i].id + "," + oldData.productDetails[i]
                             .productPrice +
                             ")'>+</button>";
                         addCartItem += "</div>";
                     }
                     addCartItem += " <button id='otp_remove_btn' onclick='closeCartItem(event," +
-                        i + ")'>Remove</button>";
+                        oldData.productDetails[i].id + ")'>Remove</button>";
                     addCartItem += "</div>";
                     addCartItem += "</div>";
                     addCartItem += "</div>";
@@ -614,7 +631,7 @@
                 for (let i = 0; i < subscriptionDataProduct1.length; i++) {
 
                     addCartItem += "<div class='order_product_price'>";
-                    addCartItem += "<div class='productPart'>Boss Drink Original Blue</div>";
+                    addCartItem += "<div class='productPart'>" + subscriptionDataProduct1[i].name + "</div>";
                     addCartItem += "<div class='pricePart'>&#163;" + subscriptionDataProduct1[i].totalAmount.toFixed(
                         2) + "</div>";
                     addCartItem += "</div>";
@@ -634,8 +651,9 @@
                 for (let i = 0; i < oneTimePurchaseDataProduct1.length; i++) {
                     addCartItem += "<div class='order_product_price_SPO'>";
 
-                    addCartItem += "<div class='productPart_SPO'>Boss Drink Original Blue</div>";
-                    addCartItem += "<div class='pricePart_SPO'>&#163;" + oneTimePurchaseDataProduct1[i].totalAmount
+                    addCartItem += "<div class='productPart_SPO'>" + oneTimePurchaseDataProduct1[i].name + "</div>";
+                    addCartItem += "<div class='pricePart_SPO' id='pricePart_SPO_" + oneTimePurchaseDataProduct1[i].id +
+                        "'>&#163;" + oneTimePurchaseDataProduct1[i].totalAmount
                         .toFixed(2) + "</div>";
                     addCartItem += "</div>";
                 }
@@ -644,8 +662,9 @@
                 addCartItem += "<div class='hr_total_price'>";
                 addCartItem += "<hr>";
                 addCartItem += "<div class='text_price_total_SPO'>";
-                addCartItem += "<div class='total_part_SPO'>Total</div>";
-                addCartItem += "<div class='total_pricePart_SPO'>&#163;" + oneTimePurchaseTotal.toFixed(2) + "</div>";
+                addCartItem += "<div class='total_part_SPO' id='total_part_SPO'>Total</div>";
+                addCartItem += "<div class='total_pricePart_SPO' id='total_pricePart_SPO'>&#163;" + oneTimePurchaseTotal
+                    .toFixed(2) + "</div>";
                 addCartItem += "</div>";
                 addCartItem += "</div>";
                 addCartItem += "</div>";
@@ -685,29 +704,39 @@
                 subTotal.innerHTML = oldData.subTotal.toFixed(2)
                 total.innerHTML = oldData.subTotal.toFixed(2)
             } else {
-                document.getElementById('my_cart').style = "display:flex"
+                document.getElementById('my_cart').style = "display:none"
             }
             cartQuantity()
 
 
         }
 
-        const cartQuantityIncrement = (productId, price) => {
+        const cartQuantityIncrement = (uniqueId, price) => {
             const productIndx = oldData.productDetails.findIndex((element, index) => {
-                if (element.productId === productId && element.type === 'bulk-purchase') {
+                if (element.id === uniqueId) {
                     return true
                 }
             })
 
-            const increments = document.getElementById("otp_value_" + productId)
-            const totalAmount = document.getElementById("product_total_" + productId)
-            console.log(totalAmount)
+            let bulkPurchaseTotal = 0
+            for (let i = 0; i < oldData.productDetails.length; i++) {
+                if (oldData.productDetails[i].type === 'bulk-purchase') {
+                    bulkPurchaseTotal += oldData.productDetails[i].totalAmount
+                }
+            }
+            const increments = document.getElementById("otp_value_" + uniqueId)
+            const totalAmount = document.getElementById("product_total_" + uniqueId)
+            const singleProduct = document.getElementById("pricePart_SPO_" + uniqueId)
+            const singleTotal = document.getElementById("total_pricePart_SPO")
+console.log(uniqueId)
             const productDetails = oldData.productDetails[productIndx]
             if (productDetails) {
                 productDetails.quantity += 1
                 productDetails.totalAmount += price
                 increments.innerHTML = productDetails.quantity
                 totalAmount.innerHTML = productDetails.totalAmount.toFixed(2)
+                singleProduct.innerHTML = productDetails.totalAmount.toFixed(2)
+                singleTotal.innerHTML = (bulkPurchaseTotal+price).toFixed(2)
                 localStorage.removeItem('cartDetails')
                 localStorage.setItem('cartDetails', JSON.stringify(oldData))
                 calculateTotalAmount()
@@ -715,30 +744,38 @@
             }
         }
 
-        const cartQuantityDecrement = (productId, price) => {
+        const cartQuantityDecrement = (uniqueId, price) => {
             const productIndx = oldData.productDetails.findIndex((element, index) => {
-                if (element.productId === productId && element.type === 'bulk-purchase') {
+                if (element.id === uniqueId) {
                     return true
                 }
             })
-            const increments = document.getElementById("otp_value_" + productId)
-            const totalAmount = document.getElementById("product_total_" + productId)
+
+            let bulkPurchaseTotal = 0
+            for (let i = 0; i < oldData.productDetails.length; i++) {
+                if (oldData.productDetails[i].type === 'bulk-purchase') {
+                    bulkPurchaseTotal += oldData.productDetails[i].totalAmount
+                }
+            }
+            const increments = document.getElementById("otp_value_" + uniqueId)
+            const totalAmount = document.getElementById("product_total_" + uniqueId)
+            const singleProduct = document.getElementById("pricePart_SPO_" + uniqueId)
+            const singleTotal = document.getElementById("total_pricePart_SPO")
             const productDetails = oldData.productDetails[productIndx]
+
             if (productDetails.quantity > 0) {
                 productDetails.quantity = productDetails.quantity - 1
                 productDetails.totalAmount = productDetails.totalAmount - price
-                if (productDetails.totalAmount < 1) {
-                    totalAmount.innerHTML = 0
-                    productDetails.totalAmount = 0
-                } else {
-                    totalAmount.innerHTML = productDetails.totalAmount.toFixed(2)
-                }
+                totalAmount.innerHTML = productDetails.totalAmount.toFixed(2)
                 increments.innerHTML = productDetails.quantity
+                console.log(productDetails.totalAmount)
+                singleProduct.innerHTML = (productDetails.totalAmount).toFixed(2)
+                singleTotal.innerHTML = (bulkPurchaseTotal - price).toFixed(2)
                 localStorage.removeItem('cartDetails')
                 localStorage.setItem('cartDetails', JSON.stringify(oldData))
+                calculateTotalAmount()
+                cartQuantity()
             }
-            calculateTotalAmount()
-            cartQuantity()
 
         }
 
@@ -761,16 +798,16 @@
 
         }
 
-        const closeCartItem = (event, productIndx) => {
+        const closeCartItem = (event, uniqueId) => {
             event.preventDefault();
-            console.log(document.getElementById('box_1'))
-            // const productIndx = oldData.productDetails.findIndex((element, index) => {
-            //     if (element.productId === productId) {
-            //         return true
-            //     }
-            // })
+            const productIndx = oldData.productDetails.findIndex((element, index) => {
+                if (element.id === uniqueId) {
+                    return true
+                }
+            })
+            console.log(productIndx)
             oldData.productDetails.splice(productIndx, 1)
-            document.getElementById("box_" + productIndx).remove()
+            document.getElementById("box_" + uniqueId).remove()
             if (oldData?.productDetails?.length < 1) {
                 oldData.subTotal = 0
                 document.getElementById('my_cart').style = "display:none"

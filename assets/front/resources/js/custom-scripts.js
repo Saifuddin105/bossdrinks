@@ -19,7 +19,7 @@ navbar_Button.addEventListener("click", e => {
 
 
 const localStorageData = JSON.parse(localStorage.getItem('cartDetails'))
-if (localStorageData.productDetails.length > 0) {
+if (localStorageData?.productDetails.length > 0) {
     document.getElementById('quantity-back').style = "display: flex"
 
 }

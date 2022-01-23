@@ -49,7 +49,7 @@
     <div class="productdetails row productdeitails_web">
         <div class="imgshowclass col-12 col-lg-6 imgshowclass_single">
             <div>
-                <img src="{{asset('assets/images/products/' . $productt->photo) }}" alt="something"
+                <img src="{{ asset('assets/images/products/' . $productt->photo) }}" alt="something"
                     style="filter: drop-shadow(3px 4px 6px black);">
             </div>
 
@@ -62,9 +62,9 @@
 
         <div class="col-12 col-lg-6">
             <div class="drinktitleclass">
-                <h3 id="drinktitle " style="">{{$productt->name}}</h3>
+                <h3 id="drinktitle " style="">{{ $productt->name }}</h3>
                 <!-- <p style="font-size: 19px;
-                                                                                                                                                                                                                                                                                                                                                                        font-weight: 700;">&euro;30.36</p> -->
+                                                                                                                                                                                                                                                                                                                                                                                font-weight: 700;">&euro;30.36</p> -->
             </div>
 
             <!-- accordion1 starts -->
@@ -162,7 +162,7 @@
             <div class="no_contract_text">
                 <h3
                     style="font-size: 16px;
-                                                                                                                                                                                                                                                                                                                                                                        font-weight: 400;">
+                                                                                                                                                                                                                                                                                                                                                                                font-weight: 400;">
                     No
                     contract
                     &#8226
@@ -183,7 +183,7 @@
                         <div class="rad-design"></div>
                         <div class="rad-text">Subscribe and Save </div>
                     </label>
-                    <p class="product_price">&#163; 7.46</p>
+                    <p class="product_price">&#163; {{$productt->price}}</p>
                     <div class="small_text1">
                         <p>Pause, skip and cancel anytime</p>
                     </div>
@@ -220,8 +220,8 @@
                         <div class="addtocart-btn">
 
                             <button class="button-30" id="FirstBOX_btn"
-                                onclick="addCartItem({{ $productt->id }}, 'subscription', 7.46)">
-                                <h4 class="button-30_price">&#163;7.46</h4><i class="fa fa-shopping-cart"></i> Add
+                                onclick="addCartItem({{ $productt->id }}, 'subscription', {{ $productt->price }},'{{$productt->name}}')">
+                                <h4 class="button-30_price">&#163;{{$productt->price}}</h4><i class="fa fa-shopping-cart"></i> Add
                                 To
                                 cart
                             </button>
@@ -238,7 +238,7 @@
                         <div class="rad-design"></div>
                         <div class="rad-text">One-time purchase</div>
                     </label>
-                    <p class="product_price">&#163; 8.49</p>
+                    <p class="product_price">&#163; {{$productt->price}}</p>
                     <div class="small_text small_text_1">
                         <p>Delivered once, reorder when you need</p>
                     </div>
@@ -270,7 +270,7 @@
                                     <input type="radio" id="smallboxradio1" name="fav_language" value="HTML" checked>
                                     <label for="html" class="cans">2 cases</label>
                                 </div>
-                                <p>&#128 8.49 each</p>
+                                <p>&#128 {{$productt->price}} each</p>
 
                             </div>
                         </label>
@@ -280,7 +280,7 @@
                                     <input type="radio" id="smallboxradio2" name="fav_language" value="HTML">
                                     <label for="smallboxradio2" class="cans">3 cases</label>
                                 </div>
-                                <p>&#128 8.49 each</p>
+                                <p>&#128 {{$productt->price}} each</p>
                             </div>
                         </label>
                         <label for="smallboxradio3">
@@ -303,7 +303,7 @@
                                         <small>Cases</small>
                                     </label>
                                 </div>
-                                <p>&#128 8.49 each</p>
+                                <p>&#128 {{$productt->price}} each</p>
                             </div>
                         </label>
 
@@ -311,8 +311,8 @@
                     <div class="addtocart-btn">
 
                         <button class="button-30" id="button-30_2" role="button"
-                            onclick="addCartItem({{ $productt->id }}, 'bulk-purchase', 8.49)">
-                            <h4 class="button-30_price_2">&#163;8.49</h4><i class="fa fa-shopping-cart"></i> Add
+                            onclick="addCartItem({{ $productt->id }}, 'bulk-purchase', {{ $productt->price }},'{{$productt->name}}')">
+                            <h4 class="button-30_price_2">&#163 {{$productt->price}}</h4><i class="fa fa-shopping-cart"></i> Add
                             To
                             cart
                         </button>
@@ -337,15 +337,15 @@
 
                 </div>
                 <!-- <div>
-                                                                                                                                                                                                                                                                                                                                                                                        <div class="select">
-                                                                                                                                                                                                                                                                                                                                                                                            <select>
-                                                                                                                                                                                                                                                                                                                                                                                                <option value="1">Every 3 Week(s)</option>
-                                                                                                                                                                                                                                                                                                                                                                                                <option value="2">Every 6 Week(s)</option>
-                                                                                                                                                                                                                                                                                                                                                                                                <option value="3">Every 9 Weeks'(s)</option>
-                                                                                                                                                                                                                                                                                                                                                                                            </select>
-                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                <div class="select">
+                                                                                                                                                                                                                                                                                                                                                                                                    <select>
+                                                                                                                                                                                                                                                                                                                                                                                                        <option value="1">Every 3 Week(s)</option>
+                                                                                                                                                                                                                                                                                                                                                                                                        <option value="2">Every 6 Week(s)</option>
+                                                                                                                                                                                                                                                                                                                                                                                                        <option value="3">Every 9 Weeks'(s)</option>
+                                                                                                                                                                                                                                                                                                                                                                                                    </select>
+                                                                                                                                                                                                                                                                                                                                                                                                </div>
 
-                                                                                                                                                                                                                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                            </div> -->
 
             </div>
 
@@ -2244,7 +2244,7 @@
                 forbidden.</p>
             <p>Develeped By TATAMAX LIMITED</p>
             <!-- <h3>Maintained By</h3>
-                                                                                                                                                                                                                                                                                                                                                                                <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
+                                                                                                                                                                                                                                                                                                                                                                                        <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
         </div>
 
 
@@ -2530,7 +2530,7 @@
                 forbidden.</p>
             <p>Develeped By TATAMAX LIMITED</p>
             <!-- <h3>Maintained By</h3>
-                                                                                                                                                                                                                                                                                                                                                                                <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
+                                                                                                                                                                                                                                                                                                                                                                                        <img src="/img/Briton Logo - 400x240px.png" alt=""> -->
         </div>
 
         <div class="payment_method">
@@ -2778,14 +2778,14 @@
     <script>
         const CalculetedPrice1 = document.querySelector(".button-30_price")
         let subScribeCases = 1
-        if (CalculetedPrice1) CalculetedPrice1.innerHTML = "&#163; 7.46"
+        if (CalculetedPrice1) CalculetedPrice1.innerHTML = "&#163; {{$productt->price}}"
 
         function getSelectedVAlue(event) {
             const selectedText = Number(event.target.options[event.target.selectedIndex].textContent)
             subScribeCases = selectedText
 
 
-            CalculetedPrice1.innerHTML = "&#163;" + selectedText * 7.46
+            CalculetedPrice1.innerHTML = "&#163;" + selectedText * {{$productt->price}}
         }
 
         const Smallbox1 = document.getElementById("smallboxradio1")
@@ -2793,16 +2793,16 @@
         const Smallbox3 = document.getElementById("smallboxradio3")
         let bulkCases = 2
         const CalculetedPrice2 = document.querySelector(".button-30_price_2")
-        if (CalculetedPrice2) CalculetedPrice2.innerHTML = "&#163; 8.49"
+        if (CalculetedPrice2) CalculetedPrice2.innerHTML = "&#163; {{$productt->price}}"
 
         Smallbox1?.addEventListener("change", (event) => {
             bulkCases = 2
 
             if (event.target.checked = true) {
-                CalculetedPrice2.innerHTML = "&#163;" + 2 * 8.49
+                CalculetedPrice2.innerHTML = "&#163;" + 2 * {{$productt->price}}
 
             } else {
-                CalculetedPrice2.innerHTML = "&#163;" + 8.49
+                CalculetedPrice2.innerHTML = "&#163;" + {{$productt->price}}
             }
 
         })
@@ -2810,9 +2810,9 @@
         Smallbox2.addEventListener("change", (event) => {
             bulkCases = 3
             if (event.target.checked = true) {
-                CalculetedPrice2.innerHTML = "&#163;" + 3 * 8.49
+                CalculetedPrice2.innerHTML = "&#163;" + 3 * {{$productt->price}}
             } else {
-                CalculetedPrice2.innerHTML = "&#163;" + 8.49
+                CalculetedPrice2.innerHTML = "&#163;" + {{$productt->price}}
             }
         })
 
@@ -2820,9 +2820,9 @@
         Smallbox3.addEventListener("change", (event) => {
             bulkCases = 4
             if (event.target.checked = true) {
-                CalculetedPrice2.innerHTML = "&#163;" + 4 * 8.49
+                CalculetedPrice2.innerHTML = "&#163;" + 4 * {{$productt->price}}
             } else {
-                CalculetedPrice2.innerHTML = "&#163;" + 8.49
+                CalculetedPrice2.innerHTML = "&#163;" + {{$productt->price}}
             }
         })
 
@@ -2833,7 +2833,7 @@
             const selectedText2 = Number(event.target.options[event.target.selectedIndex].textContent)
             smallboxradio3.checked = true
             bulkCases = selectedText2
-            CalculetedPrice2.innerHTML = "&#163;" + selectedText2 * 8.49
+            CalculetedPrice2.innerHTML = "&#163;" + selectedText2 * {{$productt->price}}
 
         }
 
@@ -2893,12 +2893,13 @@
 
             }
         }
-        const addCartItem = (productId, type, unitPrice) => {
+        const addCartItem = (productId, type, unitPrice,productName) => {
             cart_sidebar.style.right = "0px";
             const cartItems = document.getElementById('cart-items');
             let items
             const itemDetails = {
                 'productId': productId,
+                'name':productName,
                 'title': type === 'subscription' ? 'Energy Boss Subscription' : type === 'one-time-purchase' ?
                     'Energy Boss' : type ===
                     'bulk-purchase' ?
@@ -2907,7 +2908,7 @@
                     'one-time-purchase' ?
                     'One time purchase' : type ===
                     'bulk-purchase' ?
-                    'Bulk Purchase' : '',
+                    'One Time Bulk Purchase' : '',
                 'quantity': type === 'subscription' ? subScribeCases : type === 'one-time-purchase' ? 1 : type ===
                     'bulk-purchase' ? bulkCases : 1,
                 'productPrice': unitPrice,
@@ -2915,12 +2916,14 @@
                     unitPrice : type ===
                     'bulk-purchase' ? unitPrice *
                     bulkCases : 0,
-                'type': type
+                'type': type,
+                'id': oldData?.productDetails.length > 0 ? oldData.productDetails[oldData.productDetails.length -
+                    1].id++ : 1
             }
             if (oldData?.productDetails.length < 1) {
                 oldData?.productDetails.push(itemDetails)
                 let addCartItem = ""
-                addCartItem += "<div class='FirstBOX' id='box_" + itemDetails.productId + "'>";
+                addCartItem += "<div class='FirstBOX' id='box_" + itemDetails.id + "'>";
                 addCartItem += "<div class='FirstBOX_content'>";
                 addCartItem += "<div class='FirstBOX_img'>";
                 addCartItem += "<img src='/Size_3  193x500px/Energy-Boss---IT-(19-10-2021)---RED-BG.png' alt=''>";
@@ -2939,7 +2942,7 @@
                 addCartItem +=
                     "<h4 style='font-size: 17px; margin-top: auto;' class='total-amount'><span>&euro;</span><span class='per-product-total'>" +
                     itemDetails.totalAmount + "</span></h4>";
-                addCartItem += "<button onclick='closeCartItem(event," + itemDetails.productId + ")'>&#10006;</button>";
+                addCartItem += "<button onclick='closeCartItem(event," + itemDetails.id + ")'>&#10006;</button>";
                 addCartItem += "</div>";
                 addCartItem += "</div>";
                 addCartItem += "</div>";
@@ -3031,15 +3034,15 @@
 
         }
 
-        const closeCartItem = (event, productId) => {
+        const closeCartItem = (event, uniqueId) => {
             event.preventDefault();
             const productIndx = oldData.productDetails.findIndex((element, index) => {
-                if (element.productId === productId) {
+                if (element.id === uniqueId) {
                     return true
                 }
             })
             oldData.productDetails.splice(productIndx, 1)
-            document.getElementById("box_" + productId).remove()
+            document.getElementById("box_" + uniqueId).remove()
             if (oldData?.productDetails?.length < 1) {
                 oldData.subTotal = 0
                 document.getElementById('quantity-back').style = "display: none"
@@ -3129,8 +3132,8 @@
                     productQuantity += oldData.productDetails[i].quantity
                 }
                 cartQuantity.innerText = productQuantity
-            }else{
-                document.getElementById('quantity-back').style="display: none"
+            } else {
+                document.getElementById('quantity-back').style = "display: none"
 
             }
         }
