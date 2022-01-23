@@ -187,10 +187,10 @@ class VendorController extends Controller
          }else{
              $user = new User;
             $businessInfo = $request->only('busi_name', 'busi_address1', 'busi_address2', 'busi_address3', 'busi_post_code', 'busi_tel_no', 'busi_vat');
-            $persionalInfo = $request->only('address_1', 'address_2', 'address_3', 'post_code', 'home_tel_no', 'email','recom', 'contact_name','title');
+            $persionalInfo = $request->only('address_1', 'address_2', 'address_3', 'post_code', 'home_tel_no', 'persional_email','recom', 'contact_name','title');
             // echo json_encode($businessInfo);die;
             $vendor['name'] = $request->customer_name;
-            $vendor['email'] = Session::get('vendor_inter_email');
+            $vendor['email'] = $request->email;
             $vendor['phone'] =$request->mobile_no;
             $vendor['business_info'] = json_encode($businessInfo);  
             $vendor['persional_info'] = json_encode($persionalInfo);

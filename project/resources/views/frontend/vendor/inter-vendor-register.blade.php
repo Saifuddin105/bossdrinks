@@ -57,6 +57,7 @@
         <h4>New Customer Registration</h4>
         <form action="{{route('vendor.inter.register')}}" method="post" enctype="multipart/form">
                   @csrf
+                  <input type="hidden" name="email" value="@if(Session::has('vendor_inter_email')){{ Session::get('vendor_inter_email')}}@endif">
         <div class="first_form_int">
             <div class="form_int_1">
                 <div class="reg_title">Title:</div>
@@ -135,7 +136,7 @@
             </div>
             <div class="form_int_1">
                 <div class="reg_title">Email Address:</div>
-                <input type="text" name="email">
+                <input type="text" name="persional_email">
             </div>
             <div class="form_int_1">
                 <div class="reg_title">Where did you hear about us ?</div>
