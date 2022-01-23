@@ -44,6 +44,7 @@
 												<table id="geniustable" class="table table-hover dt-responsive" cellspacing="0" width="100%">
 													<thead>
 														<tr>
+		                                                  <th>{{ __("Vendor Type") }}</th>
 		                                                  <th>{{ __("Name") }}</th>
 		                                                  <th>{{ __("Email") }}</th>
 		                                                  <th>{{ __("Phone") }}</th>
@@ -238,6 +239,7 @@
                serverSide: true,
                ajax: '{{ route('admin-vendor-datatables') }}',
                columns: [
+                        { data: 'vendor_type', name: 'vendor_type' },
                         { data: 'name', name: 'name' },
                         { data: 'email', name: 'email' },
                         { data: 'phone', name: 'phone' },
