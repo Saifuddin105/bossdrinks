@@ -5,16 +5,16 @@
 @section('styles')
     <style type="text/css">
         /* .cart-box {
-                                                                                                                                                position: relative;
-                                                                                                                                            } */
+                                                                                                                                                        position: relative;
+                                                                                                                                                    } */
 
         /* .cart-close-btn {
-                                                                                                                                                position: absolute;
-                                                                                                                                                right: 0;
-                                                                                                                                                border: none;
-                                                                                                                                                background: none;
-                                                                                                                                                top: -1px;
-                                                                                                                                            } */
+                                                                                                                                                        position: absolute;
+                                                                                                                                                        right: 0;
+                                                                                                                                                        border: none;
+                                                                                                                                                        background: none;
+                                                                                                                                                        top: -1px;
+                                                                                                                                                    } */
 
 
 
@@ -248,7 +248,7 @@
         .one_time_purchase {
             display: flex;
             margin-bottom: 12px;
-           justify-content: space-between;
+            justify-content: space-between;
             margin-top: 65px;
         }
 
@@ -365,8 +365,8 @@
 
         .subscription_part a,
         .one_time_purchase a {
-            font-size: 16px!important;
-            text-decoration: underline!important;
+            font-size: 16px !important;
+            text-decoration: underline !important;
         }
 
         @media only screen and (max-width: 576px) {
@@ -669,7 +669,7 @@
                 addCartItem += "</div>";
                 addCartItem += "</div>";
                 addCartItem += "<div class='checkout_part'>";
-                addCartItem += "<button id='checkout_BTN' >Checkout</button>";
+                addCartItem += "<a href={{ route('front.showCheckout') }} id='checkout_BTN' >Checkout</a>";
                 addCartItem += "</div>";
                 addCartItem += "</div>";
                 addCartItem += "</div>";
