@@ -55,7 +55,7 @@
       <div class="menu_items"><img src="/img/help.png" alt="" style="height: 25px; margin-top: 30px"><a href="#" class="menu_item_text">FAQS</a></div>
     </div>
     <div class="Sidebar_menu">
-      <div class="menu_items"><img src="/img/information-desk.png" alt="" style="height: 25px; margin-top: 30px"><a href="#" class="menu_item_text">ABOUT US</a></div>
+    <div class="menu_items"><img src="/img/information-desk.png" alt="" style="height: 25px; margin-top: 30px"><a href="{{url('/user/about-us')}}" class="menu_item_text">ABOUT US</a></div>
     </div>
 
   </div>
