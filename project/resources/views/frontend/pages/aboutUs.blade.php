@@ -259,5 +259,8 @@
 @endsection
 
 @push('script')
-
+    <script>
+        const navbarBack=document.getElementById('navbar')
+        navbarBack.style.background="#D3EACD"
+    </script>
 @endpush
