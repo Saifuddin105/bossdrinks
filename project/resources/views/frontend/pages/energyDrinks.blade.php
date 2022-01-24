@@ -142,7 +142,7 @@
         </div>
     </div>
 
-    <x-newsletter/>
+    <!-- <x-newsletter/>
 
     <div class="contactUS">
 
@@ -154,7 +154,7 @@
         <div class="contactUS_btn">
             <a href="stock_register.html"><button type="button">Register</button></a>
         </div>
-    </div>
+    </div> -->
 
 @endsection
 

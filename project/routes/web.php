@@ -150,8 +150,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/users/datatables', 'Admin\UserController@datatables')->name('admin-user-datatables'); //JSON REQUEST
         Route::get('/ambassedors/datatables', 'Admin\UserController@ambassedorsDatatables')->name('admin-ambassedor-datatables'); //JSON REQUEST
         Route::get('/contacts', 'Admin\ContactController@contacts')->name('admin-contact-index');
-        Route::get('/contacts/datatables', 'Admin\ContactController@cotactsDatatables')->name('admin-contact-datatables'); 
-        Route::get('/contact/{id}/show', 'Admin\ContactController@contactDetails')->name('admin-contact-show'); 
+        Route::get('/contacts/datatables', 'Admin\ContactController@cotactsDatatables')->name('admin-contact-datatables');
+        Route::get('/contact/{id}/show', 'Admin\ContactController@contactDetails')->name('admin-contact-show');
         Route::get('/users', 'Admin\UserController@index')->name('admin-user-index');
         Route::get('/ambassedors', 'Admin\UserController@ambassedors')->name('admin-ambassedor-index');
         Route::get('/users/edit/{id}', 'Admin\UserController@edit')->name('admin-user-edit');
@@ -804,6 +804,10 @@ Route::prefix('user')->group(function () {
     });
     Route::get('shop', 'Front\FrontendController@shop')->name('front.shop');
 
+    Route::get('/about-us', function () {
+        return view('frontend/pages/aboutUs');
+    });
+
     // User Dashboard
     Route::get('/dashboard', 'User\UserController@index')->name('user-dashboard');
 
@@ -1279,6 +1283,11 @@ Route::group(['middleware' => 'maintenance'], function () {
 Route::get('brand/ambassedor', 'Front\AmbassedorController@index')->name('ambassedor');
 Route::post('join/ambassedor', 'Front\AmbassedorController@crateAmbassedor')->name('join-ambassedor');
 Route::get('join/ambassedor', 'Front\AmbassedorController@registerForm')->name('join-ambassedor');
-Route::get('privacy/policy',function(){
+Route::get('privacy/policy', function () {
     return view('frontend.pages.privacy-policy');
 })->name('privacy');
+
+Route::get('vendor/types', 'Front\VendorController@vendorTypes')->name('vendor.types');
+Route::get('vendor/register/{type}', 'Front\VendorController@vendorRegistorForm')->name('vendor.register.form');
+Route::post('vendor/inter/register', 'Front\VendorController@vendorInterCreate')->name('vendor.inter.register');
+Route::post('vendor/uk/register', 'Front\VendorController@vendorUkCreate')->name('vendor.uk.register');

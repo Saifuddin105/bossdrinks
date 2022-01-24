@@ -189,7 +189,14 @@ class VendorController extends Controller
     public function show($id)
     {
         $data = User::findOrFail($id);
-        return view('admin.vendor.show',compact('data'));
+        if($data->vendor_type === 'UK'){
+            return view('admin.vendor.uk-deatils',compact('data'));
+        }else{
+        //echo json_encode(json_decode($data->persional_info));die;
+
+            return view('admin.vendor.inter-deatils',compact('data'));
+
+        }
     }
     
 

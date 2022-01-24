@@ -4,16 +4,16 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticIniteece86f4f5bbf68b5c928fe2e56135d1
+class ComposerStaticInit935acfc3fc276f6b13c4e13f603dc18f
 {
     public static $files = array (
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
@@ -27,13 +27,13 @@ class ComposerStaticIniteece86f4f5bbf68b5c928fe2e56135d1
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
-        '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
+        '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
-        'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '1b8b16d5e16612118084bfbc3cca2fc5' => __DIR__ . '/..' . '/mollie/laravel-mollie/src/helpers.php',
         '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
     );
@@ -205,8 +205,8 @@ class ComposerStaticIniteece86f4f5bbf68b5c928fe2e56135d1
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
         'ZanySoft\\Zip\\' => 
         array (
@@ -592,7 +592,6 @@ class ComposerStaticIniteece86f4f5bbf68b5c928fe2e56135d1
     );
 
     public static $classMap = array (
-        'App\\Ambassedor' => __DIR__ . '/../..' . '/app/Ambassedor.php',
         'App\\Classes\\GeniusMailer' => __DIR__ . '/../..' . '/app/Classes/GeniusMailer.php',
         'App\\Classes\\Instamojo' => __DIR__ . '/../..' . '/app/Classes/Instamojo.php',
         'App\\Console\\Commands\\CrudGenerator' => __DIR__ . '/../..' . '/app/Console/Commands/CrudGenerator.php',
@@ -644,7 +643,6 @@ class ComposerStaticIniteece86f4f5bbf68b5c928fe2e56135d1
         'App\\Http\\Controllers\\Admin\\VendorController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/VendorController.php',
         'App\\Http\\Controllers\\Admin\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\Front\\AmbassedorController' => __DIR__ . '/../..' . '/app/Http/Controllers/Front/AmbassedorController.php',
         'App\\Http\\Controllers\\Front\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Front/CartController.php',
         'App\\Http\\Controllers\\Front\\CatalogController' => __DIR__ . '/../..' . '/app/Http/Controllers/Front/CatalogController.php',
         'App\\Http\\Controllers\\Front\\CheckoutController' => __DIR__ . '/../..' . '/app/Http/Controllers/Front/CheckoutController.php',
@@ -1672,6 +1670,7 @@ class ComposerStaticIniteece86f4f5bbf68b5c928fe2e56135d1
         'Faker\\Provider\\nl_BE\\Payment' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_BE/Payment.php',
         'Faker\\Provider\\nl_BE\\Person' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_BE/Person.php',
         'Faker\\Provider\\nl_BE\\PhoneNumber' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_BE/PhoneNumber.php',
+        'Faker\\Provider\\nl_BE\\Text' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_BE/Text.php',
         'Faker\\Provider\\nl_NL\\Address' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_NL/Address.php',
         'Faker\\Provider\\nl_NL\\Color' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_NL/Color.php',
         'Faker\\Provider\\nl_NL\\Company' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_NL/Company.php',
@@ -6112,10 +6111,10 @@ class ComposerStaticIniteece86f4f5bbf68b5c928fe2e56135d1
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticIniteece86f4f5bbf68b5c928fe2e56135d1::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticIniteece86f4f5bbf68b5c928fe2e56135d1::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticIniteece86f4f5bbf68b5c928fe2e56135d1::$prefixesPsr0;
-            $loader->classMap = ComposerStaticIniteece86f4f5bbf68b5c928fe2e56135d1::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit935acfc3fc276f6b13c4e13f603dc18f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit935acfc3fc276f6b13c4e13f603dc18f::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit935acfc3fc276f6b13c4e13f603dc18f::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit935acfc3fc276f6b13c4e13f603dc18f::$classMap;
 
         }, null, ClassLoader::class);
     }

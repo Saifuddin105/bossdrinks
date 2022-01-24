@@ -17,6 +17,12 @@ navbar_Button.addEventListener("click", e => {
     // console.log("kaj hoy")
 })
 
+
+const localStorageData = JSON.parse(localStorage.getItem('cartDetails'))
+if (localStorageData?.productDetails.length > 0) {
+    document.getElementById('quantity-back').style = "display: flex"
+
+}
 const hideSidebarMenu = () => {
     SideBar.style.marginLeft = "-300px"
     sidebar_blur.style.display = "none"
@@ -555,6 +561,8 @@ if (stock_nowbtn != null) {
         cart_sidebar.style.right = "0px";
     })
 }
+
+
 
 
 

@@ -27,12 +27,16 @@
 
 <body>
   <!-- Sidebar Widgets Column -->
+  @if(!\Request::is('user/dashboard'))
   @include('frontend.layouts.partials.sidebar')
   <!-- Navigation -->
   <div class="main">
+
     @include('frontend.layouts.partials.header')
+ 
     @yield('carousel')
   </div>
+  @endif
   <!-- Page Content -->
   <div>
     @yield('content')

@@ -1255,7 +1255,7 @@ a:link {
 }
 
 .card {
-    width: 340px;
+    width: 370px;
     padding: 30px 55px;
     background-color: #fff;
     border-radius: 40px;
@@ -2520,7 +2520,9 @@ a:link {
 
     .radioDIV_2 {
         height: 525px;
+        width: 100%;
     }
+    
 
     .buisness_customer_reg {
         margin-top: 2px !important;
@@ -3354,8 +3356,9 @@ a:link {
 
     .checkoutMAIN_complete {
         display: flex;
-        flex-direction: column !important;
-        gap: 50px !important;
+        flex-direction: row;
+        gap: 165px;
+        padding-bottom: 50px;
     }
 
     .shopping_details {
@@ -4602,6 +4605,7 @@ modal-content {
     display: flex;
     flex-direction: row;
     gap: 165px;
+    padding-bottom: 50px;
 }
 
 .shopping_details {
@@ -6882,8 +6886,5 @@ tr:nth-child(even) {
         opacity: 0;
     }
 }
-
-
-
 
 /*--snackbar--*/

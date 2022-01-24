@@ -29,12 +29,12 @@
 									<h4 class="title">
 										{{ __("Vendor Registration") }} :
 									</h4>
-	                                <div class="action-list">
+	                                <!-- <div class="action-list">
 	                                    <select class="process select1 vdroplinks {{ $gs->reg_vendor == 1 ? 'drop-success' : 'drop-danger' }}">
 	                                      <option data-val="1" value="{{route('admin-gs-regvendor',1)}}" {{ $gs->reg_vendor == 1 ? 'selected' : '' }}>{{ __("Activated") }}</option>
 	                                      <option data-val="0" value="{{route('admin-gs-regvendor',0)}}" {{ $gs->reg_vendor == 0 ? 'selected' : '' }}>{{ __("Deactivated") }}</option>
 	                                    </select>
-	                                  </div>
+	                                  </div> -->
 								</div>
 
 
@@ -44,9 +44,10 @@
 												<table id="geniustable" class="table table-hover dt-responsive" cellspacing="0" width="100%">
 													<thead>
 														<tr>
-		                                                  <th>{{ __("Store Name") }}</th>
-		                                                  <th>{{ __("Vendor Email") }}</th>
-		                                                  <th>{{ __("Shop Number") }}</th>
+		                                                  <th>{{ __("Vendor Type") }}</th>
+		                                                  <th>{{ __("Name") }}</th>
+		                                                  <th>{{ __("Email") }}</th>
+		                                                  <th>{{ __("Phone") }}</th>
 		                                                  <th>{{ __("Status") }}</th>
 		                                                  <th>{{ __("Options") }}</th>
 														</tr>
@@ -238,9 +239,10 @@
                serverSide: true,
                ajax: '{{ route('admin-vendor-datatables') }}',
                columns: [
-                        { data: 'shop_name', name: 'shop_name' },
+                        { data: 'vendor_type', name: 'vendor_type' },
+                        { data: 'name', name: 'name' },
                         { data: 'email', name: 'email' },
-                        { data: 'shop_number', name: 'shop_number' },
+                        { data: 'phone', name: 'phone' },
                         { data: 'status', searchable: false, orderable: false},
             			{ data: 'action', searchable: false, orderable: false }
                      ],

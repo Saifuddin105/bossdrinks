@@ -35,24 +35,22 @@ class OrderController extends Controller
         } else {
             $datas = Order::orderBy('id', 'desc')->get();
         }
-        // echo json_encode($datas);
-        // die;
-         
+
         //--- Integrating This Collection Into Datatables
         return Datatables::of($datas)
-                            ->editColumn('id', function (Order $data) {
-                                $id = '<a href="'.route('admin-order-invoice', $data->id).'">'.$data->order_number.'</a>';
-                                return $id;
-                            })
-                            ->editColumn('pay_amount', function (Order $data) {
-                                return $data->currency_sign . round($data->pay_amount * $data->currency_value, 2);
-                            })
-                            ->addColumn('action', function (Order $data) {
-                                $orders = '<a href="javascript:;" data-href="'. route('admin-order-edit', $data->id) .'" class="delivery" data-toggle="modal" data-target="#modal1"><i class="fas fa-dollar-sign"></i> Delivery Status</a>';
-                                return '<div class="godropdown"><button class="go-dropdown-toggle"> Actions<i class="fas fa-chevron-down"></i></button><div class="action-list"><a href="' . route('admin-order-show', $data->id) . '" > <i class="fas fa-eye"></i> Details</a><a href="javascript:;" class="send" data-email="'. $data->customer_email .'" data-toggle="modal" data-target="#vendorform"><i class="fas fa-envelope"></i> Send</a><a href="javascript:;" data-href="'. route('admin-order-track', $data->id) .'" class="track" data-toggle="modal" data-target="#modal1"><i class="fas fa-truck"></i> Track Order</a>'.$orders.'</div></div>';
-                            })
-                            ->rawColumns(['id','action'])
-                            ->toJson(); //--- Returning Json Data To Client Side
+            ->editColumn('id', function (Order $data) {
+                $id = '<a href="' . route('admin-order-invoice', $data->id) . '">' . $data->order_number . '</a>';
+                return $id;
+            })
+            ->editColumn('pay_amount', function (Order $data) {
+                return $data->currency_sign . round($data->pay_amount * $data->currency_value, 2);
+            })
+            ->addColumn('action', function (Order $data) {
+                $orders = '<a href="javascript:;" data-href="' . route('admin-order-edit', $data->id) . '" class="delivery" data-toggle="modal" data-target="#modal1"><i class="fas fa-dollar-sign"></i> Delivery Status</a>';
+                return '<div class="godropdown"><button class="go-dropdown-toggle"> Actions<i class="fas fa-chevron-down"></i></button><div class="action-list"><a href="' . route('admin-order-show', $data->id) . '" > <i class="fas fa-eye"></i> Details</a><a href="javascript:;" class="send" data-email="' . $data->customer_email . '" data-toggle="modal" data-target="#vendorform"><i class="fas fa-envelope"></i> Send</a><a href="javascript:;" data-href="' . route('admin-order-track', $data->id) . '" class="track" data-toggle="modal" data-target="#modal1"><i class="fas fa-truck"></i> Track Order</a>' . $orders . '</div></div>';
+            })
+            ->rawColumns(['id', 'action'])
+            ->toJson(); //--- Returning Json Data To Client Side
     }
     public function index()
     {
@@ -75,24 +73,26 @@ class OrderController extends Controller
         $input = $request->all();
         if ($data->status == "completed") {
 
-        // Then Save Without Changing it.
+            // Then Save Without Changing it.
             $input['status'] = "completed";
             $data->update($input);
             //--- Logic Section Ends
-    
 
-            //--- Redirect Section
+
+            //--- Redirect Section          
             $msg = 'Status Updated Successfully.';
             return response()->json($msg);
-        //--- Redirect Section Ends
+            //--- Redirect Section Ends     
+
         } else {
             if ($input['status'] == "completed") {
+
                 foreach ($data->vendororders as $vorder) {
                     $uprice = User::findOrFail($vorder->user_id);
                     $uprice->current_balance = $uprice->current_balance + $vorder->price;
                     $uprice->update();
                 }
-    
+
                 if (User::where('id', $data->affilate_user)->exists()) {
                     $auser = User::where('id', $data->affilate_user)->first();
                     $auser->affilate_income += $data->affilate_charge;
@@ -105,26 +105,28 @@ class OrderController extends Controller
                 if ($gs->is_smtp == 1) {
                     $maildata = [
                         'to' => $data->customer_email,
-                        'subject' => 'Your order '.$data->order_number.' is Confirmed!',
-                        'body' => "Hello ".$data->customer_name.","."\n Thank you for shopping with us. We are looking forward to your next visit.",
+                        'subject' => 'Your order ' . $data->order_number . ' is Confirmed!',
+                        'body' => "Hello " . $data->customer_name . "," . "\n Thank you for shopping with us. We are looking forward to your next visit.",
                     ];
-    
+
                     $mailer = new GeniusMailer();
                     $mailer->sendCustomMail($maildata);
                 } else {
                     $to = $data->customer_email;
-                    $subject = 'Your order '.$data->order_number.' is Confirmed!';
-                    $msg = "Hello ".$data->customer_name.","."\n Thank you for shopping with us. We are looking forward to your next visit.";
-                    $headers = "From: ".$gs->from_name."<".$gs->from_email.">";
+                    $subject = 'Your order ' . $data->order_number . ' is Confirmed!';
+                    $msg = "Hello " . $data->customer_name . "," . "\n Thank you for shopping with us. We are looking forward to your next visit.";
+                    $headers = "From: " . $gs->from_name . "<" . $gs->from_email . ">";
                     mail($to, $subject, $msg, $headers);
                 }
             }
             if ($input['status'] == "declined") {
+
                 $cart = unserialize(bzdecompress(utf8_decode($data->cart)));
 
                 foreach ($cart->items as $prod) {
                     $x = (string)$prod['stock'];
                     if ($x != null) {
+
                         $product = Product::findOrFail($prod['item']['id']);
                         $product->stock = $product->stock + $prod['qty'];
                         $product->update();
@@ -146,21 +148,21 @@ class OrderController extends Controller
                 }
 
 
-                
+
                 $gs = Generalsetting::findOrFail(1);
                 if ($gs->is_smtp == 1) {
                     $maildata = [
                         'to' => $data->customer_email,
-                        'subject' => 'Your order '.$data->order_number.' is Declined!',
-                        'body' => "Hello ".$data->customer_name.","."\n We are sorry for the inconvenience caused. We are looking forward to your next visit.",
+                        'subject' => 'Your order ' . $data->order_number . ' is Declined!',
+                        'body' => "Hello " . $data->customer_name . "," . "\n We are sorry for the inconvenience caused. We are looking forward to your next visit.",
                     ];
                     $mailer = new GeniusMailer();
                     $mailer->sendCustomMail($maildata);
                 } else {
                     $to = $data->customer_email;
-                    $subject = 'Your order '.$data->order_number.' is Declined!';
-                    $msg = "Hello ".$data->customer_name.","."\n We are sorry for the inconvenience caused. We are looking forward to your next visit.";
-                    $headers = "From: ".$gs->from_name."<".$gs->from_email.">";
+                    $subject = 'Your order ' . $data->order_number . ' is Declined!';
+                    $msg = "Hello " . $data->customer_name . "," . "\n We are sorry for the inconvenience caused. We are looking forward to your next visit.";
+                    $headers = "From: " . $gs->from_name . "<" . $gs->from_email . ">";
                     mail($to, $subject, $msg, $headers);
                 }
             }
@@ -187,16 +189,18 @@ class OrderController extends Controller
 
             $order = VendorOrder::where('order_id', '=', $id)->update(['status' => $input['status']]);
 
-            //--- Redirect Section
+            //--- Redirect Section          
             $msg = 'Status Updated Successfully.';
             return response()->json($msg);
-            //--- Redirect Section Ends
+            //--- Redirect Section Ends    
+
         }
 
-        //--- Redirect Section
+        //--- Redirect Section          
         $msg = 'Status Updated Successfully.';
         return response()->json($msg);
-        //--- Redirect Section Ends
+        //--- Redirect Section Ends  
+
     }
 
     public function pending()
@@ -236,9 +240,9 @@ class OrderController extends Controller
         if ($gs->is_smtp == 1) {
             $data = 0;
             $datas = [
-                    'to' => $request->to,
-                    'subject' => $request->subject,
-                    'body' => $request->message,
+                'to' => $request->to,
+                'subject' => $request->subject,
+                'body' => $request->message,
             ];
 
             $mailer = new GeniusMailer();
@@ -248,7 +252,7 @@ class OrderController extends Controller
             }
         } else {
             $data = 0;
-            $headers = "From: ".$gs->from_name."<".$gs->from_email.">";
+            $headers = "From: " . $gs->from_name . "<" . $gs->from_email . ">";
             $mail = mail($request->to, $request->subject, $request->message, $headers);
             if ($mail) {
                 $data = 1;

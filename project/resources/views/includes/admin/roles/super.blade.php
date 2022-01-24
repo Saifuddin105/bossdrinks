@@ -100,7 +100,7 @@ $isDev = isset($_GET['dev']) ? true : false;
     </ul>
 </li>
 
-@if ($isDev)
+
 <li>
     <a href="#vendor" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
         <i class="icofont-ui-user-group"></i>{{ __('Vendors') }}
@@ -109,7 +109,7 @@ $isDev = isset($_GET['dev']) ? true : false;
         <li>
             <a href="{{ route('admin-vendor-index') }}"><span>{{ __('Vendors List') }}</span></a>
         </li>
-        <li>
+        <!-- <li>
             <a href="{{ route('admin-vendor-withdraw-index') }}"><span>{{ __('Withdraws') }}</span></a>
         </li>
         <li>
@@ -117,11 +117,11 @@ $isDev = isset($_GET['dev']) ? true : false;
         </li>
         <li>
             <a href="{{ route('admin-vendor-color') }}"><span>{{ __('Default Background') }}</span></a>
-        </li>
+        </li> -->
 
     </ul>
 </li>
-@endif
+
 @if ($isDev)
 <li>
     <a href="#vendor1" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
@@ -223,13 +223,13 @@ $isDev = isset($_GET['dev']) ? true : false;
     </ul>
 </li>
 @endif
-@if ($isDev)
+
 <li>
     <a href="#general" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
         <i class="fas fa-cogs"></i>{{ __('General Settings') }}
     </a>
     <ul class="collapse list-unstyled" id="general" data-parent="#accordion">
-        <li>
+        <!-- <li>
             <a href="{{ route('admin-gs-logo') }}"><span>{{ __('Logo') }}</span></a>
         </li>
         <li>
@@ -264,7 +264,7 @@ $isDev = isset($_GET['dev']) ? true : false;
 
         <li>
             <a href="{{ route('admin-gs-error-banner') }}"><span>{{ __('Error Banner') }}</span></a>
-        </li>
+        </li> -->
 
 
         <li>
@@ -273,7 +273,7 @@ $isDev = isset($_GET['dev']) ? true : false;
 
     </ul>
 </li>
-@endif
+
 
 <li>
     <a href="#homepage" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
